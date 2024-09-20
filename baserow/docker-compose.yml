@@ -6,7 +6,7 @@ services:
     environment:
       BASEROW_PUBLIC_URL: $BASEROW_PUBLIC_URL
     ports:
-      - "3000:80"
+      - "127.0.0.1:3000:3000"
     volumes:
       - baserow_data:/baserow/data
 volumes:
