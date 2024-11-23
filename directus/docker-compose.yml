@@ -31,8 +31,8 @@ services:
     ports:
       - 127.0.0.1:$PORT:8055
     volumes:
-      - ./uploads:/directus/uploads
-      - ./extensions:/directus/extensions
+      - ./data/uploads:/directus/uploads
+      - ./data/extensions:/directus/extensions
     depends_on:
       database:
         condition: service_healthy
