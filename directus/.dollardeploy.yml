@@ -1,0 +1,35 @@
+id: directus
+name: Directus
+intro: The Modern & Powerful CMS and BaaS
+logo: https://avatars.githubusercontent.com/u/15967950
+deployTime: ~3 minutes
+description: |
+  The flexible backend for all of your projects.
+  Turn your data into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more. Built for devs, used by everyone.
+requirements:
+  memory: 2048
+  cpu: 2
+  storage: 10
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: directus
+  sourceBranch: main
+  env:
+    SECRET: ${GENERATED_HASH}
+    PUBLIC_URL: ${APP_URL}
+    ADMIN_EMAIL: admin@${APP_HOSTNAME}
+    ADMIN_PASSWORD: ${GENERATED_PWD}
+    PORT: "8055"
+  preStartCmd: bash ./fixdocker.sh
+  files:
+    - path: fixdocker.sh
+      content: |
+        #!/bin/bash
+        mkdir -p ./data/database
+        mkdir -p ./data/extensions
+        mkdir -p ./data/uploads
+        # Apparently UID is 999
+        sudo chown -R 999:999 ./data/database
+        sudo chown -R 1000:1000 ./data/extensions
+        sudo chown -R 1000:1000 ./data/uploads
