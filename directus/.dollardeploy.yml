@@ -10,6 +10,8 @@ requirements:
   memory: 2048
   cpu: 2
   storage: 10
+services:
+  - docker
 app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates
