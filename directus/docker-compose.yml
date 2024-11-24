@@ -29,7 +29,7 @@ services:
   directus:
     image: directus/directus:11.2.1
     ports:
-      - 127.0.0.1:$PORT:8055
+      - 127.0.0.1:$PORT:$PORT
     volumes:
       - ./data/uploads:/directus/uploads
       - ./data/extensions:/directus/extensions
