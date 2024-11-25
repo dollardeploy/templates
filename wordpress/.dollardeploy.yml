@@ -1,0 +1,32 @@
+id: wordpress
+name: WordPress
+intro: The World's Most Popular CMS
+logo: https://avatars.githubusercontent.com/u/276006
+deployTime: ~3 minutes
+description: |
+  WordPress is open source software you can use to create a beautiful website, blog, or app.
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: wordpress
+  sourceBranch: main
+  env:
+    MYSQL_ROOT_PASSWORD: ${GENERATED_PWD}
+    PUBLIC_URL: ${APP_URL}
+    PORT: "8080"
+  preStartCmd: bash ./fixdocker.sh
+  files:
+    - path: fixdocker.sh
+      content: |
+        #!/bin/bash
+        mkdir -p ./data/db
+        mkdir -p ./wordpress
+        # Debian based www-user is 33
+        sudo chown -R 33:33 ./wordpress
+        sudo chown -R 999:999 ./data/db
