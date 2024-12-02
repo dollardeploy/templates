@@ -1,11 +1,19 @@
 {
   "name": "dollardeploy-examples",
   "version": "1.0.0",
-  "description": "",
+  "description": "Run by going to https://dollardeploy.com/r and selecting the template from this repository.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": [],
+  "devDependencies": {
+    "prettier": "^3.4.1"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
 }

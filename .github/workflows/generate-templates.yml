@@ -1,0 +1,40 @@
+name: Generate Templates JSON
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Generate templates.json
+        run: |
+          npm ci
+          node templates.js > templates.json
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          if git diff --quiet templates.json; then
+            echo "No changes to templates.json"
+            exit 0
+          fi
+
+          git add templates.json
+          git commit -m "chore: update templates.json [skip ci]"
+          git push
