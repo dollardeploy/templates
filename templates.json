@@ -1,1 +1,101 @@
-[]
+[
+  {
+    "id": "directus",
+    "name": "Directus",
+    "intro": "The Modern & Powerful CMS and BaaS",
+    "logo": "https://avatars.githubusercontent.com/u/15967950",
+    "deployTime": "~3 minutes",
+    "description": "The flexible backend for all of your projects.\nTurn your data into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more. Built for devs, used by everyone.\n",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 10
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "directus",
+      "sourceBranch": "main",
+      "env": {
+        "SECRET": "${GENERATED_HASH}",
+        "PUBLIC_URL": "${APP_URL}",
+        "ADMIN_EMAIL": "admin@${APP_HOSTNAME}",
+        "ADMIN_PASSWORD": "${GENERATED_PWD}",
+        "PORT": "8055"
+      },
+      "preStartCmd": "bash ./fixdocker.sh",
+      "files": [
+        {
+          "path": "fixdocker.sh",
+          "content": "#!/bin/bash\nmkdir -p ./data/database\nmkdir -p ./data/extensions\nmkdir -p ./data/uploads\n# Apparently UID is 999\nsudo chown -R 999:999 ./data/database\nsudo chown -R 1000:1000 ./data/extensions\nsudo chown -R 1000:1000 ./data/uploads\n"
+        }
+      ]
+    }
+  },
+  {
+    "id": "twenty-crm",
+    "name": "Twenty CRM",
+    "intro": "The #1 Open-Source CRM",
+    "logo": "https://github.com/twentyhq/twenty/raw/main/packages/twenty-website/public/images/core/logo.svg",
+    "deployTime": "~3 minutes",
+    "description": "The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships\n",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 10
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "twenty-crm",
+      "sourceBranch": "main",
+      "env": {
+        "APP_SECRET": "${GENERATED_HASH}",
+        "SERVER_URL": "${APP_URL}",
+        "PGPASSWORD_SUPERUSER": "${GENERATED_PWD}",
+        "TAG": "latest",
+        "STORAGE_TYPE": "local"
+      }
+    }
+  },
+  {
+    "id": "wordpress",
+    "name": "WordPress",
+    "intro": "The World's Most Popular CMS",
+    "logo": "https://avatars.githubusercontent.com/u/276006",
+    "deployTime": "~3 minutes",
+    "description": "WordPress is open source software you can use to create a beautiful website, blog, or app.\n",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "wordpress",
+      "sourceBranch": "main",
+      "env": {
+        "MYSQL_ROOT_PASSWORD": "${GENERATED_PWD}",
+        "PUBLIC_URL": "${APP_URL}",
+        "PORT": "8080"
+      },
+      "preStartCmd": "bash ./fixdocker.sh",
+      "files": [
+        {
+          "path": "fixdocker.sh",
+          "content": "#!/bin/bash\nmkdir -p ./data/db\nmkdir -p ./wordpress\n# Debian based www-user is 33\nsudo chown -R 33:33 ./wordpress\nsudo chown -R 999:999 ./data/db\n"
+        }
+      ]
+    }
+  }
+]
