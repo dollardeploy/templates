@@ -1,0 +1,22 @@
+id: twenty-crm
+name: Twenty CRM
+intro: "The #1 Open-Source CRM"
+logo: https://github.com/twentyhq/twenty/raw/main/packages/twenty-website/public/images/core/logo.svg
+deployTime: ~3 minutes
+description: |
+  The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships
+requirements:
+  memory: 2048
+  cpu: 2
+  storage: 10
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: twenty-crm
+  sourceBranch: main
+  env:
+    APP_SECRET: ${GENERATED_HASH}
+    SERVER_URL: ${APP_URL}
+    PGPASSWORD_SUPERUSER: ${GENERATED_PWD}
