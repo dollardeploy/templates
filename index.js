@@ -14,6 +14,9 @@ export const fetchDirectory = async path => {
         : undefined
     }
   ).then(r => r.json());
+  if (!result || result.status) {
+    throw new Error("Failed to fetch directory " + path + ": " + result?.status);
+  }
   return result;
 };
 
@@ -62,7 +65,6 @@ export const getGithubTemplate = async (id, optional) => {
 
 const getTemplates = async () => {
   const json = await fetchDirectory();
-  logger.warn("Found templates", json);
   const ids = json.filter(f => f.type === "dir").map(f => f.name);
   const configs = [];
   configs.push(
