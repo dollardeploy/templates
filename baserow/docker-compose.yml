@@ -5,6 +5,9 @@ services:
     image: baserow/baserow:1.27.2
     environment:
       BASEROW_PUBLIC_URL: $BASEROW_PUBLIC_URL
+      SECRET_KEY: $SECRET_KEY
+      DATABASE_PASSWORD: postgres
+      REDIS_PASSWORD: redis
     ports:
       - "127.0.0.1:3000:3000"
     volumes:
