@@ -18,7 +18,7 @@ export const fetchDirectory = async path => {
 };
 
 export const fetchGitHubFile = async path => {
-  logger.info("Fetching file", path);
+  logger.warn("Fetching file", path);
   return fetch(`https://raw.githubusercontent.com/dollardeploy/templates/main/${path}`, {
     headers: process.env.GITHUB_TOKEN
       ? {
@@ -46,7 +46,7 @@ export const getGithubTemplate = async (id, optional) => {
     throw new Error("No dollardeploy config found for template " + id);
   }
 
-  logger.info("Found dollardeploy config for template", id, config.path);
+  logger.warn("Found dollardeploy config for template", id, config.path);
   return fetchGitHubFile(config.path).then(c => {
     if (config.name.endsWith(".json")) {
       return JSON.parse(c);
@@ -73,8 +73,7 @@ const getTemplates = async () => {
 
 const main = async () => {
   const templates = await getTemplates();
-  // eslint-disable-next-line no-console
-  console.log(templates);
+  process.stdout.write(JSON.stringify(templates, null, 2));
 };
 
 main();

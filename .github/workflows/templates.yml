@@ -1,4 +1,4 @@
-name: Generate Templates JSON
+name: Generate Templates
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
       - name: Generate templates.json
         run: |
           npm ci
-          node templates.js > templates.json
+          node index.js > templates.json
 
       - name: Commit and push if changed
         run: |
