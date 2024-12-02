@@ -21,3 +21,4 @@ app:
     SERVER_URL: ${APP_URL}
     PGPASSWORD_SUPERUSER: ${GENERATED_PWD}
     TAG: latest
+    STORAGE_TYPE: local
