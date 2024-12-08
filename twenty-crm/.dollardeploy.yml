@@ -24,3 +24,4 @@ app:
     STORAGE_TYPE: local
     PORT: 3000
     PG_DATABASE_HOST: db
+    SIGN_IN_PREFILLED: true
