@@ -22,7 +22,7 @@ services:
             - '127.0.0.1:$PORT:$PORT'
         environment:
             PORT: 3000
-            PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db:5432}/default
+            PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db:5432}/postgres
             SERVER_URL: ${SERVER_URL}
             FRONT_BASE_URL: ${FRONT_BASE_URL:-$SERVER_URL}
             REDIS_URL: redis://redis:6379
