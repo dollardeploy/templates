@@ -58,14 +58,9 @@
       "env": {
         "APP_SECRET": "${GENERATED_HASH}",
         "SERVER_URL": "${APP_URL}",
-        "POSTGRES_ADMIN_PASSWORD": "${GENERATED_PWD}",
+        "PGPASSWORD_SUPERUSER": "${GENERATED_PWD}",
         "TAG": "latest",
-        "STORAGE_TYPE": "local",
-        "PORT": 3000,
-        "PG_DATABASE_HOST": "db",
-        "REDIS_URL": "redis://redis:6379",
-        "POSTGRESQL_PASSWORD": "twenty",
-        "POSTGRESQL_USER": "twenty"
+        "STORAGE_TYPE": "local"
       }
     }
   },
