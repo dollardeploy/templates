@@ -25,3 +25,5 @@ app:
     PORT: 3000
     PG_DATABASE_HOST: db
     REDIS_URL: redis://redis:6379
+    POSTGRESQL_PASSWORD: twenty
+    POSTGRESQL_USER: twenty
