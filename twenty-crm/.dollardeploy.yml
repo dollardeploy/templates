@@ -22,3 +22,4 @@ app:
     PGPASSWORD_SUPERUSER: ${GENERATED_PWD}
     TAG: latest
     STORAGE_TYPE: local
+    PORT: 3000
