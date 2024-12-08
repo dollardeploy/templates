@@ -61,7 +61,9 @@
         "PGPASSWORD_SUPERUSER": "${GENERATED_PWD}",
         "TAG": "latest",
         "STORAGE_TYPE": "local",
-        "PORT": 3000
+        "PORT": 3000,
+        "PG_DATABASE_HOST": "db",
+        "REDIS_URL": "redis://redis:6379"
       }
     }
   },
