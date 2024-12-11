@@ -8,6 +8,7 @@ services:
     ports:
       - 127.0.0.1:$PORT:2368
     environment:
+      PORT: ${PORT:-3000}
       # see https://ghost.org/docs/config/#configuration-options
       database__client: mysql
       database__connection__host: db
@@ -15,7 +16,7 @@ services:
       database__connection__password: ${MYSQL_PASSWORD:-ghost}
       database__connection__database: ghost
       # this url value is just an example, and is likely wrong for your environment!
-      url: ${APP_URL}
+      url: ${SERVER_URL}
     volumes:
       - ghost:/var/lib/ghost/content
 
