@@ -1,0 +1,13 @@
+services:
+  code-server:
+    image: codercom/code-server:latest
+    ports:
+      - 127.0.0.1:$PORT:8080
+    volumes:
+      - $HOME/.local:/home/coder/.local
+      - $HOME/.config:/home/coder/.config
+      - $PWD:/home/coder/project
+    user: "$UID:$GID"
+    environment:
+      - DOCKER_USER=$USER
+      - PORT=$PORT
