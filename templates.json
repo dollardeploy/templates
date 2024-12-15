@@ -1,5 +1,31 @@
 [
   {
+    "id": "code-server",
+    "name": "Code Server",
+    "intro": "Run VS Code on any machine anywhere and access it in the browser.",
+    "logo": "https://github.com/coder/code-server/raw/main/src/browser/media/favicon.svg",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 10
+    },
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "coder-server",
+      "sourceBranch": "main",
+      "env": {
+        "PORT": 3000,
+        "SERVER_URL": "${APP_URL}"
+      }
+    },
+    "deployTime": "~3 minutes",
+    "description": "This template launches code-server, which is VS Code running on a remote server, accessible through the browser. It allows you to code on any device with a consistent development environment.",
+    "services": [
+      "docker"
+    ]
+  },
+  {
     "id": "directus",
     "name": "Directus",
     "intro": "The Modern & Powerful CMS and BaaS",
