@@ -16,7 +16,8 @@
       "sourceBranch": "main",
       "env": {
         "PORT": 3000,
-        "SERVER_URL": "${APP_URL}"
+        "SERVER_URL": "${APP_URL}",
+        "PASSWORD": "${GENERATED_PWD}"
       }
     },
     "deployTime": "~3 minutes",
