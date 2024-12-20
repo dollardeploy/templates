@@ -85,7 +85,13 @@
       "env": {
         "SERVER_URL": "${APP_URL}",
         "MYSQL_PASSWORD": "${GENERATED_PWD}",
-        "PORT": 3000
+        "PORT": 3000,
+        "MAIL_FROM": "example@example.com",
+        "MAIL_HOST": "127.0.0.1",
+        "MAIL_PORT": 485,
+        "MAIL_USERNAME": "username",
+        "MAIL_PASSWORD": "password",
+        "MAIL_SECURE": false
       }
     }
   },
