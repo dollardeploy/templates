@@ -15,6 +15,13 @@ services:
       database__connection__user: root
       database__connection__password: ${MYSQL_PASSWORD:-ghost}
       database__connection__database: ghost
+      mail__from: ${MAIL_FROM:-example@example.com}
+      mail__transport: SMTP
+      mail__options__host: ${MAIL_HOST:-127.0.0.1}
+      mail__options__port: ${MAIL_PORT:-485}
+      mail__options__auth__user: ${MAIL_PORT:-username}
+      mail__options__auth__pass: ${MAIL_PORT:-password}
+      mail__options__secure_connection: ${MAIL_SECURE:-false}
       # this url value is just an example, and is likely wrong for your environment!
       url: ${SERVER_URL}
     volumes:
