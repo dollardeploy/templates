@@ -7,7 +7,7 @@ services:
       - $HOME/.local:/home/coder/.local
       - $HOME/.config:/home/coder/.config
       - $PWD:/home/coder/project
-    user: "$UID:$GID"
+    user: "$USER_UID:$USER_GID"
     environment:
       - DOCKER_USER=$USER
       - PORT=$PORT
