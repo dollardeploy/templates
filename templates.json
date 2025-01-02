@@ -97,6 +97,63 @@
     }
   },
   {
+    "id": "mattermost",
+    "name": "Mattermost",
+    "intro": "Mattermost is an open-source, self-hostable online chat service with file sharing, search, and integrations.",
+    "logo": "https://avatars.githubusercontent.com/u/9828093",
+    "requirements": {
+      "memory": 4096,
+      "cpu": 2,
+      "storage": 20
+    },
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/mattermost/docker",
+      "sourceBranch": "main",
+      "dockerComposeFile": "docker-compose.yml",
+      "preStartCmd": "bash ./fixdocker.sh",
+      "env": {
+        "MM_SERVICESETTINGS_SITEURL": "${APP_URL}",
+        "TZ": "UTC",
+        "RESTART_POLICY": "unless-stopped",
+        "POSTGRES_IMAGE_TAG": "13-alpine",
+        "POSTGRES_DATA_PATH": "./volumes/db/data",
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "postgres",
+        "POSTGRES_DB": "public",
+        "CALLS_PORT": "8443",
+        "MATTERMOST_CONFIG_PATH": "./volumes/app/mattermost/config",
+        "MATTERMOST_DATA_PATH": "./volumes/app/mattermost/data",
+        "MATTERMOST_LOGS_PATH": "./volumes/app/mattermost/logs",
+        "MATTERMOST_PLUGINS_PATH": "./volumes/app/mattermost/plugins",
+        "MATTERMOST_CLIENT_PLUGINS_PATH": "./volumes/app/mattermost/client/plugins",
+        "MATTERMOST_BLEVE_INDEXES_PATH": "./volumes/app/mattermost/bleve-indexes",
+        "MM_BLEVESETTINGS_INDEXDIR": "/mattermost/bleve-indexes",
+        "MATTERMOST_IMAGE": "mattermost-team-edition",
+        "MATTERMOST_IMAGE_TAG": "9.11.2",
+        "MATTERMOST_CONTAINER_READONLY": "false",
+        "MM_SERVICESETTINGS_ALLOWED_ORIGINS": "${APP_URL}",
+        "PORT": "3005",
+        "MM_SQLSETTINGS_DRIVERNAME": "postgres",
+        "MM_SQLSETTINGS_DATASOURCE": "postgres://postgres:postgres@postgres:5432/public?sslmode=disable",
+        "MM_FILESETTINGS_DRIVERNAME": "local"
+      },
+      "files": [
+        {
+          "path": "fixdocker.sh",
+          "content": "#!/bin/bash sed -e \"s/mattermost:/mattermost:\\n    ports:\\n      - '127.0.0.1:3005:8065'/g\" -i docker-compose.yml mkdir -p ./volumes/app/mattermost/{config,data,logs,plugins,client/plugins,bleve-indexes} mkdir -p ./volumes/db/data # 70 is the standard uid/gid for \"postgres\" in Alpine # https://github.com/docker-library/postgres/blob/master/13/alpine3.20/Dockerfile sudo chown -R 70:70 ./volumes/db sudo chown -R 2000:2000 ./volumes/app/mattermost\n"
+        }
+      ]
+    },
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/szfZfQFUSnU",
+    "deployTime": "~5 minutes",
+    "description": "Mattermost is a flexible, open source messaging platform that enables secure team collaboration. It's a self-hosted alternative to proprietary SaaS messaging and brings all your team communication into one place, making it searchable and accessible anywhere.",
+    "services": [
+      "postgres",
+      "docker"
+    ]
+  },
+  {
     "id": "twenty-crm",
     "name": "Twenty CRM",
     "intro": "The #1 Open-Source CRM",
