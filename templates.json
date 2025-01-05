@@ -112,13 +112,13 @@
       "docker"
     ],
     "app": {
-      "type": "next",
+      "type": "docker-compose",
       "repositoryUrl": "https://github.com/ajnart/homarr",
-      "sourceBranch": "dev",
+      "sourcePath": "homarr",
+      "sourceBranch": "main",
       "env": {
         "NEXTAUTH_URL": "${APP_URL}",
-        "PORT": "3010",
-        "DATABASE_URL": "file:./db.sqlite"
+        "PORT": "3010"
       }
     }
   },
