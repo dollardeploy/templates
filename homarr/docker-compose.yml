@@ -13,4 +13,4 @@ services:
       - ./icons:/app/public/icons
       - ./data:/data
     ports:
-      - '$PORT:$PORT'
+      - '$PORT:7575'
