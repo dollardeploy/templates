@@ -117,7 +117,8 @@
       "sourceBranch": "dev",
       "env": {
         "NEXTAUTH_URL": "${APP_URL}",
-        "PORT": "3010"
+        "PORT": "3010",
+        "DATABASE_URL": "file:./db.sqlite"
       }
     }
   },
