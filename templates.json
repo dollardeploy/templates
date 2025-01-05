@@ -113,7 +113,7 @@
     ],
     "app": {
       "type": "docker-compose",
-      "repositoryUrl": "https://github.com/ajnart/homarr",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
       "sourcePath": "homarr",
       "sourceBranch": "main",
       "env": {
