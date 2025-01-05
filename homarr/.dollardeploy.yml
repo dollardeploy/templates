@@ -1,0 +1,20 @@
+id: homarr
+name: Homarr
+intro: A simple, yet powerful dashboard for your server.
+logo: https://homarr.dev/img/favicon.png
+deployTime: ~3 minutes
+description: |
+  Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of your apps and services at your fingertips.
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+services:
+  - docker
+app:
+  type: next
+  repositoryUrl: https://github.com/ajnart/homarr
+  sourceBranch: dev
+  env:
+    NEXTAUTH_URL: ${APP_URL}
+    PORT: "3010"
