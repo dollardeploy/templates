@@ -27,6 +27,4 @@ app:
         #!/bin/bash
         mkdir -p ./data/db
         mkdir -p ./wordpress
-        # Debian based www-user is 33
-        sudo chown -R 33:33 ./wordpress
         sudo chown -R 999:999 ./data/db
