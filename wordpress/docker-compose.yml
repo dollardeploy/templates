@@ -11,6 +11,7 @@ services:
       WORDPRESS_DB_NAME: wordpress
     volumes:
       - ./wordpress:/var/www/html
+    user: "$USER_UID:$USER_GID"
   db:
     image: mariadb:10.6.20-focal
     command: "--default-authentication-plugin=mysql_native_password"
