@@ -240,7 +240,7 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nmkdir -p ./data/db\nmkdir -p ./wordpress\n# Debian based www-user is 33\nsudo chown -R 33:33 ./wordpress\nsudo chown -R 999:999 ./data/db\n"
+          "content": "#!/bin/bash\nmkdir -p ./data/db\nmkdir -p ./wordpress\nsudo chown -R 999:999 ./data/db\n"
         }
       ]
     }
