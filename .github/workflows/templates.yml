@@ -8,6 +8,10 @@ on:
     paths-ignore:
       - templates.json
 
+# Run on the main branch to avoid and only one workflow run at a time to avoid conflict
+concurrency:
+  group: main
+
 jobs:
   generate:
     runs-on: ubuntu-latest
