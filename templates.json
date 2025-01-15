@@ -185,7 +185,7 @@
     "intro": "The #1 Open-Source CRM",
     "logo": "https://github.com/twentyhq/twenty/raw/main/packages/twenty-website/public/images/core/logo.svg",
     "deployTime": "~3 minutes",
-    "description": "The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships\n",
+    "description": "The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships. Version 0.35.6. \n",
     "requirements": {
       "memory": 2048,
       "cpu": 2,
@@ -203,7 +203,7 @@
         "APP_SECRET": "${GENERATED_HASH}",
         "SERVER_URL": "${APP_URL}",
         "PGPASSWORD_SUPERUSER": "${GENERATED_PWD}",
-        "TAG": "v0.32",
+        "TAG": "v0.35.6",
         "STORAGE_TYPE": "local",
         "PORT": 3000,
         "PG_DATABASE_HOST": "db",
