@@ -41,7 +41,7 @@ app:
     MM_FILESETTINGS_DRIVERNAME: local
   files:
     - path: fixdocker.sh
-      content: >
+      content: |
         #!/bin/bash
         sed -e "s/mattermost:/mattermost:\n    ports:\n      - '127.0.0.1:3005:8065'/g" -i docker-compose.yml
         mkdir -p ./volumes/app/mattermost/{config,data,logs,plugins,client/plugins,bleve-indexes}
