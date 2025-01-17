@@ -1,8 +1,9 @@
 ---
-id: cal-com
-name: Cal.com
+id: cal-com-old
+name: Cal.com old
 intro: Cal.com is an open-source scheduling infrastructure for absolutely everyone.
 logo: https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png
+experimental: true
 requirements:
   memory: 2048
   cpu: 1
