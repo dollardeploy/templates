@@ -1,0 +1,38 @@
+---
+id: cal-com-docker
+name: Cal.com Docker
+intro: Cal.com is an open-source scheduling infrastructure for absolutely everyone.
+logo: https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png
+experimental: true
+requirements:
+  memory: 4096
+  cpu: 2
+  storage: 20
+app:
+  type: docker-compose
+  env:
+    NEXT_PUBLIC_WEBAPP_URL: https://${APP_HOSTNAME}
+    NEXT_PUBLIC_API_V2_URL: https://${APP_HOSTNAME}/api/v2
+    NEXT_PUBLIC_LICENSE_CONSENT: agree
+    CALCOM_TELEMETRY_DISABLED: 1
+    NEXTAUTH_SECRET: "${GENERATED_HASH}"
+    CALENDSO_ENCRYPTION_KEY: "${GENERATED_HASH}"
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_DB: postgres
+    DATABASE_HOST: database:5432
+    DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}"
+    DATABASE_DIRECT_URL: ${DATABASE_URL}
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: templates/cal-com-docker
+  dockerComposeFile: docker-compose.yml
+introVideoUrl: https://www.youtube-nocookie.com/embed/60HJt8DOVNo
+deployTime: "~10 minutes"
+description: Cal.com is a scheduling infrastructure for everyone. It's an open source
+  alternative to Calendly that allows you to schedule meetings efficiently and integrate
+  with various calendar services.
+services:
+  - postgres
+  - docker
+

@@ -14,7 +14,6 @@ app:
   sourceBranch: main
   dockerComposeFile: docker-compose.yml
   preStartCmd: bash ./fixdocker.sh
-  postStartCmd: bash ./fixuploads.sh
   env:
     MM_SERVICESETTINGS_SITEURL: ${APP_URL}
     TZ: UTC
@@ -50,21 +49,18 @@ app:
         # 70 is the standard uid/gid for "postgres" in Alpine
         # https://github.com/docker-library/postgres/blob/master/13/alpine3.20/Dockerfile
         sudo chown -R 70:70 ./volumes/db
+        # Download config which enables uploads and focalboard plugin
+        curl -o ./volumes/app/mattermost/config/config.json https://gist.githubusercontent.com/huksley/5721e15687fc63e2a197749c4752d80f/raw/1506bb567305ca4fa33db231fb6ab20a091a75f6/mattermost-config.json
         sudo chown -R 2000:2000 ./volumes/app/mattermost
-    - path: fixuploads.sh
-      content: |
-        #!/bin/bash
-        docker compose down
-        sudo sed -i -e "s/\"EnableUploads\": false/\"EnableUploads\": true/g" -i ./volumes/app/mattermost/config/config.json
-        sudo sed -i -e "s/\"MaxFileSize\": 1048576/\"MaxFileSize\": 104857600/g" -i ./volumes/app/mattermost/config/config.json
-        docker compose up -d
 introVideoUrl: https://www.youtube-nocookie.com/embed/szfZfQFUSnU
 deployTime: ~5 minutes
-description: >-
+description: |
   Mattermost is a flexible, open source messaging platform that enables secure
   team collaboration. It's a self-hosted alternative to proprietary SaaS
   messaging and brings all your team communication into one place, making it
   searchable and accessible anywhere.
+
+  This installation enables uploads and Focalboard plugin.
 services:
   - postgres
   - docker
