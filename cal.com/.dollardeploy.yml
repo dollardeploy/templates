@@ -1,0 +1,33 @@
+---
+id: cal-com
+name: Cal.com
+intro: Cal.com is an open-source scheduling infrastructure for absolutely everyone.
+logo: https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png
+requirements:
+  memory: 2048
+  cpu: 1
+  storage: 10
+app:
+  type: next
+  env:
+    NEXT_PUBLIC_WEBAPP_URL: https://${APP_HOSTNAME}
+    NEXTAUTH_URL: https://${APP_HOSTNAME}
+    NEXTAUTH_SECRET: "${GENERATED_HASH}"
+    DATABASE_URL: postgresql://postgres:postgres@$localhost:5432/postgres
+    CALENDSO_ENCRYPTION_KEY: "${GENERATED_HASH}"
+    NEXT_PUBLIC_LICENSE_CONSENT: agree
+  repositoryUrl: https://github.com/calcom/cal.com.git
+  sourcePath: apps/web
+  sourceBranch: main
+  startScript: start
+  buildScript: build
+  installCmd: yarn install --frozen-lockfile
+  preStartCmd: npx prisma db push --skip-generate && yarn db-deploy
+  postStartCmd: yarn db-seed
+introVideoUrl: https://www.youtube-nocookie.com/embed/60HJt8DOVNo
+deployTime: "~10 minutes"
+description: Cal.com is a scheduling infrastructure for everyone. It's an open source
+  alternative to Calendly that allows you to schedule meetings efficiently and integrate
+  with various calendar services.
+services:
+  - postgres
