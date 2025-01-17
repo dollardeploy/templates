@@ -24,11 +24,12 @@
         "POSTGRES_DB": "postgres",
         "DATABASE_HOST": "database:5432",
         "DATABASE_URL": "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}",
-        "DATABASE_DIRECT_URL": "${DATABASE_URL}"
+        "DATABASE_DIRECT_URL": "${DATABASE_URL}",
+        "PORT": 3000
       },
       "repositoryUrl": "https://github.com/dollardeploy/templates",
       "sourceBranch": "main",
-      "sourcePath": "templates/cal-com-docker",
+      "sourcePath": "cal-com-docker",
       "dockerComposeFile": "docker-compose.yml"
     },
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/60HJt8DOVNo",
@@ -80,10 +81,11 @@
     ]
   },
   {
-    "id": "cal-com",
-    "name": "Cal.com",
+    "id": "cal-com-old",
+    "name": "Cal.com old",
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
     "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
+    "experimental": true,
     "requirements": {
       "memory": 2048,
       "cpu": 1,
