@@ -14,6 +14,8 @@ app:
   sourcePath: local-ai-cpu
   sourceBranch: main
   dockerComposeFile: docker-compose.yml
+  env:
+    PORT: 8080
 introVideoUrl: https://www.youtube-nocookie.com/embed/Xh57mMlfuMk
 deployTime: ~20 minutes
 description: >-
