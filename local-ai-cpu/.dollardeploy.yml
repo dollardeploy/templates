@@ -14,6 +14,8 @@ app:
   sourcePath: local-ai-cpu
   sourceBranch: main
   dockerComposeFile: docker-compose.yml
+  # Request user IP address to be set in the app
+  allowAccessFrom: "${USER_IPADDRESS}"
   env:
     PORT: 8080
 introVideoUrl: https://www.youtube-nocookie.com/embed/Xh57mMlfuMk
