@@ -28,7 +28,7 @@
       },
       "repositoryUrl": "https://github.com/dollardeploy/templates",
       "sourceBranch": "main",
-      "sourcePath": "templates/cal-com-docker",
+      "sourcePath": "cal-com-docker",
       "dockerComposeFile": "docker-compose.yml"
     },
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/60HJt8DOVNo",
