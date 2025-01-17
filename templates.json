@@ -1,5 +1,85 @@
 [
   {
+    "id": "cal-com-docker",
+    "name": "Cal.com Docker",
+    "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
+    "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
+    "experimental": true,
+    "requirements": {
+      "memory": 4096,
+      "cpu": 2,
+      "storage": 20
+    },
+    "app": {
+      "type": "docker-compose",
+      "env": {
+        "NEXT_PUBLIC_WEBAPP_URL": "https://${APP_HOSTNAME}",
+        "NEXT_PUBLIC_API_V2_URL": "https://${APP_HOSTNAME}/api/v2",
+        "NEXT_PUBLIC_LICENSE_CONSENT": "agree",
+        "CALCOM_TELEMETRY_DISABLED": 1,
+        "NEXTAUTH_SECRET": "${GENERATED_HASH}",
+        "CALENDSO_ENCRYPTION_KEY": "${GENERATED_HASH}",
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "postgres",
+        "POSTGRES_DB": "postgres",
+        "DATABASE_HOST": "database:5432",
+        "DATABASE_URL": "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}",
+        "DATABASE_DIRECT_URL": "${DATABASE_URL}"
+      },
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "templates/cal-com-docker",
+      "dockerComposeFile": "docker-compose.yml"
+    },
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/60HJt8DOVNo",
+    "deployTime": "~10 minutes",
+    "description": "Cal.com is a scheduling infrastructure for everyone. It's an open source alternative to Calendly that allows you to schedule meetings efficiently and integrate with various calendar services.",
+    "services": [
+      "postgres",
+      "docker"
+    ]
+  },
+  {
+    "id": "cal-com",
+    "name": "Cal.com",
+    "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
+    "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
+    "experimental": true,
+    "requirements": {
+      "memory": 4096,
+      "cpu": 2,
+      "storage": 20
+    },
+    "app": {
+      "type": "next",
+      "env": {
+        "NEXT_PUBLIC_WEBAPP_URL": "https://${APP_HOSTNAME}",
+        "NEXT_PUBLIC_API_V2_URL": "https://${APP_HOSTNAME}/api/v2",
+        "NEXTAUTH_URL": "https://${APP_HOSTNAME}",
+        "NEXTAUTH_SECRET": "${GENERATED_HASH}",
+        "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/postgres",
+        "CALENDSO_ENCRYPTION_KEY": "${GENERATED_HASH}",
+        "NEXT_PUBLIC_LICENSE_CONSENT": "agree",
+        "CALCOM_TELEMETRY_DISABLED": true,
+        "PRISMA_SCHEMA_PATH": "packages/prisma/schema.prisma",
+        "NODE_OPTIONS": "--max-old-space-size=4096"
+      },
+      "repositoryUrl": "https://github.com/calcom/cal.com.git",
+      "sourceBranch": "v4.8.19",
+      "startScript": "start",
+      "buildScript": "build",
+      "buildIncludeFiles": "packages/prisma",
+      "preStartCmd": "npx prisma migrate deploy --schema packages/prisma/schema.prisma && yarn db-deploy",
+      "postStartCmd": "yarn db-seed"
+    },
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/60HJt8DOVNo",
+    "deployTime": "~10 minutes",
+    "description": "Cal.com is a scheduling infrastructure for everyone. It's an open source alternative to Calendly that allows you to schedule meetings efficiently and integrate with various calendar services.",
+    "services": [
+      "postgres"
+    ]
+  },
+  {
     "id": "cal-com",
     "name": "Cal.com",
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
@@ -231,13 +311,13 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nsed -e \"s/mattermost:/mattermost:\\n    ports:\\n      - '127.0.0.1:3005:8065'/g\" -i docker-compose.yml\nmkdir -p ./volumes/app/mattermost/{config,data,logs,plugins,client/plugins,bleve-indexes}\nmkdir -p ./volumes/db/data\n# 70 is the standard uid/gid for \"postgres\" in Alpine\n# https://github.com/docker-library/postgres/blob/master/13/alpine3.20/Dockerfile\nsudo chown -R 70:70 ./volumes/db\nsudo chown -R 2000:2000 ./volumes/app/mattermost\n"
+          "content": "#!/bin/bash\nsed -e \"s/mattermost:/mattermost:\\n    ports:\\n      - '127.0.0.1:3005:8065'/g\" -i docker-compose.yml\nmkdir -p ./volumes/app/mattermost/{config,data,logs,plugins,client/plugins,bleve-indexes}\nmkdir -p ./volumes/db/data\n# 70 is the standard uid/gid for \"postgres\" in Alpine\n# https://github.com/docker-library/postgres/blob/master/13/alpine3.20/Dockerfile\nsudo chown -R 70:70 ./volumes/db\n# Download config which enables uploads and focalboard plugin\ncurl -o ./volumes/app/mattermost/config/config.json https://gist.githubusercontent.com/huksley/5721e15687fc63e2a197749c4752d80f/raw/1506bb567305ca4fa33db231fb6ab20a091a75f6/mattermost-config.json\nsudo chown -R 2000:2000 ./volumes/app/mattermost\n"
         }
       ]
     },
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/szfZfQFUSnU",
     "deployTime": "~5 minutes",
-    "description": "Mattermost is a flexible, open source messaging platform that enables secure team collaboration. It's a self-hosted alternative to proprietary SaaS messaging and brings all your team communication into one place, making it searchable and accessible anywhere.",
+    "description": "Mattermost is a flexible, open source messaging platform that enables secure\nteam collaboration. It's a self-hosted alternative to proprietary SaaS\nmessaging and brings all your team communication into one place, making it\nsearchable and accessible anywhere.\n\nThis installation enables uploads and Focalboard plugin.\n",
     "services": [
       "postgres",
       "docker"
