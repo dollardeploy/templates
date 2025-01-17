@@ -1,5 +1,5 @@
 {
-  "name": "dollardeploy-examples",
+  "name": "dollardeploy-templates",
   "version": "1.0.0",
   "description": "Run by going to https://dollardeploy.com/r and selecting the template from this repository.",
   "main": "index.js",

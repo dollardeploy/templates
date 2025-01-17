@@ -23,6 +23,7 @@ app:
     DATABASE_HOST: database:5432
     DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}"
     DATABASE_DIRECT_URL: ${DATABASE_URL}
+    PORT: 3000
   repositoryUrl: https://github.com/dollardeploy/templates
   sourceBranch: main
   sourcePath: cal-com-docker
