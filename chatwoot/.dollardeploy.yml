@@ -22,6 +22,12 @@ app:
     - path: fixdocker.sh
       content: |
         #!/bin/bash
+        mkdir -p data
+        mkdir -p data/tmp
+        mkdir -p data/storage
+        mkdir -p data/postgres
+        mkdir -p data/redis
+        chown -R app:app data
         docker compose run --rm rails bundle exec rails db:chatwoot_prepare
   env:
     ACTIVE_STORAGE_SERVICE: local
