@@ -2,10 +2,7 @@ version: "3.6"
 
 services:
   api:
-    image: quay.io/go-skynet/local-ai:latest-gpu-nvidia-cuda-12
-    # As initially LocalAI will download the models defined in PRELOAD_MODELS
-    # you might need to tweak the healthcheck values here according to your network connection.
-    # Here we give a timespan of 20m to download all the required files.
+    image: localai/localai:master-aio-gpu-nvidia-cuda-12
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/readyz"]
       interval: 1m
