@@ -268,6 +268,33 @@
     ]
   },
   {
+    "id": "local-ai-nvidia-cuda-12",
+    "name": "Local AI (Nvidia CUDA 12)",
+    "intro": "Local AI is an open-source, self-hostable online OpenAI API compatible service with chatbot UI with WebUI to chat, generate images and more.",
+    "logo": "https://github.com/mudler/LocalAI/blob/master/docs/static/android-chrome-192x192.png?raw=true",
+    "requirements": {
+      "memory": 4096,
+      "cpu": 2,
+      "storage": 60
+    },
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates/",
+      "sourcePath": "local-ai-nvidia-cuda-12",
+      "sourceBranch": "main",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": 8080
+      }
+    },
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/Xh57mMlfuMk",
+    "deployTime": "~20 minutes",
+    "description": "Local AI is an open-source, self-hostable online OpenAI API compatible service with chatbot UI.",
+    "services": [
+      "docker"
+    ]
+  },
+  {
     "id": "mattermost",
     "name": "Mattermost",
     "intro": "Mattermost is an open-source, self-hostable online chat service with file sharing, search, and integrations.",
