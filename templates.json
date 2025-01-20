@@ -118,6 +118,52 @@
     ]
   },
   {
+    "id": "chatwoot3",
+    "name": "Chatwoot 3.16",
+    "intro": "Open source live chat software",
+    "description": "Chatwoot is a customer support tool for instant messaging channels",
+    "logo": "https://app.chatwoot.com/brand-assets/logo_thumbnail.svg",
+    "deployTime": "~3 minutes",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 1,
+      "storage": 10
+    },
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/E4xUHyAAktY",
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "repositoryUrl": "https://github.com/dollardeploy/templates/",
+      "sourceBranch": "main",
+      "sourcePath": "chatwoot",
+      "type": "docker-compose",
+      "dockerComposeFile": "docker-compose.yml",
+      "preStartCmd": "bash ./fixdocker.sh",
+      "files": [
+        {
+          "path": "fixdocker.sh",
+          "content": "#!/bin/bash\ndocker compose run --rm rails bundle exec rails db:chatwoot_prepare\n"
+        }
+      ],
+      "env": {
+        "ACTIVE_STORAGE_SERVICE": "local",
+        "ENABLE_ACCOUNT_SIGNUP": "false",
+        "ENABLE_PUSH_RELAY_SERVER": "true",
+        "FORCE_SSL": "false",
+        "FRONTEND_URL": "${APP_URL}",
+        "LOG_LEVEL": "info",
+        "LOG_SIZE": "500",
+        "POSTGRES_HOST": "postgres",
+        "POSTGRES_PASSWORD": "123",
+        "POSTGRES_USERNAME": "postgres",
+        "REDIS_URL": "redis://redis:6379",
+        "SECRET_KEY_BASE": "ahkaec8eeveiyieL",
+        "PORT": "3000"
+      }
+    }
+  },
+  {
     "id": "code-server",
     "name": "Code Server",
     "intro": "Run VS Code on any machine anywhere and access it in the browser.",
