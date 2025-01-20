@@ -4,7 +4,7 @@
     "name": "Cal.com Docker",
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
     "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
-    "experimental": true,
+    "experimental": false,
     "requirements": {
       "memory": 4096,
       "cpu": 2,
