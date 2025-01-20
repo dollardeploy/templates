@@ -6,6 +6,7 @@ services:
     env_file: .env ## Change this file for customized env variables
     volumes:
       - ./data/storage:/app/storage
+      - ./data/tmp:/app/tmp
 
   rails:
     <<: *base
