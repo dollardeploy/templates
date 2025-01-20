@@ -12,6 +12,7 @@ services:
     depends_on:
       - postgres
       - redis
+    user: "$USER_UID:$USER_GID"
     ports:
       - "127.0.0.1:$PORT:3000"
     environment:
@@ -27,6 +28,7 @@ services:
     depends_on:
       - postgres
       - redis
+    user: "$USER_UID:$USER_GID"
     environment:
       - NODE_ENV=production
       - RAILS_ENV=production
@@ -37,6 +39,8 @@ services:
   postgres:
     image: pgvector/pgvector:pg16
     restart: always
+    # We definitely not doing this, but something changes ownership of PG files
+    user: "$USER_UID:$USER_GID"
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
     environment:
