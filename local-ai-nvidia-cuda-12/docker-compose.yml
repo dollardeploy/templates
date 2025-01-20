@@ -16,3 +16,10 @@ services:
     volumes:
       - ./models:/models:cached
     command: ["/usr/bin/local-ai"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
