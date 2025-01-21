@@ -349,6 +349,7 @@
       "sourcePath": "local-ai-cpu",
       "sourceBranch": "main",
       "dockerComposeFile": "docker-compose.yml",
+      "allowAccessFrom": "${USER_IPADDRESS}",
       "env": {
         "PORT": 8080
       }
@@ -377,6 +378,7 @@
       "sourcePath": "local-ai-nvidia-cuda-12",
       "sourceBranch": "main",
       "dockerComposeFile": "docker-compose.yml",
+      "allowAccessFrom": "${USER_IPADDRESS}",
       "env": {
         "PORT": 8080
       }
