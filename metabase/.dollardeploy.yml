@@ -1,0 +1,28 @@
+id: metabase
+name: Metabase
+intro: >-
+  The simplest, fastest way to get business intelligence 
+  and analytics to everyone in your company 😋
+logo: https://avatars.githubusercontent.com/u/10520629
+requirements:
+  memory: 4096
+  cpu: 2
+  storage: 20
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: metabase
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  env:
+    PORT: "3000"
+introVideoUrl: https://www.youtube-nocookie.com/embed/dnT2Xj52mnk
+deployTime: ~5 minutes
+description: |
+  Fast analytics with the friendly UX and integrated
+  tooling to let your company explore data on their own.
+  Get your data in front of your team. Connect to your
+  data stack in 5 minutes to make queries, visualizations, and dashboards
+  easy for everyone—no SQL required.
+services:
+  - docker
