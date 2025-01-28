@@ -2,9 +2,8 @@ id: local-ai-nvidia-cuda-12
 name: Local AI (NVidia CUDA 12)
 intro: >-
   Local AI is an open-source, self-hostable online OpenAI API compatible service
-  with WebUI to chat, generate images and more.
+  with WebUI to chat, generate images and more. Works best with DataCrunch provider and GPU instances.
 logo: https://github.com/mudler/LocalAI/blob/master/docs/static/android-chrome-192x192.png?raw=true
-experimental: true
 requirements:
   memory: 4096
   cpu: 2
@@ -24,5 +23,6 @@ deployTime: ~20 minutes
 description: >-
   Local AI is an open-source, self-hostable online OpenAI API compatible service
   with chatbot UI. This template is compatible with server which have NVidia GPU with CUDA 12 configured.
+  We tested it with DataCrunch provider in DollarDeploy, and it works well with GPU instances of type A6000 and better (1€/hr).
 services:
   - docker
