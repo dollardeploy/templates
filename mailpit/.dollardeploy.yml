@@ -13,6 +13,7 @@ app:
   sourcePath: mailpit
   sourceBranch: main
   dockerComposeFile: docker-compose.yml
+  preStartCmd: bash ./fixdocker.sh
   env:
     PORT: "8025"
     MP_MAX_MESSAGES: 5000
@@ -34,6 +35,9 @@ app:
     MP_SMTP_RELAY_OVERRIDE_FROM: ""
     MP_SMTP_RELAY_ALLOWED_RECIPIENTS: ""
     MP_SMTP_RELAY_BLOCKED_RECIPIENTS: ""
+  files:
+    - path: fixdocker.sh
+      content: mkdir -p data
 deployTime: ~5 minutes
 description: |
   Mailpit - email & SMTP testing tool with API for developers.
