@@ -390,6 +390,51 @@
     ]
   },
   {
+    "id": "mailpit",
+    "name": "Mailpit",
+    "intro": "Mailpit is a simple SMTP server that allows you to capture emails sent from your application.",
+    "logo": "https://mailpit.axllent.org/images/mailpit.svg",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "mailpit",
+      "sourceBranch": "main",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": "8025",
+        "MP_MAX_MESSAGES": 5000,
+        "MP_DATABASE": "/data/mailpit.db",
+        "MP_SMTP_AUTH_ACCEPT_ANY": 0,
+        "MP_SMTP_AUTH_ALLOW_INSECURE": 1,
+        "MP_MAX_AGE": "30d",
+        "MP_UI_AUTH": "admin:${GENERATED_PWD}",
+        "MP_SMTP_RELAY_ALL": 0,
+        "MP_SMTP_RELAY_HOST": "",
+        "MP_SMTP_RELAY_PORT": 25,
+        "MP_SMTP_RELAY_STARTTLS": 1,
+        "MP_SMTP_RELAY_ALLOW_INSECURE": 1,
+        "MP_SMTP_RELAY_AUTH": "none",
+        "MP_SMTP_RELAY_USERNAME": "",
+        "MP_SMTP_RELAY_PASSWORD": "",
+        "MP_SMTP_RELAY_SECRET": "",
+        "MP_SMTP_RELAY_RETURN_PATH": "",
+        "MP_SMTP_RELAY_OVERRIDE_FROM": "",
+        "MP_SMTP_RELAY_ALLOWED_RECIPIENTS": "",
+        "MP_SMTP_RELAY_BLOCKED_RECIPIENTS": ""
+      }
+    },
+    "deployTime": "~5 minutes",
+    "description": "Mailpit - email & SMTP testing tool with API for developers.\nMailpit is a small, fast, low memory, zero-dependency, multi-platform email\ntesting tool & API for developers.\nIt acts as an SMTP server, provides a modern web interface to view & test\ncaptured emails, and contains an API for automated integration testing\n",
+    "services": [
+      "docker"
+    ]
+  },
+  {
     "id": "mattermost",
     "name": "Mattermost",
     "intro": "Mattermost is an open-source, self-hostable online chat service with file sharing, search, and integrations.",
