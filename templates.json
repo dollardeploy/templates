@@ -405,6 +405,7 @@
       "sourcePath": "mailpit",
       "sourceBranch": "main",
       "dockerComposeFile": "docker-compose.yml",
+      "preStartCmd": "bash ./fixdocker.sh",
       "env": {
         "PORT": "8025",
         "MP_MAX_MESSAGES": 5000,
@@ -426,7 +427,13 @@
         "MP_SMTP_RELAY_OVERRIDE_FROM": "",
         "MP_SMTP_RELAY_ALLOWED_RECIPIENTS": "",
         "MP_SMTP_RELAY_BLOCKED_RECIPIENTS": ""
-      }
+      },
+      "files": [
+        {
+          "path": "fixdocker.sh",
+          "content": "mkdir -p data"
+        }
+      ]
     },
     "deployTime": "~5 minutes",
     "description": "Mailpit - email & SMTP testing tool with API for developers.\nMailpit is a small, fast, low memory, zero-dependency, multi-platform email\ntesting tool & API for developers.\nIt acts as an SMTP server, provides a modern web interface to view & test\ncaptured emails, and contains an API for automated integration testing\n",
