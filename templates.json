@@ -428,7 +428,6 @@
         "MP_SMTP_RELAY_ALLOWED_RECIPIENTS": "",
         "MP_SMTP_RELAY_BLOCKED_RECIPIENTS": ""
       },
-      "postLaunchNote": "Username is `admin` and password is in environment variable `GENERATED_PWD`.",
       "files": [
         {
           "path": "fixdocker.sh",
@@ -437,6 +436,7 @@
       ]
     },
     "deployTime": "~5 minutes",
+    "postLaunchNote": "Username is `admin` and password is in environment variable `GENERATED_PWD`.",
     "description": "[Mailpit](https://mailpit.axllent.org/) - email & SMTP testing tool with API for developers. \nMailpit is a small, fast, low memory, zero-dependency, multi-platform email\ntesting tool & API for developers.\nIt acts as an SMTP server, provides a modern web interface to view & test\ncaptured emails, and contains an API for automated integration testing\n",
     "services": [
       "docker"
