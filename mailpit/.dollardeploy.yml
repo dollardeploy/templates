@@ -35,11 +35,11 @@ app:
     MP_SMTP_RELAY_OVERRIDE_FROM: ""
     MP_SMTP_RELAY_ALLOWED_RECIPIENTS: ""
     MP_SMTP_RELAY_BLOCKED_RECIPIENTS: ""
-  postLaunchNote: Username is `admin` and password is in environment variable `GENERATED_PWD`.
   files:
     - path: fixdocker.sh
       content: mkdir -p data
 deployTime: ~5 minutes
+postLaunchNote: Username is `admin` and password is in environment variable `GENERATED_PWD`.
 description: |
   [Mailpit](https://mailpit.axllent.org/) - email & SMTP testing tool with API for developers. 
   Mailpit is a small, fast, low memory, zero-dependency, multi-platform email
