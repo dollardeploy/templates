@@ -1,0 +1,31 @@
+id: plausible
+name: Plausible CE
+logo: https://raw.githubusercontent.com/plausible/community-edition/refs/heads/v2.1.1/images/logo_light.svg
+intro: "Simple, lightweight web analytics. No cookies and GDPR compliant."
+deployTime: ~1 minute
+description: >-
+  This template launches Plausible. It is a simple, lightweight web analytics.
+  No cookies and GDPR compliant.
+services:
+  - docker
+requirements:
+  memory: 2048
+  cpu: 1
+  storage: 10
+app:
+  repositoryUrl: "https://github.com/plausible/community-edition"
+  sourceBranch: v2.1.4
+  type: docker-compose
+  dockerComposeFile: compose.yml
+  preStartCmd: bash ./fixdocker.sh
+  env:
+    BASE_URL: "${APP_URL}"
+    SECRET_KEY_BASE: "${GENERATED_HASH}"
+    HTTP_PORT: "3000"
+    PORT: "3001"
+  files:
+    - path: fixdocker.sh
+      content: |
+        #!/bin/bash
+        sed -e "s/plausible:/plausible:\n    ports:\n      -
+        '127.0.0.1:3001:3000'/g" -i compose.yml
