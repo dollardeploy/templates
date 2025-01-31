@@ -2,6 +2,8 @@
 
 This runs the Plausible Community Edition on your server.
 
+Launch in couple of minutes here: https://dollardeploy.com/r/plausible
+
 ## Integration notes:
 
 Add the following script to your website (or in the \_app.tsx for NextJS)
