@@ -27,5 +27,4 @@ app:
     - path: fixdocker.sh
       content: |
         #!/bin/bash
-        sed -e "s/plausible:/plausible:\n    ports:\n      -
-        '127.0.0.1:3001:3000'/g" -i compose.yml
+        sed -e "s/plausible:/plausible:\n    ports:\n      - '127.0.0.1:3001:3000'/g" -i compose.yml
