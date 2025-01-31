@@ -557,7 +557,7 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nsed -e \"s/plausible:/plausible:\\n    ports:\\n      -\n'127.0.0.1:3001:3000'/g\" -i compose.yml\n"
+          "content": "#!/bin/bash\nsed -e \"s/plausible:/plausible:\\n    ports:\\n      - '127.0.0.1:3001:3000'/g\" -i compose.yml\n"
         }
       ]
     }
