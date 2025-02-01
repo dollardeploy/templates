@@ -20,6 +20,7 @@ services:
             - docker-data:/app/docker-data
         ports:
             - '127.0.0.1:$PORT:3000'
+        env_file: ".env"
         environment:
             PORT: 3000
             PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/postgres
@@ -51,6 +52,7 @@ services:
     worker:
         image: twentycrm/twenty:${TAG}
         command: ['yarn', 'worker:prod']
+        env_file: ".env"
         environment:
             PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/default
             SERVER_URL: ${SERVER_URL}
