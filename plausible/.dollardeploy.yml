@@ -20,7 +20,7 @@ app:
   preStartCmd: bash ./fixdocker.sh
   env:
     BASE_URL: "${APP_URL}"
-    SECRET_KEY_BASE: "${GENERATED_HASH}"
+    SECRET_KEY_BASE: "${GENERATED_HASH}${GENERATED_HASH}"
     HTTP_PORT: "3000"
     PORT: "3001"
   files:
