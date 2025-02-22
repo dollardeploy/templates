@@ -568,7 +568,7 @@
     "intro": "The #1 Open-Source CRM",
     "logo": "https://github.com/twentyhq/twenty/raw/main/packages/twenty-website/public/images/core/logo.svg",
     "deployTime": "~3 minutes",
-    "description": "The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships. Version 0.41.5. https://twenty.com/releases\n",
+    "description": "The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships. Version 0.42.15. https://twenty.com/releases\n",
     "requirements": {
       "memory": 2048,
       "cpu": 2,
@@ -586,7 +586,7 @@
         "APP_SECRET": "${GENERATED_HASH}",
         "SERVER_URL": "${APP_URL}",
         "PGPASSWORD_SUPERUSER": "${GENERATED_PWD}",
-        "TAG": "v0.41.5",
+        "TAG": "v0.42.15",
         "STORAGE_TYPE": "local",
         "PORT": 3000,
         "PG_DATABASE_HOST": "db",
@@ -596,7 +596,7 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nmkdir -p data\nmkdir -p data/tmp\nmkdir -p data/local\nmkdir -p data/db\n# The server must be started by the user that owns the data directory.\nsudo chown root:root data/db\n"
+          "content": "#!/bin/bash\nmkdir -p data\nmkdir -p data/tmp\nmkdir -p data/local\nmkdir -p data/db/pgroot\n# The server must be started by the user that owns the data directory.\nsudo chown root:root data/db\n# UID/GID which runs postgres in db container\nsudo chown 101:103 -R data/db/pgroot\n"
         }
       ]
     }
