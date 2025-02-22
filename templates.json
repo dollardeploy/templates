@@ -591,7 +591,14 @@
         "PORT": 3000,
         "PG_DATABASE_HOST": "db",
         "SIGN_IN_PREFILLED": true
-      }
+      },
+      "preStartCmd": "bash ./fixdocker.sh",
+      "files": [
+        {
+          "path": "fixdocker.sh",
+          "content": "#!/bin/bash\nmkdir -p data\nmkdir -p data/tmp\nmkdir -p data/local\nmkdir -p data/db\n# The server must be started by the user that owns the data directory.\nchown root:root data/db\n"
+        }
+      ]
     }
   },
   {
