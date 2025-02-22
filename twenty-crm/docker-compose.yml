@@ -1,6 +1,3 @@
-version: '3.9'
-name: twenty
-
 services:
     change-vol-ownership:
         image: ubuntu
@@ -15,9 +12,10 @@ services:
 
     server:
         image: twentycrm/twenty:${TAG}
+        user: "$USER_UID:$USER_GID"
         volumes:
-            - server-local-data:/app/packages/twenty-server/${STORAGE_LOCAL_PATH:-.local-storage}
-            - docker-data:/app/docker-data
+            - ./data/local:/app/packages/twenty-server/${STORAGE_LOCAL_PATH:-.local-storage}
+            - ./data/tmp:/app/docker-data
         ports:
             - '127.0.0.1:$PORT:3000'
         env_file: ".env"
@@ -55,6 +53,7 @@ services:
         image: twentycrm/twenty:${TAG}
         command: ['yarn', 'worker:prod']
         env_file: ".env"
+        user: "$USER_UID:$USER_GID"
         environment:
             PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/default
             SERVER_URL: ${SERVER_URL}
@@ -78,8 +77,9 @@ services:
 
     db:
         image: twentycrm/twenty-postgres-spilo:${TAG}
+        user: "$USER_UID:$USER_GID"
         volumes:
-            - db-data:/home/postgres/pgdata
+            - ./data/db:/home/postgres/pgdata
         environment:
             PGUSER_SUPERUSER: ${PGUSER_SUPERUSER:-postgres}
             PGPASSWORD_SUPERUSER: ${PGPASSWORD_SUPERUSER:-postgres}
@@ -95,8 +95,3 @@ services:
     redis:
         image: redis
         restart: always
-
-volumes:
-    docker-data:
-    db-data:
-    server-local-data:
