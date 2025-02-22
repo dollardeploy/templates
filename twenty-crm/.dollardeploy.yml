@@ -35,4 +35,4 @@ app:
         mkdir -p data/local
         mkdir -p data/db
         # The server must be started by the user that owns the data directory.
-        chown root:root data/db
+        sudo chown root:root data/db
