@@ -4,7 +4,7 @@ intro: "The #1 Open-Source CRM"
 logo: https://github.com/twentyhq/twenty/raw/main/packages/twenty-website/public/images/core/logo.svg
 deployTime: ~3 minutes
 description: |
-  The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships. Version 0.41.5. https://twenty.com/releases
+  The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships. Version 0.42.15. https://twenty.com/releases
 requirements:
   memory: 2048
   cpu: 2
@@ -20,7 +20,7 @@ app:
     APP_SECRET: ${GENERATED_HASH}
     SERVER_URL: ${APP_URL}
     PGPASSWORD_SUPERUSER: ${GENERATED_PWD}
-    TAG: v0.41.5
+    TAG: v0.42.15
     STORAGE_TYPE: local
     PORT: 3000
     PG_DATABASE_HOST: db
@@ -33,6 +33,8 @@ app:
         mkdir -p data
         mkdir -p data/tmp
         mkdir -p data/local
-        mkdir -p data/db
+        mkdir -p data/db/pgroot
         # The server must be started by the user that owns the data directory.
         sudo chown root:root data/db
+        # UID/GID which runs postgres in db container
+        sudo chown 101:103 -R data/db/pgroot
