@@ -64,7 +64,6 @@ services:
 
     db:
         image: twentycrm/twenty-postgres-spilo:${TAG}
-        user: "$USER_UID:$USER_GID"
         volumes:
             - ./data/db:/home/postgres/pgdata
         environment:
