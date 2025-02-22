@@ -4,7 +4,7 @@ intro: "The #1 Open-Source CRM"
 logo: https://github.com/twentyhq/twenty/raw/main/packages/twenty-website/public/images/core/logo.svg
 deployTime: ~3 minutes
 description: |
-  The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships. Version 0.35.6. 
+  The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships. Version 0.42.0. https://twenty.com/releases
 requirements:
   memory: 2048
   cpu: 2
