@@ -586,7 +586,7 @@
         "APP_SECRET": "${GENERATED_HASH}",
         "SERVER_URL": "${APP_URL}",
         "PGPASSWORD_SUPERUSER": "${GENERATED_PWD}",
-        "TAG": "v0.41.0",
+        "TAG": "v0.41.5",
         "STORAGE_TYPE": "local",
         "PORT": 3000,
         "PG_DATABASE_HOST": "db",
