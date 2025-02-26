@@ -297,11 +297,9 @@
       "sourcePath": "erpnext",
       "dockerComposeFile": "pwd.yml",
       "preStartCmd": "bash ./fixdocker.sh",
-      "env": [
-        {
-          "ADMIN_PASSWORD": "${GENERATED_PWD}"
-        }
-      ],
+      "env": {
+        "ADMIN_PASSWORD": "${GENERATED_PWD}"
+      },
       "files": [
         {
           "path": "fixdocker.sh",
