@@ -298,7 +298,8 @@
       "dockerComposeFile": "docker-compose.yml",
       "preStartCmd": "bash ./fixdocker.sh",
       "env": {
-        "ADMIN_PASSWORD": "${GENERATED_PWD}"
+        "ADMIN_PASSWORD": "${GENERATED_PWD}",
+        "PORT": 8080
       },
       "files": [
         {
