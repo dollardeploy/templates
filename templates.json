@@ -275,17 +275,18 @@
     }
   },
   {
-    "id": "frappe-erpnext",
+    "id": "erpnext",
     "name": "Frappe - ERPNext",
     "intro": "ERPNext is a free and open-source integrated Enterprise resource planning",
     "logo": "https://avatars.githubusercontent.com/u/836974",
     "experimental": true,
-    "deployTime": "~5 minutes",
-    "description": "Proprietary ERPs are expensive, limiting, and rigid. Businesses are left with two choices, either spend through the roof on SAP, NetSuite, Oracle, etc., or use multiple disconnected apps leading to manual work, poor visibility, and broken traceability. What if there is a better way?\n\nERPNext is a 100% open-source ERP with a modern, comprehensive, and user-friendly enterprise resource planning solution. We don't have any features hidden behind expensive paywalls. Everything is yours to use, modify, or resell giving you full freedom, control, and flexibility.\n",
+    "deployTime": "~10 minutes",
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/RjTipQpUvNQ",
+    "description": "ERPNext is a full-featured business management solution that helps SMEs\nto record all their business transactions in a single system. With ERPNext, SMEs\ncan make informed, fact-based, timely decisions to remain ahead in the competition.\nIt serves as the backbone of a business adding strength, transparency, and control\nto your growing enterprise.\n",
     "requirements": {
-      "memory": 2048,
+      "memory": 4096,
       "cpu": 2,
-      "storage": 10
+      "storage": 20
     },
     "services": [
       "docker"
@@ -294,7 +295,14 @@
       "type": "docker-compose",
       "repositoryUrl": "https://github.com/frappe/frappe_docker",
       "sourceBranch": "main",
-      "dockerComposeFile": "pwd.yml"
+      "dockerComposeFile": "pwd.yml",
+      "preStartCmd": "bash ./fixdocker.sh",
+      "files": [
+        {
+          "path": "fixdocker.sh",
+          "content": "#!/bin/bash\nsed -r -i \"s/\\\"8080:8080\\\"/\\\"127.0.0.1:8080:8080\\\"/g\" pwd.yml\n"
+        }
+      ]
     }
   },
   {
