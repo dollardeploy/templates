@@ -21,7 +21,7 @@ app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates/
   sourcePath: erpnext
-  dockerComposeFile: pwd.yml
+  dockerComposeFile: docker-compose.yml
   preStartCmd: bash ./fixdocker.sh
   env:
     ADMIN_PASSWORD: "${GENERATED_PWD}"
