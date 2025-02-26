@@ -24,7 +24,7 @@ app:
   dockerComposeFile: pwd.yml
   preStartCmd: bash ./fixdocker.sh
   env:
-    - ADMIN_PASSWORD: "${GENERATED_PWD}"
+    ADMIN_PASSWORD: "${GENERATED_PWD}"
   files:
     - path: fixdocker.sh
       content: |
