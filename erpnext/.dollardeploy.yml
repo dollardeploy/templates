@@ -19,10 +19,12 @@ services:
   - docker
 app:
   type: docker-compose
-  repositoryUrl: https://github.com/frappe/frappe_docker
-  sourceBranch: main
+  repositoryUrl: https://github.com/dollardeploy/templates/
+  sourcePath: erpnext
   dockerComposeFile: pwd.yml
   preStartCmd: bash ./fixdocker.sh
+  env:
+    - ADMIN_PASSWORD: "${GENERATED_PWD}"
   files:
     - path: fixdocker.sh
       content: |
