@@ -25,6 +25,7 @@ app:
   preStartCmd: bash ./fixdocker.sh
   env:
     ADMIN_PASSWORD: "${GENERATED_PWD}"
+    PORT: 8080
   files:
     - path: fixdocker.sh
       content: |
