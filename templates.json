@@ -296,17 +296,10 @@
       "repositoryUrl": "https://github.com/dollardeploy/templates/",
       "sourcePath": "erpnext",
       "dockerComposeFile": "docker-compose.yml",
-      "preStartCmd": "bash ./fixdocker.sh",
       "env": {
         "ADMIN_PASSWORD": "${GENERATED_PWD}",
         "PORT": 8080
-      },
-      "files": [
-        {
-          "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nsed -r -i \"s/\\\"8080:8080\\\"/\\\"127.0.0.1:8080:8080\\\"/g\" pwd.yml\n"
-        }
-      ]
+      }
     }
   },
   {
