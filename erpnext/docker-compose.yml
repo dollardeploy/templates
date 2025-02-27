@@ -36,7 +36,6 @@ services:
         bench set-config -g redis_queue "redis://$$REDIS_QUEUE";
         bench set-config -g redis_socketio "redis://$$REDIS_QUEUE";
         bench set-config -gp socketio_port $$SOCKETIO_PORT;
-        bench set-admin-password "${ADMIN_PASSWORD}"
     environment:
       DB_HOST: db
       DB_PORT: "3306"
@@ -79,6 +78,7 @@ services:
         done;
         echo "sites/common_site_config.json found";
         bench new-site --mariadb-user-host-login-scope='%' --admin-password=admin --db-root-username=root --db-root-password=admin --install-app erpnext --set-default frontend;
+        bench set-admin-password "${ADMIN_PASSWORD}"
 
   db:
     image: mariadb:10.6
