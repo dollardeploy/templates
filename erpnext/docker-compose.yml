@@ -15,6 +15,10 @@ services:
         condition: service_healthy
       redis-queue:
         condition: service_healthy
+      configurator:
+        condition: service_completed_successfully
+      create-site:
+        condition: service_completed_successfully
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
@@ -74,6 +78,8 @@ services:
         condition: service_healthy
       redis-queue:
         condition: service_healthy
+      configurator:
+        condition: service_completed_successfully
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
@@ -129,7 +135,18 @@ services:
     networks:
       - frappe_network
     depends_on:
-      - websocket
+      websocket:
+        condition: service_started
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+      redis-queue:
+        condition: service_healthy
+      configurator:
+        condition: service_completed_successfully
+      create-site:
+        condition: service_completed_successfully
     deploy:
       restart_policy:
         condition: on-failure
@@ -164,6 +181,10 @@ services:
         condition: service_healthy
       redis-queue:
         condition: service_healthy
+      configurator:
+        condition: service_completed_successfully
+      create-site:
+        condition: service_completed_successfully
     command:
       - bench
       - worker
@@ -187,6 +208,10 @@ services:
         condition: service_healthy
       redis-queue:
         condition: service_healthy
+      configurator:
+        condition: service_completed_successfully
+      create-site:
+        condition: service_completed_successfully
     command:
       - bench
       - worker
@@ -238,6 +263,10 @@ services:
         condition: service_healthy
       redis-queue:
         condition: service_healthy
+      configurator:
+        condition: service_completed_successfully
+      create-site:
+        condition: service_completed_successfully
     command:
       - bench
       - schedule
@@ -259,6 +288,10 @@ services:
         condition: service_healthy
       redis-queue:
         condition: service_healthy
+      configurator:
+        condition: service_completed_successfully
+      create-site:
+        condition: service_completed_successfully
     command:
       - node
       - /home/frappe/frappe-bench/apps/frappe/socketio.js
