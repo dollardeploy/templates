@@ -25,5 +25,3 @@ app:
   env:
     ADMIN_PASSWORD: "${GENERATED_PWD}"
     PORT: 8080
-
-

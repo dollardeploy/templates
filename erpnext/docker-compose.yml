@@ -8,6 +8,13 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+      redis-queue:
+        condition: service_healthy
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
@@ -24,6 +31,13 @@ services:
     deploy:
       restart_policy:
         condition: none
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+      redis-queue:
+        condition: service_healthy
     entrypoint:
       - bash
       - -c
@@ -53,6 +67,13 @@ services:
     deploy:
       restart_policy:
         condition: none
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+      redis-queue:
+        condition: service_healthy
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
@@ -78,7 +99,8 @@ services:
         done;
         echo "sites/common_site_config.json found";
         bench new-site --mariadb-user-host-login-scope='%' --admin-password=admin --db-root-username=root --db-root-password=admin --install-app erpnext --set-default frontend;
-        bench set-admin-password "${ADMIN_PASSWORD}"
+        echo "setting admin password";
+        bench set-admin-password "${ADMIN_PASSWORD}";
 
   db:
     image: mariadb:10.6
@@ -126,7 +148,7 @@ services:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
 
   queue-long:
     image: frappe/erpnext:v15.53.1
@@ -135,6 +157,13 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+      redis-queue:
+        condition: service_healthy
     command:
       - bench
       - worker
@@ -151,6 +180,13 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+      redis-queue:
+        condition: service_healthy
     command:
       - bench
       - worker
@@ -164,6 +200,11 @@ services:
     image: redis:6.2-alpine
     networks:
       - frappe_network
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      interval: 1s
+      timeout: 3s
+      retries: 5
     deploy:
       restart_policy:
         condition: on-failure
@@ -174,6 +215,11 @@ services:
     image: redis:6.2-alpine
     networks:
       - frappe_network
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      interval: 1s
+      timeout: 3s
+      retries: 5
     deploy:
       restart_policy:
         condition: on-failure
@@ -185,6 +231,13 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+      redis-queue:
+        condition: service_healthy
     command:
       - bench
       - schedule
@@ -199,6 +252,13 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+      redis-queue:
+        condition: service_healthy
     command:
       - node
       - /home/frappe/frappe-bench/apps/frappe/socketio.js
