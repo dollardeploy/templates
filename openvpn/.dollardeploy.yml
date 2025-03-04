@@ -23,6 +23,7 @@ app:
   repositoryUrl: https://github.com/dollardeploy/templates/
   sourcePath: openvpn
   dockerComposeFile: docker-compose.yml
+  preStartCmd: touch ./fw-rules.sh && touch ./checkpsw.sh
   env:
     ADMIN_PASSWORD: "${GENERATED_PWD}"
     PORT: 8080
