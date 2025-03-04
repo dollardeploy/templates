@@ -1,0 +1,28 @@
+id: openvpn
+name: OpenVPN
+intro: "OpenVPN is a secure VPN channel to protect traffic"
+logo: https://avatars.githubusercontent.com/u/1569141
+deployTime: "~5 minutes"
+introVideoUrl: https://www.youtube-nocookie.com/embed/4ykbyOEsKQE
+description: |
+  OpenVPN is an open-source virtual private network (VPN) solution that 
+  creates secure point-to-point or site-to-site connections through
+  encrypted tunnels over the internet.
+
+  It masks your IP address and encrypts your internet traffic, helping you 
+  maintain anonymity online and preventing ISPs from monitoring your activities.
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+services:
+  - docker
+postLaunchNote: Username is `admin` and password is in environment variable `ADMIN_PASSWORD`. Make sure you open 1194 port on your server.
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates/
+  sourcePath: openvpn
+  dockerComposeFile: docker-compose.yml
+  env:
+    ADMIN_PASSWORD: "${GENERATED_PWD}"
+    PORT: 8080
