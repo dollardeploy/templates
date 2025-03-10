@@ -40,4 +40,4 @@ app:
         sudo chown 101:103 -R data/db/pgroot
         # data directory "/home/postgres/pgdata/pgroot/data" has invalid permissions 
         # Permissions should be u=rwx (0700) or u=rwx,g=rx (0750)
-        sudo chmod 0700 data/db/pgroot
+        sudo chmod 0700 data/db/pgroot/data
