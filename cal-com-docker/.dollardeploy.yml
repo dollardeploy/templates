@@ -1,6 +1,6 @@
 ---
 id: cal-com-docker
-name: Cal.com Docker
+name: Cal.com
 intro: Cal.com is an open-source scheduling infrastructure for absolutely everyone.
 logo: https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png
 experimental: false
