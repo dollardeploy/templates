@@ -1,7 +1,7 @@
 [
   {
     "id": "cal-com-docker",
-    "name": "Cal.com Docker",
+    "name": "Cal.com",
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
     "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
     "experimental": false,
@@ -171,6 +171,7 @@
     "description": "Chatwoot is a customer support tool for instant messaging channels",
     "logo": "https://app.chatwoot.com/brand-assets/logo_thumbnail.svg",
     "deployTime": "~3 minutes",
+    "experimental": true,
     "requirements": {
       "memory": 2048,
       "cpu": 1,
@@ -654,7 +655,7 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nmkdir -p data\nmkdir -p data/tmp\nmkdir -p data/local\nmkdir -p data/db/pgroot\n# The server must be started by the user that owns the data directory.\nsudo chown root:root data/db\n# UID/GID which runs postgres in db container\nsudo chown 101:103 -R data/db/pgroot\n# data directory \"/home/postgres/pgdata/pgroot/data\" has invalid permissions \n# Permissions should be u=rwx (0700) or u=rwx,g=rx (0750)\nsudo chmod 0700 data/db/pgroot\n"
+          "content": "#!/bin/bash\nmkdir -p data\nmkdir -p data/tmp\nmkdir -p data/local\nmkdir -p data/db/pgroot\n# The server must be started by the user that owns the data directory.\nsudo chown root:root data/db\n# UID/GID which runs postgres in db container\nsudo chown 101:103 -R data/db/pgroot\n# data directory \"/home/postgres/pgdata/pgroot/data\" has invalid permissions \n# Permissions should be u=rwx (0700) or u=rwx,g=rx (0750)\nsudo chmod 0700 data/db/pgroot/data\n"
         }
       ]
     }
