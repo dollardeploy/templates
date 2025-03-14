@@ -33,7 +33,7 @@ app:
         mkdir -p data
         mkdir -p data/tmp
         mkdir -p data/local
-        mkdir -p data/db/pgroot
+        mkdir -p data/db/pgroot/data
         # The server must be started by the user that owns the data directory.
         sudo chown root:root data/db
         # UID/GID which runs postgres in db container
