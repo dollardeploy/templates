@@ -31,7 +31,5 @@ app:
         mkdir -p ./data/database
         mkdir -p ./data/extensions
         mkdir -p ./data/uploads
-        # Apparently UID is 999
-        sudo chown -R 999:999 ./data/database
-        sudo chown -R 1000:1000 ./data/extensions
-        sudo chown -R 1000:1000 ./data/uploads
+        sudo chown -R "$USER_UID:$USER_GID" ./data/extensions
+        sudo chown -R "$USER_UID:$USER_GID" ./data/uploads

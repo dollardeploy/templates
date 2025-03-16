@@ -18,6 +18,7 @@ services:
 
   cache:
     image: redis:6
+    user: "$USER_UID:$USER_GID"
     healthcheck:
       test: ["CMD-SHELL", "[ $$(redis-cli ping) = 'PONG' ]"]
       interval: 10s
@@ -28,6 +29,7 @@ services:
 
   directus:
     image: directus/directus:11.2.1
+    user: "$USER_UID:$USER_GID"
     ports:
       - 127.0.0.1:$PORT:$PORT
     volumes:
