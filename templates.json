@@ -270,7 +270,7 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nmkdir -p ./data/database\nmkdir -p ./data/extensions\nmkdir -p ./data/uploads\n# Apparently UID is 999\nsudo chown -R 999:999 ./data/database\nsudo chown -R 1000:1000 ./data/extensions\nsudo chown -R 1000:1000 ./data/uploads\n"
+          "content": "#!/bin/bash\nmkdir -p ./data/database\nmkdir -p ./data/extensions\nmkdir -p ./data/uploads\nsudo chown -R \"$USER_UID:$USER_GID\" ./data/extensions\nsudo chown -R \"$USER_UID:$USER_GID\" ./data/uploads\n"
         }
       ]
     }
