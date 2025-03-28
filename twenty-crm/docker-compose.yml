@@ -69,8 +69,8 @@ services:
         volumes:
             - ./data/db:/home/postgres/pgdata
         environment:
-            PGUSER_SUPERUSER: ${PGUSER_SUPERUSER:-postgres}
-            PGPASSWORD_SUPERUSER: ${PGPASSWORD_SUPERUSER:-postgres}
+            POSTGRES_USER: ${PG_DATABASE_USER:-postgres}
+            POSTGRES_PASSWORD: ${PG_DATABASE_PASSWORD:-postgres}
             ALLOW_NOSSL: 'true'
         healthcheck:
             test: pg_isready -U ${PGUSER_SUPERUSER:-postgres} -h localhost -d postgres
