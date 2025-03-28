@@ -65,14 +65,13 @@ services:
         restart: always
 
     db:
-        image: twentycrm/twenty-postgres-spilo:${TAG}
+        image: postgres:16
         volumes:
             - ./data/db:/home/postgres/pgdata
         environment:
             PGUSER_SUPERUSER: ${PGUSER_SUPERUSER:-postgres}
             PGPASSWORD_SUPERUSER: ${PGPASSWORD_SUPERUSER:-postgres}
             ALLOW_NOSSL: 'true'
-            SPILO_PROVIDER: 'local'
         healthcheck:
             test: pg_isready -U ${PGUSER_SUPERUSER:-postgres} -h localhost -d postgres
             interval: 5s
