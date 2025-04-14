@@ -27,3 +27,5 @@ app:
   env:
     ADMIN_PASSWORD: "${GENERATED_PWD}"
     PORT: 8080
+    TCP_PORT: 1194
+    UDP_PORT: 1194
