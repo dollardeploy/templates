@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "${PORT:-8096}:8096"
+      - "127.0.0.1:${PORT:-8096}:8096"
     volumes:
       - ./data:/app/data
     environment:
