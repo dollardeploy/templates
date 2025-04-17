@@ -1,0 +1,33 @@
+id: mcp-frappe
+name: Frappe CRM MCP Server
+intro: "MCP Proxy with Frappe MCP Server for SSE transport"
+logo: https://avatars.githubusercontent.com/u/836974
+deployTime: "~2 minutes"
+description: |
+  MCP Proxy with Frappe MCP Server provides a secure and efficient way to run Frappe MCP server
+  over SSE transport. It allows LLM clients like Claude Desktop to connect to Frappe
+  servers through a standardized interface.
+
+  The setup combines MCP Proxy for transport conversion and Frappe MCP Server for
+  handling MCP protocol communications, all in a single container solution.
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+services:
+  - docker
+postLaunchNote: The MCP server will be available at the provided URL with /sse endpoint. Make sure to configure FRAPPE_URL, FRAPPE_API_KEY, and FRAPPE_API_SECRET for proper Frappe server connectivity.
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates/
+  sourcePath: mcp-frappe
+  dockerComposeFile: docker-compose.yml
+  # Request user IP address to be set in the app
+  allowAccessFrom: "${USER_IPADDRESS}"
+  env:
+    PORT: 8096
+    NODE_ENV: production
+    FRAPPE_URL: http://localhost:8000
+    FRAPPE_API_KEY: frappe
+    FRAPPE_API_SECRET: 123
+
