@@ -8,4 +8,4 @@ RUN apk add --no-cache nodejs npm git && \
     npm run build
 
 WORKDIR /frappe_mcp_server
-CMD ["/root/.local/bin/mcp-proxy", "--sse-host=0.0.0.0", "--sse-port=8096", "--allow-origin=*", "npm", "run", "start"]
+CMD ["/root/.local/bin/mcp-proxy", "--sse-host=0.0.0.0", "--sse-port=8096", "--allow-origin=*", "--pass-environment", "npm", "run", "start"]
