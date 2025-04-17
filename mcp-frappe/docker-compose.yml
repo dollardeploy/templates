@@ -9,7 +9,6 @@ services:
     volumes:
       - ./data:/app/data
     environment:
-      - NODE_ENV=production
       - FRAPPE_URL=${FRAPPE_URL:-http://localhost:8000}
       - FRAPPE_API_KEY=${FRAPPE_API_KEY:-frappe}
       - FRAPPE_API_SECRET=${FRAPPE_API_SECRET:-123}

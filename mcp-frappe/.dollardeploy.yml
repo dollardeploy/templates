@@ -26,7 +26,6 @@ app:
   allowAccessFrom: "${USER_IPADDRESS}"
   env:
     PORT: 8096
-    NODE_ENV: production
     FRAPPE_URL: http://localhost:8000
     FRAPPE_API_KEY: frappe
     FRAPPE_API_SECRET: 123
