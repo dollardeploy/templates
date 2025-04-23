@@ -10,7 +10,6 @@ requirements:
 app:
   type: docker-compose
   repositoryUrl: https://github.com/louislam/uptime-kuma
-  sourcePath: uptime-kuma
   sourceBranch: master
   dockerComposeFile: compose.yml
   env:
