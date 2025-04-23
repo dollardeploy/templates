@@ -9,8 +9,8 @@ requirements:
   storage: 10
 app:
   type: docker-compose
-  repositoryUrl: https://github.com/louislam/uptime-kuma
-  sourceBranch: master
+  repositoryUrl: https://github.com/dollardeploy/uptime-kuma
+  sourceBranch: main
   dockerComposeFile: compose.yaml
   env:
     PORT: "3001"
