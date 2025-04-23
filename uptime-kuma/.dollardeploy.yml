@@ -11,7 +11,7 @@ app:
   type: docker-compose
   repositoryUrl: https://github.com/louislam/uptime-kuma
   sourceBranch: master
-  dockerComposeFile: compose.yml
+  dockerComposeFile: compose.yaml
   env:
     PORT: "3001"
 introVideoUrl: https://www.youtube-nocookie.com/embed/r_A5NKkAqZM?start=403
