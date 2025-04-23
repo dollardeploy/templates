@@ -1,0 +1,25 @@
+id: uptime-kuma
+name: Uptime Kuma
+intro: >-
+  Uptime Kuma is a simple, easy-to-use uptime monitoring tool.
+logo: https://raw.githubusercontent.com/louislam/uptime-kuma/master/public/icon.svg
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/louislam/uptime-kuma
+  sourcePath: uptime-kuma
+  sourceBranch: master
+  dockerComposeFile: compose.yml
+  env:
+    PORT: "3001"
+introVideoUrl: https://www.youtube-nocookie.com/embed/r_A5NKkAqZM?start=403
+deployTime: ~5 minutes
+description: |
+  Uptime Kuma is a simple, easy-to-use uptime monitoring tool.
+  It's a great way to monitor your website or server uptime.  
+  It's also a great way to monitor your server resources.
+services:
+  - docker
