@@ -706,7 +706,7 @@
       "type": "docker-compose",
       "repositoryUrl": "https://github.com/louislam/uptime-kuma",
       "sourceBranch": "master",
-      "dockerComposeFile": "compose.yml",
+      "dockerComposeFile": "compose.yaml",
       "env": {
         "PORT": "3001"
       }
