@@ -11,7 +11,6 @@ networks:
 
 services:
   database:
-    container_name: database
     image: postgres
     restart: always
     volumes:
@@ -39,7 +38,7 @@ services:
     networks:
       - stack
     ports:
-      - 127.0.0.1:$PORT:3000
+      - 127.0.0.1:$PORT:$PORT
     env_file: .env
     environment:
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}
