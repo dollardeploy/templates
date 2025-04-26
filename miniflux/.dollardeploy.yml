@@ -1,0 +1,28 @@
+id: miniflux
+name: Miniflux
+intro: Minimalist feed reader
+logo: https://avatars.githubusercontent.com/u/10584991
+deployTime: ~3 minutes
+description: |
+  Provides UI to read RSS feeds. Minimalistic and easy to use, runs natively on your server.
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+services:
+  - postgres
+app:
+  type: native
+  repositoryUrl: https://github.com/miniflux/v2/
+  sourceBranch: main
+  startCmd: ./miniflux-linux-amd64
+  buildCmd: make linux-amd64
+  env:
+    ADMIN_USERNAME: admin
+    ADMIN_PASSWORD: ${GENERATED_PWD}
+    CREATE_ADMIN: 1
+    DATABASE_URL: ${POSTGRES_URL}
+    LOG_LEVEL: info
+    RUN_MIGRATIONS: 1
+    BASE_URL: ${APP_URL}
+    PORT: "8080"
