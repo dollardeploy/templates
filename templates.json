@@ -612,7 +612,7 @@
         "ADMIN_USERNAME": "admin",
         "ADMIN_PASSWORD": "${GENERATED_PWD}",
         "CREATE_ADMIN": 1,
-        "DATABASE_URL": "${POSTGRES_URL}",
+        "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/postgres",
         "LOG_LEVEL": "info",
         "RUN_MIGRATIONS": 1,
         "BASE_URL": "${APP_URL}",
