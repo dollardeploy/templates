@@ -531,6 +531,34 @@
     ]
   },
   {
+    "id": "mcp-facebook-ads",
+    "name": "Facebook Ads MCP Server",
+    "intro": "MCP Proxy with Facebook Ads MCP Server for SSE transport",
+    "logo": "https://avatars.githubusercontent.com/u/156911525",
+    "deployTime": "~5 minutes",
+    "description": "This MCP server provides tools for interacting with Facebook Ads objects and data.\n",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "services": [
+      "docker"
+    ],
+    "postLaunchNote": "The MCP server will be available at the provided URL with /sse endpoint. Make sure to configure FB_TOKEN for proper Facebook Ads API connectivity.",
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates/",
+      "sourcePath": "mcp-facebook-ads",
+      "dockerComposeFile": "docker-compose.yml",
+      "allowAccessFrom": "${USER_IPADDRESS}",
+      "env": {
+        "PORT": 8096,
+        "FB_TOKEN": "dummy_facebook_access_token"
+      }
+    }
+  },
+  {
     "id": "mcp-frappe",
     "name": "Frappe CRM MCP Server",
     "intro": "MCP Proxy with Frappe MCP Server for SSE transport",
@@ -616,7 +644,8 @@
         "LOG_LEVEL": "info",
         "RUN_MIGRATIONS": 1,
         "BASE_URL": "${APP_URL}",
-        "PORT": "8080"
+        "PORT": "8080",
+        "LISTEN_ADDR": "127.0.0.1:${PORT}"
       }
     },
     "postLaunchNote": "Username is `admin` and password is in environment variable `ADMIN_PASSWORD`.\n"
