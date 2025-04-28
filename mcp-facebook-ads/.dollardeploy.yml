@@ -1,0 +1,26 @@
+id: mcp-facebook-ads
+name: Facebook Ads MCP Server
+intro: "MCP Proxy with Facebook Ads MCP Server for SSE transport"
+logo: https://avatars.githubusercontent.com/u/156911525
+deployTime: "~5 minutes"
+description: |
+  This MCP server provides tools for interacting with Facebook Ads objects and data.
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+services:
+  - docker
+postLaunchNote: The MCP server will be available at the provided URL with /sse endpoint. Make sure to configure FB_TOKEN for proper Facebook Ads API connectivity.
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates/
+  sourcePath: mcp-facebook-ads
+  dockerComposeFile: docker-compose.yml
+  # Request user IP address to be set in the app
+  allowAccessFrom: "${USER_IPADDRESS}"
+  env:
+    PORT: 8096
+    FB_TOKEN: dummy_facebook_access_token
+
+

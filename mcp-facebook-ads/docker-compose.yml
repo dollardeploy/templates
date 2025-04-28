@@ -1,0 +1,13 @@
+services:
+  sse:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:${PORT:-8096}:8096"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - FB_TOKEN=${FB_TOKEN:-dummy_facebook_access_token}
+      - PORT=${PORT:-8096}
