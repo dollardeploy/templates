@@ -38,6 +38,8 @@ app:
     DB_POSTGRESDB_DATABASE: n8n
     DB_POSTGRESDB_USER: n8n
     DB_POSTGRESDB_PASSWORD: n8n
+    POSTGRES_NON_ROOT_USER: n8n
+    POSTGRES_NON_ROOT_PASSWORD: n8n
     N8N_ENCRYPTION_KEY: ${GENERATED_HASH}
     EXECUTIONS_MODE: queue
     QUEUE_BULL_REDIS_HOST: redis
@@ -48,3 +50,5 @@ app:
       content: |
         #!/bin/bash
         mkdir -p data/n8n
+        mkdir -p data/n8n/.config
+        chmod 0700 data/n8n/.config
