@@ -652,7 +652,7 @@
   },
   {
     "id": "n8n",
-    "name": "n8n",
+    "name": "N8N",
     "intro": "Free and source-available fair-code licensed workflow automation tool.",
     "logo": "https://avatars.githubusercontent.com/u/45487711",
     "deployTime": "~5 minutes",
@@ -669,6 +669,7 @@
       "sourceBranch": "main",
       "dockerComposeFile": "docker-compose.yml",
       "env": {
+        "PORT": 5678,
         "N8N_HOST": "${APP_HOSTNAME}",
         "N8N_PORT": "${PORT}",
         "N8N_PROTOCOL": "https",
