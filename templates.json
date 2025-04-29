@@ -662,6 +662,9 @@
       "cpu": 1,
       "storage": 10
     },
+    "services": [
+      "docker"
+    ],
     "app": {
       "type": "docker-compose",
       "repositoryUrl": "https://github.com/dollardeploy/templates",
@@ -678,10 +681,16 @@
         "DB_TYPE": "postgresdb",
         "DB_POSTGRESDB_HOST": "postgres",
         "DB_POSTGRESDB_PORT": 5432,
+        "POSTGRES_DB": "n8n",
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "postgres",
         "DB_POSTGRESDB_DATABASE": "n8n",
         "DB_POSTGRESDB_USER": "n8n",
         "DB_POSTGRESDB_PASSWORD": "n8n",
-        "N8N_ENCRYPTION_KEY": "${GENERATED_HASH}"
+        "N8N_ENCRYPTION_KEY": "${GENERATED_HASH}",
+        "EXECUTIONS_MODE": "queue",
+        "QUEUE_BULL_REDIS_HOST": "redis",
+        "QUEUE_HEALTH_CHECK_ACTIVE": true
       }
     }
   },
