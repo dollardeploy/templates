@@ -687,6 +687,8 @@
         "DB_POSTGRESDB_DATABASE": "n8n",
         "DB_POSTGRESDB_USER": "n8n",
         "DB_POSTGRESDB_PASSWORD": "n8n",
+        "POSTGRES_NON_ROOT_USER": "n8n",
+        "POSTGRES_NON_ROOT_PASSWORD": "n8n",
         "N8N_ENCRYPTION_KEY": "${GENERATED_HASH}",
         "EXECUTIONS_MODE": "queue",
         "QUEUE_BULL_REDIS_HOST": "redis",
@@ -696,7 +698,7 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nmkdir -p data/n8n\n"
+          "content": "#!/bin/bash\nmkdir -p data/n8n\nmkdir -p data/n8n/.config\nchmod 0700 data/n8n/.config\n"
         }
       ]
     }
