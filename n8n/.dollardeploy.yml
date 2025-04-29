@@ -42,3 +42,9 @@ app:
     EXECUTIONS_MODE: queue
     QUEUE_BULL_REDIS_HOST: redis
     QUEUE_HEALTH_CHECK_ACTIVE: true
+  preStartCmd: bash ./fixdocker.sh
+  files:
+    - path: fixdocker.sh
+      content: |
+        #!/bin/bash
+        mkdir -p data/n8n
