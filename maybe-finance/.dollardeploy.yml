@@ -1,0 +1,24 @@
+id: maybe-finance
+name: Maybe Finance
+intro: The personal finance app for everyone
+description: Maybe is an all-in-one personal finance platform. Track, optimize, grow, and manage your money through every stage of life.
+logo: 'https://raw.githubusercontent.com/maybe-finance/maybe/refs/heads/main/app/assets/images/logomark-color.svg'
+deployTime: ~3 minutes
+experimental: true
+requirements:
+  memory: 2048
+  cpu: 1
+  storage: 10
+introVideoUrl: 'https://www.youtube-nocookie.com/embed/EPq54TWKeJQ'
+services:
+  - docker
+app:
+  repositoryUrl: 'https://github.com/maybe-finance/maybe'
+  sourceBranch: main
+  sourcePath: maybe-finance
+  type: docker-compose
+  dockerComposeFile: docker-compose.yml
+  env:
+    FRONTEND_URL: '${APP_URL}'
+    SECRET_KEY_BASE: ${GENERATED_HASH}
+    PORT: '3000'
