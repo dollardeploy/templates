@@ -537,7 +537,7 @@
     "description": "Maybe is an all-in-one personal finance platform. Track, optimize, grow, and manage your money through every stage of life.",
     "logo": "https://raw.githubusercontent.com/maybe-finance/maybe/refs/heads/main/app/assets/images/logomark-color.svg",
     "deployTime": "~3 minutes",
-    "experimental": true,
+    "experimental": false,
     "requirements": {
       "memory": 2048,
       "cpu": 1,
@@ -553,25 +553,8 @@
       "sourcePath": "maybe-finance",
       "type": "docker-compose",
       "dockerComposeFile": "docker-compose.yml",
-      "preStartCmd": "bash ./fixdocker.sh",
-      "files": [
-        {
-          "path": "fixdocker.sh",
-          "content": "#!/bin/bash\ndocker compose run --rm web bundle exec rails db:prepare\n"
-        }
-      ],
       "env": {
-        "ACTIVE_STORAGE_SERVICE": "local",
-        "ENABLE_ACCOUNT_SIGNUP": "false",
-        "ENABLE_PUSH_RELAY_SERVER": "true",
-        "FORCE_SSL": "false",
         "FRONTEND_URL": "${APP_URL}",
-        "LOG_LEVEL": "info",
-        "LOG_SIZE": "500",
-        "POSTGRES_HOST": "db",
-        "POSTGRES_PASSWORD": "maybe_password",
-        "POSTGRES_USERNAME": "maybe_user",
-        "REDIS_URL": "redis://redis:6379/1",
         "SECRET_KEY_BASE": "${GENERATED_HASH}",
         "PORT": "3000"
       }
