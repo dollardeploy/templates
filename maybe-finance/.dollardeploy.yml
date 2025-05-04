@@ -15,7 +15,7 @@ services:
 app:
   repositoryUrl: 'https://github.com/dollardeploy/templates/'
   sourceBranch: main
-  sourcePath: ./
+  sourcePath: maybe-finance
   type: docker-compose
   dockerComposeFile: docker-compose.yml
   preStartCmd: bash ./fixdocker.sh
