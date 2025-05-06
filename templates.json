@@ -865,6 +865,42 @@
     ]
   },
   {
+    "id": "wikijs",
+    "name": "Wiki.js",
+    "intro": "Wiki.js is a modern, feature-rich, and easy-to-use wiki app built on Node.js.",
+    "logo": "https://js.wiki/img/wikijs-full-2021.b840e376.svg",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 10
+    },
+    "app": {
+      "type": "react",
+      "repositoryUrl": "https://github.com/requarks/wiki",
+      "sourceBranch": "main",
+      "buildScript": "build",
+      "startScript": "start",
+      "preStartCmd": "node -e \"const fs = require('fs'); const package = require('./package.json'); package.dev = false; fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));\"",
+      "env": {
+        "PORT": 3000,
+        "PGSSLMODE": "no-verify",
+        "DATABASE_URL": "${POSTGRES_URL}"
+      },
+      "files": [
+        {
+          "path": "config.yml",
+          "content": "port: 3000\nbindIP: 127.0.0.1\ndatabase:\n  type: postgres\n  host: localhost\n  port: 5432\n  user: postgres\n  password: postgres\n  database: postgres\n  ssl: true\n  schema: public\n  sslOptions:\n    auto: false\n    rejectUnauthorized: false\ndataPath: ./tmp\n"
+        }
+      ]
+    },
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/xjOfL_mMWk4",
+    "deployTime": "~5 minutes",
+    "description": "A modern, lightweight and powerful wiki app built on NodeJS\n",
+    "services": [
+      "postgres"
+    ]
+  },
+  {
     "id": "wordpress",
     "name": "WordPress",
     "intro": "The World's Most Popular CMS",
