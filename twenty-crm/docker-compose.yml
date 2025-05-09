@@ -41,6 +41,7 @@ services:
         env_file: ".env"
         volumes:
             - ./data/local:/app/packages/twenty-server/${STORAGE_LOCAL_PATH:-.local-storage}
+            - ./data/tmp:/app/docker-data
         environment:
             PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/default
             SERVER_URL: ${SERVER_URL}
