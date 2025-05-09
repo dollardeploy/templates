@@ -28,6 +28,7 @@ app:
     # This is for new deployed from a template, a correct path in PG container
     PGDATA_DIR: /var/lib/postgresql/data
   preStartCmd: bash ./fixdocker.sh
+  backupCmd: docker compose exec db pg_dumpall -U postgres > databases_backup.sql
   files:
     - path: fixdocker.sh
       content: |
