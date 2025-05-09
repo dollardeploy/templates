@@ -66,7 +66,7 @@ services:
     db:
         image: postgres:16
         volumes:
-            - ./data/db:/home/postgres/pgdata
+            - ./data/db:${PGDATA_DIR:-/home/postgres/pgdata}
         environment:
             POSTGRES_USER: ${PGUSER_SUPERUSER:-postgres}
             POSTGRES_PASSWORD: ${PGPASSWORD_SUPERUSER:-postgres}
