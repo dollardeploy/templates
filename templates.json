@@ -827,9 +827,11 @@
         "STORAGE_TYPE": "local",
         "PORT": 3000,
         "PG_DATABASE_HOST": "db",
-        "SIGN_IN_PREFILLED": true
+        "SIGN_IN_PREFILLED": true,
+        "PGDATA_DIR": "/var/lib/postgresql/data"
       },
       "preStartCmd": "bash ./fixdocker.sh",
+      "backupCmd": "docker compose exec db pg_dumpall -U postgres > databases_backup.sql",
       "files": [
         {
           "path": "fixdocker.sh",
