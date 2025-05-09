@@ -36,14 +36,10 @@ app:
         mkdir -p data
         mkdir -p data/tmp
         mkdir -p data/local
-        mkdir -p data/db/pgroot/data
+        mkdir -p data/db
         # TwentyCRM expects to run as 1000:1000
         sudo chown 1000:1000 data/local
         sudo chown 1000:1000 data/tmp
         # The server must be started by the user that owns the data directory.
         sudo chown root:root data/db
-        # UID/GID which runs postgres in db container
-        sudo chown 101:103 -R data/db/pgroot
-        # data directory "/home/postgres/pgdata/pgroot/data" has invalid permissions 
-        # Permissions should be u=rwx (0700) or u=rwx,g=rx (0750)
-        sudo chmod 0700 data/db/pgroot/data
+
