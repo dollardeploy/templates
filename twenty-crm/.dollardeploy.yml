@@ -25,6 +25,8 @@ app:
     PORT: 3000
     PG_DATABASE_HOST: db
     SIGN_IN_PREFILLED: true
+    # This is for new deployed from a template, a correct path in PG container
+    PGDATA_DIR: /var/lib/postgresql/data
   preStartCmd: bash ./fixdocker.sh
   files:
     - path: fixdocker.sh
