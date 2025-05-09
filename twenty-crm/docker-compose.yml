@@ -1,7 +1,6 @@
 services:
     server:
         image: twentycrm/twenty:${TAG}
-        user: "$USER_UID:$USER_GID"
         volumes:
             - ./data/local:/app/packages/twenty-server/${STORAGE_LOCAL_PATH:-.local-storage}
             - ./data/tmp:/app/docker-data
@@ -40,7 +39,6 @@ services:
         image: twentycrm/twenty:${TAG}
         command: ['yarn', 'worker:prod']
         env_file: ".env"
-        user: "$USER_UID:$USER_GID"
         volumes:
             - ./data/local:/app/packages/twenty-server/${STORAGE_LOCAL_PATH:-.local-storage}
         environment:
