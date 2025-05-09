@@ -896,7 +896,7 @@
       ]
     },
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/xjOfL_mMWk4",
-    "deployTime": "~5 minutes",
+    "deployTime": "~10 minutes",
     "description": "A modern, lightweight and powerful wiki app built on NodeJS\n",
     "services": [
       "postgres"
