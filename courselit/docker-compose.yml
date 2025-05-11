@@ -6,7 +6,6 @@ services:
         env_file: .env
         ports:
             - "${PORT:-3000}:${PORT:-3000}"
-        container_name: app
         restart: on-failure
     mongo:
         image: mongo

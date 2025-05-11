@@ -35,5 +35,8 @@ app:
     EMAIL_PORT: 587
     EMAIL_SECURE: false
     SUPER_ADMIN_EMAIL: '${USER_EMAIL}'
-
+postLaunchNote: |
+  Username is your e-mail. To login, setup SMTP server settings
+  in the environment variables, redeploy and try to login.
+  
     
