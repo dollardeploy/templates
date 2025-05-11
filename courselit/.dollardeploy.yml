@@ -1,0 +1,39 @@
+id: courselit
+name: CourseLit
+intro: CourseLit is a free and open-source learning management system (LMS) for online courses.
+logo: https://avatars.githubusercontent.com/u/13856732
+deployTime: ~5 minutes
+description: |
+  CourseLit is a free and open-source learning management system (LMS) for online courses.
+  It is designed to be easy to use and customizable, making it a great choice for educators
+  and institutions looking to create and manage online courses.
+
+  CourseLit is built on top of the Codelit framework, which provides a powerful and flexible
+  platform for building web applications.
+requirements:
+  memory: 2048
+  cpu: 1
+  storage: 10
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: courselit
+  sourceBranch: main
+  env:
+    NODE_ENV: production
+    SERVER_URL: ${APP_URL}
+    AUTH_SECRET: ${GENERATED_HASH}
+    AUTH_TRUST_HOST: true
+    PORT: 3000
+    DB_CONNECTION_STRING: 'mongodb://courselit:123456@mongo/courselit?authSource=admin'
+    EMAIL_USER: 'test@example.com'
+    EMAIL_PASS: 'test'
+    EMAIL_HOST: 'smtp.example.com'
+    EMAIL_FROM: 'test@example.com'
+    EMAIL_PORT: 587
+    EMAIL_SECURE: false
+    SUPER_ADMIN_EMAIL: '${USER_EMAIL}'
+
+    

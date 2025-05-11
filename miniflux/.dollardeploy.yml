@@ -18,14 +18,14 @@ app:
   startCmd: ./miniflux-linux-amd64
   buildCmd: make linux-amd64
   env:
-    ADMIN_USERNAME: admin
+    ADMIN_USERNAME: ${USER_EMAIL}
     ADMIN_PASSWORD: ${GENERATED_PWD}
     CREATE_ADMIN: 1
-    DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
+    DATABASE_URL: ${POSTGRES_URL}
     LOG_LEVEL: info
     RUN_MIGRATIONS: 1
     BASE_URL: ${APP_URL}
     PORT: "8080"
     LISTEN_ADDR: "127.0.0.1:${PORT}"
 postLaunchNote: |
-  Username is `admin` and password is in environment variable `ADMIN_PASSWORD`.
+  Username is your e-mail and password is in environment variable `ADMIN_PASSWORD`.
