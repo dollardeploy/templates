@@ -42,4 +42,5 @@ app:
         sudo chown 1000:1000 data/tmp
         # The server must be started by the user that owns the data directory.
         sudo chown root:root data/db
+        sudo chmod a+X data/db
 
