@@ -52,3 +52,5 @@ app:
         mkdir -p data/n8n
         mkdir -p data/n8n/.config
         chmod 0700 data/n8n/.config
+        sudo chown 1000:1000 data/n8n
+        sudo chown 1000:1000 data/n8n/.config
