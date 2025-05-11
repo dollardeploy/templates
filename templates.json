@@ -728,7 +728,7 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nmkdir -p data/n8n\nmkdir -p data/n8n/.config\nchmod 0700 data/n8n/.config\n"
+          "content": "#!/bin/bash\nmkdir -p data/n8n\nmkdir -p data/n8n/.config\nchmod 0700 data/n8n/.config\nsudo chown 1000:1000 data/n8n\nsudo chown 1000:1000 data/n8n/.config\n"
         }
       ]
     }
