@@ -835,7 +835,7 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nmkdir -p data\nmkdir -p data/tmp\nmkdir -p data/local\nmkdir -p data/db\n# TwentyCRM expects to run as 1000:1000\nsudo chown 1000:1000 data/local\nsudo chown 1000:1000 data/tmp\n# The server must be started by the user that owns the data directory.\nsudo chown root:root data/db\n"
+          "content": "#!/bin/bash\nmkdir -p data\nmkdir -p data/tmp\nmkdir -p data/local\nmkdir -p data/db\n# TwentyCRM expects to run as 1000:1000\nsudo chown 1000:1000 data/local\nsudo chown 1000:1000 data/tmp\n# The server must be started by the user that owns the data directory.\nsudo chown root:root data/db\nsudo chmod a+X data/db\n"
         }
       ]
     }
