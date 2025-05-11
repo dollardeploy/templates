@@ -240,6 +240,43 @@
     ]
   },
   {
+    "id": "courselit",
+    "name": "CourseLit",
+    "intro": "CourseLit is a free and open-source learning management system (LMS) for online courses.",
+    "logo": "https://avatars.githubusercontent.com/u/13856732",
+    "deployTime": "~5 minutes",
+    "description": "CourseLit is a free and open-source learning management system (LMS) for online courses.\nIt is designed to be easy to use and customizable, making it a great choice for educators\nand institutions looking to create and manage online courses.\n\nCourseLit is built on top of the Codelit framework, which provides a powerful and flexible\nplatform for building web applications.\n",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 1,
+      "storage": 10
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "courselit",
+      "sourceBranch": "main",
+      "env": {
+        "NODE_ENV": "production",
+        "SERVER_URL": "${APP_URL}",
+        "AUTH_SECRET": "${GENERATED_HASH}",
+        "AUTH_TRUST_HOST": true,
+        "PORT": 3000,
+        "DB_CONNECTION_STRING": "mongodb://courselit:123456@mongo/courselit?authSource=admin",
+        "EMAIL_USER": "test@example.com",
+        "EMAIL_PASS": "test",
+        "EMAIL_HOST": "smtp.example.com",
+        "EMAIL_FROM": "test@example.com",
+        "EMAIL_PORT": 587,
+        "EMAIL_SECURE": false,
+        "SUPER_ADMIN_EMAIL": "${USER_EMAIL}"
+      }
+    }
+  },
+  {
     "id": "directus",
     "name": "Directus",
     "intro": "The Modern & Powerful CMS and BaaS",
@@ -667,10 +704,10 @@
       "startCmd": "./miniflux-linux-amd64",
       "buildCmd": "make linux-amd64",
       "env": {
-        "ADMIN_USERNAME": "admin",
+        "ADMIN_USERNAME": "${USER_EMAIL}",
         "ADMIN_PASSWORD": "${GENERATED_PWD}",
         "CREATE_ADMIN": 1,
-        "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/postgres",
+        "DATABASE_URL": "${POSTGRES_URL}",
         "LOG_LEVEL": "info",
         "RUN_MIGRATIONS": 1,
         "BASE_URL": "${APP_URL}",
@@ -678,7 +715,7 @@
         "LISTEN_ADDR": "127.0.0.1:${PORT}"
       }
     },
-    "postLaunchNote": "Username is `admin` and password is in environment variable `ADMIN_PASSWORD`.\n"
+    "postLaunchNote": "Username is your e-mail and password is in environment variable `ADMIN_PASSWORD`.\n"
   },
   {
     "id": "n8n",
