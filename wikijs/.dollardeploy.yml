@@ -38,7 +38,7 @@ app:
             rejectUnauthorized: false
         dataPath: ./tmp
 introVideoUrl: https://www.youtube-nocookie.com/embed/xjOfL_mMWk4
-deployTime: ~10 minutes
+deployTime: ~20 minutes
 description: |
   A modern, lightweight and powerful wiki app built on NodeJS
 services:
