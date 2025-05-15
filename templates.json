@@ -343,6 +343,30 @@
     }
   },
   {
+    "id": "evolution-api",
+    "name": "Evolution API",
+    "intro": "Evolution API is an open-source WhatsApp integration API",
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates/",
+      "sourcePath": "evolution-api",
+      "env": {
+        "PORT": 8080
+      }
+    },
+    "deployTime": "~10 minutes",
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/RjTipQpUvNQ",
+    "description": "Evolution API is a messaging service that allows you to send and receive messages from your application,\ncompatible with WhatsApp, Telegram, and more.\n",
+    "requirements": {
+      "memory": 4096,
+      "cpu": 2,
+      "storage": 20
+    },
+    "services": [
+      "docker"
+    ]
+  },
+  {
     "id": "ghost-cms",
     "name": "Ghost CMS",
     "intro": "Ghost is an independent platform for publishing online by web and email newsletter.",
