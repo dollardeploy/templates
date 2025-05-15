@@ -409,8 +409,7 @@
       }
     },
     "deployTime": "~10 minutes",
-    "introVideoUrl": "https://www.youtube-nocookie.com/embed/RjTipQpUvNQ",
-    "description": "Evolution API is a messaging service that allows you to send and receive messages from your application,\ncompatible with WhatsApp, Telegram, and more.\n",
+    "description": "Evolution API is a messaging service that allows you to send and receive messages from your application,\ncompatible with WhatsApp, Chatwoot, and more.\n",
     "requirements": {
       "memory": 4096,
       "cpu": 2,
