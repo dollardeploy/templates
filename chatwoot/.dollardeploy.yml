@@ -3,6 +3,12 @@ name: Chatwoot
 intro: Open source live chat software
 description: Chatwoot is a customer support tool for instant messaging channels
 logo: 'https://app.chatwoot.com/brand-assets/logo_thumbnail.svg'
+tags:
+  - customer-support
+  - live-chat
+  - messaging
+  - oss
+  - whatsapp
 deployTime: ~3 minutes
 requirements:
   memory: 2048

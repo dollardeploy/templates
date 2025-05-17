@@ -3,6 +3,10 @@ name: Uptime Kuma
 intro: >-
   Uptime Kuma is a simple, easy-to-use uptime monitoring tool.
 logo: https://raw.githubusercontent.com/louislam/uptime-kuma/master/public/icon.svg
+tags:
+  - monitoring
+  - uptime
+  - oss
 requirements:
   memory: 1024
   cpu: 1

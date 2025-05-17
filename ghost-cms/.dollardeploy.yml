@@ -2,6 +2,12 @@ id: ghost-cms
 name: Ghost CMS
 intro: "Ghost is an independent platform for publishing online by web and email newsletter."
 logo: https://raw.githubusercontent.com/dollardeploy/templates/refs/heads/main/ghost-cms/157884383-1b75feb1-45d8-4430-b636-3f7e06577347.png
+tags:
+  - cms
+  - blog
+  - newsletter
+  - oss
+  - popular
 deployTime: ~3 minutes
 description: |
   Ghost is a powerful app for professional publishers to create, share, and 

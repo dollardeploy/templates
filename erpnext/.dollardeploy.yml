@@ -2,6 +2,11 @@ id: erpnext
 name: Frappe - ERPNext
 intro: "ERPNext is a free and open-source integrated Enterprise resource planning"
 logo: https://avatars.githubusercontent.com/u/836974
+tags:
+  - erp
+  - business-management
+  - oss
+  - frappe
 experimental: true
 deployTime: "~10 minutes"
 introVideoUrl: https://www.youtube-nocookie.com/embed/RjTipQpUvNQ

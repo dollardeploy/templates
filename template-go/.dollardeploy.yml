@@ -1,0 +1,25 @@
+id: template-go
+name: Go app boilerplate
+intro: A boilerplate for building a Go application. Fork this repo and start building your own app quikly.
+description: |
+  A boilerplate for building a Go application
+  Fork this repo and start building your own app quikly.
+  This template is a simple Go application that can be used as a starting point for building your own app.
+logo: https://go.dev/images/go-logo-blue.svg
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+deployTime: ~3 minutes
+tags:
+  - golang
+  - template
+  - oss
+app:
+  type: native
+  repositoryUrl: https://github.com/dollardeploy/example-go
+  sourceBranch: main
+  startCmd: ./bin/go-app-linux-amd64
+  buildCmd: make
+  env:
+    PORT: 3000

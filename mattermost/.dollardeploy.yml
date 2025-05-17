@@ -4,6 +4,11 @@ intro: >-
   Mattermost is an open-source, self-hostable online chat service with file
   sharing, search, and integrations.
 logo: https://avatars.githubusercontent.com/u/9828093
+tags:
+  - oss
+  - chat
+  - messaging
+  - team-chat
 requirements:
   memory: 4096
   cpu: 2

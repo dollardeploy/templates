@@ -2,6 +2,11 @@ id: plausible
 name: Plausible CE
 logo: https://raw.githubusercontent.com/plausible/community-edition/refs/heads/v2.1.1/images/logo_light.svg
 intro: "Simple, lightweight web analytics. No cookies and GDPR compliant."
+tags:
+  - analytics
+  - privacy
+  - gdpr
+  - oss
 deployTime: ~1 minute
 description: >-
   This template launches Plausible. It is a simple, lightweight web analytics.
@@ -27,4 +32,4 @@ app:
     - path: fixdocker.sh
       content: |
         #!/bin/bash
-        sed -e "s/plausible:/plausible:\n    ports:\n      - '127.0.0.1:3001:3000'/g" -i compose.yml
+        sed -e "s/plausible:/plausible:\n    ports:\n      - '127.0.0.1:${PORT}:3000'/g" -i compose.yml

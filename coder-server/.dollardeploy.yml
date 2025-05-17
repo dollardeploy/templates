@@ -1,8 +1,11 @@
-
 id: code-server
 name: Code Server
 intro: Run VS Code on any machine anywhere and access it in the browser.
 logo: https://raw.githubusercontent.com/dollardeploy/templates/refs/heads/main/coder-server/icon.svg
+tags:
+  - development
+  - ide
+  - oss
 requirements:
   memory: 2048
   cpu: 2

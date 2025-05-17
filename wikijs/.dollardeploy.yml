@@ -3,6 +3,10 @@ name: Wiki.js
 intro: >-
   Wiki.js is a modern, feature-rich, and easy-to-use wiki app built on Node.js.
 logo: https://js.wiki/img/wikijs-full-2021.b840e376.svg
+tags:
+  - wiki
+  - documentation
+  - oss
 requirements:
   memory: 2048
   cpu: 2

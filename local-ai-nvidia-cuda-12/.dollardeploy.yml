@@ -4,6 +4,13 @@ intro: >-
   Local AI is an open-source, self-hostable online OpenAI API compatible service
   with WebUI to chat, generate images and more. Works best with DataCrunch provider and GPU instances.
 logo: https://github.com/mudler/LocalAI/blob/master/docs/static/android-chrome-192x192.png?raw=true
+tags:
+  - ai
+  - machine-learning
+  - openai
+  - oss
+  - nvidia
+  - cuda
 requirements:
   memory: 4096
   cpu: 2

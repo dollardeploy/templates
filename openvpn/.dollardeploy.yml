@@ -2,6 +2,10 @@ id: openvpn
 name: OpenVPN
 intro: "OpenVPN is a secure VPN channel to protect traffic"
 logo: https://avatars.githubusercontent.com/u/1569141
+tags:
+  - networking
+  - vpn
+  - oss
 deployTime: "~5 minutes"
 introVideoUrl: https://www.youtube-nocookie.com/embed/4ykbyOEsKQE
 description: |

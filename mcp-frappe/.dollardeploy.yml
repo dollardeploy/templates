@@ -3,6 +3,12 @@ name: Frappe CRM MCP Server
 intro: "MCP Proxy with Frappe MCP Server for SSE transport"
 logo: https://avatars.githubusercontent.com/u/836974
 deployTime: "~2 minutes"
+tags:
+  - mcp
+  - frappe
+  - crm
+  - oss
+  - integration
 description: |
   MCP Proxy with Frappe MCP Server provides a secure and efficient way to run Frappe MCP server
   over SSE transport. It allows LLM clients like Claude Desktop to connect to Frappe

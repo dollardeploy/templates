@@ -5,6 +5,11 @@ description: Chatwoot is a customer support tool for instant messaging channels
 logo: 'https://app.chatwoot.com/brand-assets/logo_thumbnail.svg'
 deployTime: ~3 minutes
 experimental: true
+tags:
+  - oss
+  - live-chat
+  - customer-support
+  - instant-messaging
 requirements:
   memory: 2048
   cpu: 1

@@ -4,6 +4,10 @@ intro: >-
   The simplest, fastest way to get business intelligence 
   and analytics to everyone in your company 😋
 logo: https://avatars.githubusercontent.com/u/10520629
+tags:
+  - business-intelligence
+  - analytics
+  - oss
 requirements:
   memory: 4096
   cpu: 2

@@ -1,0 +1,35 @@
+---
+id: baserow
+name: Baserow
+intro: Open source no-code database tool and Airtable alternative.
+logo: https://gitlab.com/uploads/-/system/project/avatar/10858056/Logo.png?width=96
+experimental: true
+tags:
+  - baserow
+  - oss
+  - database
+  - no-code
+  - airtable
+app:
+  type: docker-compose
+  dockerComposeFile: docker-compose.yml
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: baserow
+  env:
+    PORT: '3000'
+    BASEROW_PUBLIC_URL: "${APP_URL}"
+    SECRET_KEY: "${GENERATED_HASH}"
+    HEALTH_URL: "/_health"
+requirements:
+  memory: 4096
+  cpu: 2
+  storage: 20
+introVideoUrl: https://www.youtube-nocookie.com/embed/X_3CoteDuaw
+provider: Digital Ocean
+deployTime: "~2 minutes"
+description: Baserow is an open-source no-code database tool and Airtable alternative.
+  It allows you to create custom databases, manage data, and build applications without
+  the need for coding. Whether you're a beginner or an experienced developer, Baserow
+  provides a user-friendly interface to manage your data and build powerful applications.
+services:
+- docker

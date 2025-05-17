@@ -4,6 +4,11 @@ id: n8n
 name: N8N
 intro: Free and source-available fair-code licensed workflow automation tool.
 logo: https://avatars.githubusercontent.com/u/45487711
+tags:
+  - automation
+  - workflow
+  - integration
+  - oss
 deployTime: ~5 minutes
 description: |
   n8n helps you connect any app with an API to any other, and manipulate its data with little or no code.

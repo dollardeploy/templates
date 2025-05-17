@@ -2,6 +2,11 @@ id: courselit
 name: CourseLit
 intro: CourseLit is a free and open-source learning management system (LMS) for online courses.
 logo: https://avatars.githubusercontent.com/u/13856732
+tags:
+  - lms
+  - education
+  - e-learning
+  - oss
 deployTime: ~5 minutes
 description: |
   CourseLit is a free and open-source learning management system (LMS) for online courses.

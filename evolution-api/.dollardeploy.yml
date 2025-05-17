@@ -1,6 +1,11 @@
 id: evolution-api
 name: Evolution API
 intro: Evolution API is an open-source WhatsApp integration API
+tags:
+  - oss
+  - whatsapp
+  - instant-messaging
+  - customer-support
 app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates/

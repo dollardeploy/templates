@@ -3,6 +3,12 @@ name: WordPress
 intro: The World's Most Popular CMS
 logo: https://avatars.githubusercontent.com/u/276006
 deployTime: ~3 minutes
+tags:
+  - cms
+  - oss
+  - blog
+  - website
+  - popular
 description: |
   WordPress is open source software you can use to create a beautiful website, blog, or app.
 requirements:

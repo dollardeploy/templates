@@ -3,6 +3,10 @@ name: Miniflux
 intro: Minimalist feed reader
 logo: https://avatars.githubusercontent.com/u/10584991
 deployTime: ~3 minutes
+tags:
+  - rss
+  - feed
+  - oss
 description: |
   Provides UI to read RSS feeds. Minimalistic and easy to use, runs natively on your server.
 requirements:

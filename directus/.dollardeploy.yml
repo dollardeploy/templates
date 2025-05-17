@@ -2,6 +2,11 @@ id: directus
 name: Directus
 intro: The Modern & Powerful CMS and BaaS
 logo: 'https://raw.githubusercontent.com/directus/directus/refs/heads/main/docs/public/favicon.svg'
+tags:
+  - headless
+  - cms
+  - baas
+  - oss
 deployTime: ~3 minutes
 description: |
   The flexible backend for all of your projects.

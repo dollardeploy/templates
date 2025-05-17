@@ -2,6 +2,12 @@ id: twenty-crm
 name: Twenty CRM
 intro: "The #1 Open-Source CRM"
 logo: https://github.com/twentyhq/twenty/raw/main/packages/twenty-website/public/images/core/logo.svg
+tags:
+  - crm
+  - sales
+  - business
+  - oss
+  - popular
 deployTime: ~3 minutes
 description: |
   The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships. Version 0.52.9. https://twenty.com/releases

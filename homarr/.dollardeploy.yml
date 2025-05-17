@@ -2,6 +2,11 @@ id: homarr
 name: Homarr
 intro: A simple, yet powerful dashboard for your server.
 logo: https://homarr.dev/img/favicon.png
+tags:
+  - dashboard
+  - server-management
+  - monitoring
+  - oss
 deployTime: ~3 minutes
 description: |
   Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of your apps and services at your fingertips.
