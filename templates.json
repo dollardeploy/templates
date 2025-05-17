@@ -1,42 +1,39 @@
 [
   {
-    "id": "cal-com-docker",
-    "name": "Cal.com",
-    "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
-    "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
-    "experimental": false,
+    "id": "baserow",
+    "name": "Baserow",
+    "intro": "Open source no-code database tool and Airtable alternative.",
+    "logo": "https://gitlab.com/uploads/-/system/project/avatar/10858056/Logo.png?width=96",
+    "experimental": true,
+    "tags": [
+      "baserow",
+      "oss",
+      "database",
+      "no-code",
+      "airtable"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "dockerComposeFile": "docker-compose.yml",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "baserow",
+      "env": {
+        "PORT": "3000",
+        "BASEROW_PUBLIC_URL": "${APP_URL}",
+        "SECRET_KEY": "${GENERATED_HASH}",
+        "HEALTH_URL": "/_health"
+      }
+    },
     "requirements": {
       "memory": 4096,
       "cpu": 2,
       "storage": 20
     },
-    "app": {
-      "type": "docker-compose",
-      "env": {
-        "NEXT_PUBLIC_WEBAPP_URL": "https://${APP_HOSTNAME}",
-        "NEXT_PUBLIC_API_V2_URL": "https://${APP_HOSTNAME}/api/v2",
-        "NEXT_PUBLIC_LICENSE_CONSENT": "agree",
-        "CALCOM_TELEMETRY_DISABLED": 1,
-        "NEXTAUTH_SECRET": "${GENERATED_HASH}",
-        "CALENDSO_ENCRYPTION_KEY": "${GENERATED_HASH}",
-        "POSTGRES_USER": "postgres",
-        "POSTGRES_PASSWORD": "postgres",
-        "POSTGRES_DB": "postgres",
-        "DATABASE_HOST": "database:5432",
-        "DATABASE_URL": "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}",
-        "DATABASE_DIRECT_URL": "${DATABASE_URL}",
-        "PORT": 3000
-      },
-      "repositoryUrl": "https://github.com/dollardeploy/templates",
-      "sourceBranch": "main",
-      "sourcePath": "cal-com-docker",
-      "dockerComposeFile": "docker-compose.yml"
-    },
-    "introVideoUrl": "https://www.youtube-nocookie.com/embed/60HJt8DOVNo",
-    "deployTime": "~10 minutes",
-    "description": "Cal.com is a scheduling infrastructure for everyone. It's an open source alternative to Calendly that allows you to schedule meetings efficiently and integrate with various calendar services.",
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/X_3CoteDuaw",
+    "provider": "Digital Ocean",
+    "deployTime": "~2 minutes",
+    "description": "Baserow is an open-source no-code database tool and Airtable alternative. It allows you to create custom databases, manage data, and build applications without the need for coding. Whether you're a beginner or an experienced developer, Baserow provides a user-friendly interface to manage your data and build powerful applications.",
     "services": [
-      "postgres",
       "docker"
     ]
   },
@@ -46,6 +43,13 @@
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
     "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
     "experimental": true,
+    "tags": [
+      "oss",
+      "scheduling",
+      "calendar",
+      "booking",
+      "meeting"
+    ],
     "requirements": {
       "memory": 4096,
       "cpu": 2,
@@ -86,6 +90,13 @@
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
     "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
     "experimental": true,
+    "tags": [
+      "oss",
+      "scheduling",
+      "calendar",
+      "booking",
+      "meeting"
+    ],
     "requirements": {
       "memory": 2048,
       "cpu": 1,
@@ -123,6 +134,13 @@
     "intro": "Open source live chat software",
     "description": "Chatwoot is a customer support tool for instant messaging channels",
     "logo": "https://app.chatwoot.com/brand-assets/logo_thumbnail.svg",
+    "tags": [
+      "customer-support",
+      "live-chat",
+      "messaging",
+      "oss",
+      "whatsapp"
+    ],
     "deployTime": "~3 minutes",
     "requirements": {
       "memory": 2048,
@@ -172,6 +190,12 @@
     "logo": "https://app.chatwoot.com/brand-assets/logo_thumbnail.svg",
     "deployTime": "~3 minutes",
     "experimental": true,
+    "tags": [
+      "oss",
+      "live-chat",
+      "customer-support",
+      "instant-messaging"
+    ],
     "requirements": {
       "memory": 2048,
       "cpu": 1,
@@ -216,6 +240,11 @@
     "name": "Code Server",
     "intro": "Run VS Code on any machine anywhere and access it in the browser.",
     "logo": "https://raw.githubusercontent.com/dollardeploy/templates/refs/heads/main/coder-server/icon.svg",
+    "tags": [
+      "development",
+      "ide",
+      "oss"
+    ],
     "requirements": {
       "memory": 2048,
       "cpu": 2,
@@ -240,48 +269,16 @@
     ]
   },
   {
-    "id": "courselit",
-    "name": "CourseLit",
-    "intro": "CourseLit is a free and open-source learning management system (LMS) for online courses.",
-    "logo": "https://avatars.githubusercontent.com/u/13856732",
-    "deployTime": "~5 minutes",
-    "description": "CourseLit is a free and open-source learning management system (LMS) for online courses.\nIt is designed to be easy to use and customizable, making it a great choice for educators\nand institutions looking to create and manage online courses.\n\nCourseLit is built on top of the Codelit framework, which provides a powerful and flexible\nplatform for building web applications.\n",
-    "requirements": {
-      "memory": 2048,
-      "cpu": 1,
-      "storage": 10
-    },
-    "services": [
-      "docker"
-    ],
-    "app": {
-      "type": "docker-compose",
-      "repositoryUrl": "https://github.com/dollardeploy/templates",
-      "sourcePath": "courselit",
-      "sourceBranch": "main",
-      "env": {
-        "NODE_ENV": "production",
-        "SERVER_URL": "${APP_URL}",
-        "AUTH_SECRET": "${GENERATED_HASH}",
-        "AUTH_TRUST_HOST": true,
-        "PORT": 3000,
-        "DB_CONNECTION_STRING": "mongodb://courselit:123456@mongo/courselit?authSource=admin",
-        "EMAIL_USER": "test@example.com",
-        "EMAIL_PASS": "test",
-        "EMAIL_HOST": "smtp.example.com",
-        "EMAIL_FROM": "test@example.com",
-        "EMAIL_PORT": 587,
-        "EMAIL_SECURE": false,
-        "SUPER_ADMIN_EMAIL": "${USER_EMAIL}"
-      }
-    },
-    "postLaunchNote": "Username is your e-mail. To login, setup SMTP server settings\nin the environment variables, redeploy and try to login.\n\n  \n"
-  },
-  {
     "id": "directus",
     "name": "Directus",
     "intro": "The Modern & Powerful CMS and BaaS",
     "logo": "https://raw.githubusercontent.com/directus/directus/refs/heads/main/docs/public/favicon.svg",
+    "tags": [
+      "headless",
+      "cms",
+      "baas",
+      "oss"
+    ],
     "deployTime": "~3 minutes",
     "description": "The flexible backend for all of your projects.\nTurn your data into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more. Built for devs, used by everyone.\n",
     "requirements": {
@@ -318,6 +315,12 @@
     "name": "Frappe - ERPNext",
     "intro": "ERPNext is a free and open-source integrated Enterprise resource planning",
     "logo": "https://avatars.githubusercontent.com/u/836974",
+    "tags": [
+      "erp",
+      "business-management",
+      "oss",
+      "frappe"
+    ],
     "experimental": true,
     "deployTime": "~10 minutes",
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/RjTipQpUvNQ",
@@ -343,87 +346,17 @@
     }
   },
   {
-    "id": "evolution-api",
-    "name": "Evolution API",
-    "intro": "Evolution API is an open-source WhatsApp integration API",
-    "app": {
-      "type": "docker-compose",
-      "repositoryUrl": "https://github.com/dollardeploy/templates/",
-      "sourcePath": "evolution-api",
-      "env": {
-        "PORT": 8080,
-        "SERVER_TYPE": "http",
-        "SERVER_PORT": "${PORT}",
-        "SERVER_URL": "${APP_URL}",
-        "SENTRY_DSN": "",
-        "CORS_ORIGIN": "*",
-        "CORS_METHODS": "GET,POST,PUT,DELETE",
-        "CORS_CREDENTIALS": "true",
-        "LOG_LEVEL": "ERROR,WARN,DEBUG,INFO,LOG,VERBOSE,DARK,WEBHOOKS,WEBSOCKET",
-        "LOG_COLOR": "true",
-        "LOG_BAILEYS": "error",
-        "EVENT_EMITTER_MAX_LISTENERS": "50",
-        "DEL_INSTANCE": "false",
-        "DATABASE_PROVIDER": "postgresql",
-        "DATABASE_CONNECTION_URI": "postgresql://user:pass@postgres:5432/evolution?schema=public",
-        "DATABASE_CONNECTION_CLIENT_NAME": "evolution_exchange",
-        "DATABASE_SAVE_DATA_INSTANCE": "true",
-        "DATABASE_SAVE_DATA_NEW_MESSAGE": "true",
-        "DATABASE_SAVE_MESSAGE_UPDATE": "true",
-        "DATABASE_SAVE_DATA_CONTACTS": "true",
-        "DATABASE_SAVE_DATA_CHATS": "true",
-        "DATABASE_SAVE_DATA_LABELS": "true",
-        "DATABASE_SAVE_DATA_HISTORIC": "true",
-        "DATABASE_SAVE_IS_ON_WHATSAPP": "true",
-        "DATABASE_SAVE_IS_ON_WHATSAPP_DAYS": "7",
-        "DATABASE_DELETE_MESSAGE": true,
-        "RABBITMQ_ENABLED": false,
-        "SQS_ENABLED": false,
-        "WEBSOCKET_ENABLED": false,
-        "PUSHER_GLOBAL_ENABLED": false,
-        "WA_BUSINESS_TOKEN_WEBHOOK": "evolution",
-        "WA_BUSINESS_URL": "https://graph.facebook.com",
-        "WA_BUSINESS_VERSION": "v20.0",
-        "WA_BUSINESS_LANGUAGE": "en_US",
-        "WEBHOOK_GLOBAL_ENABLED": false,
-        "WEBHOOK_GLOBAL_URL": "",
-        "CONFIG_SESSION_PHONE_CLIENT": "Evolution API",
-        "CONFIG_SESSION_PHONE_NAME": "Chrome",
-        "CONFIG_SESSION_PHONE_VERSION": "2.3000.1015901307",
-        "QRCODE_LIMIT": 30,
-        "QRCODE_COLOR": "#175197",
-        "TYPEBOT_ENABLED": false,
-        "CHATWOOT_ENABLED": false,
-        "OPENAI_ENABLED": false,
-        "DIFY_ENABLED": false,
-        "CACHE_REDIS_ENABLED": true,
-        "CACHE_REDIS_URI": "redis://redis:6379/6",
-        "CACHE_REDIS_TTL": 604800,
-        "CACHE_REDIS_PREFIX_KEY": "evolution",
-        "CACHE_REDIS_SAVE_INSTANCES": false,
-        "CACHE_LOCAL_ENABLED": false,
-        "S3_ENABLED": false,
-        "AUTHENTICATION_API_KEY": "${GENERATED_HASH}",
-        "AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES": true,
-        "LANGUAGE": "en"
-      }
-    },
-    "deployTime": "~10 minutes",
-    "description": "Evolution API is a messaging service that allows you to send and receive messages from your application,\ncompatible with WhatsApp, Chatwoot, and more.\n",
-    "requirements": {
-      "memory": 4096,
-      "cpu": 2,
-      "storage": 20
-    },
-    "services": [
-      "docker"
-    ]
-  },
-  {
     "id": "ghost-cms",
     "name": "Ghost CMS",
     "intro": "Ghost is an independent platform for publishing online by web and email newsletter.",
     "logo": "https://raw.githubusercontent.com/dollardeploy/templates/refs/heads/main/ghost-cms/157884383-1b75feb1-45d8-4430-b636-3f7e06577347.png",
+    "tags": [
+      "cms",
+      "blog",
+      "newsletter",
+      "oss",
+      "popular"
+    ],
     "deployTime": "~3 minutes",
     "description": "Ghost is a powerful app for professional publishers to create, share, and \ngrow a business around their content. It comes with modern tools to build a \nwebsite, publish content, send newsletters & offer paid subscriptions to members.\n",
     "requirements": {
@@ -457,6 +390,12 @@
     "name": "Homarr",
     "intro": "A simple, yet powerful dashboard for your server.",
     "logo": "https://homarr.dev/img/favicon.png",
+    "tags": [
+      "dashboard",
+      "server-management",
+      "monitoring",
+      "oss"
+    ],
     "deployTime": "~3 minutes",
     "description": "Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of your apps and services at your fingertips.\n",
     "requirements": {
@@ -483,6 +422,12 @@
     "name": "Local AI (CPU)",
     "intro": "Local AI is an open-source, self-hostable online OpenAI API compatible service with WebUI to chat, generate images and more.",
     "logo": "https://github.com/mudler/LocalAI/blob/master/docs/static/android-chrome-192x192.png?raw=true",
+    "tags": [
+      "ai",
+      "machine-learning",
+      "openai",
+      "oss"
+    ],
     "requirements": {
       "memory": 4096,
       "cpu": 2,
@@ -511,6 +456,14 @@
     "name": "Local AI (NVidia CUDA 12)",
     "intro": "Local AI is an open-source, self-hostable online OpenAI API compatible service with WebUI to chat, generate images and more. Works best with DataCrunch provider and GPU instances.",
     "logo": "https://github.com/mudler/LocalAI/blob/master/docs/static/android-chrome-192x192.png?raw=true",
+    "tags": [
+      "ai",
+      "machine-learning",
+      "openai",
+      "oss",
+      "nvidia",
+      "cuda"
+    ],
     "requirements": {
       "memory": 4096,
       "cpu": 2,
@@ -539,6 +492,12 @@
     "name": "Mailpit",
     "intro": "Mailpit is a simple SMTP server that allows you to capture emails sent from your application.",
     "logo": "https://mailpit.axllent.org/images/mailpit.svg",
+    "tags": [
+      "email",
+      "smtp",
+      "development",
+      "oss"
+    ],
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -593,6 +552,12 @@
     "name": "Mattermost",
     "intro": "Mattermost is an open-source, self-hostable online chat service with file sharing, search, and integrations.",
     "logo": "https://avatars.githubusercontent.com/u/9828093",
+    "tags": [
+      "oss",
+      "chat",
+      "messaging",
+      "team-chat"
+    ],
     "requirements": {
       "memory": 4096,
       "cpu": 2,
@@ -652,6 +617,10 @@
     "description": "Maybe is an all-in-one personal finance platform. Track, optimize, grow, and manage your money through every stage of life.",
     "logo": "https://raw.githubusercontent.com/maybe-finance/maybe/refs/heads/main/app/assets/images/logomark-color.svg",
     "deployTime": "~3 minutes",
+    "tags": [
+      "finance",
+      "oss"
+    ],
     "experimental": false,
     "requirements": {
       "memory": 2048,
@@ -680,6 +649,13 @@
     "name": "Facebook Ads MCP Server",
     "intro": "MCP Proxy with Facebook Ads MCP Server for SSE transport",
     "logo": "https://avatars.githubusercontent.com/u/156911525",
+    "tags": [
+      "facebook",
+      "marketing",
+      "mcp",
+      "oss",
+      "integration"
+    ],
     "deployTime": "~5 minutes",
     "description": "This MCP server provides tools for interacting with Facebook Ads objects and data.\n",
     "requirements": {
@@ -704,40 +680,15 @@
     }
   },
   {
-    "id": "mcp-frappe",
-    "name": "Frappe CRM MCP Server",
-    "intro": "MCP Proxy with Frappe MCP Server for SSE transport",
-    "logo": "https://avatars.githubusercontent.com/u/836974",
-    "deployTime": "~2 minutes",
-    "description": "MCP Proxy with Frappe MCP Server provides a secure and efficient way to run Frappe MCP server\nover SSE transport. It allows LLM clients like Claude Desktop to connect to Frappe\nservers through a standardized interface.\n\nThe setup combines MCP Proxy for transport conversion and Frappe MCP Server for\nhandling MCP protocol communications, all in a single container solution.\n",
-    "requirements": {
-      "memory": 1024,
-      "cpu": 1,
-      "storage": 10
-    },
-    "services": [
-      "docker"
-    ],
-    "postLaunchNote": "The MCP server will be available at the provided URL with /sse endpoint. Make sure to configure FRAPPE_URL, FRAPPE_API_KEY, and FRAPPE_API_SECRET for proper Frappe server connectivity.",
-    "app": {
-      "type": "docker-compose",
-      "repositoryUrl": "https://github.com/dollardeploy/templates/",
-      "sourcePath": "mcp-frappe",
-      "dockerComposeFile": "docker-compose.yml",
-      "allowAccessFrom": "${USER_IPADDRESS}",
-      "env": {
-        "PORT": 8096,
-        "FRAPPE_URL": "http://localhost:8000",
-        "FRAPPE_API_KEY": "frappe",
-        "FRAPPE_API_SECRET": 123
-      }
-    }
-  },
-  {
     "id": "metabase",
     "name": "Metabase",
     "intro": "The simplest, fastest way to get business intelligence  and analytics to everyone in your company 😋",
     "logo": "https://avatars.githubusercontent.com/u/10520629",
+    "tags": [
+      "business-intelligence",
+      "analytics",
+      "oss"
+    ],
     "requirements": {
       "memory": 4096,
       "cpu": 2,
@@ -766,6 +717,11 @@
     "intro": "Minimalist feed reader",
     "logo": "https://avatars.githubusercontent.com/u/10584991",
     "deployTime": "~3 minutes",
+    "tags": [
+      "rss",
+      "feed",
+      "oss"
+    ],
     "description": "Provides UI to read RSS feeds. Minimalistic and easy to use, runs natively on your server.\n",
     "requirements": {
       "memory": 1024,
@@ -800,6 +756,12 @@
     "name": "N8N",
     "intro": "Free and source-available fair-code licensed workflow automation tool.",
     "logo": "https://avatars.githubusercontent.com/u/45487711",
+    "tags": [
+      "automation",
+      "workflow",
+      "integration",
+      "oss"
+    ],
     "deployTime": "~5 minutes",
     "description": "n8n helps you connect any app with an API to any other, and manipulate its data with little or no code.\nIt's an easy-to-use, user-friendly and highly customizable service, which uses a visual workflow editor\ninstead of writing code.\n",
     "requirements": {
@@ -853,6 +815,11 @@
     "name": "OpenVPN",
     "intro": "OpenVPN is a secure VPN channel to protect traffic",
     "logo": "https://avatars.githubusercontent.com/u/1569141",
+    "tags": [
+      "networking",
+      "vpn",
+      "oss"
+    ],
     "deployTime": "~5 minutes",
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/4ykbyOEsKQE",
     "description": "OpenVPN is an open-source virtual private network (VPN) solution that \ncreates secure point-to-point or site-to-site connections through\nencrypted tunnels over the internet.\n\nIt masks your IP address and encrypts your internet traffic, helping you \nmaintain anonymity online and preventing ISPs from monitoring your activities.\n",
@@ -884,6 +851,12 @@
     "name": "Plausible CE",
     "logo": "https://raw.githubusercontent.com/plausible/community-edition/refs/heads/v2.1.1/images/logo_light.svg",
     "intro": "Simple, lightweight web analytics. No cookies and GDPR compliant.",
+    "tags": [
+      "analytics",
+      "privacy",
+      "gdpr",
+      "oss"
+    ],
     "deployTime": "~1 minute",
     "description": "This template launches Plausible. It is a simple, lightweight web analytics. No cookies and GDPR compliant.",
     "services": [
@@ -909,9 +882,37 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nsed -e \"s/plausible:/plausible:\\n    ports:\\n      - '127.0.0.1:3001:3000'/g\" -i compose.yml\n"
+          "content": "#!/bin/bash\nsed -e \"s/plausible:/plausible:\\n    ports:\\n      - '127.0.0.1:${PORT}:3000'/g\" -i compose.yml\n"
         }
       ]
+    }
+  },
+  {
+    "id": "template-go",
+    "name": "Go app boilerplate",
+    "intro": "A boilerplate for building a Go application. Fork this repo and start building your own app quikly.",
+    "description": "A boilerplate for building a Go application\nFork this repo and start building your own app quikly.\nThis template is a simple Go application that can be used as a starting point for building your own app.\n",
+    "logo": "https://go.dev/images/go-logo-blue.svg",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "deployTime": "~3 minutes",
+    "tags": [
+      "golang",
+      "template",
+      "oss"
+    ],
+    "app": {
+      "type": "native",
+      "repositoryUrl": "https://github.com/dollardeploy/example-go",
+      "sourceBranch": "main",
+      "startCmd": "./bin/go-app-linux-amd64",
+      "buildCmd": "make",
+      "env": {
+        "PORT": 3000
+      }
     }
   },
   {
@@ -919,6 +920,13 @@
     "name": "Twenty CRM",
     "intro": "The #1 Open-Source CRM",
     "logo": "https://github.com/twentyhq/twenty/raw/main/packages/twenty-website/public/images/core/logo.svg",
+    "tags": [
+      "crm",
+      "sales",
+      "business",
+      "oss",
+      "popular"
+    ],
     "deployTime": "~3 minutes",
     "description": "The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships. Version 0.52.9. https://twenty.com/releases\n",
     "requirements": {
@@ -960,6 +968,11 @@
     "name": "Uptime Kuma",
     "intro": "Uptime Kuma is a simple, easy-to-use uptime monitoring tool.",
     "logo": "https://raw.githubusercontent.com/louislam/uptime-kuma/master/public/icon.svg",
+    "tags": [
+      "monitoring",
+      "uptime",
+      "oss"
+    ],
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -986,6 +999,11 @@
     "name": "Wiki.js",
     "intro": "Wiki.js is a modern, feature-rich, and easy-to-use wiki app built on Node.js.",
     "logo": "https://js.wiki/img/wikijs-full-2021.b840e376.svg",
+    "tags": [
+      "wiki",
+      "documentation",
+      "oss"
+    ],
     "requirements": {
       "memory": 2048,
       "cpu": 2,
@@ -1023,6 +1041,13 @@
     "intro": "The World's Most Popular CMS",
     "logo": "https://avatars.githubusercontent.com/u/276006",
     "deployTime": "~3 minutes",
+    "tags": [
+      "cms",
+      "oss",
+      "blog",
+      "website",
+      "popular"
+    ],
     "description": "WordPress is open source software you can use to create a beautiful website, blog, or app.\n",
     "requirements": {
       "memory": 1024,
