@@ -1,0 +1,21 @@
+id: boilerplate-python
+name: Lithium Python Boilerplate
+intro: A boilerplate for building modern Python Django app.
+description: |
+  Lithium is a batteries-included Django starter project with everything you need to start coding, including user authentication, static files, default styling, debugging, DRY forms, custom error pages, and more.
+  Fork this repo and start building your own app quikly. 
+logo: https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png
+requirements:
+  memory: 2048
+  cpu: 2
+  storage: 10
+deployTime: ~3 minutes
+tags:
+  - python
+  - template
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/huksley/python-django-lithium
+  sourceBranch: main
+  env:
+    PORT: 8000

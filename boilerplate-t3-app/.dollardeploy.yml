@@ -1,0 +1,22 @@
+id: boilerplate-t3-app
+name: Next.js T3 app
+intro: A boilerplate for building modern Next.js app with T3 stack.
+description: |
+  The best way to start a full-stack, typesafe Next.js app. 
+  Fork this repo and start building your own app quikly. Or go to https://create.t3.gg to learn more about the T3 stack.
+logo: https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+deployTime: ~3 minutes
+tags:
+  - nextjs
+  - template
+  - typescript
+app:
+  type: next
+  repositoryUrl: https://github.com/huksley/t3-dollardeploy
+  sourceBranch: main
+  env:
+    PORT: 3000
