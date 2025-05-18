@@ -38,6 +38,57 @@
     ]
   },
   {
+    "id": "boilerplate-python",
+    "name": "Lithium Python Boilerplate",
+    "intro": "A boilerplate for building modern Python Django app.",
+    "description": "Lithium is a batteries-included Django starter project with everything you need to start coding, including user authentication, static files, default styling, debugging, DRY forms, custom error pages, and more.\nFork this repo and start building your own app quikly. \n",
+    "logo": "https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 10
+    },
+    "deployTime": "~3 minutes",
+    "tags": [
+      "python",
+      "template"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/huksley/python-django-lithium",
+      "sourceBranch": "main",
+      "env": {
+        "PORT": 8000
+      }
+    }
+  },
+  {
+    "id": "boilerplate-t3-app",
+    "name": "Next.js T3 app",
+    "intro": "A boilerplate for building modern Next.js app with T3 stack.",
+    "description": "The best way to start a full-stack, typesafe Next.js app. \nFork this repo and start building your own app quikly. Or go to https://create.t3.gg to learn more about the T3 stack.\n",
+    "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "deployTime": "~3 minutes",
+    "tags": [
+      "nextjs",
+      "template",
+      "typescript"
+    ],
+    "app": {
+      "type": "next",
+      "repositoryUrl": "https://github.com/huksley/t3-dollardeploy",
+      "sourceBranch": "main",
+      "env": {
+        "PORT": 3000
+      }
+    }
+  },
+  {
     "id": "cal-com-docker",
     "name": "Cal.com",
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
