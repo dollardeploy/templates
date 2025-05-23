@@ -489,6 +489,59 @@
     }
   },
   {
+    "id": "evo-ai-api",
+    "name": "EVO AI API",
+    "logo": "https://avatars.githubusercontent.com/u/136080052",
+    "intro": "Evo AI is an open-source platform for creating and managing AI agents",
+    "description": "Evo AI is an open-source platform for creating and managing AI agents, \nenabling integration with different AI models and services. \n",
+    "tags": [
+      "oss",
+      "ai",
+      "ai-agent"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/EvolutionAPI/evo-ai/",
+      "sourceBranch": "develop",
+      "env": {
+        "PORT": 8000,
+        "ADMIN_EMAIL": "admin@evoai.com",
+        "ADMIN_INITIAL_PASSWORD": "${GENERATED_PWD}",
+        "DEBUG": false,
+        "ENCRYPTION_KEY": "${GENERATED_HASH}",
+        "JWT_EXPIRATION_TIME": 3600,
+        "POSTGRES_CONNECTION_STRING": "postgresql://postgres:root@localhost:5432/evo_ai",
+        "POSTGRES_PORT": 5433,
+        "REDIS_DB": 0,
+        "REDIS_PORT": 6380,
+        "REDIS_SSL": false,
+        "REDIS_TTL": 3600,
+        "TOOLS_CACHE_TTL": 3600
+      }
+    }
+  },
+  {
+    "id": "evo-ai-frontend",
+    "name": "EVO AI",
+    "intro": "This is Next.js frontend for EVO AI",
+    "logo": "https://avatars.githubusercontent.com/u/136080052",
+    "description": "Evo AI is an open-source platform for creating and managing AI agents, \nenabling integration with different AI models and services. \n",
+    "tags": [
+      "oss",
+      "ai",
+      "ai-agent"
+    ],
+    "app": {
+      "type": "next",
+      "repositoryUrl": "https://github.com/EvolutionAPI/evo-ai-frontend",
+      "env": {
+        "PORT": 3005,
+        "API_URL": "https://api.example.com",
+        "NEXT_PUBLIC_API_URL": "${API_URL}"
+      }
+    }
+  },
+  {
     "id": "evolution-api",
     "name": "Evolution API",
     "intro": "Evolution API is an open-source WhatsApp integration API",
