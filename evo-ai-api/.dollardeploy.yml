@@ -1,0 +1,29 @@
+id: evo-ai-api
+name: EVO AI API
+logo: https://avatars.githubusercontent.com/u/136080052
+intro:  Evo AI is an open-source platform for creating and managing AI agents
+description: |
+  Evo AI is an open-source platform for creating and managing AI agents, 
+  enabling integration with different AI models and services. 
+tags:
+  - oss
+  - ai
+  - ai-agent
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/EvolutionAPI/evo-ai/
+  sourceBranch: develop
+  env:
+    PORT: 8000
+    ADMIN_EMAIL: admin@evoai.com
+    ADMIN_INITIAL_PASSWORD: ${GENERATED_PWD}
+    DEBUG: false
+    ENCRYPTION_KEY: ${GENERATED_HASH}
+    JWT_EXPIRATION_TIME: 3600
+    POSTGRES_CONNECTION_STRING: postgresql://postgres:root@localhost:5432/evo_ai
+    POSTGRES_PORT: 5433
+    REDIS_DB: 0
+    REDIS_PORT: 6380
+    REDIS_SSL: false
+    REDIS_TTL: 3600
+    TOOLS_CACHE_TTL: 3600
