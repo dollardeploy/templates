@@ -1016,7 +1016,8 @@
       "sourceBranch": "main",
       "dockerComposeFile": "docker-compose.yml",
       "env": {
-        "PORT": "3000"
+        "PORT": "3000",
+        "METABASE_VERSION": "v0.52.7"
       }
     },
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/dnT2Xj52mnk",
