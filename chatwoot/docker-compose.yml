@@ -2,7 +2,7 @@ version: "3"
 
 services:
   base: &base
-    image: chatwoot/chatwoot:v4.0.1-ce
+    image: chatwoot/chatwoot:${CHATWOOT_VERSION:-v4.0.1-ce}
     env_file: .env ## Change this file for customized env variables
     volumes:
       - ./data/storage:/app/storage
