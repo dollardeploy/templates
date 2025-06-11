@@ -1164,6 +1164,47 @@
     }
   },
   {
+    "id": "outline",
+    "name": "Outline",
+    "logo": "https://avatars.githubusercontent.com/u/1765001",
+    "intro": "Outline is a platform for building collaborative knowledge bases.",
+    "tags": [
+      "knowledge-base",
+      "collaboration",
+      "oss"
+    ],
+    "deployTime": "~5 minutes",
+    "description": "The fastest knowledge base for growing teams. Beautiful, realtime collaborative, feature packed, and markdown compatible. ",
+    "services": [
+      "docker"
+    ],
+    "requirements": {
+      "memory": 2048,
+      "cpu": 1,
+      "storage": 10
+    },
+    "app": {
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "outline",
+      "type": "docker-compose",
+      "dockerComposeFile": "compose.yml",
+      "env": {
+        "BASE_URL": "${APP_URL}",
+        "PORT": "3000",
+        "FILE_STORAGE": "local",
+        "FILE_STORAGE_UPLOAD_MAX_SIZE": 26214400,
+        "FILE_STORAGE_IMPORT_MAX_SIZE": 26214400,
+        "FILE_STORAGE_WORKSPACE_IMPORT_MAX_SIZE": 26214400,
+        "SMTP_HOST": "${SMTP_HOST:smtp.mailgun.org}",
+        "SMTP_PORT": "${SMTP_PORT:465}",
+        "SMTP_USERNAME": "${SMTP_USERNAME:mailgun}",
+        "SMTP_PASSWORD": "${SMTP_PASSWORD:mailgun123}",
+        "SMTP_FROM_EMAIL": "${SMTP_FROM_EMAIL:mailgun@example.com}",
+        "UTILS_SECRET": "${GENERATED_HASH}"
+      }
+    }
+  },
+  {
     "id": "plausible",
     "name": "Plausible CE",
     "logo": "https://raw.githubusercontent.com/plausible/community-edition/refs/heads/v2.1.1/images/logo_light.svg",
