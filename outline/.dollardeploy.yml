@@ -19,19 +19,26 @@ app:
   repositoryUrl: "https://github.com/dollardeploy/templates"
   sourcePath: outline
   type: docker-compose
-  dockerComposeFile: compose.yml
+  dockerComposeFile: docker-compose.yml
   env:
-    BASE_URL: "${APP_URL}"
+    URL: "${APP_URL}"
     PORT: "3000"
     FILE_STORAGE: local
     FILE_STORAGE_UPLOAD_MAX_SIZE: 26214400
     FILE_STORAGE_IMPORT_MAX_SIZE: 26214400
     FILE_STORAGE_WORKSPACE_IMPORT_MAX_SIZE: 26214400
-    SMTP_HOST: smtp.mailgun.org
-    SMTP_PORT: 465
-    SMTP_USERNAME: mailgun
-    SMTP_PASSWORD: mailgun123
-    SMTP_FROM_EMAIL: mailgun@example.com
-    UTILS_SECRET: "${GENERATED_HASH}"
+    SMTP_HOST: ""
+    SMTP_PORT: ""
+    SMTP_USERNAME: ""
+    SMTP_PASSWORD: ""
+    SMTP_FROM_EMAIL: ""
+    UTILS_SECRET: "${GENERATED_SECRET}"
+    SECRET_KEY: "${GENERATED_SECRET}"
+    GOOGLE_CLIENT_ID: ""
+    GOOGLE_CLIENT_SECRET: ""
+    IMAGE_TAG: "0.84.0"
+    PGSSLMODE: "disable"
+
+
 
 
