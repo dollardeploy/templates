@@ -1207,7 +1207,8 @@
         "IMAGE_TAG": "0.84.0",
         "PGSSLMODE": "disable"
       }
-    }
+    },
+    "postLaunchNote": "Remember to configure the SMTP settings and \nauthentication settings in the environment variables and redeploy after that.\nSee the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.\n"
   },
   {
     "id": "plausible",
