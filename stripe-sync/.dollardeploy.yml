@@ -1,0 +1,33 @@
+id: stripe-sync
+name: Stripe Sync
+logo: https://avatars.githubusercontent.com/u/54469796
+intro: "Sync your Stripe account to you Postgres database."
+tags:
+  - stripe
+  - internal
+  - postgres
+  - oss
+deployTime: ~1 minute
+description: >-
+  This template provides a Fastify-based server 
+  that exposes a /webhooks endpoint for Stripe, providing a ready-to-run service
+  for real-time Stripe-to-Postgres sync. Read more at 
+  https://github.com/supabase/stripe-sync-engine
+services:
+  - docker
+  - postgres
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+app:
+  repositoryUrl: "https://github.com/dollardeploy/templates"
+  sourcePath: stripe-sync
+  type: docker-compose
+  dockerComposeFile: docker-compose.yml
+  env:
+    DATABASE_URL: "${POSTGRES_URL}?schema=stripe&search_path=stripe"
+    PORT: "8080"
+    STRIPE_SECRET_KEY: "sk_test_dasddasdasdas"
+    STRIPE_WEBHOOK_SECRET: "whsec_dasdasdasdsa"
+    API_KEY: ${GENERATED_HASH}

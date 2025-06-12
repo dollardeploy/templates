@@ -22,7 +22,8 @@ requirements:
   storage: 20
 services:
   - docker
-postLaunchNote: Username is `Administrator` and password is in environment variable `ADMIN_PASSWORD`.
+postLaunchNote: |
+  Username is `Administrator` and password is `${ADMIN_PASSWORD}`.
 app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates/
