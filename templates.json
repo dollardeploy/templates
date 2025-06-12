@@ -1208,7 +1208,7 @@
         "PGSSLMODE": "disable"
       }
     },
-    "postLaunchNote": "Remember to configure the SMTP settings and \nauthentication settings in the environment variables and redeploy after that.\nSee the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.\n"
+    "postLaunchNote": "> Remember to configure the SMTP settings and \n> authentication settings in the environment variables and redeploy after that.\n> See the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.\n"
   },
   {
     "id": "plausible",
