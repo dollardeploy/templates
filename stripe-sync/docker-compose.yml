@@ -1,5 +1,5 @@
 services:
-  stripe-sync:
+  engine:
     image: supabase/stripe-sync-engine:${IMAGE_TAG:-v0.38.1}
     ports:
       - ${PORT:-8080}:8080
