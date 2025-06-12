@@ -38,7 +38,9 @@ app:
     GOOGLE_CLIENT_SECRET: ""
     IMAGE_TAG: "0.84.0"
     PGSSLMODE: "disable"
-
-
+postLaunchNote: |
+  Remember to configure the SMTP settings and 
+  authentication settings in the environment variables and redeploy after that.
+  See the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.
 
 
