@@ -1280,11 +1280,14 @@
       "type": "docker-compose",
       "dockerComposeFile": "docker-compose.yml",
       "env": {
-        "DATABASE_URL": "${POSTGRES_URL}?schema=stripe&search_path=stripe",
+        "DATABASE_URL": "${POSTGRES_URL}?schema=${POSTGRES_SCHEMA}&search_path=${POSTGRES_SCHEMA}",
         "PORT": "8080",
         "STRIPE_SECRET_KEY": "sk_test_dasddasdasdas",
         "STRIPE_WEBHOOK_SECRET": "whsec_dasdasdasdsa",
-        "API_KEY": "${GENERATED_HASH}"
+        "API_KEY": "${GENERATED_HASH}",
+        "POSTGRES_SCHEMA": "stripe",
+        "BACKFILL_RELATED_ENTITIES": true,
+        "MAX_POSTGRES_CONNECTIONS": 10
       }
     }
   },
