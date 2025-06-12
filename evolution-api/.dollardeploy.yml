@@ -1,10 +1,6 @@
 id: evolution-api
 name: Evolution API
-<<<<<<< Updated upstream
-intro: Evolution API is an open-source WhatsApp integration API
-=======
 intro: Evolution API is an open-source WhatsApp integration API (version ${IMAGE_TAG})
->>>>>>> Stashed changes
 logo: https://avatars.githubusercontent.com/u/136080052
 tags:
   - oss
