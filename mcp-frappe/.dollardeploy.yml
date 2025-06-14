@@ -22,7 +22,10 @@ requirements:
   storage: 10
 services:
   - docker
-postLaunchNote: The MCP server will be available at the provided URL with /sse endpoint. Make sure to configure FRAPPE_URL, FRAPPE_API_KEY, and FRAPPE_API_SECRET for proper Frappe server connectivity.
+postLaunchNote: |
+  The MCP server will be available at the provided URL with /sse endpoint.
+  Make sure to configure `FRAPPE_URL`, `FRAPPE_API_KEY`, and `FRAPPE_API_SECRET`
+  for proper Frappe server connectivity.
 app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates/
