@@ -1,0 +1,63 @@
+id: pterodactyl
+name: Pterodactyl
+intro: Open-source game server management panel built for performance, security, and extensibility using Docker containers.
+logo: https://pterodactyl.io/logos/pterry.svg
+tags:
+  - devops
+  - server-management
+  - gaming
+experimental: true
+requirements:
+  memory: 4096
+  cpu: 4
+  storage: 50
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/pterodactyl/panel
+  sourceBranch: main
+  sourcePath: .
+  dockerComposeFile: docker-compose.yml
+  preStartCmd: docker compose up -d
+  postStartCmd: echo "Pterodactyl panel is running at http://localhost"
+  env:
+    APP_URL: "${APP_URL}"
+    APP_TIMEZONE: "UTC"
+    APP_SERVICE_AUTHOR: "admin@localhost"
+    MYSQL_PASSWORD: "${GENERATED_PWD}"
+    MYSQL_ROOT_PASSWORD: "${GENERATED_PWD}"
+    MAIL_FROM: "noreply@localhost"
+    MAIL_DRIVER: "smtp"
+    MAIL_HOST: "mail"
+    MAIL_PORT: "1025"
+    MAIL_USERNAME: ""
+    MAIL_PASSWORD: ""
+    MAIL_ENCRYPTION: "true"
+files:
+  - path: .env
+    content: |
+      APP_ENV=production
+      APP_ENVIRONMENT_ONLY=false
+      APP_TIMEZONE=UTC
+      APP_SERVICE_AUTHOR=admin@localhost
+      DB_HOST=database
+      DB_PORT=3306
+      DB_PASSWORD=${GENERATED_PWD}
+      CACHE_DRIVER=redis
+      SESSION_DRIVER=redis
+      QUEUE_DRIVER=redis
+      REDIS_HOST=cache
+      MAIL_FROM=noreply@localhost
+      MAIL_DRIVER=smtp
+      MAIL_HOST=mail
+      MAIL_PORT=1025
+      MAIL_USERNAME=
+      MAIL_PASSWORD=
+      MAIL_ENCRYPTION=true
+services:
+  - docker
+  - redis
+deployTime: ~5 minutes
+description: |
+  Pterodactyl is a modern, secure, and scalable game server management platform. Built with PHP, React, and Go, it isolates each game server in its own Docker container to maximize security and stability. The web-based interface provides real-time WebSocket consoles, role-based user access, a robust API, and SFTP file management. Designed for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.
+postLaunchNote: |
+  Visit your panel at http://localhost. After initial launch, run the install CLI (`php artisan p:environment:setup`) inside the container to configure the database and environment. Follow the official documentation for Wings setup and production hardening.
