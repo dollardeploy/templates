@@ -9,6 +9,7 @@ services:
     ports:
       - "${PORT}:${PORT}"
       - "${MINECRAFT_PORT}:${MINECRAFT_PORT}"
+      - "${ADDITIONAL_PORTS:-}:${ADDITIONAL_PORTS:-}"
     network_mode: host
 volumes:
   mcdash:
