@@ -4,26 +4,26 @@ x-common:
     &db-environment
     # Do not remove the "&db-password" from the end of the line below, it is important
     # for Panel functionality.
-    MYSQL_PASSWORD: &db-password "CHANGE_ME"
-    MYSQL_ROOT_PASSWORD: "CHANGE_ME_TOO"
+    MYSQL_PASSWORD: &db-password "${MYSQL_PASSWORD}"
+    MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
   panel:
     &panel-environment
-    APP_URL: "http://example.com"
+    APP_URL: "${APP_URL}"
     # A list of valid timezones can be found here: http://php.net/manual/en/timezones.php
-    APP_TIMEZONE: "UTC"
-    APP_SERVICE_AUTHOR: "noreply@example.com"
+    APP_TIMEZONE: "${APP_TIMEZONE}"
+    APP_SERVICE_AUTHOR: "${APP_SERVICE_AUTHOR}"
     # Uncomment the line below and set to a non-empty value if you want to use Let's Encrypt
     # to generate an SSL certificate for the Panel.
     # LE_EMAIL: ""
   mail:
     &mail-environment
-    MAIL_FROM: "noreply@example.com"
-    MAIL_DRIVER: "smtp"
-    MAIL_HOST: "mail"
-    MAIL_PORT: "1025"
-    MAIL_USERNAME: ""
-    MAIL_PASSWORD: ""
-    MAIL_ENCRYPTION: "true"
+    MAIL_FROM: ${MAIL_FROM}
+    MAIL_DRIVER: ${MAIL_DRIVER}
+    MAIL_HOST: ${MAIL_HOST}
+    MAIL_PORT: ${MAIL_PORT}
+    MAIL_USERNAME: ${MAIL_USERNAME}
+    MAIL_PASSWORD: ${MAIL_PASSWORD}
+    MAIL_ENCRYPTION: ${MAIL_ENCRYPTION}
 
 #
 # ------------------------------------------------------------------------------------------
@@ -56,10 +56,10 @@ services:
       - database
       - cache
     volumes:
-      - "/srv/pterodactyl/var/:/app/var/"
-      - "/srv/pterodactyl/nginx/:/etc/nginx/http.d/"
-      - "/srv/pterodactyl/certs/:/etc/letsencrypt/"
-      - "/srv/pterodactyl/logs/:/app/storage/logs"
+      - "./var/:/app/var/"
+      - "./nginx/:/etc/nginx/http.d/"
+      - "./certs/:/etc/letsencrypt/"
+      - "./logs/:/app/storage/logs/"
     environment:
       <<: [*panel-environment, *mail-environment]
       DB_PASSWORD: *db-password
