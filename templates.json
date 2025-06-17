@@ -949,7 +949,8 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "PORT": "7865",
-        "MINECRAFT_PORT": "25565"
+        "MINECRAFT_PORT": "25565",
+        "ADDITIONAL_PORTS": "25566,25567"
       }
     },
     "services": [
