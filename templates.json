@@ -946,7 +946,11 @@
       "repositoryUrl": "https://github.com/dollardeploy/templates",
       "sourceBranch": "main",
       "sourcePath": "mcdash",
-      "dockerComposeFile": "docker-compose.yml"
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": "7865",
+        "MINECRAFT_PORT": "25565"
+      }
     },
     "services": [
       "docker"
