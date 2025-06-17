@@ -1275,7 +1275,7 @@
       "sourcePath": "pterodactyl",
       "dockerComposeFile": "docker-compose.yml",
       "env": {
-        "PORT": "${PORT}",
+        "PORT": "3000",
         "APP_TIMEZONE": "UTC",
         "APP_SERVICE_AUTHOR": "admin@localhost",
         "MYSQL_PASSWORD": "${GENERATED_PWD}",
