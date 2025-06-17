@@ -18,9 +18,6 @@ app:
   sourceBranch: main
   sourcePath: mcdash
   dockerComposeFile: docker-compose.yml
-  env:
-    PORT: "7865"
-    MINECRAFT_PORT: "25565"
 services:
   - docker
 deployTime: ~2 minutes
