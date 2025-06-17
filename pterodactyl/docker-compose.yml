@@ -50,8 +50,7 @@ services:
     image: ghcr.io/pterodactyl/panel:latest
     restart: always
     ports:
-      - "80:80"
-      - "443:443"
+      - "${PORT}:80"
     links:
       - database
       - cache
