@@ -1270,14 +1270,11 @@
     },
     "app": {
       "type": "docker-compose",
-      "repositoryUrl": "https://github.com/pterodactyl/panel",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
       "sourceBranch": "main",
-      "sourcePath": ".",
+      "sourcePath": "pterodactyl",
       "dockerComposeFile": "docker-compose.yml",
-      "preStartCmd": "docker compose up -d",
-      "postStartCmd": "echo \"Pterodactyl panel is running at http://localhost\"",
       "env": {
-        "APP_URL": "${APP_URL}",
         "APP_TIMEZONE": "UTC",
         "APP_SERVICE_AUTHOR": "admin@localhost",
         "MYSQL_PASSWORD": "${GENERATED_PWD}",
@@ -1291,19 +1288,11 @@
         "MAIL_ENCRYPTION": "true"
       }
     },
-    "files": [
-      {
-        "path": ".env",
-        "content": "APP_ENV=production\nAPP_ENVIRONMENT_ONLY=false\nAPP_TIMEZONE=UTC\nAPP_SERVICE_AUTHOR=admin@localhost\nDB_HOST=database\nDB_PORT=3306\nDB_PASSWORD=${GENERATED_PWD}\nCACHE_DRIVER=redis\nSESSION_DRIVER=redis\nQUEUE_DRIVER=redis\nREDIS_HOST=cache\nMAIL_FROM=noreply@localhost\nMAIL_DRIVER=smtp\nMAIL_HOST=mail\nMAIL_PORT=1025\nMAIL_USERNAME=\nMAIL_PASSWORD=\nMAIL_ENCRYPTION=true\n"
-      }
-    ],
     "services": [
-      "docker",
-      "redis"
+      "docker"
     ],
     "deployTime": "~5 minutes",
-    "description": "Pterodactyl is a modern, secure, and scalable game server management platform. Built with PHP, React, and Go, it isolates each game server in its own Docker container to maximize security and stability. The web-based interface provides real-time WebSocket consoles, role-based user access, a robust API, and SFTP file management. Designed for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.\n",
-    "postLaunchNote": "Visit your panel at http://localhost. After initial launch, run the install CLI (`php artisan p:environment:setup`) inside the container to configure the database and environment. Follow the official documentation for Wings setup and production hardening.\n"
+    "description": "Pterodactyl is a modern, secure, and scalable game server\nmanagement platform. Built with PHP, React, and Go, it\nisolates each game server in its own Docker container to maximize\nsecurity and stability. The web-based interface provides real-time\nWebSocket consoles, role-based user access, a robust API, and SFTP file management.\nDesigned for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.\n"
   },
   {
     "id": "stripe-sync",
