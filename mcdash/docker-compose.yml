@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  mcdash:
+    image: germannewsmaker/mcdash
+    container_name: MCDash
+    restart: unless-stopped
+    volumes:
+      - mcdash:/app/data
+    ports:
+      - "${PORT}:${PORT}"
+      - "${MINECRAFT_PORT}:${MINECRAFT_PORT}"
+volumes:
+  mcdash:

@@ -1,0 +1,32 @@
+id: mcdash
+name: MCDash
+intro: MCDash is a simple dashboard for your Minecraft server.
+logo: https://mcdash.gnm.dev/img/favicon.png
+tags:
+  - minecraft
+  - dashboard
+  - monitoring
+  - gaming
+experimental: true
+requirements:
+  memory: 4096
+  cpu: 3
+  storage: 50
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: mcdash
+  dockerComposeFile: docker-compose.yml
+  env:
+    PORT: "7865"
+    MINECRAFT_PORT: "25565"
+services:
+  - docker
+deployTime: ~2 minutes
+description: |
+  MCDash is a lightweight and user-friendly dashboard for Minecraft servers.
+  It provides real-time monitoring of your server's performance, player statistics,
+  and server status. With a clean and intuitive interface, you can easily track
+  server metrics, manage players, and monitor resource usage.
+  
