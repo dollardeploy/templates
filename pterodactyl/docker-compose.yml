@@ -37,8 +37,6 @@ services:
     image: mariadb:10.5
     restart: always
     command: --default-authentication-plugin=mysql_native_password
-    networks:
-      - local
     volumes:
       - "./database:/var/lib/mysql"
     environment:
@@ -48,14 +46,9 @@ services:
   cache:
     image: redis:alpine
     restart: always
-    networks:
-      - local
   panel:
     image: ghcr.io/pterodactyl/panel:latest
     restart: always
-    networks:
-      - pterodactyl
-      - local
     ports:
       - "${PORT}:80"
     links:
@@ -80,8 +73,3 @@ services:
       TRUSTED_PROXIES: "*"
       HASHIDS_SALT: "${HASHIDS_SALT}"
       HASHIDS_LENGTH: 8
-networks:
-  local:
-    external: false
-  pterodactyl:
-    external: true
