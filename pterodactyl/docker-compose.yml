@@ -37,8 +37,10 @@ services:
     image: mariadb:10.5
     restart: always
     command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - local
     volumes:
-      - "/srv/pterodactyl/database:/var/lib/mysql"
+      - "./database:/var/lib/mysql"
     environment:
       <<: *db-environment
       MYSQL_DATABASE: "panel"
@@ -46,9 +48,14 @@ services:
   cache:
     image: redis:alpine
     restart: always
+    networks:
+      - local
   panel:
     image: ghcr.io/pterodactyl/panel:latest
     restart: always
+    networks:
+      - pterodactyl
+      - local
     ports:
       - "${PORT}:80"
     links:
@@ -70,8 +77,9 @@ services:
       REDIS_HOST: "cache"
       DB_HOST: "database"
       DB_PORT: "3306"
+      TRUSTED_PROXIES: "*"
 networks:
-  default:
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
+  local:
+    external: false
+  pterodactyl:
+    external: true

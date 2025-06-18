@@ -8,9 +8,9 @@ tags:
   - gaming
 experimental: true
 requirements:
-  memory: 4096
-  cpu: 4
-  storage: 50
+  memory: 2048
+  cpu: 2
+  storage: 20
 app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates
@@ -36,9 +36,9 @@ services:
   - docker
 deployTime: ~5 minutes
 description: |
-  Pterodactyl is a modern, secure, and scalable game server
-  management platform. Built with PHP, React, and Go, it
-  isolates each game server in its own Docker container to maximize
-  security and stability. The web-based interface provides real-time
+  Pterodactyl is a modern, secure, and scalable game server anagement platform. 
+  Built with PHP, React, and Go, it isolates each game server in its own Docker container
+  to maximize security and stability. The web-based interface provides real-time
   WebSocket consoles, role-based user access, a robust API, and SFTP file management.
   Designed for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.
+  
