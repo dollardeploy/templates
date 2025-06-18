@@ -1321,7 +1321,8 @@
         "MAIL_PORT": "1025",
         "MAIL_USERNAME": "",
         "MAIL_PASSWORD": "",
-        "MAIL_ENCRYPTION": "true"
+        "MAIL_ENCRYPTION": "true",
+        "HASHIDS_SALT": "${GENERATED_PWD}${GENERATED_PWD}"
       }
     },
     "services": [
