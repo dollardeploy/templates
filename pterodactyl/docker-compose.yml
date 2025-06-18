@@ -78,6 +78,8 @@ services:
       DB_HOST: "database"
       DB_PORT: "3306"
       TRUSTED_PROXIES: "*"
+      HASHIDS_SALT: "${HASHIDS_SALT}"
+      HASHIDS_LENGTH: 8
 networks:
   local:
     external: false

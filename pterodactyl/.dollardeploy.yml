@@ -32,6 +32,7 @@ app:
     MAIL_USERNAME: ""
     MAIL_PASSWORD: ""
     MAIL_ENCRYPTION: "true"
+    HASHIDS_SALT: "${GENERATED_PWD}${GENERATED_PWD}"
 services:
   - docker
 deployTime: ~5 minutes
@@ -41,4 +42,3 @@ description: |
   to maximize security and stability. The web-based interface provides real-time
   WebSocket consoles, role-based user access, a robust API, and SFTP file management.
   Designed for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.
-  
