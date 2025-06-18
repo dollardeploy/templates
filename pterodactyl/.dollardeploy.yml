@@ -17,6 +17,7 @@ app:
   sourceBranch: main
   sourcePath: pterodactyl
   dockerComposeFile: docker-compose.yml
+  postStartCmd: source .env && docker compose exec panel php artisan p:user:make --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD} --admin=yes --username=admin --name-first=Test --name-last=Test || true
   env:
     PORT: "3000"
     APP_TIMEZONE: "UTC"
@@ -33,9 +34,12 @@ app:
     MAIL_PASSWORD: ""
     MAIL_ENCRYPTION: "true"
     HASHIDS_SALT: "${GENERATED_PWD}${GENERATED_PWD}"
+    ADMIN_EMAIL: "${USER_EMAIL}"
+    ADMIN_PASSWORD: "${GENERATED_PWD}"
 services:
   - docker
 deployTime: ~5 minutes
+postLaunchNote: Use admin and ${ADMIN_PASSWORD} to login.
 description: |
   Pterodactyl is a modern, secure, and scalable game server anagement platform. 
   Built with PHP, React, and Go, it isolates each game server in its own Docker container
