@@ -1332,7 +1332,7 @@
       "docker"
     ],
     "deployTime": "~5 minutes",
-    "postLaunchNote": "Use admin and ${ADMIN_PASSWORD} to login.",
+    "postLaunchNote": "Use username `admin` and password `${ADMIN_PASSWORD}` to login.",
     "description": "Pterodactyl is a modern, secure, and scalable game server anagement platform. \nBuilt with PHP, React, and Go, it isolates each game server in its own Docker container\nto maximize security and stability. The web-based interface provides real-time\nWebSocket consoles, role-based user access, a robust API, and SFTP file management.\nDesigned for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.\n"
   },
   {
