@@ -9,9 +9,9 @@ tags:
   - gaming
 experimental: true
 requirements:
-  memory: 4096
-  cpu: 3
-  storage: 50
+  memory: 2048
+  cpu: 2
+  storage: 20
 app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates
@@ -20,8 +20,6 @@ app:
   dockerComposeFile: docker-compose.yml
   env:
     PORT: "7865"
-    MINECRAFT_PORT: "25565"
-    ADDITIONAL_PORTS: "25566,25567"
 services:
   - docker
 deployTime: ~2 minutes

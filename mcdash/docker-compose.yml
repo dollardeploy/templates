@@ -7,9 +7,8 @@ services:
     volumes:
       - mcdash:/app/data
     ports:
-      - "${PORT}:${PORT}"
-      - "${MINECRAFT_PORT}:${MINECRAFT_PORT}"
-      - "${ADDITIONAL_PORTS:-}:${ADDITIONAL_PORTS:-}"
+      - "${PORT}:7865"
     network_mode: host
 volumes:
   mcdash:
+
