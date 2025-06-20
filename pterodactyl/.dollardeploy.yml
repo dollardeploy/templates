@@ -39,7 +39,7 @@ app:
 services:
   - docker
 deployTime: ~5 minutes
-postLaunchNote: Use admin and ${ADMIN_PASSWORD} to login.
+postLaunchNote: Use username `admin` and password `${ADMIN_PASSWORD}` to login.
 description: |
   Pterodactyl is a modern, secure, and scalable game server anagement platform. 
   Built with PHP, React, and Go, it isolates each game server in its own Docker container
