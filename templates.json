@@ -1292,10 +1292,9 @@
     "logo": "https://pterodactyl.io/logos/pterry.svg",
     "tags": [
       "devops",
-      "server-management",
-      "gaming"
+      "game-hosting",
+      "server-management"
     ],
-    "experimental": true,
     "requirements": {
       "memory": 2048,
       "cpu": 2,
