@@ -4,9 +4,8 @@ intro: Open-source game server management panel built for performance, security,
 logo: https://pterodactyl.io/logos/pterry.svg
 tags:
   - devops
+  - game-hosting
   - server-management
-  - gaming
-experimental: true
 requirements:
   memory: 2048
   cpu: 2
