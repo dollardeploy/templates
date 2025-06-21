@@ -1286,6 +1286,42 @@
     }
   },
   {
+    "id": "pterodactyl-wings",
+    "name": "Pterodactyl Wings",
+    "intro": "The Wings daemon is the core backend of the Pterodactyl game server panel.",
+    "logo": "https://pterodactyl.io/logos/pterry.svg",
+    "tags": [
+      "devops",
+      "game-hosting",
+      "wings",
+      "docker"
+    ],
+    "experimental": true,
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 20
+    },
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "pterodactyl-wings",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT_PANEL": "8080",
+        "PORT_SFTP": "2022",
+        "TZ": "UTC",
+        "WINGS_UID": "988",
+        "WINGS_GID": "988",
+        "WINGS_USERNAME": "pterodactyl"
+      },
+      "postStartCmd": "echo \"Wings daemon started. If you're using Pterodactyl Panel, make sure the node configuration points to port ${PORT_PANEL}.\"\n"
+    },
+    "postLaunchNote": "Wings has been deployed. Make sure your Panel connects to port `${PORT_PANEL}` and SFTP runs on `${PORT_SFTP}`.\nYou may configure node settings in the panel using the appropriate IP and port.\n",
+    "description": "Pterodactyl Wings is Pterodactyl's server control plane, built for the rapidly changing\ngaming industry and designed to be highly performant and secure. Wings provides\nan HTTP API allowing you to interface directly with running server instances,\nfetch server logs, generate backups, and control all aspects of the server lifecycle.\n"
+  },
+  {
     "id": "pterodactyl",
     "name": "Pterodactyl",
     "intro": "Open-source game server management panel built for performance, security, and extensibility using Docker containers.",
