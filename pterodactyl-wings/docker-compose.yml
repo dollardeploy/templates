@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  wings:
+    image: ghcr.io/pterodactyl/wings:latest
+    container_name: pterodactyl-wings
+    restart: unless-stopped
+    networks:
+      - wings0
+    ports:
+      - "${PORT_PANEL}:8080"
+      - "${PORT_SFTP}:2022"
+    tty: true
+    environment:
+      TZ: "${TZ}"
+      WINGS_UID: "${WINGS_UID}"
+      WINGS_GID: "${WINGS_GID}"
+      WINGS_USERNAME: "${WINGS_USERNAME}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers/:/var/lib/docker/containers/
+      - /etc/pterodactyl/:/etc/pterodactyl/
+      - /var/lib/pterodactyl/:/var/lib/pterodactyl/
+      - /var/log/pterodactyl/:/var/log/pterodactyl/
+      - /tmp/pterodactyl/:/tmp/pterodactyl/
+      - /etc/ssl/certs:/etc/ssl/certs:ro
+
+networks:
+  wings0:
+    name: wings0
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "172.21.0.0/16"
+    driver_opts:
+      com.docker.network.bridge.name: wings0
