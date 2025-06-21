@@ -19,7 +19,7 @@ app:
   dockerComposeFile: docker-compose.yml
   postStartCmd: ""
   env:
-    PORTAINER_PORT: "9000"
+    PORT: "9000"
     PORTAINER_AGENT_PORT: "8000"
 services:
   - docker

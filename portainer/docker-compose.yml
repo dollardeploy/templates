@@ -4,7 +4,7 @@ services:
     image: portainer/portainer-ce:latest
     container_name: portainer
     ports:
-      - "${PORTAINER_PORT}:${PORTAINER_PORT}"
+      - "${PORT}:9000"
       - "${PORTAINER_AGENT_PORT}:${PORTAINER_AGENT_PORT}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
