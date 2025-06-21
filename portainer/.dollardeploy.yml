@@ -1,0 +1,35 @@
+id: portainer
+name: Portainer CE
+intro: Portainer Community Edition is a lightweight, open-source platform for managing Docker, Kubernetes, and Swarm environments with a simple, intuitive web interface.
+logo: https://icon.icepanel.io/Technology/svg/Portainer.svg
+tags:
+  - devops
+  - docker-management
+  - container-orchestration
+experimental: true
+requirements:
+  memory: 512
+  cpu: 1
+  storage: 10
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: portainer
+  dockerComposeFile: docker-compose.yml
+  postStartCmd: ""
+  env:
+    PORTAINER_PORT: "9000"
+    PORTAINER_AGENT_PORT: "8000"
+services:
+  - docker
+deployTime: ~2 minutes
+postLaunchNote: Access Portainer at http://<your-server-ip>:${PORTAINER_PORT} and follow the setup wizard to create an admin user.
+description: |
+  Portainer Community Edition is a universal container management platform that
+  simplifies the deployment, configuration, and monitoring of containerized applications
+  across Docker, Kubernetes, Swarm, and Nomad environments. With its intuitive web-based interface,
+  Portainer enables users to manage containers, images, networks, and volumes effortlessly,
+  making it ideal for both beginners and experienced DevOps teams. It supports hybrid and
+  multi-cloud setups, edge, and Industrial IoT use cases, providing a centralized,
+  secure solution for container orchestration.
