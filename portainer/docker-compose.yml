@@ -5,7 +5,7 @@ services:
     container_name: portainer
     ports:
       - "${PORTAINER_PORT}:${PORTAINER_PORT}"
-      - "${PORTAINER_AGENT_PORT:}:${PORTAINER_AGENT_PORT}"
+      - "${PORTAINER_AGENT_PORT}:${PORTAINER_AGENT_PORT}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
