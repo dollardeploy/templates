@@ -33,6 +33,28 @@ x-common:
 # below if you understand what you are doing.
 #
 services:
+  wings:
+    image: ghcr.io/pterodactyl/wings:latest
+    restart: always
+    networks:
+      - ptero0
+    # These are the ports exposed by Wings, I don't recommend changing them.
+    ports:
+      - "${WINGS_HTTPS_PORT}:443"
+      - "${WINGS_TUNNEL_PORT}:2022"
+    tty: true
+    environment:
+      TZ: "${TZ}"
+      WINGS_UID: "${WINGS_UID}"
+      WINGS_GID: "${WINGS_GID}"
+      WINGS_USERNAME: "${WINGS_USERNAME}"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/lib/docker/containers:/var/lib/docker/containers"
+      - "/opt/pterodactyl/wings/config:/etc/pterodactyl"
+      - "/var/lib/pterodactyl:/var/lib/pterodactyl"
+      - "/var/log/pterodactyl:/var/log/pterodactyl"
+      - "/tmp/pterodactyl/:/tmp/pterodactyl/"
   database:
     image: mariadb:10.5
     restart: always

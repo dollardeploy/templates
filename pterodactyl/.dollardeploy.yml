@@ -16,11 +16,12 @@ app:
   sourceBranch: main
   sourcePath: pterodactyl
   dockerComposeFile: docker-compose.yml
-  postStartCmd: source .env && docker compose exec panel php artisan p:user:make --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD} --admin=1 --username=admin --name-first=Test --name-last=Test || true
+  postStartCmd: source .env && docker compose exec panel php artisan p:user:make --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD} --admin=1 --username=${ADMIN_USERNAME} --name-first=Test --name-last=Test || true
   env:
-    PORT: "3000"
+    PORT: "802"
     APP_TIMEZONE: "UTC"
     APP_SERVICE_AUTHOR: "admin@localhost"
+    HASHIDS_SALT: "${GENERATED_PWD}${GENERATED_PWD}"
     # MySQL section
     MYSQL_PASSWORD: "${GENERATED_PWD}"
     MYSQL_ROOT_PASSWORD: "${GENERATED_PWD}"
@@ -32,9 +33,19 @@ app:
     MAIL_USERNAME: ""
     MAIL_PASSWORD: ""
     MAIL_ENCRYPTION: "true"
-    HASHIDS_SALT: "${GENERATED_PWD}${GENERATED_PWD}"
+    # Credentials
     ADMIN_EMAIL: "${USER_EMAIL}"
+    ADMIN_USERNAME: "admin"
     ADMIN_PASSWORD: "${GENERATED_PWD}"
+    # Wings
+    PORT_PANEL: "8080"
+    PORT_SFTP: "2022"
+    TZ: "${APP_TIMEZONE}"
+    WINGS_UID: "988"
+    WINGS_GID: "988"
+    WINGS_USERNAME: "${ADMIN_USERNAME}"
+    WINGS_HTTPS_PORT: "8443"
+    WINGS_TUNNEL_PORT: "2022"
 services:
   - docker
 deployTime: ~5 minutes
