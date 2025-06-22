@@ -43,7 +43,7 @@ services:
       - "${PORT_SFTP}:2022"
     tty: true
     environment:
-      TZ: "${TZ}"
+      TZ: "${APP_TIMEZONE}"
       WINGS_UID: "${WINGS_UID}"
       WINGS_GID: "${WINGS_GID}"
       WINGS_USERNAME: "${WINGS_USERNAME}"
