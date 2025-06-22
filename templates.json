@@ -1399,9 +1399,7 @@
         "TZ": "${APP_TIMEZONE}",
         "WINGS_UID": "988",
         "WINGS_GID": "988",
-        "WINGS_USERNAME": "${ADMIN_USERNAME}",
-        "WINGS_HTTPS_PORT": "8443",
-        "WINGS_TUNNEL_PORT": "2022"
+        "WINGS_USERNAME": "admin"
       }
     },
     "services": [
