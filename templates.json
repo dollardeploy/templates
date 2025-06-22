@@ -1378,6 +1378,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "postStartCmd": "source .env && docker compose exec panel php artisan p:user:make --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD} --admin=1 --username=${ADMIN_USERNAME} --name-first=Test --name-last=Test || true",
       "env": {
+        "PORT": "3000",
         "APP_TIMEZONE": "UTC",
         "APP_SERVICE_AUTHOR": "admin@localhost",
         "HASHIDS_SALT": "${GENERATED_PWD}${GENERATED_PWD}",
@@ -1393,9 +1394,8 @@
         "ADMIN_EMAIL": "${USER_EMAIL}",
         "ADMIN_USERNAME": "admin",
         "ADMIN_PASSWORD": "${GENERATED_PWD}",
-        "PORT": "8080",
+        "PORT_WINGS": "8080",
         "PORT_SFTP": "2022",
-        "TZ": "${APP_TIMEZONE}",
         "WINGS_UID": "${USER_UID}",
         "WINGS_GID": "${USER_GID}",
         "WINGS_USERNAME": "admin"
@@ -1405,7 +1405,7 @@
       "docker"
     ],
     "deployTime": "~5 minutes",
-    "postLaunchNote": "Use username `admin` and password `${ADMIN_PASSWORD}` to login.",
+    "postLaunchNote": "Use username `${ADMIN_USERNAME}` and password `${ADMIN_PASSWORD}` to login.",
     "description": "Pterodactyl is a modern, secure, and scalable game server anagement platform. \nBuilt with PHP, React, and Go, it isolates each game server in its own Docker container\nto maximize security and stability. The web-based interface provides real-time\nWebSocket consoles, role-based user access, a robust API, and SFTP file management.\nDesigned for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.\n"
   },
   {
