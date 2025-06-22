@@ -39,8 +39,8 @@ services:
     networks:
       - ptero0
     ports:
-      - "${WINGS_HTTPS_PORT}:443"
-      - "${WINGS_TUNNEL_PORT}:2022"
+      - "${PORT_PANEL}:443"
+      - "${PORT_SFTP}:2022"
     tty: true
     environment:
       TZ: "${TZ}"
