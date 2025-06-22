@@ -1309,7 +1309,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "postStartCmd": "",
       "env": {
-        "PORT": "9443",
+        "PORT": "9000",
         "PORTAINER_AGENT_PORT": "8000"
       }
     },
