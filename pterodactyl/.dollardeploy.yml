@@ -41,8 +41,8 @@ app:
     PORT_PANEL: "8080"
     PORT_SFTP: "2022"
     TZ: "${APP_TIMEZONE}"
-    WINGS_UID: "988"
-    WINGS_GID: "988"
+    WINGS_UID: "0"
+    WINGS_GID: "0"
     WINGS_USERNAME: "admin"
 services:
   - docker
