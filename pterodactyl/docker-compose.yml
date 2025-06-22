@@ -38,7 +38,6 @@ services:
     restart: always
     networks:
       - ptero0
-    # These are the ports exposed by Wings, I don't recommend changing them.
     ports:
       - "${WINGS_HTTPS_PORT}:443"
       - "${WINGS_TUNNEL_PORT}:2022"
@@ -96,3 +95,12 @@ services:
       HASHIDS_SALT: "${HASHIDS_SALT}"
       HASHIDS_LENGTH: 8
       PTERODACTYL_TELEMETRY_ENABLED: false
+
+networks:
+  ptero0:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "172.21.0.0/16"
+    driver_opts:
+      com.docker.network.bridge.name: ptero0
