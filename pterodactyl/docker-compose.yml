@@ -39,7 +39,7 @@ services:
     networks:
       - ptero0
     ports:
-      - "${PORT_PANEL}:8080"
+      - "${PORT_WINGS:-8080}:8080"
       - "${PORT_SFTP}:2022"
     tty: true
     environment:
@@ -95,7 +95,6 @@ services:
       HASHIDS_SALT: "${HASHIDS_SALT}"
       HASHIDS_LENGTH: 8
       PTERODACTYL_TELEMETRY_ENABLED: false
-
 networks:
   ptero0:
     driver: bridge
