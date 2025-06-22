@@ -1317,7 +1317,6 @@
       "docker"
     ],
     "deployTime": "~2 minutes",
-    "postLaunchNote": "Access Portainer at http://<your-server-ip>:${PORTAINER_PORT} and follow the setup wizard to create an admin user.",
     "description": "Portainer Community Edition is a universal container management platform that\nsimplifies the deployment, configuration, and monitoring of containerized applications\nacross Docker, Kubernetes, Swarm, and Nomad environments. With its intuitive web-based interface,\nPortainer enables users to manage containers, images, networks, and volumes effortlessly,\nmaking it ideal for both beginners and experienced DevOps teams. It supports hybrid and\nmulti-cloud setups, edge, and Industrial IoT use cases, providing a centralized,\nsecure solution for container orchestration.\n"
   },
   {
