@@ -37,7 +37,7 @@ services:
     image: ghcr.io/pterodactyl/wings:latest
     restart: always
     networks:
-      - pterodactyl1
+      - pterodactyl0
     ports:
       - "${PORT_WINGS:-8080}:8080"
       - "${PORT_SFTP}:2022"
@@ -49,6 +49,7 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/var/lib/docker/containers:/var/lib/docker/containers"
+      - "/etc/letsencrypt:/etc/letsencrypt"
       - "./wings/config:/etc/pterodactyl"
       - "./var:/var/lib/pterodactyl"
       - "./logs:/var/log/pterodactyl"
@@ -58,7 +59,7 @@ services:
     restart: always
     command: --default-authentication-plugin=mysql_native_password
     networks:
-      - pterodactyl1
+      - pterodactyl0
     volumes:
       - "./database:/var/lib/mysql"
     environment:
@@ -69,14 +70,14 @@ services:
     image: redis:alpine
     restart: always
     networks:
-      - pterodactyl1
+      - pterodactyl0
   panel:
     image: ghcr.io/pterodactyl/panel:latest
     restart: always
     ports:
       - "${PORT}:80"
     networks:
-      - pterodactyl1
+      - pterodactyl0
     links:
       - database
       - cache
@@ -101,7 +102,7 @@ services:
       HASHIDS_LENGTH: 8
       PTERODACTYL_TELEMETRY_ENABLED: false
 networks:
-  pterodactyl1:
+  pterodactyl0:
     driver: bridge
     ipam:
       config:
