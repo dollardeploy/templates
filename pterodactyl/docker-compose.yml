@@ -37,7 +37,7 @@ services:
     image: ghcr.io/pterodactyl/wings:latest
     restart: always
     networks:
-      - ptero0
+      - pterodactyl0
     ports:
       - "${PORT_WINGS:-8080}:8080"
       - "${PORT_SFTP}:2022"
@@ -95,7 +95,7 @@ services:
       HASHIDS_LENGTH: 8
       PTERODACTYL_TELEMETRY_ENABLED: false
 networks:
-  ptero0:
+  pterodactyl0:
     driver: bridge
     ipam:
       config:
