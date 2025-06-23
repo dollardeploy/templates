@@ -15,4 +15,4 @@ ENV FB_TOKEN=dummy_facebook_access_token
 
 # Command to run the MCP server. 
 # The Facebook token must be provided via --fb-token argument.
-CMD ["sh", "-c", "/root/.local/bin/mcp-proxy --sse-host=0.0.0.0 --sse-port=8096 --allow-origin=* --pass-environment python server.py -- --fb-token $FB_TOKEN"]
+CMD ["sh", "-c", "/root/.local/bin/mcp-proxy --host=0.0.0.0 --port=8096 --allow-origin=* --pass-environment python server.py -- --fb-token $FB_TOKEN"]
