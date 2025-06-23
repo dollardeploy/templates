@@ -41,6 +41,7 @@ services:
     ports:
       - "${PORT_WINGS:-8080}:8080"
       - "${PORT_SFTP}:2022"
+    user: "$USER_UID:$USER_GID"
     environment:
       TZ: "${APP_TIMEZONE}"
       WINGS_UID: "${USER_UID}"
@@ -71,6 +72,7 @@ services:
     restart: always
     ports:
       - "${PORT}:80"
+    user: "$USER_UID:$USER_GID"
     links:
       - database
       - cache
