@@ -1449,8 +1449,6 @@
         "ADMIN_PASSWORD": "${GENERATED_PWD}",
         "PORT_WINGS": "8080",
         "PORT_SFTP": "2022",
-        "WINGS_UID": "${USER_UID}",
-        "WINGS_GID": "${USER_GID}",
         "WINGS_USERNAME": "admin"
       }
     },
