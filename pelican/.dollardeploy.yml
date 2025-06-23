@@ -1,0 +1,65 @@
+id: pelican
+name: Pelican
+intro: Pelican is the ultimate, free game server control panel offering high flying security.
+logo: https://pelican.dev/img/logo.png
+tags:
+  - devops
+  - game-hosting
+  - server-management
+experimental: true
+requirements:
+  memory: 2048
+  cpu: 2
+  storage: 20
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: pelican
+  dockerComposeFile: docker-compose.yml
+  postStartCmd: |
+    source .env
+    docker compose exec panel php artisan key:generate --force || true
+    docker compose exec panel php artisan migrate --force || true
+    docker compose exec panel php artisan config:cache || true
+    docker compose exec panel php artisan p:user:make --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD} --admin=1 --username=${ADMIN_USERNAME} --name-first=Test --name-last=Test || true
+  env:
+    PORT: "3000"
+    APP_TIMEZONE: "UTC"
+    APP_SERVICE_AUTHOR: "admin@localhost"
+    HASHIDS_SALT: "${GENERATED_PWD}${GENERATED_PWD}"
+    # MySQL section
+    MYSQL_PASSWORD: "${GENERATED_PWD}"
+    MYSQL_ROOT_PASSWORD: "${GENERATED_PWD}"
+    # Mail section
+    MAIL_FROM: "noreply@localhost"
+    MAIL_DRIVER: "smtp"
+    MAIL_HOST: "mail"
+    MAIL_PORT: "1025"
+    MAIL_USERNAME: ""
+    MAIL_PASSWORD: ""
+    # MAIL_ENCRYPTION: "true"
+    # Credentials
+    ADMIN_EMAIL: "${USER_EMAIL}"
+    ADMIN_USERNAME: "admin"
+    ADMIN_PASSWORD: "${GENERATED_PWD}"
+    # Wings
+    PORT_WINGS: "8080"
+    PORT_SFTP: "2022"
+    WINGS_UID: ${USER_UID}
+    WINGS_GID: ${USER_GID}
+    WINGS_USERNAME: "admin"
+services:
+  - docker
+deployTime: ~5 minutes
+postLaunchNote: Use username `${ADMIN_USERNAME}` and password `${ADMIN_PASSWORD}` to login.
+description: |
+  From prehistoric to peak performance: Pelican takes flight! Pelican is the ultimate,
+  free game server control panel offering high flying security. It's a breeze to manage
+  your servers with our sleek and user-friendly interface. Thanks to Docker, every server
+  runs in its own safe space. Pelican is 100% free and open source—forever—for you,
+  your friends, family, and community. We support Minecraft, Terraria, Palworld, Valheim,
+  Factorio, and so much more. Whether you're just playing with friends or running a gaming
+  community, Pelican scales to the sky. Security is built in, with SSL, 2FA, AES-256
+  encryption, and more. One click installs, automatic updates, and an active community
+  make Pelican the best way to host your game servers.
