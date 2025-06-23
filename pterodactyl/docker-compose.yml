@@ -43,8 +43,8 @@ services:
       - "${PORT_SFTP}:2022"
     environment:
       TZ: "${APP_TIMEZONE}"
-      WINGS_UID: "${WINGS_UID}"
-      WINGS_GID: "${WINGS_GID}"
+      WINGS_UID: "${USER_UID}"
+      WINGS_GID: "${USER_GID}"
       WINGS_USERNAME: "${WINGS_USERNAME}"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
