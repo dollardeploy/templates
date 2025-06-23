@@ -41,11 +41,10 @@ services:
     ports:
       - "${PORT_WINGS:-8080}:8080"
       - "${PORT_SFTP}:2022"
-    user: "$USER_UID:$USER_GID"
     environment:
       TZ: "${APP_TIMEZONE}"
-      WINGS_UID: "${USER_UID}"
-      WINGS_GID: "${USER_GID}"
+      WINGS_UID: "0"
+      WINGS_GID: "0"
       WINGS_USERNAME: "${WINGS_USERNAME}"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
@@ -58,6 +57,8 @@ services:
     image: mariadb:10.5
     restart: always
     command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - pterodactyl0
     volumes:
       - "./database:/var/lib/mysql"
     environment:
@@ -67,12 +68,15 @@ services:
   cache:
     image: redis:alpine
     restart: always
+    networks:
+      - pterodactyl0
   panel:
     image: ghcr.io/pterodactyl/panel:latest
     restart: always
     ports:
       - "${PORT}:80"
-    user: "$USER_UID:$USER_GID"
+    networks:
+      - pterodactyl0
     links:
       - database
       - cache
@@ -103,4 +107,4 @@ networks:
       config:
         - subnet: "172.21.0.0/16"
     driver_opts:
-      com.docker.network.bridge.name: ptero0
+      com.docker.network.bridge.name: pterodactyl1
