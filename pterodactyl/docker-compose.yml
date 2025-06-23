@@ -41,7 +41,6 @@ services:
     ports:
       - "${PORT_WINGS:-8080}:8080"
       - "${PORT_SFTP}:2022"
-    tty: true
     environment:
       TZ: "${APP_TIMEZONE}"
       WINGS_UID: "${WINGS_UID}"
@@ -50,10 +49,10 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/var/lib/docker/containers:/var/lib/docker/containers"
-      - "/opt/pterodactyl/wings/config:/etc/pterodactyl"
-      - "/var/lib/pterodactyl:/var/lib/pterodactyl"
-      - "/var/log/pterodactyl:/var/log/pterodactyl"
-      - "/tmp/pterodactyl/:/tmp/pterodactyl/"
+      - "./wings/config:/etc/pterodactyl"
+      - "./var:/var/lib/pterodactyl"
+      - "./logs:/var/log/pterodactyl"
+      - "./tmp:/tmp/pterodactyl/"
   database:
     image: mariadb:10.5
     restart: always
