@@ -15,8 +15,9 @@ services:
             FRONTEND_URL: ${FRONTEND_URL:-$SERVER_URL}
             REDIS_URL: redis://redis:6379
 
-            ENABLE_DB_MIGRATIONS: 'true'
-            DISABLE_DB_MIGRATIONS: 'false'
+            ENABLE_DB_MIGRATIONS: "true"
+            DISABLE_DB_MIGRATIONS: "false"
+            DISABLE_CRON_JOBS_REGISTRATION: "${DISABLE_CRON_JOBS_REGISTRATION:false}"
 
             SIGN_IN_PREFILLED: ${SIGN_IN_PREFILLED}
             STORAGE_TYPE: ${STORAGE_TYPE}
@@ -32,7 +33,7 @@ services:
             test: curl --fail http://localhost:3000/healthz
             interval: 5s
             timeout: 10s
-            retries: 15
+            retries: 20
         restart: always
 
     worker:
@@ -48,7 +49,9 @@ services:
             FRONT_BASE_URL: ${FRONT_BASE_URL:-$SERVER_URL}
             REDIS_URL: redis://redis:6379
 
-            ENABLE_DB_MIGRATIONS: 'false' # it already runs on the server
+            ENABLE_DB_MIGRATIONS: "false"
+            DISABLE_DB_MIGRATIONS: "true"
+            DISABLE_CRON_JOBS_REGISTRATION: "true"
 
             STORAGE_TYPE: ${STORAGE_TYPE}
             STORAGE_S3_REGION: ${STORAGE_S3_REGION}
