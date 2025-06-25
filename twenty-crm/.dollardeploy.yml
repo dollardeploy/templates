@@ -1,6 +1,6 @@
 id: twenty-crm
 name: Twenty CRM
-intro: "The #1 Open-Source CRM"
+intro: "The #1 Open-Source CRM ${TAG}"
 logo: https://github.com/twentyhq/twenty/raw/main/packages/twenty-website/public/images/core/logo.svg
 tags:
   - crm
@@ -26,12 +26,12 @@ app:
     APP_SECRET: ${GENERATED_HASH}
     SERVER_URL: ${APP_URL}
     PGPASSWORD_SUPERUSER: ${GENERATED_PWD}
-    TAG: v0.52.11
+    TAG: v1.0.0
     STORAGE_TYPE: local
     PORT: 3000
     PG_DATABASE_HOST: db
     SIGN_IN_PREFILLED: true
-    DOCKER_COMPOSE_WAIT_TIMEOUT: 200
+    DOCKER_COMPOSE_WAIT_TIMEOUT: 300
     IS_CONFIG_VARIABLES_IN_DB_ENABLED: true
     # This is for new deployed from a template, a correct path in PG container
     PGDATA_DIR: /var/lib/postgresql/data
