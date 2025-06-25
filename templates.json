@@ -1564,7 +1564,8 @@
         "SIGN_IN_PREFILLED": true,
         "DOCKER_COMPOSE_WAIT_TIMEOUT": 200,
         "IS_CONFIG_VARIABLES_IN_DB_ENABLED": true,
-        "PGDATA_DIR": "/var/lib/postgresql/data"
+        "PGDATA_DIR": "/var/lib/postgresql/data",
+        "PG_DATABASE_NAME": "default"
       },
       "preStartCmd": "bash ./fixdocker.sh",
       "backupCmd": "docker compose exec db pg_dumpall -U postgres > databases_backup.sql",
