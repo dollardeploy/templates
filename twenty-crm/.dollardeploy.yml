@@ -35,6 +35,8 @@ app:
     IS_CONFIG_VARIABLES_IN_DB_ENABLED: true
     # This is for new deployed from a template, a correct path in PG container
     PGDATA_DIR: /var/lib/postgresql/data
+    # This is also for new templates, needed for v0.60+ and v1.0.0.
+    PG_DATABASE_NAME: default
   preStartCmd: bash ./fixdocker.sh
   backupCmd: docker compose exec db pg_dumpall -U postgres > databases_backup.sql
   files:

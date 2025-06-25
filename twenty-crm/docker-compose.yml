@@ -16,8 +16,7 @@ services:
         environment:
             PORT: 3000
             NODE_PORT: 3000
-            PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/postgres
-            PG_SSL_ALLOW_SELF_SIGNED: "true"
+            PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/${PG_DATABASE_NAME:-postgres}
             SERVER_URL: ${SERVER_URL}
             FRONT_BASE_URL: ${FRONT_BASE_URL:-$SERVER_URL}
             FRONTEND_URL: ${FRONTEND_URL:-$SERVER_URL}
@@ -25,8 +24,8 @@ services:
 
             ENABLE_DB_MIGRATIONS: "true"
             # We will run this ourselves
-            DISABLE_DB_MIGRATIONS: "true"
-            DISABLE_CRON_JOBS_REGISTRATION: "true"
+            DISABLE_DB_MIGRATIONS: "false"
+            DISABLE_CRON_JOBS_REGISTRATION: "false"
             IS_CONFIG_VARIABLES_IN_DB_ENABLED: "${IS_CONFIG_VARIABLES_IN_DB_ENABLED:-true}"
 
             SIGN_IN_PREFILLED: ${SIGN_IN_PREFILLED}
@@ -54,8 +53,7 @@ services:
             - ./data/local:/app/packages/twenty-server/${STORAGE_LOCAL_PATH:-.local-storage}
             - ./data/tmp:/app/docker-data
         environment:
-            PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/postgres
-            PG_SSL_ALLOW_SELF_SIGNED: "true"
+            PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/${PG_DATABASE_NAME:-postgres}
             SERVER_URL: ${SERVER_URL}
             FRONT_BASE_URL: ${FRONT_BASE_URL:-$SERVER_URL}
             REDIS_URL: redis://redis:6379
@@ -82,7 +80,6 @@ services:
         image: postgres:16
         volumes:
             - ./data/db:${PGDATA_DIR:-/home/postgres/pgdata}
-            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
         environment:
             POSTGRES_USER: ${PGUSER_SUPERUSER:-postgres}
             POSTGRES_PASSWORD: ${PGPASSWORD_SUPERUSER:-postgres}
