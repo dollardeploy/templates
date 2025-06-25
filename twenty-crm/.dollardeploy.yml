@@ -31,6 +31,8 @@ app:
     PORT: 3000
     PG_DATABASE_HOST: db
     SIGN_IN_PREFILLED: true
+    DISABLE_CRON_JOBS_REGISTRATION: false
+    DOCKER_COMPOSE_WAIT_TIMEOUT: 200
     # This is for new deployed from a template, a correct path in PG container
     PGDATA_DIR: /var/lib/postgresql/data
   preStartCmd: bash ./fixdocker.sh
