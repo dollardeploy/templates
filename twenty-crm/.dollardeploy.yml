@@ -10,7 +10,11 @@ tags:
   - popular
 deployTime: ~3 minutes
 description: |
-  The #1 Open-Source CRM Modern, powerful, affordable platform to manage your customer relationships. Version 0.52.9. https://twenty.com/releases
+  The #1 Open-Source CRM Modern, powerful, affordable platform to manage your
+  customer relationships.
+  Version ${TAG}.
+  Check the releases notes at https://twenty.com/releases
+  For upgrading, see the [self-hosted upgrade guide](https://twenty.com/developers/section/self-hosting/upgrade-guide).
 requirements:
   memory: 2048
   cpu: 2
