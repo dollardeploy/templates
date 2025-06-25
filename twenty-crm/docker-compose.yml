@@ -8,20 +8,25 @@ services:
             - '127.0.0.1:$PORT:3000'
         env_file: ".env"
         command: |
-            yarn run database:migrate:prod
-            yarn run start:prod
+            yarn database:migrate:prod || exit 1
+            yarn command:prod upgrade || exit 1
+            yarn start:prod || exit 1
+            yarn command:prod cron:register:all || exit 1
+        entrypoint: "sh -c"
         environment:
             PORT: 3000
             NODE_PORT: 3000
             PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/postgres
+            PG_SSL_ALLOW_SELF_SIGNED: "true"
             SERVER_URL: ${SERVER_URL}
             FRONT_BASE_URL: ${FRONT_BASE_URL:-$SERVER_URL}
             FRONTEND_URL: ${FRONTEND_URL:-$SERVER_URL}
             REDIS_URL: redis://redis:6379
 
             ENABLE_DB_MIGRATIONS: "true"
-            DISABLE_DB_MIGRATIONS: "false"
-            DISABLE_CRON_JOBS_REGISTRATION: "${DISABLE_CRON_JOBS_REGISTRATION:-false}"
+            # We will run this ourselves
+            DISABLE_DB_MIGRATIONS: "true"
+            DISABLE_CRON_JOBS_REGISTRATION: "true"
             IS_CONFIG_VARIABLES_IN_DB_ENABLED: "${IS_CONFIG_VARIABLES_IN_DB_ENABLED:-true}"
 
             SIGN_IN_PREFILLED: ${SIGN_IN_PREFILLED}
@@ -50,6 +55,7 @@ services:
             - ./data/tmp:/app/docker-data
         environment:
             PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/postgres
+            PG_SSL_ALLOW_SELF_SIGNED: "true"
             SERVER_URL: ${SERVER_URL}
             FRONT_BASE_URL: ${FRONT_BASE_URL:-$SERVER_URL}
             REDIS_URL: redis://redis:6379
