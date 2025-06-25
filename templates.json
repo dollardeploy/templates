@@ -1562,7 +1562,6 @@
         "PORT": 3000,
         "PG_DATABASE_HOST": "db",
         "SIGN_IN_PREFILLED": true,
-        "DISABLE_CRON_JOBS_REGISTRATION": false,
         "DOCKER_COMPOSE_WAIT_TIMEOUT": 200,
         "IS_CONFIG_VARIABLES_IN_DB_ENABLED": true,
         "PGDATA_DIR": "/var/lib/postgresql/data"
