@@ -22,7 +22,7 @@ services:
       mail__options__auth__user: ${MAIL_USERNAME:-username}
       mail__options__auth__pass: ${MAIL_PASSWORD:-password}
       mail__options__secure_connection: ${MAIL_SECURE:-false}
-      bulkEmail__batchSize: 5
+      bulkEmail__batchSize: ${BULK_EMAIL_BATCH:-5}
       # this url value is just an example, and is likely wrong for your environment!
       url: ${SERVER_URL}
     volumes:
