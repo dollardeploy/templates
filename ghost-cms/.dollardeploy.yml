@@ -34,4 +34,4 @@ app:
     MAIL_USERNAME: username
     MAIL_PASSWORD: password
     MAIL_SECURE: false
-
+    BULK_EMAIL_BATCH: 5
