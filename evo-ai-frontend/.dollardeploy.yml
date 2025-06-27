@@ -11,7 +11,8 @@ tags:
   - ai-agent
 app:
   type: next
-  repositoryUrl: https://github.com/EvolutionAPI/evo-ai-frontend
+  repositoryUrl: https://github.com/EvolutionAPI/evo-ai
+  sourcePath: frontend
   env:
     PORT: 3005
     API_URL: https://api.example.com
