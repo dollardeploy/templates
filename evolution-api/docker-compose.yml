@@ -1,6 +1,5 @@
 services:
   api:
-    container_name: evolution_api
     image: evoapicloud/evolution-api:${IMAGE_TAG:-v2.3.0}
     restart: always
     depends_on:
@@ -21,7 +20,6 @@ services:
     image: redis:latest
     networks:
       - evolution-net
-    container_name: redis
     command: >
       redis-server --port 6379 --appendonly yes
     volumes:
@@ -30,7 +28,6 @@ services:
       - 6379
 
   postgres:
-    container_name: postgres
     image: postgres:15
     networks:
       - evolution-net
