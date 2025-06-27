@@ -9,8 +9,6 @@ services:
       - ${PORT}:${PORT}
     volumes:
       - evolution_instances:/evolution/instances
-    networks:
-      - evolution-net
     env_file:
       - .env
     expose:
@@ -18,8 +16,6 @@ services:
 
   redis:
     image: redis:latest
-    networks:
-      - evolution-net
     command: >
       redis-server --port 6379 --appendonly yes
     volumes:
@@ -29,8 +25,6 @@ services:
 
   postgres:
     image: postgres:15
-    networks:
-      - evolution-net
     command: ["postgres", "-c", "max_connections=1000", "-c", "listen_addresses=*"]
     restart: always
     environment:
@@ -48,7 +42,3 @@ volumes:
   evolution_redis:
   postgres_data:
 
-networks:
-  evolution-net:
-    name: evolution-net
-    driver: bridge
