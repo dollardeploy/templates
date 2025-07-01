@@ -123,17 +123,18 @@
         "DATABASE_HOST": "database:5432",
         "DATABASE_URL": "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}",
         "DATABASE_DIRECT_URL": "${DATABASE_URL}",
+        "EMAIL_FROM": "hello@example.com",
+        "DOCKER_COMPOSE_WAIT_TIMEOUT": 300,
         "PORT": 3000
       },
       "repositoryUrl": "https://github.com/calcom/docker",
       "sourceBranch": "main",
-      "sourcePath": "cal-com-docker",
-      "dockerComposeFile": "docker-compose.yml",
+      "dockerComposeFile": "docker-compose.yaml",
       "preStartCmd": "bash ./fixdocker.sh",
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nsed -e \"s/- 3000:3000/- 127.0.0.1:\\$PORT:3000/g\" -i docker-compose.yml\n"
+          "content": "#!/bin/bash\nsed -e \"s/- 3000:3000/- 127.0.0.1:\\$PORT:3000/g\" -i docker-compose.yaml\nsed -e \"s/- 5555:5555/- 127.0.0.1:5555:5555/g\" -i docker-compose.yaml\n"
         }
       ]
     },
@@ -141,7 +142,6 @@
     "deployTime": "~10 minutes",
     "description": "Cal.com is a scheduling infrastructure for everyone. It's an open source alternative to Calendly that allows you to schedule meetings efficiently and integrate with various calendar services.",
     "services": [
-      "postgres",
       "docker"
     ]
   },
