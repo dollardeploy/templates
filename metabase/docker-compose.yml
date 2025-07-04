@@ -32,3 +32,6 @@ services:
       POSTGRES_PASSWORD: postgres
     networks:
       - metanet1
+networks:
+  metanet1:
+    driver: bridge
