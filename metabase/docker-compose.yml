@@ -5,6 +5,7 @@ services:
     hostname: metabase
     volumes:
       - /dev/urandom:/dev/random:ro
+      - ./data:/home/metabase/data
     ports:
       - $PORT:3000
     environment:
@@ -15,8 +16,6 @@ services:
       MB_DB_PASS: postgres
       MB_DB_HOST: postgres
       MB_ANON_TRACKING_ENABLED: false
-    networks:
-      - metanet1
     healthcheck:
       test: curl --fail -I http://localhost:3000/api/health || exit 1
       interval: 15s
@@ -29,8 +28,4 @@ services:
       POSTGRES_USER: metabase
       POSTGRES_DB: metabase
       POSTGRES_PASSWORD: postgres
-    networks:
-      - metanet1
-networks:
-  metanet1:
-    driver: bridge
+
