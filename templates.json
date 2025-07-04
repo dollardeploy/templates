@@ -1062,6 +1062,7 @@
       "sourcePath": "metabase",
       "sourceBranch": "main",
       "dockerComposeFile": "docker-compose.yml",
+      "backupCmd": "docker compose exec postgres pg_dumpall -U metabase > metabase.sql",
       "env": {
         "PORT": "3000",
         "METABASE_VERSION": "v0.55.x"
