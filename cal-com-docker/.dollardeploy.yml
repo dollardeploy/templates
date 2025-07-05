@@ -32,7 +32,7 @@ app:
     DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}"
     DATABASE_DIRECT_URL: ${DATABASE_URL}
     EMAIL_FROM: hello@example.com
-    DOCKER_COMPOSE_WAIT_TIMEOUT: 300
+    DOCKER_COMPOSE_WAIT_TIMEOUT: 600
     PORT: 3000
   repositoryUrl: https://github.com/calcom/docker
   sourceBranch: main
