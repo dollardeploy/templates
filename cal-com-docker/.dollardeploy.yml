@@ -42,7 +42,6 @@ app:
     - path: fixdocker.sh
       content: |
         #!/bin/bash
-        sed -e "s/- 5555:5555/- 127.0.0.1:5555:5555/g" -i docker-compose.yaml
         sed -e "s/- 3000:3000/- 127.0.0.1:\$PORT:3000/g" -i docker-compose.yaml
         sed -e "s/studio:/studio-optional:\n    profiles: [withstudio]/g" -i docker-compose.yaml  
 introVideoUrl: https://www.youtube-nocookie.com/embed/60HJt8DOVNo
