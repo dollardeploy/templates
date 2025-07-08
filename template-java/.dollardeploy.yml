@@ -1,0 +1,25 @@
+id: template-java
+name: Java app boilerplate
+intro: A boilerplate for building a Java application. Fork this repo and start building your own app quikly.
+description: |
+  A boilerplate for building a Java application
+  Fork this repo and start building your own app quikly.
+  This template is a simple Java application that can be used as a starting point for building your own app.
+logo: https://avatars.githubusercontent.com/u/317776
+requirements:
+  memory: 2048
+  cpu: 1
+  storage: 10
+deployTime: ~3 minutes
+tags:
+  - java
+  - template
+  - spring-boot
+  - oss
+app:
+  type: java
+  repositoryUrl: https://github.com/dollardeploy/example-java
+  sourceBranch: main
+  env:
+    PORT: 8080
+
