@@ -269,7 +269,7 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nmkdir -p data\nmkdir -p data/tmp\nmkdir -p data/storage\nmkdir -p data/postgres\nmkdir -p data/redis\nchown -R app:app data\ndocker compose run --rm rails bundle exec rails db:chatwoot_prepare\n"
+          "content": "#!/bin/bash\nmkdir -p data\nmkdir -p data/tmp\nmkdir -p data/storage\nmkdir -p data/postgres\nmkdir -p data/redis\ndocker compose run --rm rails bundle exec rails db:chatwoot_prepare\n"
         }
       ],
       "env": {
