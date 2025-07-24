@@ -1,4 +1,5 @@
 import yaml from "js-yaml";
+import paths from "node:path";
 
 const logger = console;
 
@@ -46,11 +47,11 @@ export const getGithubTemplate = async (id, optional) => {
   }
 
   if (!config) {
-    throw new Error("No dollardeploy config found for template " + id);
+    throw new Error("No DollarDeploy config found for template " + id);
   }
 
-  logger.warn("Found dollardeploy config for template", id, config.path);
-  return fetchGitHubFile(config.path).then(c => {
+  logger.warn("Found DollarDeploy config for template", id, config.path);
+  const template = await fetchGitHubFile(config.path).then(c => {
     if (config.name.endsWith(".json")) {
       return JSON.parse(c);
     }
@@ -61,6 +62,21 @@ export const getGithubTemplate = async (id, optional) => {
 
     throw new Error("Unknown dollardeploy config file type for template " + id);
   });
+
+  if (Array.isArray(template.app?.files)) {
+    template.app.files = await Promise.all(
+      template.app.files.map(f => {
+        if (f.path && !f.content) {
+          const path = paths.resolve(paths.dirname(config.path), f.path);
+          logger.warn("Fetching file", path);
+          return fetchGitHubFile(path).then(content => ({ ...f, content }));
+        }
+        return f;
+      })
+    );
+  }
+
+  return template;
 };
 
 const getTemplates = async () => {
