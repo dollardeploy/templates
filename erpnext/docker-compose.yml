@@ -104,10 +104,9 @@ services:
           fi
         done;
         echo "sites/common_site_config.json found";
-        ls sites;
-        bench new-site --mariadb-user-host-login-scope='%' --admin-password=admin --db-root-username=root --db-root-password=admin --install-app erpnext --set-default frontend;
+        [[ -d sites/frontend ]] || bench new-site --mariadb-user-host-login-scope='%' --admin-password=admin --db-root-username=root --db-root-password=admin --install-app erpnext --set-default frontend;
         echo "setting admin password";
-        bench set-admin-password "${ADMIN_PASSWORD}";
+        bench set-admin-password "${ADMIN_PASSWORD}" || true;
 
   db:
     image: mariadb:10.6
