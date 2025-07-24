@@ -287,7 +287,7 @@
         "REDIS_PASSWORD": "",
         "SECRET_KEY_BASE": "${GENERATED_HASH}",
         "PORT": "3000",
-        "CHATWOOT_VERSION": "v4.2.0",
+        "CHATWOOT_VERSION": "v4.4.0-ce",
         "PRE_START_TIMEOUT": "300"
       }
     }
