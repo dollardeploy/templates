@@ -250,7 +250,7 @@ services:
         condition: on-failure
 
   scheduler:
-    image: frappe/erpnext:v15.53.1
+    image: frappe/erpnext:${TAG:-v15.53.1}
     networks:
       - frappe_network
     deploy:
