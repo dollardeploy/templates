@@ -165,7 +165,7 @@ services:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
     ports:
-      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:${PORT:-8080}:8080"
 
   queue-long:
     image: frappe/erpnext:${TAG:-v15.53.1}
