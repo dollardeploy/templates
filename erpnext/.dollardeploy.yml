@@ -31,4 +31,5 @@ app:
   dockerComposeFile: docker-compose.yml
   env:
     ADMIN_PASSWORD: "${GENERATED_PWD}"
+    TAG: "v15.71.1"
     PORT: 8080
