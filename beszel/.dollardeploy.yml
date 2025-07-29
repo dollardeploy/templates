@@ -1,0 +1,35 @@
+id: beszel
+name: Beszel
+intro: Lightweight, privacy-focused server monitoring platform with Docker stats,
+  historical data, and configurable alerts.
+description: |
+  Beszel is a simple, lightweight server monitoring platform that provides real-time
+  and historical metrics for your systems and containers. With a friendly web interface,
+  easy setup, and no need for public internet exposure, Beszel tracks CPU, memory, disk,
+  network, and temperature usage, and supports configurable alerts for system health.
+  Features include multi-user support, OAuth/OIDC authentication, automatic backups,
+  and a REST API for integration. The platform consists of a web-based hub and agents
+  that collect and report system metrics, making it ideal for secure, resource-efficient
+  infrastructure monitoring.
+logo: https://beszel.dev/icon.svg
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 2
+deployTime: ~2 minutes
+tags:
+  - monitoring
+  - oss
+  - devops
+experimental: true
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: beszel
+  dockerComposeFile: docker-compose.yml
+  env:
+    PORT: "8090"
+    HUB_URL: "${APP_URL}"
+    TOKEN: "${GENERATED_HASH}"
+    KEY: "${GENERATED_SECRET}"
