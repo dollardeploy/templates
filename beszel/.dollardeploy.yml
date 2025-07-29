@@ -15,13 +15,12 @@ logo: https://beszel.dev/icon.svg
 requirements:
   memory: 1024
   cpu: 1
-  storage: 2
+  storage: 4
 deployTime: ~2 minutes
 tags:
   - monitoring
   - oss
   - devops
-experimental: true
 app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates
