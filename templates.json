@@ -711,6 +711,39 @@
     }
   },
   {
+    "id": "inngest",
+    "name": "Inngest",
+    "intro": "The platform for building agentic workflows and agents powering AI products from experiment to production.",
+    "description": "Inngest is the orchestration engine for building agentic workflows and fully autonomous AI agents, powering products from experiment to production.\nDevelop reliable, fault-tolerant, and scalable AI applications with step-based workflows, built-in retries, observability, and instant local development.\nFocus on your product, not infrastructure—Inngest provides the building blocks to ship AI features faster, with enterprise-grade reliability and security.\n",
+    "logo": "https://go.dev/images/go-logo-blue.svg",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 1,
+      "storage": 20
+    },
+    "deployTime": "~3 minutes",
+    "tags": [
+      "workflow",
+      "automation",
+      "devops",
+      "integration"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "inngest",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": "3000",
+        "WORKERS_PORT": "3001",
+        "INNGEST_EVENT_KEY": "ek_${GENERATED_HASH}",
+        "INNGEST_SIGNING_KEY": "sk_${GENERATED_SECRET}",
+        "INNGEST_ENV": "prod"
+      }
+    }
+  },
+  {
     "id": "local-ai-cpu",
     "name": "Local AI (CPU)",
     "intro": "Local AI is an open-source, self-hostable online OpenAI API compatible service with WebUI to chat, generate images and more.",
