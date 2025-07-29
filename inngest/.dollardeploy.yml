@@ -5,7 +5,7 @@ description: |
   Inngest is the orchestration engine for building agentic workflows and fully autonomous AI agents, powering products from experiment to production.
   Develop reliable, fault-tolerant, and scalable AI applications with step-based workflows, built-in retries, observability, and instant local development.
   Focus on your product, not infrastructure—Inngest provides the building blocks to ship AI features faster, with enterprise-grade reliability and security.
-logo: https://go.dev/images/go-logo-blue.svg
+logo: https://avatars.githubusercontent.com/u/78935958
 requirements:
   memory: 2048
   cpu: 1
