@@ -739,7 +739,8 @@
         "WORKERS_PORT": "3001",
         "INNGEST_EVENT_KEY": "ek_${GENERATED_HASH}",
         "INNGEST_SIGNING_KEY": "sk_${GENERATED_SECRET}",
-        "INNGEST_ENV": "prod"
+        "INNGEST_ENV": "prod",
+        "INNGEST_DEV": 0
       }
     }
   },
