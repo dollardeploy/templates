@@ -11,6 +11,7 @@ services:
       - INNGEST_POSTGRES_URI=postgres://inngest:password@postgres:5432/inngest
       - INNGEST_REDIS_URI=redis://redis:6379
       - INNGEST_BASE_URL=${APP_URL}
+      - INNGEST_DEV=${INNGEST_DEV}
     depends_on:
       postgres:
         condition: service_healthy
