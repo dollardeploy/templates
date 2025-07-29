@@ -1,0 +1,55 @@
+services:
+  inngest:
+    image: inngest/inngest
+    command: "inngest start"
+    ports:
+      - "127.0.0.1:${PORT}:8288"
+      - "127.0.0.1:${WORKERS_PORT}:8289"
+    environment:
+      - INNGEST_EVENT_KEY=${INNGEST_EVENT_KEY}
+      - INNGEST_SIGNING_KEY=${INNGEST_SIGNING_KEY}
+      - INNGEST_POSTGRES_URI=postgres://inngest:password@postgres:5432/inngest
+      - INNGEST_REDIS_URI=redis://redis:6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - inngest-network
+
+  postgres:
+    image: postgres:17
+    environment:
+      - POSTGRES_DB=inngest
+      - POSTGRES_USER=inngest
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - inngest-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U inngest -d inngest"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    networks:
+      - inngest-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  inngest-network:
+    driver: bridge
