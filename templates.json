@@ -496,6 +496,36 @@
     }
   },
   {
+    "id": "dozzle",
+    "name": "Dozzle",
+    "intro": "A simple, lightweight web interface for monitoring Docker containers.",
+    "description": "Dozzle is a simple, lightweight web interface for monitoring Docker containers.\nIt provides a real-time view of all your containers, with detailed information\nabout each container's status, logs, and metrics.\n",
+    "logo": "https://dozzle.dev/icon.svg",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 2
+    },
+    "deployTime": "~3 minutes",
+    "tags": [
+      "monitoring",
+      "devops",
+      "oss"
+    ],
+    "experimental": true,
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "dozzle",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": "8080",
+        "DOZZLE_AUTH_PROVIDER": "simple"
+      }
+    }
+  },
+  {
     "id": "erpnext",
     "name": "Frappe - ERPNext",
     "intro": "ERPNext is a free and open-source integrated Enterprise resource planning",
