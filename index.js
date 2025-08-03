@@ -5,7 +5,7 @@ const logger = console;
 
 export const fetchDirectory = async path => {
   logger.warn("Fetching directory", path);
-  const result = await fetch(
+  const response = await fetch(
     `https://api.github.com/repos/dollardeploy/templates/contents/${path ?? ""}`,
     {
       headers: process.env.GITHUB_TOKEN
@@ -14,27 +14,35 @@ export const fetchDirectory = async path => {
           }
         : undefined
     }
-  ).then(r => r.json());
-  if (!result || result.status) {
-    throw new Error("Failed to fetch directory " + path + ": " + result?.status);
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch directory " + path + ": " + response.status);
   }
-  return result;
+  return response.json();
 };
 
 export const fetchGitHubFile = async path => {
   logger.warn("Fetching file", path);
-  return fetch(`https://raw.githubusercontent.com/dollardeploy/templates/main/${path}`, {
+  const response = await fetch(`https://raw.githubusercontent.com/dollardeploy/templates/main/${path}`, {
     headers: process.env.GITHUB_TOKEN
       ? {
           Authorization: process.env.GITHUB_TOKEN
         }
       : undefined
-  }).then(r => r.text());
+  });
+  if (!response.ok) {
+    throw new Error("Failed to fetch file " + path + ": " + response.status);
+  }
+  return response.text();
 };
 
 export const getGithubTemplate = async (id, optional) => {
   logger.warn("Fetching template", id);
   const json = await fetchDirectory(id);
+
+  if (!Array.isArray(json)) {
+    throw new Error("Invalid response from GitHub API for template " + id + ": " + JSON.stringify(json));
+  }
 
   const config = json.find(
     f =>
