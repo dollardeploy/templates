@@ -1609,6 +1609,37 @@
     }
   },
   {
+    "id": "tagmanager",
+    "name": "Google Tag Manager Server",
+    "logo": "https://avatars.githubusercontent.com/u/4327788",
+    "intro": "Setup Google Tag Manager for a first-party cookie.",
+    "tags": [
+      "analytics",
+      "google",
+      "gtm"
+    ],
+    "deployTime": "~1 minute",
+    "description": "This template provides a server that can be used to serve Google Tag Manager metrics endpoint for your website. Make sure to set CONTAINER_CONFIG to the value provided by GTM.",
+    "services": [
+      "docker"
+    ],
+    "requirements": {
+      "memory": 512,
+      "cpu": 1,
+      "storage": 5
+    },
+    "app": {
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "tagmanager",
+      "type": "docker-compose",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": "8080",
+        "CONTAINER_CONFIG": ""
+      }
+    }
+  },
+  {
     "id": "template-go",
     "name": "Go app boilerplate",
     "intro": "A boilerplate for building a Go application. Fork this repo and start building your own app quikly.",
