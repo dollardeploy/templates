@@ -5,7 +5,7 @@ description: |
   Dozzle is a simple, lightweight web interface for monitoring Docker containers.
   It provides a real-time view of all your containers, with detailed information
   about each container's status, logs, and metrics.
-logo: https://dozzle.dev/icon.svg
+logo: https://dozzle.dev/logo.svg
 requirements:
   memory: 1024
   cpu: 1
