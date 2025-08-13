@@ -1,0 +1,32 @@
+id: zulipchat
+name: Zulip Chat
+intro: Organized chat for distributed teams
+logo: https://avatars.githubusercontent.com/u/4921959
+deployTime: ~10 minutes
+tags:
+  - chat
+  - oss
+  - popular
+description: |
+  WordPress is open source software you can use to create a beautiful website, blog, or app.
+requirements:
+  memory: 2048
+  cpu: 1
+  storage: 10
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: zulipchat
+  sourceBranch: main
+  env:
+    POSTGRES_PASSWORD: ${GENERATED_PWD}
+    MEMCACHED_PASSWORD: ${GENERATED_PWD}
+    RABBITMQ_PASSWORD: ${GENERATED_PWD}
+    REDIS_PASSWORD: ${GENERATED_PWD}
+    SMTP_PASSWORD: ""
+    SMTP_USER: "email@example.com"
+    SMTP_HOST: "smtp.example.com"
+    SMTP_PORT: "587"
+    ZULIP_VERSION: "10.4-0"
