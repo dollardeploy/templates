@@ -512,7 +512,6 @@
       "devops",
       "oss"
     ],
-    "experimental": true,
     "app": {
       "type": "docker-compose",
       "repositoryUrl": "https://github.com/dollardeploy/templates",
@@ -528,9 +527,7 @@
         "DOZZLE_AUTH_PASSWORD": "${GENERATED_PWD}"
       }
     },
-    "postLaunchNote": [
-      "Dozzle is now running at ${APP_URL}, username: admin, password: ${GENERATED_PWD}"
-    ]
+    "postLaunchNote": "Dozzle username: admin, password: ${GENERATED_PWD}\n"
   },
   {
     "id": "erpnext",
