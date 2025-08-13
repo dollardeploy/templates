@@ -30,3 +30,4 @@ app:
     SMTP_HOST: "smtp.example.com"
     SMTP_PORT: "587"
     ZULIP_VERSION: "10.4-0"
+    PORT: "8080"
