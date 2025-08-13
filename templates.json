@@ -521,9 +521,16 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "PORT": "8080",
-        "DOZZLE_AUTH_PROVIDER": "simple"
+        "DOZZLE_AUTH_PROVIDER": "simple",
+        "DOZZLE_ENABLE_ACTIONS": true,
+        "DOZZLE_ENABLE_SHELL": true,
+        "DOZZLE_AUTH_EMAIL": "${USER_EMAIL}",
+        "DOZZLE_AUTH_PASSWORD": "${GENERATED_PWD}"
       }
-    }
+    },
+    "postLaunchNote": [
+      "Dozzle is now running at ${APP_URL}, username: admin, password: ${GENERATED_PWD}"
+    ]
   },
   {
     "id": "erpnext",
@@ -1893,6 +1900,8 @@
         "SMTP_HOST": "smtp.example.com",
         "SMTP_PORT": "587",
         "SMTP_EMAIL_FROM": "email@example.com",
+        "SMTP_USE_SSL": "False",
+        "SMTP_USE_TLS": "True",
         "ZULIP_VERSION": "10.4-0",
         "PORT": "8080",
         "SECRET_KEY": "${GENERATED_HASH}"
