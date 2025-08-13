@@ -16,15 +16,17 @@ services:
       DOZZLE_ENABLE_SHELL: ${DOZZLE_ENABLE_SHELL}
       DOZZLE_AUTH_PROVIDER: ${DOZZLE_AUTH_PROVIDER}
   dozzle-generate-users:
-    image: amir20/dozzle:latest
+    build: 
+      context: .
+      no_cache: true
+      dockerfile_inline: |
+        FROM epicsoft/bcrypt AS bcryptenv
+        FROM alpine
+        COPY --from=bcryptenv /usr/local/bin/bcrypt /usr/local/bin/bcrypt
+        COPY ./mkusers.sh /
     volumes:
-      - ./data
-    command: |
-      if [ ! -f /data/users.yml ]; then
-        generate admin --password "${DOZZLE_AUTH_PASSWORD}" --email "${DOZZLE_AUTH_EMAIL}" --name "Admin" > users.yml
-        echo "Users file created"
-      else
-        echo "Users file already exists"
-      fi
-
-
+      - ./data:/data
+    command: sh /mkusers.sh
+    environment:
+      DOZZLE_AUTH_EMAIL: ${DOZZLE_AUTH_EMAIL}
+      DOZZLE_AUTH_PASSWORD: ${DOZZLE_AUTH_PASSWORD}

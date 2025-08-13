@@ -29,7 +29,5 @@ app:
     DOZZLE_ENABLE_SHELL: true
     DOZZLE_AUTH_EMAIL: ${USER_EMAIL}
     DOZZLE_AUTH_PASSWORD: ${GENERATED_PWD}
-postLaunchNote:
-  - "Dozzle is now running at ${APP_URL}, username: admin, password: ${GENERATED_PWD}"
-
-
+postLaunchNote: |
+  Dozzle username: admin, password: ${GENERATED_PWD}
