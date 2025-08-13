@@ -29,6 +29,7 @@ app:
     SMTP_USER: "email@example.com"
     SMTP_HOST: "smtp.example.com"
     SMTP_PORT: "587"
+    SMTP_EMAIL_FROM: "email@example.com"
     ZULIP_VERSION: "10.4-0"
     PORT: "8080"
     SECRET_KEY: ${GENERATED_HASH}

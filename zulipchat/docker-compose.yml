@@ -72,7 +72,6 @@ services:
       SETTING_MEMCACHED_LOCATION: "memcached:11211"
       SETTING_RABBITMQ_HOST: "rabbitmq"
       SETTING_REDIS_HOST: "redis"
-      SECRETS_email_password: "123456789"
       ## These should match RABBITMQ_DEFAULT_PASS, POSTGRES_PASSWORD,
       ## MEMCACHED_PASSWORD, and REDIS_PASSWORD above.
       SECRETS_rabbitmq_password: "${RABBITMQ_PASSWORD}"
@@ -84,6 +83,8 @@ services:
       SETTING_ZULIP_ADMINISTRATOR: "${USER_EMAIL}"
       SETTING_EMAIL_HOST: "${SMTP_HOST}" # e.g. smtp.example.com
       SETTING_EMAIL_HOST_USER: "${SMTP_USER}"
+      SECRETS_email_password: "${SMTP_PASSWORD}"
+      SETTING_ZULIP_ADMINISTRATOR: "${SMTP_EMAIL_FROM}"
       SETTING_EMAIL_PORT: "${SMTP_PORT}"
       ## It seems that the email server needs to use ssl or tls and can't be used without it
       SETTING_EMAIL_USE_SSL: "False"
