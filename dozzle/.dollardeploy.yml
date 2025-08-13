@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dollardeploy/.github/refs/heads/main/template.schema.json
 id: dozzle
 name: Dozzle
 intro: A simple, lightweight web interface for monitoring Docker containers.
@@ -15,7 +16,6 @@ tags:
   - monitoring
   - devops
   - oss
-experimental: true
 app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates
