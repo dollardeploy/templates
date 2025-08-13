@@ -83,11 +83,13 @@ services:
       SETTING_EMAIL_HOST: "${SMTP_HOST}" # e.g. smtp.example.com
       SETTING_EMAIL_HOST_USER: "${SMTP_USER}"
       SECRETS_email_password: "${SMTP_PASSWORD}"
-      SETTING_ZULIP_ADMINISTRATOR: "${SMTP_EMAIL_FROM}"
+      SETTING_ZULIP_ADMINISTRATOR: "${USER_EMAIL}"
+      SETTING_DEFAULT_FROM_EMAIL: "${SMTP_EMAIL_FROM}"
+      SETTING_ADD_TOKENS_TO_NOREPLY_ADDRESS: "False"
       SETTING_EMAIL_PORT: "${SMTP_PORT}"
       ## It seems that the email server needs to use ssl or tls and can't be used without it
-      SETTING_EMAIL_USE_SSL: "False"
-      SETTING_EMAIL_USE_TLS: "True"
+      SETTING_EMAIL_USE_SSL: "${SMTP_USE_SSL:-False}"
+      SETTING_EMAIL_USE_TLS: "${SMTP_USE_TLS:-True}"
       ## Uncomment to enable the incoming email gateway.  You will need to
       ## ensure that email to emaildomain.example.com is routed to this host
       ## (e.g. via MX record)
