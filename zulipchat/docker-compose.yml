@@ -78,7 +78,7 @@ services:
       SECRETS_postgres_password: "${POSTGRES_PASSWORD}"
       SECRETS_memcached_password: "${MEMCACHED_PASSWORD}"
       SECRETS_redis_password: "${REDIS_PASSWORD}"
-      SECRETS_secret_key: "${GENERATED_HASH}"
+      SECRETS_secret_key: "${SECRET_KEY}"
       SETTING_EXTERNAL_HOST: "${APP_HOSTNAME:-localhost.localdomain}"
       SETTING_ZULIP_ADMINISTRATOR: "${USER_EMAIL}"
       SETTING_EMAIL_HOST: "${SMTP_HOST}" # e.g. smtp.example.com
