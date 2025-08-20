@@ -29,3 +29,4 @@ app:
     INNGEST_SIGNING_KEY: "${GENERATED_SECRET}"
     INNGEST_ENV: prod
     INNGEST_DEV: 0
+    TAG: "v1.11.5"
