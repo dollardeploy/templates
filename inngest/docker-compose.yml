@@ -1,6 +1,6 @@
 services:
   inngest:
-    image: inngest/inngest
+    image: inngest/inngest:${TAG:-v1.11.5}
     command: "inngest start"
     ports:
       - "127.0.0.1:${PORT}:8288"
