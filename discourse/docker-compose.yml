@@ -1,0 +1,32 @@
+services:
+  redis:
+    image: redis:latest
+    restart: always
+
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: discourse
+      POSTGRES_USER: discourse
+      POSTGRES_PASSWORD: discoursepassword
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+  discourse:
+    image: discourse/base:latest
+    restart: always
+    depends_on:
+      - redis
+      - postgres
+    ports:
+      - "$PORT:80"
+    environment:
+      DISCOURSE_HOSTNAME: ${APP_HOST}
+      DISCOURSE_DEVELOPER_EMAILS: ${DISCOURSE_DEVELOPER_EMAILS:-"example@example.com"}
+      DISCOURSE_SMTP_ADDRESS: ${DISCOURSE_SMTP_ADDRESS:-smtp.example.com}
+      DISCOURSE_SMTP_PORT: ${DISCOURSE_SMTP_PORT:-587}
+      DISCOURSE_SMTP_USER_NAME: ${DISCOURSE_SMTP_USER_NAME:-your-smtp-username}
+      DISCOURSE_SMTP_PASSWORD: ${DISCOURSE_SMTP_PASSWORD:-your-smtp-password}
+    volumes:
+      - ./discourse_data:/var/www/discourse
+
