@@ -513,6 +513,9 @@
       "teamwork",
       "community"
     ],
+    "services": [
+      "docker"
+    ],
     "app": {
       "type": "docker-compose",
       "repositoryUrl": "https://github.com/dollardeploy/templates",
@@ -521,11 +524,13 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "PORT": "8080",
+        "DISCOURSE_VERSION": "release-stable",
         "DISCOURSE_DEVELOPER_EMAILS": "example@example.com",
         "DISCOURSE_SMTP_ADDRESS": "smtp.example.com",
         "DISCOURSE_SMTP_PORT": "587",
         "DISCOURSE_SMTP_USER_NAME": "your-smtp-username",
-        "DISCOURSE_SMTP_PASSWORD": "your-smtp-password"
+        "DISCOURSE_SMTP_PASSWORD": "your-smtp-password",
+        "DOCKER_COMPOSE_PULL": "always"
       }
     },
     "postLaunchNote": "Discourse username: admin, password: ${GENERATED_PWD}\n"
