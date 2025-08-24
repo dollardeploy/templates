@@ -32,5 +32,4 @@ app:
     DISCOURSE_SMTP_USER_NAME: "your-smtp-username"
     DISCOURSE_SMTP_PASSWORD: "your-smtp-password"
     DOCKER_COMPOSE_PULL: "always"
-postLaunchNote: |
-  Discourse username: admin, password: ${GENERATED_PWD}
+  
