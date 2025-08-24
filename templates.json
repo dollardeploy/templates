@@ -496,6 +496,41 @@
     }
   },
   {
+    "id": "discourse",
+    "name": "Discourse",
+    "intro": "A powerful platform for support, teamwork, and everything community",
+    "description": "Discourse is the 100% open source discussion platform built for the next decade of the Internet. We make it easy to have meaningful conversations and collaborate anytime, anywhere. \n",
+    "logo": "https://avatars.githubusercontent.com/u/3220138",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 1,
+      "storage": 10
+    },
+    "deployTime": "~3 minutes",
+    "tags": [
+      "forum",
+      "support",
+      "teamwork",
+      "community"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "discourse",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": "8080",
+        "DISCOURSE_DEVELOPER_EMAILS": "example@example.com",
+        "DISCOURSE_SMTP_ADDRESS": "smtp.example.com",
+        "DISCOURSE_SMTP_PORT": "587",
+        "DISCOURSE_SMTP_USER_NAME": "your-smtp-username",
+        "DISCOURSE_SMTP_PASSWORD": "your-smtp-password"
+      }
+    },
+    "postLaunchNote": "Discourse username: admin, password: ${GENERATED_PWD}\n"
+  },
+  {
     "id": "dozzle",
     "name": "Dozzle",
     "intro": "A simple, lightweight web interface for monitoring Docker containers.",
