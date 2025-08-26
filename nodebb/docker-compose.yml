@@ -1,0 +1,21 @@
+services:
+  nodebb:
+    image: elestio/nodebb:${NODEBB_VERSION:-v4.4.6}
+    restart: always
+    environment:
+      URL: "${APP_URL}"
+      DATABASE: "redis"
+      DB_NAME: "0"
+      DB_HOST: "redis"
+      DB_PORT: "8443"
+    volumes:
+    - ./files:/usr/src/app/public/uploads
+    ports:
+    - "127.0.0.1:${PORT:-4567}:4567"
+
+  redis:
+    image: redis
+    restart: always
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - ./data:/data

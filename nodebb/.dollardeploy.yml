@@ -1,0 +1,27 @@
+id: nodebb
+name: NodeBB
+intro: Next generation community forum software. It's powerful, mobile-ready and easy to use. 
+description: |
+  NodeBB takes the spirit and energy of the great online forum communities of old, and empowers it with powerful, mobile-ready and easy to use software. 
+logo: https://avatars.githubusercontent.com/u/4449608
+requirements:
+  memory: 2048
+  cpu: 1
+  storage: 20
+deployTime: ~3 minutes
+tags:
+  - forum
+  - community
+  - discussion
+  - social
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: nodebb
+  dockerComposeFile: docker-compose.yml
+  env:
+    PORT: "4567"
+    NODEBB_VERSION: "v4.4.6"
+    NODEBB_URL: "${APP_URL}"
+
