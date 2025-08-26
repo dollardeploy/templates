@@ -20,6 +20,7 @@ app:
     BASEROW_PUBLIC_URL: "${APP_URL}"
     SECRET_KEY: "${GENERATED_HASH}"
     HEALTH_URL: "/_health"
+    BASEROW_VERSION: "1.34.5"
 requirements:
   memory: 4096
   cpu: 2
