@@ -8,13 +8,21 @@ services:
       DB_NAME: "0"
       DB_HOST: "redis"
       DB_PORT: "8443"
-      START_BUILD: "true"
-      FORCE_BUILD_BEFORE_START: "true"
+      NODEBB_ADMIN_PASSWORD: "${NODEBB_ADMIN_PASSWORD}"
+      NODEBB_ADMIN_EMAIL: "${NODEBB_ADMIN_EMAIL}"
+      NODEBB_ADMIN_USERNAME: "${NODEBB_ADMIN_USERNAME}"
     depends_on:
       nodebb-generate-config:
         condition: service_completed_successfully
       redis:
         condition: service_healthy
+    entrypoint:
+      - bash
+      - -c
+    command:
+      - >
+        ./nodebb setup;
+        ./nodebb start;
     volumes:
       - ./files:/usr/src/app/public/uploads
       - ./config/config.json:/usr/src/app/config.json

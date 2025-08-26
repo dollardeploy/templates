@@ -14,6 +14,8 @@ cat >/config/config.json <<EOF
   "admin:username": "${NODEBB_ADMIN_USERNAME}",
   "admin:password": "${NODEBB_ADMIN_PASSWORD}",
   "admin:password:confirm": "${NODEBB_ADMIN_PASSWORD}",
-  "admin:email": "${NODEBB_ADMIN_EMAIL}"
+  "admin:email": "${NODEBB_ADMIN_EMAIL}",
+  "port": "4567"
 }
+chmod 666 /config/config.json
 EOF
