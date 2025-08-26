@@ -1333,6 +1333,9 @@
       "discussion",
       "social"
     ],
+    "services": [
+      "docker"
+    ],
     "app": {
       "type": "docker-compose",
       "repositoryUrl": "https://github.com/dollardeploy/templates",
@@ -1342,7 +1345,12 @@
       "env": {
         "PORT": "4567",
         "NODEBB_VERSION": "v4.4.6",
-        "NODEBB_URL": "${APP_URL}"
+        "NODEBB_URL": "${APP_URL}",
+        "REDIS_PASSWORD": "redis",
+        "NODEBB_ADMIN_PASSWORD": "${GENERATE_PWD}",
+        "NODEBB_ADMIN_EMAIL": "${USER_EMAIL}",
+        "NODEBB_ADMIN_USERNAME": "admin",
+        "NODEBB_SECRET": "${GENERATED_HASH}"
       }
     }
   },
