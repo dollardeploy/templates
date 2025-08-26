@@ -1,8 +1,11 @@
-# #NAME#
+# Baserow
 
-This will install #NAME# on your server. 
-See #URL# for more information.
+Secure data collaboration platform. Organize your data, build powerful applications and automate business processes— without sacrificing control, compliance and security. Built for teams with the highest data protection standards. 
 
-## Required env variables
+## Links
 
-#VARS#
+* https://baserow.io/
+* https://baserow.io/docs/installation%2Finstall-with-docker-compose
+* https://hub.docker.com/r/baserow/baserow/tags
+
+
