@@ -8,10 +8,31 @@ services:
       DB_NAME: "0"
       DB_HOST: "redis"
       DB_PORT: "8443"
+    depends_on:
+      nodebb-generate-config:
+        condition: service_completed_successfully
     volumes:
-    - ./files:/usr/src/app/public/uploads
+      - ./files:/usr/src/app/public/uploads
+      - ./config/config.json:/usr/src/app/config.json
     ports:
-    - "127.0.0.1:${PORT:-4567}:4567"
+      - "127.0.0.1:${PORT:-4567}:4567"
+
+  nodebb-generate-config:
+    build: 
+      context: .
+      no_cache: true
+      dockerfile_inline: |
+        FROM alpine
+        COPY ./mkconfig.sh /
+    volumes:
+      - ./config:/config
+    command: sh /mkconfig.sh
+    environment:
+      NODEBB_URL: "${NODEBB_URL}"
+      NODEBB_VERSION: "${NODEBB_VERSION}"
+      NODEBB_ADMIN_PASSWORD: "${NODEBB_ADMIN_PASSWORD}"
+      NODEBB_ADMIN_EMAIL: "${NODEBB_ADMIN_EMAIL}"
+      NODEBB_ADMIN_USERNAME: "${NODEBB_ADMIN_USERNAME}"
 
   redis:
     image: redis
