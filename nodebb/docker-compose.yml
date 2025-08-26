@@ -11,6 +11,8 @@ services:
     depends_on:
       nodebb-generate-config:
         condition: service_completed_successfully
+      redis:
+        condition: service_healthy
     volumes:
       - ./files:/usr/src/app/public/uploads
       - ./config/config.json:/usr/src/app/config.json
@@ -33,6 +35,8 @@ services:
       NODEBB_ADMIN_PASSWORD: "${NODEBB_ADMIN_PASSWORD}"
       NODEBB_ADMIN_EMAIL: "${NODEBB_ADMIN_EMAIL}"
       NODEBB_ADMIN_USERNAME: "${NODEBB_ADMIN_USERNAME}"
+      NODEBB_SECRET: "${NODEBB_SECRET}"
+      REDIS_PASSWORD: "${REDIS_PASSWORD}"
 
   redis:
     image: redis
