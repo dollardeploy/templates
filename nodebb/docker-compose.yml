@@ -8,6 +8,8 @@ services:
       DB_NAME: "0"
       DB_HOST: "redis"
       DB_PORT: "8443"
+      START_BUILD: "true"
+      FORCE_BUILD_BEFORE_START: "true"
     depends_on:
       nodebb-generate-config:
         condition: service_completed_successfully
@@ -41,7 +43,7 @@ services:
   redis:
     image: redis
     restart: always
-    command: redis-server --requirepass ${REDIS_PASSWORD}
+    command: redis-server --requirepass "${REDIS_PASSWORD}"
     volumes:
       - ./data:/data
     healthcheck:
