@@ -8,6 +8,9 @@ services:
       DB_NAME: "0"
       DB_HOST: "redis"
       DB_PORT: "8443"
+      START_BUILD: "true"
+      CONFIG_DIR: "/opt/config"
+      # FORCE_BUILD_BEFORE_START: "true"
       NODEBB_ADMIN_PASSWORD: "${NODEBB_ADMIN_PASSWORD}"
       NODEBB_ADMIN_EMAIL: "${NODEBB_ADMIN_EMAIL}"
       NODEBB_ADMIN_USERNAME: "${NODEBB_ADMIN_USERNAME}"
@@ -16,16 +19,18 @@ services:
         condition: service_completed_successfully
       redis:
         condition: service_healthy
+    # /usr/src/app/install/docker/entrypoint.sh
+    # /usr/src/app/elestio/entrypoint.sh
+    # /usr/local/bin/docker-entrypoint.sh
     entrypoint:
       - bash
       - -c
     command:
       - >
-        ./nodebb setup;
-        ./nodebb start;
+        sh /usr/src/app/install/docker/entrypoint.sh;
     volumes:
       - ./files:/usr/src/app/public/uploads
-      - ./config/config.json:/usr/src/app/config.json
+      - ./config:/opt/config
     ports:
       - "127.0.0.1:${PORT:-4567}:4567"
 
