@@ -31,5 +31,6 @@ app:
     NODEBB_ADMIN_EMAIL: "${USER_EMAIL}"
     NODEBB_ADMIN_USERNAME: "admin"
     NODEBB_SECRET: "${GENERATED_HASH}"
+    APP_READY_TIMEOUT: "600"
 postLaunchNote: |
   Username is **admin** and password is **${GENERATED_PWD}**. After deploy, give time to the app to build and get ready (5 mins).
