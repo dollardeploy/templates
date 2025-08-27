@@ -37,7 +37,7 @@ app:
     SECRET_KEY: "${GENERATED_SECRET}"
     GOOGLE_CLIENT_ID: ""
     GOOGLE_CLIENT_SECRET: ""
-    IMAGE_TAG: "0.84.0"
+    IMAGE_TAG: "0.86.1"
     PGSSLMODE: "disable"
 postLaunchNote: |
   > Remember to configure the SMTP settings and 
