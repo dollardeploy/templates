@@ -31,3 +31,5 @@ app:
     NODEBB_ADMIN_EMAIL: "${USER_EMAIL}"
     NODEBB_ADMIN_USERNAME: "admin"
     NODEBB_SECRET: "${GENERATED_HASH}"
+postLaunchNote: |
+  Username is **admin** and password is **${GENERATED_PWD}**

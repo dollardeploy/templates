@@ -42,7 +42,7 @@ services:
         FROM alpine
         COPY ./mkconfig.sh /
     volumes:
-      - ./config:/config
+      - ./:/opt
     command: sh /mkconfig.sh
     environment:
       NODEBB_URL: "${NODEBB_URL}"

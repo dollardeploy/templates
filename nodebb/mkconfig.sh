@@ -1,6 +1,7 @@
 #!/bin/sh
 echo "Creating config.json"
-cat >/config/config.json <<EOF
+mkdir -p /opt/config
+cat >/opt/config/config.json <<EOF
 {
   "url": "${NODEBB_URL}",
   "secret": "${NODEBB_SECRET}",
@@ -17,5 +18,8 @@ cat >/config/config.json <<EOF
   "admin:email": "${NODEBB_ADMIN_EMAIL}",
   "port": "4567"
 }
-chmod 666 /config/config.json
 EOF
+
+chmod 666 /opt/config/config.json
+chown -R 1000 /opt/config
+

@@ -32,3 +32,7 @@ app:
     HUB_URL: "${APP_URL}"
     TOKEN: "${GENERATED_HASH}"
     KEY: "${GENERATED_SECRET}"
+postLaunchNote: |
+  After first run, manually add local agent to the hub, update KEY= and TOKEN= variables, and redeploy.
+  See https://beszel.dev/guide/getting-started#_4-start-the-agent
+
