@@ -32,4 +32,4 @@ app:
     NODEBB_ADMIN_USERNAME: "admin"
     NODEBB_SECRET: "${GENERATED_HASH}"
 postLaunchNote: |
-  Username is **admin** and password is **${GENERATED_PWD}**
+  Username is **admin** and password is **${GENERATED_PWD}**. After deploy, give time to the app to build and get ready (5 mins).
