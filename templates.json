@@ -67,7 +67,8 @@
         "TOKEN": "${GENERATED_HASH}",
         "KEY": "${GENERATED_SECRET}"
       }
-    }
+    },
+    "postLaunchNote": "After first run, manually add local agent to the hub, update KEY= and TOKEN= variables, and redeploy.\nSee https://beszel.dev/guide/getting-started#_4-start-the-agent\n"
   },
   {
     "id": "boilerplate-python",
@@ -1352,7 +1353,8 @@
         "NODEBB_ADMIN_USERNAME": "admin",
         "NODEBB_SECRET": "${GENERATED_HASH}"
       }
-    }
+    },
+    "postLaunchNote": "Username is **admin** and password is **${GENERATED_PWD}**\n"
   },
   {
     "id": "openvpn",
