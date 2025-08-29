@@ -1,0 +1,37 @@
+services:
+  outline-ws:
+    build:
+      context: .
+      no_cache: true
+      args:
+        SERVER_VERSION: 1.9.2
+        TARGETARCH: x86_64
+      dockerfile_inline: |
+        FROM alpine/curl
+        RUN curl -L -o outline.tar.gz https://github.com/Jigsaw-Code/outline-ss-server/releases/download/v${SERVER_VERSION}/outline-ss-server_${SERVER_VERSION}_linux_${TARGETARCH}.tar.gz
+        RUN tar xvf outline.tar.gz
+        ENTRYPOINT ./outline-ss-server
+    volumes:
+      - ./config:/config
+    depends_on:
+      outline-ws-generate-config:
+        condition: service_completed_successfully
+    network_mode: host
+    entrypoint: ./outline-ss-server -verbose -config /config/config.yml
+
+  outline-ws-generate-config:
+    build:
+      context: .
+      no_cache: true
+      dockerfile_inline: |
+        FROM alpine/curl
+        COPY ./mkconfig.sh /
+    volumes:
+      - ./config:/config
+    command: sh /mkconfig.sh
+    environment:
+      PORT: "${PORT}"
+      TCP_PORT: "${TCP_PORT}"
+      UDP_PORT: "${UDP_PORT}"
+      URL_PATH: "${URL_PATH}"
+      CLIENT_SECRET: "${CLIENT_SECRET}"
