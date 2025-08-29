@@ -22,7 +22,7 @@ app:
     TCP_PORT: "9191"
     UDP_PORT: "9191"
     URL_PATH: "${GENERATED_HASH}"
-    CLIENT_SECRET: "${GENERATED_PASSWORD}"
+    CLIENT_SECRET: "${GENERATED_PWD}"
 services:
   - docker
 deployTime: ~2 minutes
@@ -33,6 +33,8 @@ description: |
   Running your own VPN server through Outline makes accessing
   the Internet safer and establishes a connection that is harder to block.
 postLaunchNote: |
-  This config requires client.yml hosted via GitHub Gist.
-  Check here to learn how it works: https://developers.google.com/outline/docs/guides/service-providers/websockets
-  Fork this gist to get started: https://gist.github.com/huksley/c3453b9a11f5fecd840fc25b48e982dd
+  Fork client config from here: https://gist.github.com/huksley/c3453b9a11f5fecd840fc25b48e982dd
+  and use 
+    * `CLIENT_SECRET: ${CLIENT_SECRET}`
+    * `URL_PATH: ${URL_PATH}`
+    * `HOSTNAME: ${APP_HOSTNAME}`
