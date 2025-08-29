@@ -1420,7 +1420,9 @@
         "TCP_PORT": "9191",
         "UDP_PORT": "9191",
         "URL_PATH": "${GENERATED_HASH}",
-        "CLIENT_SECRET": "${GENERATED_PWD}"
+        "CLIENT_SECRET": "${GENERATED_PWD}${GENERATED_PWD}",
+        "APP_HEALTHCHECK_SUCCESS_CODE": "404",
+        "APP_READY_TIMEOUT": "60"
       }
     },
     "services": [
