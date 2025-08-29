@@ -1420,7 +1420,7 @@
         "TCP_PORT": "9191",
         "UDP_PORT": "9191",
         "URL_PATH": "${GENERATED_HASH}",
-        "CLIENT_SECRET": "${GENERATED_PASSWORD}"
+        "CLIENT_SECRET": "${GENERATED_PWD}"
       }
     },
     "services": [
@@ -1428,7 +1428,7 @@
     ],
     "deployTime": "~2 minutes",
     "description": "Runs Outline Shadowsocks server with WebSockets support.  \nOutline enables anyone to access the free and open Internet\nmore safely by running their own VPN. \nRunning your own VPN server through Outline makes accessing\nthe Internet safer and establishes a connection that is harder to block.\n",
-    "postLaunchNote": "This config requires client.yml hosted via GitHub Gist.\nCheck here to learn how it works: https://developers.google.com/outline/docs/guides/service-providers/websockets\nFork this gist to get started: https://gist.github.com/huksley/c3453b9a11f5fecd840fc25b48e982dd\n"
+    "postLaunchNote": "Fork client config from here: https://gist.github.com/huksley/c3453b9a11f5fecd840fc25b48e982dd\nand use \n  * `CLIENT_SECRET: ${CLIENT_SECRET}`\n  * `URL_PATH: ${URL_PATH}`\n  * `HOSTNAME: ${APP_HOSTNAME}`\n"
   },
   {
     "id": "outline",
