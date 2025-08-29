@@ -1394,6 +1394,43 @@
     }
   },
   {
+    "id": "outline-ws",
+    "name": "Outline VPN with WebSockets",
+    "intro": "Run Outline Shadowsocks server with WebSockets support.",
+    "logo": "https://avatars.githubusercontent.com/u/19845815",
+    "tags": [
+      "vpn",
+      "shadowsocks",
+      "websockets"
+    ],
+    "experimental": true,
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "outline-ws",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": "8181",
+        "TCP_PORT": "9191",
+        "UDP_PORT": "9191",
+        "URL_PATH": "${GENERATED_HASH}",
+        "CLIENT_SECRET": "${GENERATED_PASSWORD}"
+      }
+    },
+    "services": [
+      "docker"
+    ],
+    "deployTime": "~2 minutes",
+    "description": "Runs Outline Shadowsocks server with WebSockets support.  \nOutline enables anyone to access the free and open Internet\nmore safely by running their own VPN. \nRunning your own VPN server through Outline makes accessing\nthe Internet safer and establishes a connection that is harder to block.\n",
+    "postLaunchNote": "This config requires client.yml hosted via GitHub Gist.\nCheck here to learn how it works: https://developers.google.com/outline/docs/guides/service-providers/websockets\nFork this gist to get started: https://gist.github.com/huksley/c3453b9a11f5fecd840fc25b48e982dd\n"
+  },
+  {
     "id": "outline",
     "name": "Outline",
     "logo": "https://avatars.githubusercontent.com/u/1765001",
@@ -1435,7 +1472,7 @@
         "SECRET_KEY": "${GENERATED_SECRET}",
         "GOOGLE_CLIENT_ID": "",
         "GOOGLE_CLIENT_SECRET": "",
-        "IMAGE_TAG": "0.84.0",
+        "IMAGE_TAG": "0.86.1",
         "PGSSLMODE": "disable"
       }
     },
