@@ -21,8 +21,8 @@ cat >/opt/config/config.json <<EOF
 EOF
 
 mkdir -p /opt/files
-chmod 777 /opt/files
-chmod 666 /opt/config/config.json
+chmod a+rwx /opt/files
+chmod a+rw /opt/config/config.json
 chown -R 1000 /opt/config
 chown -R 1000 /opt/files
 
