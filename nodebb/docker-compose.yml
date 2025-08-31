@@ -4,10 +4,6 @@ services:
     restart: always
     environment:
       URL: "${APP_URL}"
-      DATABASE: "redis"
-      DB_NAME: "0"
-      DB_HOST: "redis"
-      DB_PORT: "8443"
       START_BUILD: "true"
       CONFIG_DIR: "/opt/config"
       # FORCE_BUILD_BEFORE_START: "true"
@@ -27,7 +23,9 @@ services:
       - -c
     command:
       - >
-        sh /usr/src/app/install/docker/entrypoint.sh;
+        ./nodebb setup --config=/opt/config/config.json;
+        ./nodebb build --config=/opt/config/config.json;
+        ./nodebb start --config=/opt/config/config.json;
     volumes:
       - ./files:/usr/src/app/public/uploads
       - ./config:/opt/config
