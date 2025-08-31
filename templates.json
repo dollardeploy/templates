@@ -1324,7 +1324,7 @@
     "logo": "https://avatars.githubusercontent.com/u/4449608",
     "requirements": {
       "memory": 2048,
-      "cpu": 1,
+      "cpu": 2,
       "storage": 20
     },
     "deployTime": "~6 minutes",
