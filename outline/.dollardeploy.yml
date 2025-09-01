@@ -39,6 +39,7 @@ app:
     GOOGLE_CLIENT_SECRET: ""
     IMAGE_TAG: "0.86.1"
     PGSSLMODE: "disable"
+    DOCKER_IMAGE: "docker.getoutline.com/outlinewiki/outline"
 postLaunchNote: |
   > Remember to configure the SMTP settings and 
   > authentication settings in the environment variables and redeploy after that.
