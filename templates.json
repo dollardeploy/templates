@@ -1475,7 +1475,8 @@
         "GOOGLE_CLIENT_ID": "",
         "GOOGLE_CLIENT_SECRET": "",
         "IMAGE_TAG": "0.86.1",
-        "PGSSLMODE": "disable"
+        "PGSSLMODE": "disable",
+        "DOCKER_IMAGE": "docker.getoutline.com/outlinewiki/outline"
       }
     },
     "postLaunchNote": "> Remember to configure the SMTP settings and \n> authentication settings in the environment variables and redeploy after that.\n> See the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.\n"
