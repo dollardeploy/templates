@@ -1,6 +1,6 @@
 services:
   outline:
-    image: docker.getoutline.com/outlinewiki/outline:${IMAGE_TAG:-0.84.0}
+    image: ${DOCKER_IMAGE:-docker.getoutline.com/outlinewiki/outline}:${IMAGE_TAG:-0.84.0}
     env_file: .env
     environment:
       - REDIS_URL=redis://redis:6379
