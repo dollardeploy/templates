@@ -374,7 +374,8 @@
         "POSTGRES_USERNAME": "postgres",
         "REDIS_URL": "redis://redis:6379",
         "SECRET_KEY_BASE": "ahkaec8eeveiyieL",
-        "PORT": "3000"
+        "PORT": "3000",
+        "PRE_START_TIMEOUT": "300"
       }
     }
   },
