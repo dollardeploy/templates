@@ -1,8 +1,10 @@
 # Outline Server
 
-Shadowsocks server with WebSockets support.
+Shadowsocks server with WebSockets support, as per original documentation.
 
-## Link
+[Deploy now](https://dollardeploy.com/r/outline-ws)
+
+## Links
 
 * https://github.com/Jigsaw-Code/outline-ss-server/releases
 * https://developers.google.com/outline/docs/guides/service-providers/websockets
