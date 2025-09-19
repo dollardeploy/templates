@@ -24,3 +24,4 @@ app:
   env:
     PORT: "8080"
     CONTAINER_CONFIG: ""
+    APP_HEALTHCHECK_PATH: "/healthz"
