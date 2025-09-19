@@ -19,6 +19,8 @@ services:
   cache:
     image: redis:6
     user: "$USER_UID:$USER_GID"
+    volumes:
+      - ./data/redis:/data
     healthcheck:
       test: ["CMD-SHELL", "[ $$(redis-cli ping) = 'PONG' ]"]
       interval: 10s
