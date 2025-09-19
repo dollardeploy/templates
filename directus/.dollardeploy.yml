@@ -36,5 +36,7 @@ app:
         mkdir -p ./data/database
         mkdir -p ./data/extensions
         mkdir -p ./data/uploads
+        mkdir -p ./data/redis
         sudo chown -R "$USER_UID:$USER_GID" ./data/extensions
         sudo chown -R "$USER_UID:$USER_GID" ./data/uploads
+        sudo chown -R "$USER_UID:$USER_GID" ./data/redis
