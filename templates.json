@@ -493,7 +493,7 @@
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nmkdir -p ./data/database\nmkdir -p ./data/extensions\nmkdir -p ./data/uploads\nsudo chown -R \"$USER_UID:$USER_GID\" ./data/extensions\nsudo chown -R \"$USER_UID:$USER_GID\" ./data/uploads\n"
+          "content": "#!/bin/bash\nmkdir -p ./data/database\nmkdir -p ./data/extensions\nmkdir -p ./data/uploads\nmkdir -p ./data/redis\nsudo chown -R \"$USER_UID:$USER_GID\" ./data/extensions\nsudo chown -R \"$USER_UID:$USER_GID\" ./data/uploads\nsudo chown -R \"$USER_UID:$USER_GID\" ./data/redis\n"
         }
       ]
     }
