@@ -1767,7 +1767,8 @@
         "APP_HEALTHCHECK_PATH": "/healthz",
         "DOCKER_COMPOSE_PULL": "always"
       }
-    }
+    },
+    "postLaunchNote": "Make sure to properly configure `CONTAINER_CONFIG` variable, see [docs](https://developers.google.com/tag-platform/tag-manager/server-side/manual-setup-guide#manually_provision_a_server-side_tagging_cluster)"
   },
   {
     "id": "template-go",
