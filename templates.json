@@ -1764,7 +1764,8 @@
       "env": {
         "PORT": "8080",
         "CONTAINER_CONFIG": "",
-        "APP_HEALTHCHECK_PATH": "/healthz"
+        "APP_HEALTHCHECK_PATH": "/healthz",
+        "DOCKER_COMPOSE_PULL": "always"
       }
     }
   },
