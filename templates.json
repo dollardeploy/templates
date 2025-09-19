@@ -1763,7 +1763,8 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "PORT": "8080",
-        "CONTAINER_CONFIG": ""
+        "CONTAINER_CONFIG": "",
+        "APP_HEALTHCHECK_PATH": "/healthz"
       }
     }
   },
