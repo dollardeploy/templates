@@ -1,6 +1,6 @@
 services:
   minio:
-    image: quay.io/minio/minio:${MINIO_VERSION:-RELEASE.2025-09-06T17-38-46Z}
+    image: quay.io/minio/minio:${MINIO_VERSION:-RELEASE.2025-09-07T16-13-09Z}
     command: server --console-address ":9001" http://minio/data
     expose:
       - "9000"
