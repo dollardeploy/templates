@@ -2,9 +2,12 @@ services:
   minio:
     image: quay.io/minio/minio:${MINIO_VERSION:-RELEASE.2025-09-07T16-13-09Z}
     command: server --console-address ":9001" /data
+    user: "$USER_UID:$USER_GID"
     ports:
       - "127.0.0.1:${PORT:-9000}:9000"
       - "127.0.0.1:${PORT_CONSOLE:-9001}:9001"
+    volumes:
+      - ./data:/data
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
@@ -13,8 +16,3 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
-## By default this config uses default local driver,
-## For custom volumes replace with volume driver configuration.
-volumes:
-  data:
