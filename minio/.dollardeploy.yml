@@ -26,6 +26,7 @@ app:
   dockerComposeFile: docker-compose.yml
   env:
     PORT: 9000
+    PORT_CONSOLE: 9001
     MINIO_ROOT_USER: ${GENERATED_PWD}
     MINIO_ROOT_PASSWORD: ${GENERATED_HASH}
     MINIO_VERSION: RELEASE.2025-09-07T16-13-09Z
