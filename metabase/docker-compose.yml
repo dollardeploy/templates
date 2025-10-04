@@ -24,14 +24,18 @@ services:
       timeout: 5s
       retries: 5
   postgres:
-    image: postgres:latest
+    image: postgres:18
     hostname: postgres
     environment:
       POSTGRES_USER: metabase
       POSTGRES_DB: metabase
       POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - metanet1
 networks:
   metanet1:
     driver: bridge
+volumes:
+  postgres_data:
