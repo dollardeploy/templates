@@ -30,6 +30,7 @@ app:
     MINIO_ROOT_USER: ${GENERATED_PWD}
     MINIO_ROOT_PASSWORD: ${GENERATED_HASH}
     MINIO_VERSION: RELEASE.2025-09-07T16-13-09Z
+    MINIO_SERVER_URL: ${APP_URL}
 postLaunchNote: |
   Get started with using MinIO on the command line or via the SDK:
   
