@@ -1289,7 +1289,8 @@
         "PORT_CONSOLE": 9001,
         "MINIO_ROOT_USER": "${GENERATED_PWD}",
         "MINIO_ROOT_PASSWORD": "${GENERATED_HASH}",
-        "MINIO_VERSION": "RELEASE.2025-09-07T16-13-09Z"
+        "MINIO_VERSION": "RELEASE.2025-09-07T16-13-09Z",
+        "MINIO_SERVER_URL": "${APP_URL}"
       }
     },
     "postLaunchNote": "Get started with using MinIO on the command line or via the SDK:\n\n```bash\nexport AWS_ACCESS_KEY_ID=${MINIO_ROOT_USER}\nexport AWS_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}\naws s3api --endpoint-url ${APP_URL} create-bucket --bucket test\necho \"Hello, world!\" | aws s3 --endpoint-url ${APP_URL} cp - s3://test/hello.txt\n```\n"
