@@ -21,11 +21,7 @@ services:
       timeout: 5s
       retries: 5
   fix-permissions:
-    build: 
-      context: .
-      no_cache: true
-      dockerfile_inline: |
-        FROM alpine
+    image: alpine
     volumes:
       - ./:/root
     command: sh -c "mkdir -p /root/data && chown $USER_UID:$USER_GID /root/data"
