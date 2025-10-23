@@ -848,7 +848,7 @@
         "INNGEST_SIGNING_KEY": "${GENERATED_SECRET}",
         "INNGEST_ENV": "prod",
         "INNGEST_DEV": 0,
-        "TAG": "v1.11.5"
+        "TAG": "v1.12.1"
       }
     }
   },
@@ -1893,7 +1893,7 @@
         "APP_SECRET": "${GENERATED_HASH}",
         "SERVER_URL": "${APP_URL}",
         "PGPASSWORD_SUPERUSER": "${GENERATED_PWD}",
-        "TAG": "v1.7",
+        "TAG": "v1.6",
         "STORAGE_TYPE": "local",
         "PORT": 3000,
         "PG_DATABASE_HOST": "db",
