@@ -786,6 +786,39 @@
     }
   },
   {
+    "id": "gpt-oss",
+    "name": "GPT-OSS",
+    "intro": "Running GPT-OSS on your server with GPU acceleration using ollama.",
+    "logo": "https://avatars.githubusercontent.com/u/14957082",
+    "tags": [
+      "ai",
+      "chatbot",
+      "gpt",
+      "oss"
+    ],
+    "deployTime": "~10 minutes",
+    "description": "Run OpenAI’s open-sourced GPT-OSS models (117B / 21B) locally using Docker inside your own codebase.\nThis project avoids third-party GUIs like Open WebUI or LM Studio to help you learn how to\nuse GPT-based models directly in your applications.\n",
+    "requirements": {
+      "memory": 8192,
+      "cpu": 4,
+      "storage": 60
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "gpt-oss",
+      "sourceBranch": "main",
+      "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 8080,
+      "env": {
+        "DOCKER_COMPOSE_BUILD": 1
+      }
+    }
+  },
+  {
     "id": "homarr",
     "name": "Homarr",
     "intro": "A simple, yet powerful dashboard for your server.",
