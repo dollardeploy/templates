@@ -1,0 +1,50 @@
+services:
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - ./data:/root/.ollama
+    entrypoint: >
+      sh -c "ollama pull gpt-oss; ollama serve"
+    pull_policy: always
+    restart: unless-stopped
+    runtime: nvidia
+    networks:
+      - ollama-docker
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - OLLAMA_NUM_GPU=1
+      - OLLAMA_KEEP_ALIVE=24h
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      - ollama
+    networks:
+      - ollama-docker
+
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    restart: unless-stopped
+    networks:
+      - ollama-docker
+
+networks:
+  ollama-docker:
+    external: false

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OpenAI Open Source GPT-OSS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-primary: #111827;
+      --text-secondary: #6B7280;
+      --container-bg: #FFFFFF;
+      --page-bg-start: #F9A8D4;
+      --page-bg-end: #7DD3FC;
+      --border-color: #E5E7EB;
+      --user-message-bg: #3B82F6;
+      --user-message-text: #FFFFFF;
+      --bot-message-bg: #F3F4F6;
+      --bot-message-text: #1F2937;
+      --input-bg: #FFFFFF;
+      --icon-bg: #F43F5E;
+      --ready-pill-bg: #F3F4F6;
+      --ready-dot-color: #10B981;
+      --shadow-color: rgba(0, 0, 0, 0.08);
+      --focus-ring: rgba(59, 130, 246, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--page-bg-start), var(--page-bg-end));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--text-primary);
+      padding: 20px;
+    }
+
+    #chatbox {
+      background: var(--container-bg);
+      width: 100%;
+      max-width: 680px;
+      height: 90vh;
+      max-height: 800px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px var(--shadow-color);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    #header {
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    
+    .header-icon {
+        width: 40px;
+        height: 40px;
+        background-color: var(--icon-bg);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.2em;
+    }
+
+    .header-title {
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+
+    #status-indicators {
+        display: flex;
+        gap: 12px;
+        padding: 0 24px 20px;
+        border-bottom: 1px solid var(--border-color);
+        flex-shrink: 0;
+    }
+
+    .pill {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background-color: var(--ready-pill-bg);
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        font-weight: 500;
+        color: var(--text-secondary);
+    }
+
+    .pill-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--ready-dot-color);
+        border-radius: 50%;
+    }
+
+    #messages {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Scrollbar styles */
+    #messages::-webkit-scrollbar { width: 6px; }
+    #messages::-webkit-scrollbar-track { background: transparent; }
+    #messages::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+    #messages::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+
+    .message-wrapper {
+        display: flex;
+        max-width: 85%;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeInMessage 0.3s ease-out forwards;
+    }
+
+    @keyframes fadeInMessage {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message-wrapper.user { align-self: flex-end; }
+    .message-wrapper.bot { align-self: flex-start; }
+
+    .message {
+      padding: 12px 18px;
+      border-radius: 18px;
+      line-height: 1.6;
+      word-wrap: break-word;
+    }
+
+    .message-wrapper.user .message {
+      background: var(--user-message-bg);
+      color: var(--user-message-text);
+      border-bottom-right-radius: 6px;
+    }
+
+    .message-wrapper.bot .message {
+      background: var(--bot-message-bg);
+      color: var(--bot-message-text);
+      border-bottom-left-radius: 6px;
+    }
+    
+    /* Thinking animation for bot */
+    .message.thinking {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+    .message.thinking span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #9CA3AF;
+        animation: bounce 1.4s infinite ease-in-out both;
+    }
+    .message.thinking span:nth-child(1) { animation-delay: -0.32s; }
+    .message.thinking span:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1.0); }
+    }
+
+
+    #input-area {
+      padding: 24px;
+      border-top: 1px solid var(--border-color);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    #prompt {
+      width: 100%;
+      padding: 14px 52px 14px 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      background: var(--input-bg);
+      color: var(--text-primary);
+      font-size: 1em;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    #prompt:focus {
+      outline: none;
+      border-color: var(--user-message-bg);
+      box-shadow: 0 0 0 3px var(--focus-ring);
+    }
+    
+    #prompt::placeholder {
+        color: var(--text-secondary);
+    }
+
+    button#send-button {
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 8px;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+    
+    button#send-button:hover {
+        color: var(--text-primary);
+    }
+    
+    button#send-button svg {
+        width: 22px;
+        height: 22px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="chatbox">
+    <div id="header">
+        <div class="header-icon">I</div>
+        <div class="header-title">OpenAI Open Source GPT-OSS</div>
+    </div>
+    <div id="status-indicators">
+        <div class="pill"><span class="pill-dot"></span>Online</div>
+    </div>
+    <div id="messages">
+    </div>
+    <div id="input-area">
+      <input id="prompt" type="text" placeholder="Ask anything" />
+      <button id="send-button" onclick="sendPrompt()" title="Send">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const promptInput = document.getElementById("prompt");
+    const messagesDiv = document.getElementById("messages");
+
+    async function sendPrompt() {
+      const userPrompt = promptInput.value.trim();
+      if (!userPrompt) return;
+
+      appendMessage(userPrompt, 'user');
+      promptInput.value = "";
+
+      const thinkingMessage = appendThinkingMessage();
+      scrollToBottom();
+
+      try {
+        const response = await fetch("http://localhost:8000/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt: userPrompt })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.text();
+            throw new Error(`Server responded with ${response.status}: ${errorData}`);
+        }
+        
+        const data = await response.json();
+        updateBotMessage(thinkingMessage, data.response || "No response received.");
+      } catch (err) {
+        updateBotMessage(thinkingMessage, "Error: " + err.message);
+        console.error("Fetch error:", err);
+      }
+      scrollToBottom();
+    }
+    
+    function createMessageWrapper(type) {
+        const wrapper = document.createElement("div");
+        wrapper.className = `message-wrapper ${type}`;
+        return wrapper;
+    }
+
+    function appendMessage(text, type) {
+        const wrapper = createMessageWrapper(type);
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "message";
+        messageDiv.textContent = text;
+        wrapper.appendChild(messageDiv);
+        messagesDiv.appendChild(wrapper);
+        return wrapper;
+    }
+
+    function appendThinkingMessage() {
+        const wrapper = createMessageWrapper('bot');
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "message thinking";
+        messageDiv.innerHTML = `<span></span><span></span><span></span>`;
+        wrapper.appendChild(messageDiv);
+        messagesDiv.appendChild(wrapper);
+        return wrapper;
+    }
+
+    function updateBotMessage(thinkingMessageWrapper, newText) {
+        const messageDiv = thinkingMessageWrapper.querySelector('.message');
+        messageDiv.classList.remove("thinking");
+        messageDiv.innerHTML = '';
+        messageDiv.textContent = newText;
+    }
+
+    function scrollToBottom() {
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    promptInput.addEventListener("keypress", function(event) {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+            sendPrompt();
+        }
+    });
+
+    window.onload = () => {
+      appendMessage("Hello from OpenAI Open Source GPT-OSS!", 'bot');
+    };
+  </script>
+</body>
+</html>
