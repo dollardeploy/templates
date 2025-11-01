@@ -25,3 +25,5 @@ app:
   sourceBranch: main
   dockerComposeFile: docker-compose.yml
   mainPort: 8080
+  env:
+    DOCKER_COMPOSE_BUILD: 1
