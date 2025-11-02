@@ -814,7 +814,8 @@
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 8080,
       "env": {
-        "DOCKER_COMPOSE_BUILD": 1
+        "DOCKER_COMPOSE_BUILD": 1,
+        "PORT": 8080
       }
     }
   },
