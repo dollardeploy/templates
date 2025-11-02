@@ -11,7 +11,9 @@ deployTime: ~10 minutes
 description: |
   Run OpenAI’s open-sourced GPT-OSS models (117B / 21B) locally using Docker inside your own codebase.
   This project avoids third-party GUIs like Open WebUI or LM Studio to help you learn how to
-  use GPT-based models directly in your applications. Use **DataCrunch** servers 1xA100, 1xA6000 or 1xH100 to deploy this template.
+  use GPT-based models directly in your applications.
+  Use **DataCrunch** servers 1xA100, 1xA6000 or 1xH100 to deploy this template.
+  Read more about this on our blog: https://docs.dollardeploy.com/blog/openai-gpt-oss/
 requirements:
   memory: 8192
   cpu: 4
