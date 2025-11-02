@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dollardeploy/.github/refs/heads/main/template.schema.json
 id: discourse
 name: Discourse
+experimental: true
 intro: A powerful platform for support, teamwork, and everything community
 description: |
   Discourse is the 100% open source discussion platform built for the next decade of the Internet. We make it easy to have meaningful conversations and collaborate anytime, anywhere. 
