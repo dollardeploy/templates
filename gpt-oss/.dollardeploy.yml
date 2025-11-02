@@ -27,3 +27,4 @@ app:
   mainPort: 8080
   env:
     DOCKER_COMPOSE_BUILD: 1
+    PORT: 8080
