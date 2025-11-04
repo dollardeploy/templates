@@ -24,7 +24,7 @@ services:
       - OLLAMA_GPU_LAYERS=40
       - OLLAMA_GPU_MEMORY_FRACTION=0.8
       - OLLAMA_CONTEXT_LENGTH=2048
-      - OLLAMA_ORIGINS=${APP_HOSTNAME}
+      - OLLAMA_ORIGINS=${APP_URL},http://127.0.0.1,chrome-extension://*,moz-extension://*,safari-web-extension://*
     healthcheck:
       test: ["CMD", "ollama", "list"]
       interval: 30s
@@ -43,7 +43,7 @@ services:
     depends_on:
       - ollama
     image: alpine/curl
-    command: >
+    command: |
       curl http://ollama:11434/api/pull -X POST -H "Content-Type: application/json" -d '{"model": "gpt-oss"}'
       curl http://ollama:11434/api/generate -X POST -H "Content-Type: application/json" -d '{"model": "llama3.2", "keep_alive": -1}'
     volumes:
