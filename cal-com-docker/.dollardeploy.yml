@@ -18,6 +18,7 @@ app:
   type: docker-compose
   env:
     NEXT_PUBLIC_WEBAPP_URL: https://${APP_HOSTNAME}
+    API_PORT: 3001
     NEXT_PUBLIC_API_V2_URL: https://${APP_HOSTNAME}/api/v2
     NEXT_PUBLIC_WEBSITE_TERMS_URL: https://example.com
     NEXT_PUBLIC_WEBSITE_PRIVACY_POLICY_URL: https://example.com
@@ -25,9 +26,9 @@ app:
     CALCOM_TELEMETRY_DISABLED: 1
     NEXTAUTH_SECRET: "${GENERATED_HASH}"
     CALENDSO_ENCRYPTION_KEY: "${GENERATED_HASH}"
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: postgres
-    POSTGRES_DB: postgres
+    POSTGRES_USER: unicorn_user
+    POSTGRES_PASSWORD: magical_password
+    POSTGRES_DB: calendso
     DATABASE_HOST: database:5432
     DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}"
     DATABASE_DIRECT_URL: ${DATABASE_URL}
