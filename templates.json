@@ -144,7 +144,6 @@
       "env": {
         "NEXT_PUBLIC_WEBAPP_URL": "https://${APP_HOSTNAME}",
         "API_PORT": 3001,
-        "ALLOWED_HOSTNAMES": "${APP_HOSTNAME}",
         "NEXT_PUBLIC_API_V2_URL": "https://${APP_HOSTNAME}/api/v2",
         "NEXT_PUBLIC_WEBSITE_TERMS_URL": "https://example.com",
         "NEXT_PUBLIC_WEBSITE_PRIVACY_POLICY_URL": "https://example.com",
