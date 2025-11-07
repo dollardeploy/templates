@@ -34,7 +34,7 @@ app:
     EMAIL_FROM: hello@example.com
     DOCKER_COMPOSE_WAIT_TIMEOUT: 600
     PORT: 3000
-  repositoryUrl: https://github.com/calcom/docker
+  repositoryUrl: https://github.com/calcom/cal.com
   sourceBranch: main
   dockerComposeFile: docker-compose.yaml
   preStartCmd: bash ./fixdocker.sh
