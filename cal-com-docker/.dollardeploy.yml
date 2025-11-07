@@ -42,8 +42,8 @@ app:
     - path: fixdocker.sh
       content: |
         #!/bin/bash
-        sed -e "s/- 3000:3000/- 127.0.0.1:\$PORT:3000/g" -i docker-compose.yaml
-        sed -e "s/studio:/studio-optional:\n    profiles: [withstudio]/g" -i docker-compose.yaml  
+        sed -e "s/- 3000:3000/- 127.0.0.1:\$PORT:3000/g" -i docker-compose.yml
+        sed -e "s/studio:/studio-optional:\n    profiles: [withstudio]/g" -i docker-compose.yml  
 introVideoUrl: https://www.youtube-nocookie.com/embed/60HJt8DOVNo
 deployTime: "~10 minutes"
 description: Cal.com is a scheduling infrastructure for everyone. It's an open source
