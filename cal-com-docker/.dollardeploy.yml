@@ -36,7 +36,7 @@ app:
     PORT: 3000
   repositoryUrl: https://github.com/calcom/cal.com
   sourceBranch: main
-  dockerComposeFile: docker-compose.yaml
+  dockerComposeFile: docker-compose.yml
   preStartCmd: bash ./fixdocker.sh
   files:
     - path: fixdocker.sh
