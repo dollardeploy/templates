@@ -159,6 +159,7 @@
         "DATABASE_DIRECT_URL": "${DATABASE_URL}",
         "EMAIL_FROM": "hello@example.com",
         "DOCKER_COMPOSE_WAIT_TIMEOUT": 600,
+        "REDIS_URL": "redis://redis:6379",
         "PORT": 3000
       },
       "repositoryUrl": "https://github.com/calcom/cal.com",
