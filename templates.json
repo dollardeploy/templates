@@ -135,7 +135,7 @@
       "meeting"
     ],
     "requirements": {
-      "memory": 4096,
+      "memory": 8096,
       "cpu": 2,
       "storage": 20
     },
