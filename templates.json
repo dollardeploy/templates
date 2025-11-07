@@ -162,12 +162,12 @@
       },
       "repositoryUrl": "https://github.com/calcom/cal.com",
       "sourceBranch": "main",
-      "dockerComposeFile": "docker-compose.yaml",
+      "dockerComposeFile": "docker-compose.yml",
       "preStartCmd": "bash ./fixdocker.sh",
       "files": [
         {
           "path": "fixdocker.sh",
-          "content": "#!/bin/bash\nsed -e \"s/- 3000:3000/- 127.0.0.1:\\$PORT:3000/g\" -i docker-compose.yaml\nsed -e \"s/studio:/studio-optional:\\n    profiles: [withstudio]/g\" -i docker-compose.yaml  \n"
+          "content": "#!/bin/bash\nsed -e \"s/- 3000:3000/- 127.0.0.1:\\$PORT:3000/g\" -i docker-compose.yml\nsed -e \"s/studio:/studio-optional:\\n    profiles: [withstudio]/g\" -i docker-compose.yml  \n"
         }
       ]
     },
