@@ -3,7 +3,7 @@ services:
     image: wordpress
     restart: always
     ports:
-      - ${PORT}:80
+      - 127.0.0.1:${PORT}:80
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wordpress
