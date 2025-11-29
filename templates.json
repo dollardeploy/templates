@@ -1,5 +1,37 @@
 [
   {
+    "id": "adminer",
+    "name": "Adminer",
+    "intro": "Adminer is a simple database management tool that allows you to manage your MySQL, MariaDB and PostgreSQL databases with a web interface.",
+    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adminer.svg",
+    "tags": [
+      "database",
+      "management",
+      "oss"
+    ],
+    "deployTime": "~1 minute",
+    "description": "Adminer is a full-featured database management tool that allows you to manage your MySQL, \nMariaDB and PostgreSQL databases with a web interface.\n",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "services": [
+      "mariadb"
+    ],
+    "app": {
+      "type": "php",
+      "repositoryUrl": "https://github.com/vrana/adminer",
+      "sourceBranch": "master",
+      "installCmd": "git submodule update --init",
+      "buildCmd": "php compile.php && cp adminer.php index.php",
+      "env": {
+        "PORT": 8080,
+        "NGINX_STATIC_PATHS": "externals"
+      }
+    }
+  },
+  {
     "id": "baserow",
     "name": "Baserow",
     "intro": "Open source no-code database tool and Airtable alternative.",
@@ -680,7 +712,7 @@
       "sourcePath": "evolution-api",
       "env": {
         "PORT": 8080,
-        "IMAGE_TAG": "v2.3.0",
+        "IMAGE_TAG": "v2.3.6",
         "SERVER_TYPE": "http",
         "SERVER_PORT": "${PORT}",
         "SERVER_URL": "${APP_URL}",
