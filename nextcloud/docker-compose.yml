@@ -1,0 +1,14 @@
+services:
+  app:
+    image: nextcloud:apache
+    restart: always
+    volumes:
+      - ./data:/var/www/html/data
+      - ./html:/var/www/html
+    environment:
+      - VIRTUAL_HOST=${APP_HOSTNAME}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - REDIS_HOST=${REDIS_HOST}
