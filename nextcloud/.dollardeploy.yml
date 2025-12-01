@@ -1,0 +1,27 @@
+id: nextcloud
+name: Next.js 16 Boilerplate
+tags:
+  - storage
+  - collaboration
+  - drive
+intro: Open source content collaboration platform
+logo: https://avatars.githubusercontent.com/u/19211038
+deployTime: ~1 minute
+description: Access your Data You can store your files, contacts, calendars, conversations and more on a server of your choosing.
+requirements:
+  memory: 2048
+  cpu: 2
+  storage: 20
+app:
+  repositoryUrl: "https://github.com/dollardeploy/templates"
+  sourcePath: "nextcloud"
+  sourceBranch: main
+  type: next
+  mainPort: 8080
+  env:
+    COMPOSE_PROFILES: "withdb,withredis"
+    MYSQL_PASSWORD: ${GENERATED_PWD}
+    MYSQL_DATABASE: nextcloud
+    MYSQL_USER: nextcloud
+    MYSQL_HOST: db
+    REDIS_HOST: redis
