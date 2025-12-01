@@ -25,6 +25,7 @@
       "sourceBranch": "master",
       "installCmd": "git submodule update --init",
       "buildCmd": "php compile.php && cp adminer.php index.php",
+      "preStartCmd": "sudo apt install -y php-fpm php-pgsql php-mysql",
       "env": {
         "PORT": 8080,
         "NGINX_STATIC_PATHS": "externals"
