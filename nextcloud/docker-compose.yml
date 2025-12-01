@@ -5,6 +5,8 @@ services:
     volumes:
       - ./data:/var/www/html/data
       - ./html:/var/www/html
+    ports:
+      - 127.0.0.1:${PORT:-8080}:80
     environment:
       - VIRTUAL_HOST=${APP_HOSTNAME}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
