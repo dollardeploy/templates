@@ -4,8 +4,8 @@ services:
     ports:
       - 127.0.0.1:$PORT:$PORT
     volumes:
-      - $HOME/.local:/home/coder/.local
-      - $HOME/.config:/home/coder/.config
+      - ./local:/home/coder/.local
+      - ./config:/home/coder/.config
       - $PWD:/home/coder/project
     user: "$USER_UID:$USER_GID"
     environment:
