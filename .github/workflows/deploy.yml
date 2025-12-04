@@ -1,0 +1,126 @@
+name: Deploy Changed Templates
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - templates.json
+      - .github/**
+      - README.md
+
+# Run one workflow at a time to avoid conflicts
+concurrency:
+  group: deploy-templates
+  cancel-in-progress: false
+
+jobs:
+  detect-and-deploy:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.DOLLARDEPLOY_API_KEY != '' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Need at least 2 commits to compare changes
+
+      - name: Detect changed templates
+        id: detect
+        run: |
+          # Get list of changed files in the last commit
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          # Find unique template directories (directories containing .dollardeploy.yml)
+          CHANGED_TEMPLATES=""
+
+          for file in $CHANGED_FILES; do
+            # Get the root directory of the changed file
+            dir=$(echo "$file" | cut -d'/' -f1)
+
+            # Check if this directory has a .dollardeploy.yml file
+            if [ -f "$dir/.dollardeploy.yml" ]; then
+              # Extract the template ID from .dollardeploy.yml
+              template_id=$(grep "^id:" "$dir/.dollardeploy.yml" | head -1 | sed 's/^id: *//' | tr -d '\r')
+
+              # Add to list if not already present
+              if [ -n "$template_id" ] && ! echo "$CHANGED_TEMPLATES" | grep -q "$template_id"; then
+                if [ -z "$CHANGED_TEMPLATES" ]; then
+                  CHANGED_TEMPLATES="$template_id"
+                else
+                  CHANGED_TEMPLATES="$CHANGED_TEMPLATES,$template_id"
+                fi
+              fi
+            fi
+          done
+
+          echo "Changed templates: $CHANGED_TEMPLATES"
+          echo "templates=$CHANGED_TEMPLATES" >> $GITHUB_OUTPUT
+
+      - name: Install NVM and Node.js 22
+        if: steps.detect.outputs.templates != ''
+        run: |
+          # Install nvm
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+          # Load nvm
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+          # Install and use Node.js 22
+          nvm install 22
+          nvm use 22
+
+          # Verify installation
+          node --version
+          npm --version
+
+          # Make nvm available in subsequent steps
+          echo "NVM_DIR=$HOME/.nvm" >> $GITHUB_ENV
+
+      - name: Install DollarDeploy CLI
+        if: steps.detect.outputs.templates != ''
+        run: |
+          # Load nvm
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+          nvm use 22
+          npm i -g @dollardeploy/cli
+          ddc --version
+
+      - name: Deploy templates
+        if: steps.detect.outputs.templates != ''
+        env:
+          DOLLARDEPLOY_API_KEY: ${{ secrets.DOLLARDEPLOY_API_KEY }}
+          DOLLARDEPLOY_BASE_URL: ${{ secrets.DOLLARDEPLOY_BASE_URL }}
+        run: |
+          # Load nvm
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+          nvm use 22
+
+          IFS=',' read -ra TEMPLATES <<< "${{ steps.detect.outputs.templates }}"
+          for template in "${TEMPLATES[@]}"; do
+            echo "Deploying template: $template"
+
+            # Build the ddc command with optional parameters
+            ddc_command="ddc template deploy --templateId \"$template\" --remove 1"
+
+            # Add optional base URL if set
+            if [ -n "${{ secrets.DOLLARDEPLOY_BASE_URL }}" ]; then
+              ddc_command="$ddc_command --baseUrl \"${{ secrets.DOLLARDEPLOY_BASE_URL }}\""
+            fi
+
+            # Add optional screenshot URL if set
+            if [ -n "${{ secrets.DOLLARDEPLOY_SCREENSHOT_URL }}" ]; then
+              ddc_command="$ddc_command --screenshot \"${{ secrets.DOLLARDEPLOY_SCREENSHOT_URL }}\""
+            fi
+
+            echo "Running: $ddc_command"
+            eval $ddc_command
+          done
