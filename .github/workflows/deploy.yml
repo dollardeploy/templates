@@ -59,35 +59,14 @@ jobs:
           echo "Changed templates: $CHANGED_TEMPLATES"
           echo "templates=$CHANGED_TEMPLATES" >> $GITHUB_OUTPUT
 
-      - name: Install NVM and Node.js 22
-        if: steps.detect.outputs.templates != ''
-        run: |
-          # Install nvm
-          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-
-          # Load nvm
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-          # Install and use Node.js 22
-          nvm install 22
-          nvm use 22
-
-          # Verify installation
-          node --version
-          npm --version
-
-          # Make nvm available in subsequent steps
-          echo "NVM_DIR=$HOME/.nvm" >> $GITHUB_ENV
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
 
       - name: Install DollarDeploy CLI
         if: steps.detect.outputs.templates != ''
         run: |
-          # Load nvm
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-          nvm use 22
           npm i -g @dollardeploy/cli
           ddc --version
 
@@ -108,7 +87,7 @@ jobs:
             echo "Deploying template: $template"
 
             # Build the ddc command with optional parameters
-            ddc_command="ddc template deploy --templateId \"$template\" --remove 1"
+            ddc_command="ddc --verbose --templateId \"$template\" --remove 1"
 
             # Add optional base URL if set
             if [ -n "${{ secrets.DOLLARDEPLOY_BASE_URL }}" ]; then
