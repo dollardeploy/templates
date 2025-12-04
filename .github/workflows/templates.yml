@@ -7,6 +7,8 @@ on:
     # exclude templates.json from being committed
     paths-ignore:
       - templates.json
+      - .github/**
+      - README.md
 
 # Run on the main branch to avoid and only one workflow run at a time to avoid conflict
 concurrency:

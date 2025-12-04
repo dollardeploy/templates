@@ -17,7 +17,6 @@ concurrency:
 jobs:
   detect-and-deploy:
     runs-on: ubuntu-latest
-    if: ${{ secrets.DOLLARDEPLOY_API_KEY != '' }}
 
     steps:
       - name: Checkout repository
