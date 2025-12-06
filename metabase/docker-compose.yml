@@ -31,11 +31,11 @@ services:
       POSTGRES_DB: metabase
       POSTGRES_PASSWORD: postgres
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql
     networks:
       - metanet1
 networks:
   metanet1:
     driver: bridge
 volumes:
-  postgres_data:
+  postgres:
