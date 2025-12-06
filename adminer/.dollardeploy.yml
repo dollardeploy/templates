@@ -21,7 +21,64 @@ app:
   repositoryUrl: https://github.com/vrana/adminer
   sourceBranch: master
   installCmd: git submodule update --init
-  buildCmd: php compile.php && cp adminer.php index.php
+  buildCmd: |
+    # Compile Adminer
+    php compile.php
+
+    # Create plugins directory
+    mkdir -p plugins
+
+    # Download AdminerLoginServers plugin
+    curl -sL -o plugins/AdminerLoginServers.php https://raw.githubusercontent.com/vrana/adminer-plugins-pematon/master/AdminerLoginServers.php
+
+    # Create custom loader
+    cat > adminer-loader.php << 'EOF'
+    <?php
+    function adminer_object() {
+        include_once __DIR__ . "/plugins/AdminerLoginServers.php";
+
+        $servers = [];
+        $mariadb_url = getenv('MARIADB_URL');
+
+        if ($mariadb_url) {
+            $parsed = parse_url($mariadb_url);
+            if ($parsed && isset($parsed['host'])) {
+                $driver = isset($parsed['scheme']) ? $parsed['scheme'] : 'mysql';
+                if ($driver === 'mariadb') {
+                    $driver = 'mysql';
+                }
+
+                $host = $parsed['host'];
+                $port = isset($parsed['port']) ? ':' . $parsed['port'] : '';
+                $database = isset($parsed['path']) ? ltrim($parsed['path'], '/') : '';
+
+                $server_string = $driver . '://' . $host . $port;
+                if ($database) {
+                    $server_string .= '#' . $database;
+                }
+
+                $servers[$server_string] = 'MariaDB Server';
+            }
+        }
+
+        if (empty($servers)) {
+            $servers = ['mysql://localhost:3306' => 'Local MySQL/MariaDB'];
+        }
+
+        class AdminerCustom extends AdminerLoginServers {
+            function name() {
+                return 'Adminer';
+            }
+        }
+
+        return new AdminerCustom($servers, 'mysql');
+    }
+
+    include __DIR__ . "/adminer.php";
+    EOF
+
+    # Copy loader as index.php
+    cp adminer-loader.php index.php
   preStartCmd: sudo apt install -y php-fpm php-pgsql php-mysql
   env:
     PORT: 8080
