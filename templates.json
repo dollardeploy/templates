@@ -2141,6 +2141,7 @@
       "repositoryUrl": "https://github.com/dollardeploy/templates",
       "sourcePath": "wordpress",
       "sourceBranch": "main",
+      "mainPort": 8080,
       "env": {
         "MYSQL_ROOT_PASSWORD": "${GENERATED_PWD}",
         "PUBLIC_URL": "${APP_URL}",
