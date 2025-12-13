@@ -1958,7 +1958,7 @@
       "repositoryUrl": "https://github.com/dollardeploy/example-go",
       "sourceBranch": "main",
       "startCmd": "./bin/go-app-linux-amd64",
-      "buildCmd": "make",
+      "buildCmd": "make build GOOS=linux ARCH=amd64",
       "env": {
         "PORT": 3000
       }
