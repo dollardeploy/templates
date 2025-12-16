@@ -1,0 +1,23 @@
+id: template-python
+name: Python Template
+intro: Modern python template with Python 3.13 and uv package manager. Get started quickly and deploy your Python apps or APIs in seconds
+description: |
+   A lightweight Python web application template using FastHTML, Python 3.11, and UV package manager.
+logo: https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+deployTime: ~2 minutes
+tags:
+  - python
+  - template
+app:
+  type: native
+  repositoryUrl: https://github.com/dollardeploy/example-python-uv/
+  sourceBranch: main
+  buildCmd: uv sync
+  preStartCmd: curl -LsSf https://astral.sh/uv/install.sh | sh
+  startCmd: uv run uvicorn main:app --host 0.0.0.0 --port 8000
+  env:
+    PORT: 8000
