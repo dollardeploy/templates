@@ -1471,6 +1471,7 @@
     "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
     "deployTime": "~1 minute",
     "description": "This example nicely shows how you can deploy NextJS app to any host.",
+    "demoUrl": "https://nextjs.demo.dollardeploy.dev",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -1941,6 +1942,7 @@
     "name": "Go app boilerplate",
     "intro": "A boilerplate for building a Go application. Fork this repo and start building your own app quikly.",
     "description": "A boilerplate for building a Go application\nFork this repo and start building your own app quikly.\nThis template is a simple Go application that can be used as a starting point for building your own app.\n",
+    "demoUrl": "https://go.demo.dollardeploy.dev/",
     "logo": "https://go.dev/images/go-logo-blue.svg",
     "requirements": {
       "memory": 1024,
@@ -1969,6 +1971,7 @@
     "name": "Java app boilerplate",
     "intro": "A boilerplate for building a Java application. Fork this repo and start building your own app quikly.",
     "description": "A boilerplate for building a Java application\nFork this repo and start building your own app quikly.\nThis template is a simple Java application that can be used as a starting point for building your own app.\n",
+    "demoUrl": "https://java.demo.dollardeploy.dev/",
     "logo": "https://avatars.githubusercontent.com/u/317776",
     "requirements": {
       "memory": 2048,
@@ -1988,6 +1991,34 @@
       "sourceBranch": "main",
       "env": {
         "PORT": 8080
+      }
+    }
+  },
+  {
+    "id": "template-python",
+    "name": "Python Template",
+    "intro": "Modern python template with Python 3.13 and uv package manager. Get started quickly and deploy your Python apps or APIs in seconds",
+    "description": "A lightweight Python web application template using FastHTML, Python 3.11, and UV package manager.\n",
+    "logo": "https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "deployTime": "~2 minutes",
+    "tags": [
+      "python",
+      "template"
+    ],
+    "app": {
+      "type": "native",
+      "repositoryUrl": "https://github.com/dollardeploy/example-python-uv/",
+      "sourceBranch": "main",
+      "buildCmd": "uv sync",
+      "preStartCmd": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "startCmd": "uv run uvicorn main:app --host 0.0.0.0 --port 8000",
+      "env": {
+        "PORT": 8000
       }
     }
   },
