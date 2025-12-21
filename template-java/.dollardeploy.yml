@@ -5,6 +5,7 @@ description: |
   A boilerplate for building a Java application
   Fork this repo and start building your own app quikly.
   This template is a simple Java application that can be used as a starting point for building your own app.
+demoUrl: "https://java.demo.dollardeploy.dev/"
 logo: https://avatars.githubusercontent.com/u/317776
 requirements:
   memory: 2048
@@ -22,4 +23,3 @@ app:
   sourceBranch: main
   env:
     PORT: 8080
-

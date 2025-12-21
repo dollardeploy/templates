@@ -8,6 +8,7 @@ intro: Boilerplate for NextJS 16 to get you started
 logo: "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png"
 deployTime: ~1 minute
 description: This example nicely shows how you can deploy NextJS app to any host.
+demoUrl: "https://nextjs.demo.dollardeploy.dev"
 requirements:
   memory: 1024
   cpu: 1
@@ -17,4 +18,3 @@ app:
   sourceBranch: main
   type: next
   mainPort: 3000
-
