@@ -5,7 +5,7 @@ services:
     mem_limit: 512M
     env_file: .env
     ports:
-      - ${PORT:-8080}:${PORT:-8080}
+      - 127.0.0.1:${PORT:-8080}:${PORT:-8080}
     environment:
       CONTAINER_CONFIG: ${CONTAINER_CONFIG}
       RUN_AS_PREVIEW_SERVER: ${RUN_AS_PREVIEW_SERVER:-false}
