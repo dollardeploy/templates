@@ -1,6 +1,6 @@
 services:
   api:
-    image: evoapicloud/evolution-api:${IMAGE_TAG:-v2.3.0}
+    image: evoapicloud/evolution-api:${IMAGE_TAG:-v2.3.7}
     restart: always
     depends_on:
       - redis
