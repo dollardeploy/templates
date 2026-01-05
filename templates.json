@@ -713,7 +713,7 @@
       "sourcePath": "evolution-api",
       "env": {
         "PORT": 8080,
-        "IMAGE_TAG": "v2.3.6",
+        "IMAGE_TAG": "v2.3.7",
         "SERVER_TYPE": "http",
         "SERVER_PORT": "${PORT}",
         "SERVER_URL": "${APP_URL}",
