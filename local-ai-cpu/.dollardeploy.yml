@@ -23,6 +23,7 @@ app:
   allowAccessFrom: "${USER_IPADDRESS}"
   env:
     PORT: 8080
+    DOCKER_COMPOSE_WAIT_TIMEOUT: 600
 introVideoUrl: https://www.youtube-nocookie.com/embed/Xh57mMlfuMk
 deployTime: ~20 minutes
 description: >-
