@@ -7,7 +7,17 @@ services:
       - ./data:/home/coder/.config/code-server
       - $PWD:/home/coder/project
     user: "$USER_UID:$USER_GID"
+    depends_on:
+      fix-permissions:
+        condition: service_completed_successfully
     environment:
       - DOCKER_USER=$USER
       - PORT=$PORT
       - PASSWORD=$PASSWORD
+  # When docker compose up is run, the data directory is created with root:root ownership.
+  # So we need to fix the permissions to the user.
+  fix-permissions:
+    image: alpine
+    volumes:
+      - ./:/root
+    command: sh -c "mkdir -p /root/data && chown $USER_UID:$USER_GID /root/data"
