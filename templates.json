@@ -947,7 +947,8 @@
       "dockerComposeFile": "docker-compose.yml",
       "allowAccessFrom": "${USER_IPADDRESS}",
       "env": {
-        "PORT": 8080
+        "PORT": 8080,
+        "DOCKER_COMPOSE_WAIT_TIMEOUT": 600
       }
     },
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/Xh57mMlfuMk",
@@ -1279,7 +1280,7 @@
       "backupCmd": "docker compose exec postgres pg_dumpall -U metabase > metabase.sql",
       "env": {
         "PORT": "3000",
-        "METABASE_VERSION": "v0.55.x"
+        "METABASE_VERSION": "v0.58.1"
       }
     },
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/dnT2Xj52mnk",
