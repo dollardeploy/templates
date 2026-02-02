@@ -51,11 +51,10 @@ app:
     OPENCLAW_BRIDGE_PORT: 18790
     OPENCLAW_GATEWAY_BIND: lan
     OPENCLAW_GATEWAY_TOKEN: ${GENERATED_HASH}
-    OPENCLAW_GATEWAY_PASSWORD: ${GENERATED_PWD}
     OPENCLAW_SKIP_ONBOARD: true
     ANTHROPIC_API_KEY: ""
     OPENAI_API_KEY: ""
     OPENCLAW_AUTH_CHOICE: "skip"
     OPENROUTER_API_KEY: ""
 postLaunchNote: |
-  Check post install here: https://hub.docker.com/r/fourplayers/openclaw
+  Open with token ${APP_URL}?token=${GENERATED_HASH}. Check post install here: https://hub.docker.com/r/fourplayers/openclaw
