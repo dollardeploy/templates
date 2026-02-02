@@ -1,0 +1,59 @@
+id: openclaw
+name: OpenClaw
+experimental: true
+intro: Self-hosted AI assistant that integrates with WhatsApp, Telegram, Slack, Discord and more
+logo: https://avatars.githubusercontent.com/u/252820863
+tags:
+  - ai
+  - assistant
+  - automation
+  - oss
+  - messaging
+  - claude
+deployTime: ~10 minutes
+description: |
+  OpenClaw is your own personal AI assistant that runs on any OS and integrates with multiple platforms.
+  It provides a unified control center for interacting with AI models through your existing communication
+  apps—WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, and others.
+
+  Features:
+  - Multi-channel messaging integration (WhatsApp, Telegram, Slack, Discord, etc.)
+  - Local gateway architecture with WebSocket-based control plane
+  - Voice interaction and browser automation capabilities
+  - Extensible tools including browser control, file operations, and cron scheduling
+  - Security-first design with pairing-based access control
+  - Canvas visualization and skills registry system
+
+  After deployment, you'll need to:
+
+  1. Run the onboarding wizard to configure your AI model and messaging channels
+  2. Access the Control UI at http://127.0.0.1:18789/
+  3. Configure your Claude AI session keys for full functionality
+
+requirements:
+  memory: 2048
+  cpu: 2
+  storage: 10
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: openclaw
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  mainPort: 18789
+  env:
+    PORT: 18789
+    DOCKER_COMPOSE_PULL: always
+    OPENCLAW_IMAGE: fourplayers/openclaw:latest
+    OPENCLAW_GATEWAY_PORT: 18789
+    OPENCLAW_BRIDGE_PORT: 18790
+    OPENCLAW_GATEWAY_BIND: lan
+    OPENCLAW_GATEWAY_TOKEN: ${GENERATED_HASH}
+    OPENCLAW_GATEWAY_PASSWORD: ${GENERATED_PWD}
+    ANTHROPIC_API_KEY: ""
+    OPENAI_API_KEY: ""
+    OPENCLAW_AUTH_CHOICE: "skip"
+  postLaunchNote: |
+    Check post install here: https://hub.docker.com/r/fourplayers/openclaw

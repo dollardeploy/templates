@@ -1,0 +1,13 @@
+services:
+  openclaw-gateway:
+    image: ${OPENCLAW_IMAGE:-fourplayers/openclaw:latest}
+    volumes:
+      - openclaw:/home/node/.openclaw
+    ports:
+      - "127.0.0.1:${OPENCLAW_GATEWAY_PORT:-18789}:18789"
+      - "127.0.0.1:${OPENCLAW_BRIDGE_PORT:-18790}:18790"
+    restart: unless-stopped
+    env_file:
+      - .env
+volumes:
+  openclaw:
