@@ -1,5 +1,5 @@
 services:
-  openclaw-gateway:
+  openclaw:
     image: ${OPENCLAW_IMAGE:-fourplayers/openclaw:latest}
     user: "$USER_UID:$USER_GID"
     volumes:
