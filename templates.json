@@ -155,6 +155,53 @@
     }
   },
   {
+    "id": "cal-com",
+    "name": "Cal.com",
+    "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
+    "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
+    "experimental": true,
+    "tags": [
+      "oss",
+      "scheduling",
+      "calendar",
+      "booking",
+      "meeting"
+    ],
+    "requirements": {
+      "memory": 4096,
+      "cpu": 2,
+      "storage": 20
+    },
+    "app": {
+      "type": "next",
+      "env": {
+        "NEXT_PUBLIC_WEBAPP_URL": "https://${APP_HOSTNAME}",
+        "NEXT_PUBLIC_API_V2_URL": "https://${APP_HOSTNAME}/api/v2",
+        "NEXTAUTH_URL": "https://${APP_HOSTNAME}",
+        "NEXTAUTH_SECRET": "${GENERATED_HASH}",
+        "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/postgres",
+        "CALENDSO_ENCRYPTION_KEY": "${GENERATED_HASH}",
+        "NEXT_PUBLIC_LICENSE_CONSENT": "agree",
+        "CALCOM_TELEMETRY_DISABLED": true,
+        "PRISMA_SCHEMA_PATH": "packages/prisma/schema.prisma",
+        "NODE_OPTIONS": "--max-old-space-size=4096"
+      },
+      "repositoryUrl": "https://github.com/calcom/cal.com.git",
+      "sourceBranch": "v4.8.19",
+      "startScript": "start",
+      "buildScript": "build",
+      "buildIncludeFiles": "packages/prisma",
+      "preStartCmd": "npx prisma migrate deploy --schema packages/prisma/schema.prisma && yarn db-deploy",
+      "postStartCmd": "yarn db-seed"
+    },
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/60HJt8DOVNo",
+    "deployTime": "~10 minutes",
+    "description": "Cal.com is a scheduling infrastructure for everyone. It's an open source alternative to Calendly that allows you to schedule meetings efficiently and integrate with various calendar services.",
+    "services": [
+      "postgres"
+    ]
+  },
+  {
     "id": "cal-com-docker",
     "name": "Cal.com",
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
@@ -212,53 +259,6 @@
     "description": "Cal.com is a scheduling infrastructure for everyone. It's an open source alternative to Calendly that allows you to schedule meetings efficiently and integrate with various calendar services.",
     "services": [
       "docker"
-    ]
-  },
-  {
-    "id": "cal-com",
-    "name": "Cal.com",
-    "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
-    "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
-    "experimental": true,
-    "tags": [
-      "oss",
-      "scheduling",
-      "calendar",
-      "booking",
-      "meeting"
-    ],
-    "requirements": {
-      "memory": 4096,
-      "cpu": 2,
-      "storage": 20
-    },
-    "app": {
-      "type": "next",
-      "env": {
-        "NEXT_PUBLIC_WEBAPP_URL": "https://${APP_HOSTNAME}",
-        "NEXT_PUBLIC_API_V2_URL": "https://${APP_HOSTNAME}/api/v2",
-        "NEXTAUTH_URL": "https://${APP_HOSTNAME}",
-        "NEXTAUTH_SECRET": "${GENERATED_HASH}",
-        "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/postgres",
-        "CALENDSO_ENCRYPTION_KEY": "${GENERATED_HASH}",
-        "NEXT_PUBLIC_LICENSE_CONSENT": "agree",
-        "CALCOM_TELEMETRY_DISABLED": true,
-        "PRISMA_SCHEMA_PATH": "packages/prisma/schema.prisma",
-        "NODE_OPTIONS": "--max-old-space-size=4096"
-      },
-      "repositoryUrl": "https://github.com/calcom/cal.com.git",
-      "sourceBranch": "v4.8.19",
-      "startScript": "start",
-      "buildScript": "build",
-      "buildIncludeFiles": "packages/prisma",
-      "preStartCmd": "npx prisma migrate deploy --schema packages/prisma/schema.prisma && yarn db-deploy",
-      "postStartCmd": "yarn db-seed"
-    },
-    "introVideoUrl": "https://www.youtube-nocookie.com/embed/60HJt8DOVNo",
-    "deployTime": "~10 minutes",
-    "description": "Cal.com is a scheduling infrastructure for everyone. It's an open source alternative to Calendly that allows you to schedule meetings efficiently and integrate with various calendar services.",
-    "services": [
-      "postgres"
     ]
   },
   {
@@ -1610,45 +1610,6 @@
     }
   },
   {
-    "id": "outline-ws",
-    "name": "Outline VPN with WebSockets",
-    "intro": "Run Outline Shadowsocks server with WebSockets support.",
-    "logo": "https://avatars.githubusercontent.com/u/19845815",
-    "tags": [
-      "vpn",
-      "shadowsocks",
-      "websockets"
-    ],
-    "experimental": true,
-    "requirements": {
-      "memory": 1024,
-      "cpu": 1,
-      "storage": 10
-    },
-    "app": {
-      "type": "docker-compose",
-      "repositoryUrl": "https://github.com/dollardeploy/templates",
-      "sourceBranch": "main",
-      "sourcePath": "outline-ws",
-      "dockerComposeFile": "docker-compose.yml",
-      "env": {
-        "PORT": "8181",
-        "TCP_PORT": "9191",
-        "UDP_PORT": "9191",
-        "URL_PATH": "${GENERATED_HASH}",
-        "CLIENT_SECRET": "${GENERATED_PWD}${GENERATED_PWD}",
-        "APP_HEALTHCHECK_SUCCESS_CODE": "404",
-        "APP_READY_TIMEOUT": "60"
-      }
-    },
-    "services": [
-      "docker"
-    ],
-    "deployTime": "~2 minutes",
-    "description": "Runs Outline Shadowsocks server with WebSockets support.  \nOutline enables anyone to access the free and open Internet\nmore safely by running their own VPN. \nRunning your own VPN server through Outline makes accessing\nthe Internet safer and establishes a connection that is harder to block.\n",
-    "postLaunchNote": "Fork client config from here: https://gist.github.com/huksley/c3453b9a11f5fecd840fc25b48e982dd\nand use \n  * `CLIENT_SECRET: ${CLIENT_SECRET}`\n  * `URL_PATH: ${URL_PATH}`\n  * `HOSTNAME: ${APP_HOSTNAME}`\n"
-  },
-  {
     "id": "outline",
     "name": "Outline",
     "logo": "https://avatars.githubusercontent.com/u/1765001",
@@ -1696,6 +1657,45 @@
       }
     },
     "postLaunchNote": "> Remember to configure the SMTP settings and \n> authentication settings in the environment variables and redeploy after that.\n> See the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.\n"
+  },
+  {
+    "id": "outline-ws",
+    "name": "Outline VPN with WebSockets",
+    "intro": "Run Outline Shadowsocks server with WebSockets support.",
+    "logo": "https://avatars.githubusercontent.com/u/19845815",
+    "tags": [
+      "vpn",
+      "shadowsocks",
+      "websockets"
+    ],
+    "experimental": true,
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "outline-ws",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": "8181",
+        "TCP_PORT": "9191",
+        "UDP_PORT": "9191",
+        "URL_PATH": "${GENERATED_HASH}",
+        "CLIENT_SECRET": "${GENERATED_PWD}${GENERATED_PWD}",
+        "APP_HEALTHCHECK_SUCCESS_CODE": "404",
+        "APP_READY_TIMEOUT": "60"
+      }
+    },
+    "services": [
+      "docker"
+    ],
+    "deployTime": "~2 minutes",
+    "description": "Runs Outline Shadowsocks server with WebSockets support.  \nOutline enables anyone to access the free and open Internet\nmore safely by running their own VPN. \nRunning your own VPN server through Outline makes accessing\nthe Internet safer and establishes a connection that is harder to block.\n",
+    "postLaunchNote": "Fork client config from here: https://gist.github.com/huksley/c3453b9a11f5fecd840fc25b48e982dd\nand use \n  * `CLIENT_SECRET: ${CLIENT_SECRET}`\n  * `URL_PATH: ${URL_PATH}`\n  * `HOSTNAME: ${APP_HOSTNAME}`\n"
   },
   {
     "id": "pelican",
@@ -1826,42 +1826,6 @@
     "description": "Portainer Community Edition is a universal container management platform that\nsimplifies the deployment, configuration, and monitoring of containerized applications\nacross Docker, Kubernetes, Swarm, and Nomad environments. With its intuitive web-based interface,\nPortainer enables users to manage containers, images, networks, and volumes effortlessly,\nmaking it ideal for both beginners and experienced DevOps teams. It supports hybrid and\nmulti-cloud setups, edge, and Industrial IoT use cases, providing a centralized,\nsecure solution for container orchestration.\n"
   },
   {
-    "id": "pterodactyl-wings",
-    "name": "Pterodactyl Wings",
-    "intro": "The Wings daemon is the core backend of the Pterodactyl game server panel.",
-    "logo": "https://pterodactyl.io/logos/pterry.svg",
-    "tags": [
-      "devops",
-      "game-hosting",
-      "wings",
-      "docker"
-    ],
-    "experimental": true,
-    "requirements": {
-      "memory": 2048,
-      "cpu": 2,
-      "storage": 20
-    },
-    "app": {
-      "type": "docker-compose",
-      "repositoryUrl": "https://github.com/dollardeploy/templates",
-      "sourceBranch": "main",
-      "sourcePath": "pterodactyl-wings",
-      "dockerComposeFile": "docker-compose.yml",
-      "env": {
-        "PORT_PANEL": "8080",
-        "PORT_SFTP": "2022",
-        "TZ": "UTC",
-        "WINGS_UID": "988",
-        "WINGS_GID": "988",
-        "WINGS_USERNAME": "pterodactyl"
-      },
-      "postStartCmd": "echo \"Wings daemon started. If you're using Pterodactyl Panel, make sure the node configuration points to port ${PORT_PANEL}.\"\n"
-    },
-    "postLaunchNote": "Wings has been deployed. Make sure your Panel connects to port `${PORT_PANEL}` and SFTP runs on `${PORT_SFTP}`.\nYou may configure node settings in the panel using the appropriate IP and port.\n",
-    "description": "Pterodactyl Wings is Pterodactyl's server control plane, built for the rapidly changing\ngaming industry and designed to be highly performant and secure. Wings provides\nan HTTP API allowing you to interface directly with running server instances,\nfetch server logs, generate backups, and control all aspects of the server lifecycle.\n"
-  },
-  {
     "id": "pterodactyl",
     "name": "Pterodactyl",
     "intro": "Open-source game server management panel built for performance, security, and extensibility using Docker containers.",
@@ -1911,6 +1875,42 @@
     "deployTime": "~5 minutes",
     "postLaunchNote": "Use username `${ADMIN_USERNAME}` and password `${ADMIN_PASSWORD}` to login.",
     "description": "Pterodactyl is a modern, secure, and scalable game server anagement platform. \nBuilt with PHP, React, and Go, it isolates each game server in its own Docker container\nto maximize security and stability. The web-based interface provides real-time\nWebSocket consoles, role-based user access, a robust API, and SFTP file management.\nDesigned for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.\n"
+  },
+  {
+    "id": "pterodactyl-wings",
+    "name": "Pterodactyl Wings",
+    "intro": "The Wings daemon is the core backend of the Pterodactyl game server panel.",
+    "logo": "https://pterodactyl.io/logos/pterry.svg",
+    "tags": [
+      "devops",
+      "game-hosting",
+      "wings",
+      "docker"
+    ],
+    "experimental": true,
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 20
+    },
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "pterodactyl-wings",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT_PANEL": "8080",
+        "PORT_SFTP": "2022",
+        "TZ": "UTC",
+        "WINGS_UID": "988",
+        "WINGS_GID": "988",
+        "WINGS_USERNAME": "pterodactyl"
+      },
+      "postStartCmd": "echo \"Wings daemon started. If you're using Pterodactyl Panel, make sure the node configuration points to port ${PORT_PANEL}.\"\n"
+    },
+    "postLaunchNote": "Wings has been deployed. Make sure your Panel connects to port `${PORT_PANEL}` and SFTP runs on `${PORT_SFTP}`.\nYou may configure node settings in the panel using the appropriate IP and port.\n",
+    "description": "Pterodactyl Wings is Pterodactyl's server control plane, built for the rapidly changing\ngaming industry and designed to be highly performant and secure. Wings provides\nan HTTP API allowing you to interface directly with running server instances,\nfetch server logs, generate backups, and control all aspects of the server lifecycle.\n"
   },
   {
     "id": "stripe-sync",
