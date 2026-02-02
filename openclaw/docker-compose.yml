@@ -1,6 +1,6 @@
 services:
   gateway:
-    build: build: https://github.com/joeferner/redis-commander.git
+    build: https://github.com/openclaw/openclaw
     image: ${OPENCLAW_IMAGE:-openclaw:local}
     environment:
       HOME: /home/node
@@ -29,7 +29,7 @@ services:
         condition: service_completed_successfully
 
   cli:
-    build: build: https://github.com/joeferner/redis-commander.gi
+    build: https://github.com/openclaw/openclaw
     image: ${OPENCLAW_IMAGE:-openclaw:local}
     environment:
       HOME: /home/node
