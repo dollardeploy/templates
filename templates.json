@@ -1569,9 +1569,9 @@
         "ANTHROPIC_API_KEY": "",
         "OPENAI_API_KEY": "",
         "OPENCLAW_AUTH_CHOICE": "skip"
-      },
-      "postLaunchNote": "Check post install here: https://hub.docker.com/r/fourplayers/openclaw\n"
-    }
+      }
+    },
+    "postLaunchNote": "Check post install here: https://hub.docker.com/r/fourplayers/openclaw\n"
   },
   {
     "id": "openvpn",
