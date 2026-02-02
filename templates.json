@@ -1569,7 +1569,8 @@
         "OPENCLAW_SKIP_ONBOARD": true,
         "ANTHROPIC_API_KEY": "",
         "OPENAI_API_KEY": "",
-        "OPENCLAW_AUTH_CHOICE": "skip"
+        "OPENCLAW_AUTH_CHOICE": "skip",
+        "OPENROUTER_API_KEY": ""
       }
     },
     "postLaunchNote": "Check post install here: https://hub.docker.com/r/fourplayers/openclaw\n"
