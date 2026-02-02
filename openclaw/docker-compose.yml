@@ -17,6 +17,6 @@ services:
     image: alpine
     volumes:
       - openclaw:/data
-    command: sh -c "chown 1000:1000 /data"
+    command: sh -c "chown -R $USER_UID:$USER_GID /data"
 volumes:
   openclaw:
