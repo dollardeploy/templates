@@ -1,6 +1,7 @@
 services:
   openclaw-gateway:
     image: ${OPENCLAW_IMAGE:-fourplayers/openclaw:latest}
+    user: "$USER_UID:$USER_GID"
     volumes:
       - openclaw:/home/node/.openclaw
     ports:
@@ -9,5 +10,13 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    depends_on:
+      fix-permissions:
+        condition: service_completed_successfully
+  fix-permissions:
+    image: alpine
+    volumes:
+      - openclaw:/data
+    command: sh -c "chown 1000:1000 /data"
 volumes:
   openclaw:
