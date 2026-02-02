@@ -61,14 +61,6 @@ jobs:
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Install DollarDeploy CLI
-        if: steps.detect.outputs.templates != ''
-        run: |
-          npm i -g @dollardeploy/cli
-          ddc --version
 
       - name: Deploy templates
         if: steps.detect.outputs.templates != ''
@@ -76,12 +68,8 @@ jobs:
           DOLLARDEPLOY_API_KEY: ${{ secrets.DOLLARDEPLOY_API_KEY }}
           DOLLARDEPLOY_BASE_URL: ${{ secrets.DOLLARDEPLOY_BASE_URL }}
         run: |
-          # Load nvm
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-          nvm use 22
-
+          npm i -g @dollardeploy/cli
+          ddc --version
           IFS=',' read -ra TEMPLATES <<< "${{ steps.detect.outputs.templates }}"
           for template in "${TEMPLATES[@]}"; do
             echo "Deploying template: $template"
