@@ -1,18 +1,52 @@
 services:
-  openclaw:
-    image: ${OPENCLAW_IMAGE:-fourplayers/openclaw:latest}
-    user: "$USER_UID:$USER_GID"
+  gateway:
+    build: build: https://github.com/joeferner/redis-commander.git
+    image: ${OPENCLAW_IMAGE:-openclaw:local}
+    environment:
+      HOME: /home/node
+      TERM: xterm-256color
     volumes:
       - openclaw:/home/node/.openclaw
     ports:
       - "127.0.0.1:${OPENCLAW_GATEWAY_PORT:-18789}:18789"
       - "127.0.0.1:${OPENCLAW_BRIDGE_PORT:-18790}:18790"
+    init: true
     restart: unless-stopped
     env_file:
       - .env
+    command:
+      [
+        "node",
+        "dist/index.js",
+        "gateway",
+        "--bind",
+        "${OPENCLAW_GATEWAY_BIND:-lan}",
+        "--port",
+        "18789",
+      ]
     depends_on:
       fix-permissions:
         condition: service_completed_successfully
+
+  cli:
+    build: build: https://github.com/joeferner/redis-commander.gi
+    image: ${OPENCLAW_IMAGE:-openclaw:local}
+    environment:
+      HOME: /home/node
+      TERM: xterm-256color
+      BROWSER: echo
+    volumes:
+      - openclaw:/home/node/.openclaw
+    stdin_open: true
+    tty: true
+    init: true
+    env_file:
+      - .env
+    entrypoint: ["node", "dist/index.js"]
+    depends_on:
+      fix-permissions:
+        condition: service_completed_successfully
+  
   fix-permissions:
     image: alpine
     volumes:
