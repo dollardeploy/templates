@@ -1,104 +1,124 @@
 import yaml from "js-yaml";
-import paths from "node:path";
+import fs from "node:fs";
+import path from "node:path";
 
 const logger = console;
 
-export const fetchDirectory = async path => {
-  logger.warn("Fetching directory", path);
-  const response = await fetch(
-    `https://api.github.com/repos/dollardeploy/templates/contents/${path ?? ""}`,
-    {
-      headers: process.env.GITHUB_TOKEN
-        ? {
-            Authorization: process.env.GITHUB_TOKEN
-          }
-        : undefined
-    }
-  );
-  if (!response.ok) {
-    throw new Error("Failed to fetch directory " + path + ": " + response.status);
-  }
-  return response.json();
+const DOLLARDEPLOY_CONFIG_FILES = [".dollardeploy.yml", ".dollardeploy.yaml", ".dollardeploy.json"];
+
+/**
+ * Get all template directories from the local filesystem
+ */
+const getTemplateDirectories = (basePath) => {
+  const entries = fs.readdirSync(basePath, { withFileTypes: true });
+  return entries
+    .filter(entry => entry.isDirectory() && !entry.name.startsWith(".") && entry.name !== "node_modules")
+    .map(entry => entry.name);
 };
 
-export const fetchGitHubFile = async path => {
-  logger.warn("Fetching file", path);
-  const response = await fetch(`https://raw.githubusercontent.com/dollardeploy/templates/main/${path}`, {
-    headers: process.env.GITHUB_TOKEN
-      ? {
-          Authorization: process.env.GITHUB_TOKEN
-        }
-      : undefined
-  });
-  if (!response.ok) {
-    throw new Error("Failed to fetch file " + path + ": " + response.status);
+/**
+ * Find the DollarDeploy config file in a directory
+ */
+const findConfigFile = (templatePath) => {
+  for (const configName of DOLLARDEPLOY_CONFIG_FILES) {
+    const configPath = path.join(templatePath, configName);
+    if (fs.existsSync(configPath)) {
+      return { name: configName, path: configPath };
+    }
   }
-  return response.text();
+  return null;
 };
 
-export const getGithubTemplate = async (id, optional) => {
-  logger.warn("Fetching template", id);
-  const json = await fetchDirectory(id);
+/**
+ * Parse a config file (YAML or JSON)
+ */
+const parseConfigFile = (configFile) => {
+  const content = fs.readFileSync(configFile.path, "utf-8");
 
-  if (!Array.isArray(json)) {
-    throw new Error("Invalid response from GitHub API for template " + id + ": " + JSON.stringify(json));
+  if (configFile.name.endsWith(".json")) {
+    return JSON.parse(content);
   }
 
-  const config = json.find(
-    f =>
-      f.type === "file" &&
-      [".dollardeploy.yml", ".dollardeploy.yaml", ".dollardeploy.json"].includes(f.name)
-  );
-
-  if (!config && optional) {
-    return null;
+  if (configFile.name.endsWith(".yaml") || configFile.name.endsWith(".yml")) {
+    return yaml.load(content);
   }
 
-  if (!config) {
-    throw new Error("No DollarDeploy config found for template " + id);
+  throw new Error(`Unknown config file type: ${configFile.name}`);
+};
+
+/**
+ * Resolve file references in the template config
+ */
+const resolveFileReferences = (template, templateDir) => {
+  if (!Array.isArray(template.app?.files)) {
+    return template;
   }
 
-  logger.warn("Found DollarDeploy config for template", id, config.path);
-  const template = await fetchGitHubFile(config.path).then(c => {
-    if (config.name.endsWith(".json")) {
-      return JSON.parse(c);
+  template.app.files = template.app.files.map(file => {
+    if (file.path && !file.content) {
+      const filePath = path.resolve(templateDir, file.path);
+      logger.warn("Reading file", filePath);
+
+      if (!fs.existsSync(filePath)) {
+        throw new Error(`Referenced file not found: ${filePath}`);
+      }
+
+      const content = fs.readFileSync(filePath, "utf-8");
+      return { ...file, content };
     }
-
-    if (config.name.endsWith(".yaml") || config.name.endsWith(".yml")) {
-      return yaml.load(c);
-    }
-
-    throw new Error("Unknown dollardeploy config file type for template " + id);
+    return file;
   });
-
-  if (Array.isArray(template.app?.files)) {
-    template.app.files = await Promise.all(
-      template.app.files.map(f => {
-        if (f.path && !f.content) {
-          const path = paths.resolve(paths.dirname(config.path), f.path);
-          logger.warn("Fetching file", path);
-          return fetchGitHubFile(path).then(content => ({ ...f, content }));
-        }
-        return f;
-      })
-    );
-  }
 
   return template;
 };
 
-const getTemplates = async () => {
-  const json = await fetchDirectory();
-  const ids = json.filter(f => f.type === "dir").map(f => f.name);
-  const configs = [];
-  configs.push(
-    ...(await Promise.all(ids.map(id => getGithubTemplate(id, true)))).filter(v => !!v)
-  );
-  return configs;
+/**
+ * Get a single template from the local filesystem
+ */
+const getLocalTemplate = (basePath, templateId, optional = false) => {
+  logger.warn("Processing template", templateId);
+  const templatePath = path.join(basePath, templateId);
+
+  const configFile = findConfigFile(templatePath);
+
+  if (!configFile && optional) {
+    return null;
+  }
+
+  if (!configFile) {
+    throw new Error(`No DollarDeploy config found for template ${templateId}`);
+  }
+
+  logger.warn("Found config", configFile.path);
+
+  let template = parseConfigFile(configFile);
+  template = resolveFileReferences(template, templatePath);
+
+  return template;
 };
 
-const main = async () => {
-  const templates = await getTemplates();
+/**
+ * Get all templates from the local filesystem
+ */
+const getTemplates = (basePath) => {
+  const templateIds = getTemplateDirectories(basePath);
+  logger.warn("Found template directories:", templateIds.join(", "));
+
+  const templates = [];
+
+  for (const id of templateIds) {
+    const template = getLocalTemplate(basePath, id, true);
+    if (template) {
+      templates.push(template);
+    }
+  }
+
+  return templates;
+};
+
+const main = () => {
+  const basePath = process.cwd();
+  const templates = getTemplates(basePath);
   process.stdout.write(JSON.stringify(templates, null, 2));
 };
 
