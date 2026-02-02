@@ -1527,6 +1527,53 @@
     "postLaunchNote": "Username is **admin** and password is **${GENERATED_PWD}**. After deploy, give time to the app to build and get ready (5 mins).\n"
   },
   {
+    "id": "openclaw",
+    "name": "OpenClaw",
+    "experimental": true,
+    "intro": "Self-hosted AI assistant that integrates with WhatsApp, Telegram, Slack, Discord and more",
+    "logo": "https://avatars.githubusercontent.com/u/252820863",
+    "tags": [
+      "ai",
+      "assistant",
+      "automation",
+      "oss",
+      "messaging",
+      "claude"
+    ],
+    "deployTime": "~10 minutes",
+    "description": "OpenClaw is your own personal AI assistant that runs on any OS and integrates with multiple platforms.\nIt provides a unified control center for interacting with AI models through your existing communication\napps—WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, and others.\n\nFeatures:\n- Multi-channel messaging integration (WhatsApp, Telegram, Slack, Discord, etc.)\n- Local gateway architecture with WebSocket-based control plane\n- Voice interaction and browser automation capabilities\n- Extensible tools including browser control, file operations, and cron scheduling\n- Security-first design with pairing-based access control\n- Canvas visualization and skills registry system\n\nAfter deployment, you'll need to:\n\n1. Run the onboarding wizard to configure your AI model and messaging channels\n2. Access the Control UI at http://127.0.0.1:18789/\n3. Configure your Claude AI session keys for full functionality\n",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 10
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "openclaw",
+      "sourceBranch": "main",
+      "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 18789,
+      "env": {
+        "PORT": 18789,
+        "DOCKER_COMPOSE_PULL": "always",
+        "OPENCLAW_IMAGE": "fourplayers/openclaw:latest",
+        "OPENCLAW_GATEWAY_PORT": 18789,
+        "OPENCLAW_BRIDGE_PORT": 18790,
+        "OPENCLAW_GATEWAY_BIND": "lan",
+        "OPENCLAW_GATEWAY_TOKEN": "${GENERATED_HASH}",
+        "OPENCLAW_GATEWAY_PASSWORD": "${GENERATED_PWD}",
+        "ANTHROPIC_API_KEY": "",
+        "OPENAI_API_KEY": "",
+        "OPENCLAW_AUTH_CHOICE": "skip"
+      },
+      "postLaunchNote": "Check post install here: https://hub.docker.com/r/fourplayers/openclaw\n"
+    }
+  },
+  {
     "id": "openvpn",
     "name": "OpenVPN",
     "intro": "OpenVPN is a secure VPN channel to protect traffic",
