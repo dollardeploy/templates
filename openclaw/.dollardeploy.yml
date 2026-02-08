@@ -10,51 +10,67 @@ tags:
   - oss
   - messaging
   - claude
-deployTime: ~10 minutes
+deployTime: ~15 minutes
 description: |
-  OpenClaw is your own personal AI assistant that runs on any OS and integrates with multiple platforms.
+  OpenClaw is your own personal AI assistant that runs natively with Node.js and integrates with multiple platforms.
   It provides a unified control center for interacting with AI models through your existing communication
   apps—WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, and others.
 
   Features:
   - Multi-channel messaging integration (WhatsApp, Telegram, Slack, Discord, etc.)
-  - Local gateway architecture with WebSocket-based control plane
+  - Native browser control with VNC server for advanced browser automation
   - Voice interaction and browser automation capabilities
   - Extensible tools including browser control, file operations, and cron scheduling
   - Security-first design with pairing-based access control
   - Canvas visualization and skills registry system
 
-  After deployment, you'll need to:
+  This template installs OpenClaw natively with:
+  - Node.js 22 (via nvm)
+  - pnpm package manager
+  - VNC server for browser control
+  - systemd services for auto-start
+  - Browser extension for enhanced capabilities
 
-  1. Run the onboarding wizard to configure your AI model and messaging channels
-  2. Access the Control UI at http://127.0.0.1:18789/
-  3. Configure your Claude AI session keys for full functionality
+  After deployment:
+  1. The deploy.sh script will handle all installation steps
+  2. OpenClaw will be available as a global command
+  3. VNC server will run on display :1 (port 5901)
+  4. Browser extension will be symlinked to ~/openclaw-extension
 
 requirements:
-  memory: 2048
-  cpu: 2
-  storage: 10
-services:
-  - docker
+  memory: 8192
+  cpu: 4
+  storage: 60
+services: []
 app:
-  type: docker-compose
+  type: script
   repositoryUrl: https://github.com/dollardeploy/templates
   sourcePath: openclaw
   sourceBranch: main
-  dockerComposeFile: docker-compose.yml
-  mainPort: 18789
+  preStartCmd: nohup deploy.sh &
+  startScript: server.js
+  mainPort: 3000
   env:
-    PORT: 18789
-    DOCKER_COMPOSE_PULL: always
-    OPENCLAW_IMAGE: fourplayers/openclaw:latest
-    OPENCLAW_GATEWAY_PORT: 18789
-    OPENCLAW_BRIDGE_PORT: 18790
-    OPENCLAW_GATEWAY_BIND: lan
-    OPENCLAW_GATEWAY_TOKEN: ${GENERATED_HASH}
-    OPENCLAW_SKIP_ONBOARD: true
     ANTHROPIC_API_KEY: ""
     OPENAI_API_KEY: ""
-    OPENCLAW_AUTH_CHOICE: "skip"
     OPENROUTER_API_KEY: ""
+    VNC_PASSWORD: "${GENERATED_PWD}"
 postLaunchNote: |
-  Open with token ${APP_URL}?token=${GENERATED_HASH}. Check post install here: https://hub.docker.com/r/fourplayers/openclaw
+  OpenClaw installation has started! 🚀
+
+  📊 View installation progress and status: ${APP_URL}
+
+  The deploy.sh script is running in the background and will:
+  - Install Node.js 22, pnpm, and dependencies
+  - Configure VNC server for browser control
+  - Install OpenClaw globally
+  - Set up systemd services
+
+  Once complete (check the status page):
+  1. SSH into your server
+  2. Run: openclaw
+  3. VNC available at: localhost:5901
+  4. Browser extension: ~/openclaw-extension
+
+  📚 Documentation: https://docs.openclaw.ai/
+  💻 GitHub: https://github.com/openclaw/openclaw

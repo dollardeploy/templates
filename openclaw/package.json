@@ -1,0 +1,12 @@
+{
+  "name": "openclaw",
+  "version": "1.0.0",
+  "description": "OpenClaw is a self-hosted AI assistant platform that integrates with multiple messaging platforms including WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, and more.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
