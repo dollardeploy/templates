@@ -1540,39 +1540,30 @@
       "messaging",
       "claude"
     ],
-    "deployTime": "~10 minutes",
-    "description": "OpenClaw is your own personal AI assistant that runs on any OS and integrates with multiple platforms.\nIt provides a unified control center for interacting with AI models through your existing communication\napps—WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, and others.\n\nFeatures:\n- Multi-channel messaging integration (WhatsApp, Telegram, Slack, Discord, etc.)\n- Local gateway architecture with WebSocket-based control plane\n- Voice interaction and browser automation capabilities\n- Extensible tools including browser control, file operations, and cron scheduling\n- Security-first design with pairing-based access control\n- Canvas visualization and skills registry system\n\nAfter deployment, you'll need to:\n\n1. Run the onboarding wizard to configure your AI model and messaging channels\n2. Access the Control UI at http://127.0.0.1:18789/\n3. Configure your Claude AI session keys for full functionality\n",
+    "deployTime": "~15 minutes",
+    "description": "OpenClaw is your own personal AI assistant that runs natively with Node.js and integrates with multiple platforms.\nIt provides a unified control center for interacting with AI models through your existing communication\napps—WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, and others.\n\nFeatures:\n- Multi-channel messaging integration (WhatsApp, Telegram, Slack, Discord, etc.)\n- Native browser control with VNC server for advanced browser automation\n- Voice interaction and browser automation capabilities\n- Extensible tools including browser control, file operations, and cron scheduling\n- Security-first design with pairing-based access control\n- Canvas visualization and skills registry system\n\nThis template installs OpenClaw natively with:\n- Node.js 22 (via nvm)\n- pnpm package manager\n- VNC server for browser control\n- systemd services for auto-start\n- Browser extension for enhanced capabilities\n\nAfter deployment:\n1. The deploy.sh script will handle all installation steps\n2. OpenClaw will be available as a global command\n3. VNC server will run on display :1 (port 5901)\n4. Browser extension will be symlinked to ~/openclaw-extension\n",
     "requirements": {
-      "memory": 2048,
-      "cpu": 2,
-      "storage": 10
+      "memory": 8192,
+      "cpu": 4,
+      "storage": 60
     },
-    "services": [
-      "docker"
-    ],
+    "services": [],
     "app": {
-      "type": "docker-compose",
+      "type": "script",
       "repositoryUrl": "https://github.com/dollardeploy/templates",
       "sourcePath": "openclaw",
       "sourceBranch": "main",
-      "dockerComposeFile": "docker-compose.yml",
-      "mainPort": 18789,
+      "preStartCmd": "nohup deploy.sh &",
+      "startScript": "server.js",
+      "mainPort": 3000,
       "env": {
-        "PORT": 18789,
-        "DOCKER_COMPOSE_PULL": "always",
-        "OPENCLAW_IMAGE": "fourplayers/openclaw:latest",
-        "OPENCLAW_GATEWAY_PORT": 18789,
-        "OPENCLAW_BRIDGE_PORT": 18790,
-        "OPENCLAW_GATEWAY_BIND": "lan",
-        "OPENCLAW_GATEWAY_TOKEN": "${GENERATED_HASH}",
-        "OPENCLAW_SKIP_ONBOARD": true,
         "ANTHROPIC_API_KEY": "",
         "OPENAI_API_KEY": "",
-        "OPENCLAW_AUTH_CHOICE": "skip",
-        "OPENROUTER_API_KEY": ""
+        "OPENROUTER_API_KEY": "",
+        "VNC_PASSWORD": "${GENERATED_PWD}"
       }
     },
-    "postLaunchNote": "Open with token ${APP_URL}?token=${GENERATED_HASH}. Check post install here: https://hub.docker.com/r/fourplayers/openclaw\n"
+    "postLaunchNote": "OpenClaw installation has started! 🚀\n\n📊 View installation progress and status: ${APP_URL}\n\nThe deploy.sh script is running in the background and will:\n- Install Node.js 22, pnpm, and dependencies\n- Configure VNC server for browser control\n- Install OpenClaw globally\n- Set up systemd services\n\nOnce complete (check the status page):\n1. SSH into your server\n2. Run: openclaw\n3. VNC available at: localhost:5901\n4. Browser extension: ~/openclaw-extension\n\n📚 Documentation: https://docs.openclaw.ai/\n💻 GitHub: https://github.com/openclaw/openclaw\n"
   },
   {
     "id": "openvpn",
