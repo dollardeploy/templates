@@ -43,7 +43,7 @@ requirements:
   storage: 60
 services: []
 app:
-  type: script
+  type: native
   repositoryUrl: https://github.com/dollardeploy/templates
   sourcePath: openclaw
   sourceBranch: main
