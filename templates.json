@@ -1905,6 +1905,23 @@
     "description": "Pterodactyl Wings is Pterodactyl's server control plane, built for the rapidly changing\ngaming industry and designed to be highly performant and secure. Wings provides\nan HTTP API allowing you to interface directly with running server instances,\nfetch server logs, generate backups, and control all aspects of the server lifecycle.\n"
   },
   {
+    "id": "solid-nextjs",
+    "name": "Solid Next.js (Free)",
+    "intro": "Solid free Next.js SaaS/Startup template (Next 16, React 19, Tailwind)",
+    "tags": [
+      "nextjs",
+      "template",
+      "saas",
+      "marketing"
+    ],
+    "app": {
+      "type": "next",
+      "repositoryUrl": "https://github.com/NextJSTemplates/solid-nextjs",
+      "sourceBranch": "main",
+      "mainPort": 3000
+    }
+  },
+  {
     "id": "stripe-sync",
     "name": "Stripe Sync",
     "logo": "https://avatars.githubusercontent.com/u/54469796",
