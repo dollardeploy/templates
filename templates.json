@@ -1818,6 +1818,45 @@
     "description": "Portainer Community Edition is a universal container management platform that\nsimplifies the deployment, configuration, and monitoring of containerized applications\nacross Docker, Kubernetes, Swarm, and Nomad environments. With its intuitive web-based interface,\nPortainer enables users to manage containers, images, networks, and volumes effortlessly,\nmaking it ideal for both beginners and experienced DevOps teams. It supports hybrid and\nmulti-cloud setups, edge, and Industrial IoT use cases, providing a centralized,\nsecure solution for container orchestration.\n"
   },
   {
+    "id": "posthog",
+    "name": "PostHog",
+    "intro": "Open-source product analytics platform",
+    "description": "PostHog is an all-in-one product analytics suite. Track events, understand user behavior\nwith session replays, run A/B tests, manage feature flags, and analyze funnels — all in\none platform. Self-host to keep full control of your data.\nRequires at least **8GB RAM**. Uses PostgreSQL, ClickHouse, Redis, and Kafka.\n",
+    "logo": "https://avatars.githubusercontent.com/u/60330232",
+    "tags": [
+      "analytics",
+      "product-analytics",
+      "oss",
+      "docker"
+    ],
+    "deployTime": "~10 minutes",
+    "requirements": {
+      "memory": 8192,
+      "cpu": 4,
+      "storage": 40
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "posthog",
+      "sourceBranch": "main",
+      "dockerComposeFile": "docker-compose.yml",
+      "preStartCmd": "bash setup.sh",
+      "mainPort": 8000,
+      "env": {
+        "POSTHOG_SECRET": "${GENERATED_HASH}",
+        "REGISTRY_URL": "posthog/posthog",
+        "POSTHOG_APP_TAG": "latest",
+        "TLS_BLOCK": "",
+        "CADDY_HOST": ":80",
+        "PRE_START_TIMEOUT": 600
+      }
+    }
+  },
+  {
     "id": "pterodactyl",
     "name": "Pterodactyl",
     "intro": "Open-source game server management panel built for performance, security, and extensibility using Docker containers.",
