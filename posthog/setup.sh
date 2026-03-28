@@ -67,7 +67,7 @@ chmod +x compose/wait
 # Download GeoIP database for geolocation features
 mkdir -p share
 if [ ! -f ./share/GeoLite2-City.mmdb ]; then
-    apt-get install -y --no-install-recommends brotli 2>/dev/null || true
+    sudo apt-get install -y --no-install-recommends brotli 2>/dev/null || true
     curl -sL 'https://mmdbcdn.posthog.net/' --http1.1 | brotli --decompress > ./share/GeoLite2-City.mmdb 2>/dev/null || true
     echo "{\"date\": \"$(date +%Y-%m-%d)\"}" > ./share/GeoLite2-City.json || true
 fi
