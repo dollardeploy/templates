@@ -1,0 +1,36 @@
+id: posthog
+name: PostHog
+intro: Open-source product analytics platform
+description: |
+  PostHog is an all-in-one product analytics suite. Track events, understand user behavior
+  with session replays, run A/B tests, manage feature flags, and analyze funnels — all in
+  one platform. Self-host to keep full control of your data.
+  Requires at least **8GB RAM**. Uses PostgreSQL, ClickHouse, Redis, and Kafka.
+logo: https://avatars.githubusercontent.com/u/60330232
+tags:
+  - analytics
+  - product-analytics
+  - oss
+  - docker
+deployTime: ~10 minutes
+requirements:
+  memory: 8192
+  cpu: 4
+  storage: 40
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: posthog
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  preStartCmd: bash setup.sh
+  mainPort: 8000
+  env:
+    POSTHOG_SECRET: ${GENERATED_HASH}
+    REGISTRY_URL: posthog/posthog
+    POSTHOG_APP_TAG: latest
+    TLS_BLOCK: ""
+    CADDY_HOST: ":80"
+    PRE_START_TIMEOUT: 600
