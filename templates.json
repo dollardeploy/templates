@@ -30,7 +30,9 @@
         "PORT": 8080,
         "NGINX_STATIC_PATHS": "externals"
       }
-    }
+    },
+    "createdAt": "2025-11-29T09:15:45+02:00",
+    "updatedAt": "2025-12-01T14:55:56+02:00"
   },
   {
     "id": "baserow",
@@ -69,7 +71,9 @@
     "description": "Baserow is an open-source no-code database tool and Airtable alternative. It allows you to create custom databases, manage data, and build applications without the need for coding. Whether you're a beginner or an experienced developer, Baserow provides a user-friendly interface to manage your data and build powerful applications.",
     "services": [
       "docker"
-    ]
+    ],
+    "createdAt": "2024-09-20T15:06:08+03:00",
+    "updatedAt": "2025-08-26T22:05:06+03:00"
   },
   {
     "id": "beszel",
@@ -101,7 +105,9 @@
         "KEY": "${GENERATED_SECRET}"
       }
     },
-    "postLaunchNote": "After first run, manually add local agent to the hub, update KEY= and TOKEN= variables, and redeploy.\nSee https://beszel.dev/guide/getting-started#_4-start-the-agent\n"
+    "postLaunchNote": "After first run, manually add local agent to the hub, update KEY= and TOKEN= variables, and redeploy.\nSee https://beszel.dev/guide/getting-started#_4-start-the-agent\n",
+    "createdAt": "2025-07-29T20:02:15+03:00",
+    "updatedAt": "2025-08-27T11:47:28+03:00"
   },
   {
     "id": "boilerplate-python",
@@ -126,7 +132,9 @@
       "env": {
         "PORT": 8000
       }
-    }
+    },
+    "createdAt": "2025-05-18T12:50:18+03:00",
+    "updatedAt": "2025-05-18T12:50:18+03:00"
   },
   {
     "id": "boilerplate-t3-app",
@@ -152,7 +160,9 @@
       "env": {
         "PORT": 3000
       }
-    }
+    },
+    "createdAt": "2025-05-18T12:50:18+03:00",
+    "updatedAt": "2025-05-18T12:50:18+03:00"
   },
   {
     "id": "cal-com",
@@ -199,7 +209,9 @@
     "description": "Cal.com is a scheduling infrastructure for everyone. It's an open source alternative to Calendly that allows you to schedule meetings efficiently and integrate with various calendar services.",
     "services": [
       "postgres"
-    ]
+    ],
+    "createdAt": "2025-01-17T15:51:08+02:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "cal-com-docker",
@@ -259,7 +271,9 @@
     "description": "Cal.com is a scheduling infrastructure for everyone. It's an open source alternative to Calendly that allows you to schedule meetings efficiently and integrate with various calendar services.",
     "services": [
       "docker"
-    ]
+    ],
+    "createdAt": "2025-01-17T15:51:08+02:00",
+    "updatedAt": "2025-11-07T17:51:13+02:00"
   },
   {
     "id": "cal-com-old",
@@ -303,7 +317,9 @@
     "description": "Cal.com is a scheduling infrastructure for everyone. It's an open source alternative to Calendly that allows you to schedule meetings efficiently and integrate with various calendar services.",
     "services": [
       "postgres"
-    ]
+    ],
+    "createdAt": "2025-01-17T09:35:58+02:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "chatwoot",
@@ -359,7 +375,9 @@
         "CHATWOOT_VERSION": "v4.5.2-ce",
         "PRE_START_TIMEOUT": "300"
       }
-    }
+    },
+    "createdAt": "2024-11-24T13:32:15+02:00",
+    "updatedAt": "2025-09-08T23:01:58+03:00"
   },
   {
     "id": "chatwoot3",
@@ -413,7 +431,9 @@
         "PORT": "3000",
         "PRE_START_TIMEOUT": "300"
       }
-    }
+    },
+    "createdAt": "2025-01-20T18:13:09+02:00",
+    "updatedAt": "2025-09-09T19:25:56+03:00"
   },
   {
     "id": "code-server",
@@ -446,7 +466,9 @@
     "description": "This template launches code-server, which is VS Code running on a remote server, accessible through the browser. It allows you to code on any device with a consistent development environment.",
     "services": [
       "docker"
-    ]
+    ],
+    "createdAt": "2024-12-15T14:42:55Z",
+    "updatedAt": "2026-01-05T09:35:33+02:00"
   },
   {
     "id": "courselit",
@@ -490,7 +512,9 @@
         "SUPER_ADMIN_EMAIL": "${USER_EMAIL}"
       }
     },
-    "postLaunchNote": "Username is your e-mail. To login, setup SMTP server settings\nin the environment variables, redeploy and try to login.\n\n  \n"
+    "postLaunchNote": "Username is your e-mail. To login, setup SMTP server settings\nin the environment variables, redeploy and try to login.\n\n  \n",
+    "createdAt": "2025-05-11T20:59:46+03:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "directus",
@@ -532,7 +556,9 @@
           "content": "#!/bin/bash\nmkdir -p ./data/database\nmkdir -p ./data/extensions\nmkdir -p ./data/uploads\nmkdir -p ./data/redis\nsudo chown -R \"$USER_UID:$USER_GID\" ./data/extensions\nsudo chown -R \"$USER_UID:$USER_GID\" ./data/uploads\nsudo chown -R \"$USER_UID:$USER_GID\" ./data/redis\n"
         }
       ]
-    }
+    },
+    "createdAt": "2024-11-22T16:04:43+02:00",
+    "updatedAt": "2025-09-19T14:26:04+03:00"
   },
   {
     "id": "discourse",
@@ -572,7 +598,9 @@
         "DISCOURSE_SMTP_PASSWORD": "your-smtp-password",
         "DOCKER_COMPOSE_PULL": "always"
       }
-    }
+    },
+    "createdAt": "2025-08-24T18:48:42+03:00",
+    "updatedAt": "2025-11-02T21:35:50+02:00"
   },
   {
     "id": "dozzle",
@@ -606,7 +634,9 @@
         "DOZZLE_AUTH_PASSWORD": "${GENERATED_PWD}"
       }
     },
-    "postLaunchNote": "Dozzle username: admin, password: ${GENERATED_PWD}\n"
+    "postLaunchNote": "Dozzle username: admin, password: ${GENERATED_PWD}\n",
+    "createdAt": "2025-07-29T21:21:40+03:00",
+    "updatedAt": "2025-08-13T17:03:40+03:00"
   },
   {
     "id": "erpnext",
@@ -642,7 +672,9 @@
         "TAG": "v15.71.1",
         "PORT": 8080
       }
-    }
+    },
+    "createdAt": "2025-02-25T18:22:52+02:00",
+    "updatedAt": "2025-07-24T16:40:06+03:00"
   },
   {
     "id": "evo-ai-api",
@@ -672,7 +704,9 @@
         "REDIS_TTL": 3600,
         "TOOLS_CACHE_TTL": 3600
       }
-    }
+    },
+    "createdAt": "2025-05-23T17:39:38+03:00",
+    "updatedAt": "2025-05-23T17:43:25+03:00"
   },
   {
     "id": "evo-ai-frontend",
@@ -694,7 +728,9 @@
         "API_URL": "https://api.example.com",
         "NEXT_PUBLIC_API_URL": "${API_URL}"
       }
-    }
+    },
+    "createdAt": "2025-05-23T17:39:38+03:00",
+    "updatedAt": "2025-06-27T09:41:12+03:00"
   },
   {
     "id": "evolution-api",
@@ -779,7 +815,9 @@
     },
     "services": [
       "docker"
-    ]
+    ],
+    "createdAt": "2025-05-15T10:21:20+03:00",
+    "updatedAt": "2026-01-05T09:45:25+02:00"
   },
   {
     "id": "ghost-cms",
@@ -820,7 +858,9 @@
         "MAIL_SECURE": false,
         "BULK_EMAIL_BATCH": 5
       }
-    }
+    },
+    "createdAt": "2024-12-11T15:06:09+02:00",
+    "updatedAt": "2025-07-02T14:13:48+03:00"
   },
   {
     "id": "gpt-oss",
@@ -854,7 +894,9 @@
         "DOCKER_COMPOSE_BUILD": 1,
         "PORT": 8080
       }
-    }
+    },
+    "createdAt": "2025-11-01T10:19:48+02:00",
+    "updatedAt": "2025-11-04T08:40:22+02:00"
   },
   {
     "id": "homarr",
@@ -886,7 +928,9 @@
         "NEXTAUTH_URL": "${APP_URL}",
         "PORT": "3010"
       }
-    }
+    },
+    "createdAt": "2025-01-05T20:43:18+02:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "inngest",
@@ -921,7 +965,9 @@
         "INNGEST_DEV": 0,
         "TAG": "v1.12.1"
       }
-    }
+    },
+    "createdAt": "2025-07-29T16:40:11+03:00",
+    "updatedAt": "2025-10-23T17:12:28+03:00"
   },
   {
     "id": "local-ai-cpu",
@@ -956,7 +1002,9 @@
     "description": "Local AI is an open-source, self-hostable online OpenAI API compatible service with chatbot UI.",
     "services": [
       "docker"
-    ]
+    ],
+    "createdAt": "2025-01-17T11:04:52+02:00",
+    "updatedAt": "2026-01-05T10:10:51+02:00"
   },
   {
     "id": "local-ai-nvidia-cuda-12",
@@ -992,7 +1040,9 @@
     "description": "Local AI is an open-source, self-hostable online OpenAI API compatible service with chatbot UI. This template is compatible with server which have NVidia GPU with CUDA 12 configured. We tested it with DataCrunch provider in DollarDeploy, and it works well with GPU instances of type A6000 and better (1€/hr).",
     "services": [
       "docker"
-    ]
+    ],
+    "createdAt": "2025-01-20T08:56:47+02:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "mailpit",
@@ -1052,7 +1102,9 @@
     "description": "[Mailpit](https://mailpit.axllent.org/) - email & SMTP testing tool with API for developers. \nMailpit is a small, fast, low memory, zero-dependency, multi-platform email\ntesting tool & API for developers.\nIt acts as an SMTP server, provides a modern web interface to view & test\ncaptured emails, and contains an API for automated integration testing\n",
     "services": [
       "docker"
-    ]
+    ],
+    "createdAt": "2025-01-29T09:54:17+02:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "mattermost",
@@ -1115,7 +1167,9 @@
     "services": [
       "postgres",
       "docker"
-    ]
+    ],
+    "createdAt": "2025-01-02T20:02:12+02:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "maybe-finance",
@@ -1149,7 +1203,9 @@
         "SECRET_KEY_BASE": "${GENERATED_HASH}",
         "PORT": "3000"
       }
-    }
+    },
+    "createdAt": "2025-05-04T14:16:27+03:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "mcdash",
@@ -1182,7 +1238,9 @@
       "docker"
     ],
     "deployTime": "~2 minutes",
-    "description": "MCDash is a lightweight and user-friendly dashboard for Minecraft servers.\nIt provides real-time monitoring of your server's performance, player statistics,\nand server status. With a clean and intuitive interface, you can easily track\nserver metrics, manage players, and monitor resource usage.\n"
+    "description": "MCDash is a lightweight and user-friendly dashboard for Minecraft servers.\nIt provides real-time monitoring of your server's performance, player statistics,\nand server status. With a clean and intuitive interface, you can easily track\nserver metrics, manage players, and monitor resource usage.\n",
+    "createdAt": "2025-06-18T01:44:46+03:00",
+    "updatedAt": "2025-06-20T16:27:10+03:00"
   },
   {
     "id": "mcp-facebook-ads",
@@ -1217,7 +1275,9 @@
         "PORT": 8096,
         "FB_TOKEN": "dummy_facebook_access_token"
       }
-    }
+    },
+    "createdAt": "2025-04-28T18:32:23+03:00",
+    "updatedAt": "2025-06-23T16:03:31+03:00"
   },
   {
     "id": "mcp-frappe",
@@ -1254,7 +1314,9 @@
         "FRAPPE_API_KEY": "frappe",
         "FRAPPE_API_SECRET": 123
       }
-    }
+    },
+    "createdAt": "2025-04-17T15:10:59+03:00",
+    "updatedAt": "2025-06-14T11:02:31+03:00"
   },
   {
     "id": "metabase",
@@ -1288,7 +1350,9 @@
     "description": "Version: ${METABASE_VERSION}. Fast analytics with the friendly UX and integrated\ntooling to let your company explore data on their own.\nGet your data in front of your team. Connect to your\ndata stack in 5 minutes to make queries, visualizations, and dashboards\neasy for everyone—no SQL required.\n",
     "services": [
       "docker"
-    ]
+    ],
+    "createdAt": "2025-01-26T11:33:21+02:00",
+    "updatedAt": "2026-01-06T20:50:02+02:00"
   },
   {
     "id": "miniflux",
@@ -1328,7 +1392,9 @@
         "LISTEN_ADDR": "127.0.0.1:${PORT}"
       }
     },
-    "postLaunchNote": "Username is your e-mail and password is in environment variable `ADMIN_PASSWORD`.\n"
+    "postLaunchNote": "Username is your e-mail and password is in environment variable `ADMIN_PASSWORD`.\n",
+    "createdAt": "2025-04-26T15:19:06+03:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "minio",
@@ -1365,7 +1431,9 @@
         "MINIO_SERVER_URL": "${APP_URL}"
       }
     },
-    "postLaunchNote": "Get started with using MinIO on the command line or via the SDK:\n\n```bash\nexport AWS_ACCESS_KEY_ID=${MINIO_ROOT_USER}\nexport AWS_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}\naws s3api --endpoint-url ${APP_URL} create-bucket --bucket test\necho \"Hello, world!\" | aws s3 --endpoint-url ${APP_URL} cp - s3://test/hello.txt\n```\n"
+    "postLaunchNote": "Get started with using MinIO on the command line or via the SDK:\n\n```bash\nexport AWS_ACCESS_KEY_ID=${MINIO_ROOT_USER}\nexport AWS_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}\naws s3api --endpoint-url ${APP_URL} create-bucket --bucket test\necho \"Hello, world!\" | aws s3 --endpoint-url ${APP_URL} cp - s3://test/hello.txt\n```\n",
+    "createdAt": "2025-09-30T21:55:03+03:00",
+    "updatedAt": "2025-10-07T20:42:18+03:00"
   },
   {
     "id": "n8n",
@@ -1425,7 +1493,9 @@
           "content": "#!/bin/bash\nmkdir -p data/n8n\nmkdir -p data/n8n/.config\nchmod 0700 data/n8n/.config\nsudo chown 1000:1000 data/n8n\nsudo chown 1000:1000 data/n8n/.config\n"
         }
       ]
-    }
+    },
+    "createdAt": "2025-04-29T10:51:14+03:00",
+    "updatedAt": "2025-11-14T15:22:54+02:00"
   },
   {
     "id": "nextcloud",
@@ -1458,7 +1528,9 @@
         "MYSQL_HOST": "db",
         "REDIS_HOST": "redis"
       }
-    }
+    },
+    "createdAt": "2025-12-01T09:53:48+02:00",
+    "updatedAt": "2025-12-09T20:15:02+02:00"
   },
   {
     "id": "nextjs-boilerplate",
@@ -1483,7 +1555,9 @@
       "sourceBranch": "main",
       "type": "next",
       "mainPort": 3000
-    }
+    },
+    "createdAt": "2025-10-30T08:36:02+02:00",
+    "updatedAt": "2025-12-21T13:02:32+01:00"
   },
   {
     "id": "nodebb",
@@ -1524,7 +1598,9 @@
         "APP_READY_TIMEOUT": "600"
       }
     },
-    "postLaunchNote": "Username is **admin** and password is **${GENERATED_PWD}**. After deploy, give time to the app to build and get ready (5 mins).\n"
+    "postLaunchNote": "Username is **admin** and password is **${GENERATED_PWD}**. After deploy, give time to the app to build and get ready (5 mins).\n",
+    "createdAt": "2025-08-27T00:32:05+03:00",
+    "updatedAt": "2025-09-01T00:19:39+03:00"
   },
   {
     "id": "openclaw",
@@ -1563,7 +1639,9 @@
         "VNC_PASSWORD": "${GENERATED_PWD}"
       }
     },
-    "postLaunchNote": "OpenClaw installation has started! 🚀\n\n📊 View installation progress and status: ${APP_URL}\n\nThe deploy.sh script is running in the background and will:\n- Install Node.js 22, pnpm, and dependencies\n- Configure VNC server for browser control\n- Install OpenClaw globally\n- Set up systemd services\n\nOnce complete (check the status page):\n1. SSH into your server\n2. Run: openclaw\n3. VNC available at: localhost:5901\n4. Browser extension: ~/openclaw-extension\n\n📚 Documentation: https://docs.openclaw.ai/\n💻 GitHub: https://github.com/openclaw/openclaw\n"
+    "postLaunchNote": "OpenClaw installation has started! 🚀\n\n📊 View installation progress and status: ${APP_URL}\n\nThe deploy.sh script is running in the background and will:\n- Install Node.js 22, pnpm, and dependencies\n- Configure VNC server for browser control\n- Install OpenClaw globally\n- Set up systemd services\n\nOnce complete (check the status page):\n1. SSH into your server\n2. Run: openclaw\n3. VNC available at: localhost:5901\n4. Browser extension: ~/openclaw-extension\n\n📚 Documentation: https://docs.openclaw.ai/\n💻 GitHub: https://github.com/openclaw/openclaw\n",
+    "createdAt": "2026-02-02T09:19:41+02:00",
+    "updatedAt": "2026-02-12T20:06:05+02:00"
   },
   {
     "id": "openvpn",
@@ -1599,7 +1677,9 @@
         "TCP_PORT": 1194,
         "UDP_PORT": 1194
       }
-    }
+    },
+    "createdAt": "2025-03-04T11:59:50+02:00",
+    "updatedAt": "2025-07-08T16:53:57+03:00"
   },
   {
     "id": "outline",
@@ -1648,7 +1728,9 @@
         "DOCKER_IMAGE": "docker.getoutline.com/outlinewiki/outline"
       }
     },
-    "postLaunchNote": "> Remember to configure the SMTP settings and \n> authentication settings in the environment variables and redeploy after that.\n> See the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.\n"
+    "postLaunchNote": "> Remember to configure the SMTP settings and \n> authentication settings in the environment variables and redeploy after that.\n> See the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.\n",
+    "createdAt": "2025-06-11T18:54:14+03:00",
+    "updatedAt": "2025-09-01T11:43:40+03:00"
   },
   {
     "id": "outline-ws",
@@ -1687,7 +1769,9 @@
     ],
     "deployTime": "~2 minutes",
     "description": "Runs Outline Shadowsocks server with WebSockets support.  \nOutline enables anyone to access the free and open Internet\nmore safely by running their own VPN. \nRunning your own VPN server through Outline makes accessing\nthe Internet safer and establishes a connection that is harder to block.\n",
-    "postLaunchNote": "Fork client config from here: https://gist.github.com/huksley/c3453b9a11f5fecd840fc25b48e982dd\nand use \n  * `CLIENT_SECRET: ${CLIENT_SECRET}`\n  * `URL_PATH: ${URL_PATH}`\n  * `HOSTNAME: ${APP_HOSTNAME}`\n"
+    "postLaunchNote": "Fork client config from here: https://gist.github.com/huksley/c3453b9a11f5fecd840fc25b48e982dd\nand use \n  * `CLIENT_SECRET: ${CLIENT_SECRET}`\n  * `URL_PATH: ${URL_PATH}`\n  * `HOSTNAME: ${APP_HOSTNAME}`\n",
+    "createdAt": "2025-08-29T16:00:00+03:00",
+    "updatedAt": "2025-09-18T19:19:03+03:00"
   },
   {
     "id": "pelican",
@@ -1740,7 +1824,9 @@
     ],
     "deployTime": "~5 minutes",
     "postLaunchNote": "Use username `${ADMIN_USERNAME}` and password `${ADMIN_PASSWORD}` to login.",
-    "description": "From prehistoric to peak performance: Pelican takes flight! Pelican is the ultimate,\nfree game server control panel offering high flying security. It's a breeze to manage\nyour servers with our sleek and user-friendly interface. Thanks to Docker, every server\nruns in its own safe space. Pelican is 100% free and open source—forever—for you,\nyour friends, family, and community. We support Minecraft, Terraria, Palworld, Valheim,\nFactorio, and so much more. Whether you're just playing with friends or running a gaming\ncommunity, Pelican scales to the sky. Security is built in, with SSL, 2FA, AES-256\nencryption, and more. One click installs, automatic updates, and an active community\nmake Pelican the best way to host your game servers.\n"
+    "description": "From prehistoric to peak performance: Pelican takes flight! Pelican is the ultimate,\nfree game server control panel offering high flying security. It's a breeze to manage\nyour servers with our sleek and user-friendly interface. Thanks to Docker, every server\nruns in its own safe space. Pelican is 100% free and open source—forever—for you,\nyour friends, family, and community. We support Minecraft, Terraria, Palworld, Valheim,\nFactorio, and so much more. Whether you're just playing with friends or running a gaming\ncommunity, Pelican scales to the sky. Security is built in, with SSL, 2FA, AES-256\nencryption, and more. One click installs, automatic updates, and an active community\nmake Pelican the best way to host your game servers.\n",
+    "createdAt": "2025-06-23T16:24:54+03:00",
+    "updatedAt": "2025-06-23T16:24:54+03:00"
   },
   {
     "id": "plausible",
@@ -1781,7 +1867,9 @@
           "content": "#!/bin/bash\nsed -e \"s/plausible:/plausible:\\n    ports:\\n      - '127.0.0.1:${PORT}:3000'/g\" -i compose.yml\n"
         }
       ]
-    }
+    },
+    "createdAt": "2025-01-31T06:06:42+02:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "portainer",
@@ -1815,7 +1903,9 @@
       "docker"
     ],
     "deployTime": "~2 minutes",
-    "description": "Portainer Community Edition is a universal container management platform that\nsimplifies the deployment, configuration, and monitoring of containerized applications\nacross Docker, Kubernetes, Swarm, and Nomad environments. With its intuitive web-based interface,\nPortainer enables users to manage containers, images, networks, and volumes effortlessly,\nmaking it ideal for both beginners and experienced DevOps teams. It supports hybrid and\nmulti-cloud setups, edge, and Industrial IoT use cases, providing a centralized,\nsecure solution for container orchestration.\n"
+    "description": "Portainer Community Edition is a universal container management platform that\nsimplifies the deployment, configuration, and monitoring of containerized applications\nacross Docker, Kubernetes, Swarm, and Nomad environments. With its intuitive web-based interface,\nPortainer enables users to manage containers, images, networks, and volumes effortlessly,\nmaking it ideal for both beginners and experienced DevOps teams. It supports hybrid and\nmulti-cloud setups, edge, and Industrial IoT use cases, providing a centralized,\nsecure solution for container orchestration.\n",
+    "createdAt": "2025-06-21T23:34:08+03:00",
+    "updatedAt": "2025-06-22T15:38:14+03:00"
   },
   {
     "id": "posthog",
@@ -1854,7 +1944,9 @@
         "CADDY_HOST": ":80",
         "PRE_START_TIMEOUT": 600
       }
-    }
+    },
+    "createdAt": "2026-03-28T17:08:26+02:00",
+    "updatedAt": "2026-03-28T17:43:12+02:00"
   },
   {
     "id": "pterodactyl",
@@ -1905,7 +1997,9 @@
     ],
     "deployTime": "~5 minutes",
     "postLaunchNote": "Use username `${ADMIN_USERNAME}` and password `${ADMIN_PASSWORD}` to login.",
-    "description": "Pterodactyl is a modern, secure, and scalable game server anagement platform. \nBuilt with PHP, React, and Go, it isolates each game server in its own Docker container\nto maximize security and stability. The web-based interface provides real-time\nWebSocket consoles, role-based user access, a robust API, and SFTP file management.\nDesigned for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.\n"
+    "description": "Pterodactyl is a modern, secure, and scalable game server anagement platform. \nBuilt with PHP, React, and Go, it isolates each game server in its own Docker container\nto maximize security and stability. The web-based interface provides real-time\nWebSocket consoles, role-based user access, a robust API, and SFTP file management.\nDesigned for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.\n",
+    "createdAt": "2025-06-17T02:42:07+03:00",
+    "updatedAt": "2025-06-24T00:36:50+03:00"
   },
   {
     "id": "pterodactyl-wings",
@@ -1941,7 +2035,9 @@
       "postStartCmd": "echo \"Wings daemon started. If you're using Pterodactyl Panel, make sure the node configuration points to port ${PORT_PANEL}.\"\n"
     },
     "postLaunchNote": "Wings has been deployed. Make sure your Panel connects to port `${PORT_PANEL}` and SFTP runs on `${PORT_SFTP}`.\nYou may configure node settings in the panel using the appropriate IP and port.\n",
-    "description": "Pterodactyl Wings is Pterodactyl's server control plane, built for the rapidly changing\ngaming industry and designed to be highly performant and secure. Wings provides\nan HTTP API allowing you to interface directly with running server instances,\nfetch server logs, generate backups, and control all aspects of the server lifecycle.\n"
+    "description": "Pterodactyl Wings is Pterodactyl's server control plane, built for the rapidly changing\ngaming industry and designed to be highly performant and secure. Wings provides\nan HTTP API allowing you to interface directly with running server instances,\nfetch server logs, generate backups, and control all aspects of the server lifecycle.\n",
+    "createdAt": "2025-06-21T03:19:38+03:00",
+    "updatedAt": "2025-06-21T03:19:38+03:00"
   },
   {
     "id": "solid-nextjs",
@@ -1958,7 +2054,9 @@
       "repositoryUrl": "https://github.com/NextJSTemplates/solid-nextjs",
       "sourceBranch": "main",
       "mainPort": 3000
-    }
+    },
+    "createdAt": "2026-02-17T22:11:33+02:00",
+    "updatedAt": "2026-02-17T22:11:33+02:00"
   },
   {
     "id": "stripe-sync",
@@ -1997,7 +2095,9 @@
         "BACKFILL_RELATED_ENTITIES": true,
         "MAX_POSTGRES_CONNECTIONS": 10
       }
-    }
+    },
+    "createdAt": "2025-06-12T22:21:09+03:00",
+    "updatedAt": "2025-12-25T11:47:32+02:00"
   },
   {
     "id": "tagmanager",
@@ -2031,7 +2131,9 @@
         "DOCKER_COMPOSE_PULL": "always"
       }
     },
-    "postLaunchNote": "Make sure to properly configure `CONTAINER_CONFIG` variable, see [docs](https://developers.google.com/tag-platform/tag-manager/server-side/manual-setup-guide#manually_provision_a_server-side_tagging_cluster)"
+    "postLaunchNote": "Make sure to properly configure `CONTAINER_CONFIG` variable, see [docs](https://developers.google.com/tag-platform/tag-manager/server-side/manual-setup-guide#manually_provision_a_server-side_tagging_cluster)",
+    "createdAt": "2025-08-04T13:29:12+03:00",
+    "updatedAt": "2025-12-25T10:41:54+02:00"
   },
   {
     "id": "template-go",
@@ -2060,7 +2162,9 @@
       "env": {
         "PORT": 3000
       }
-    }
+    },
+    "createdAt": "2025-05-17T20:53:14+03:00",
+    "updatedAt": "2025-12-21T13:02:32+01:00"
   },
   {
     "id": "template-java",
@@ -2088,7 +2192,9 @@
       "env": {
         "PORT": 8080
       }
-    }
+    },
+    "createdAt": "2025-07-08T20:01:33+03:00",
+    "updatedAt": "2025-12-21T13:02:32+01:00"
   },
   {
     "id": "template-python",
@@ -2117,7 +2223,9 @@
       "env": {
         "PORT": 8000
       }
-    }
+    },
+    "createdAt": "2025-12-16T15:34:06+02:00",
+    "updatedAt": "2025-12-21T18:40:50+01:00"
   },
   {
     "id": "twenty-crm",
@@ -2168,7 +2276,9 @@
           "content": "#!/bin/bash\nmkdir -p data\nmkdir -p data/tmp\nmkdir -p data/local\nmkdir -p data/db\n# TwentyCRM expects to run as 1000:1000\nsudo chown 1000:1000 data/local\nsudo chown 1000:1000 data/tmp\n# The server must be started by the user that owns the data directory.\nsudo chown root:root data/db\nsudo chmod a+X data/db\n"
         }
       ]
-    }
+    },
+    "createdAt": "2024-12-02T18:08:35+02:00",
+    "updatedAt": "2025-10-09T11:30:45+03:00"
   },
   {
     "id": "uptime-kuma",
@@ -2199,7 +2309,9 @@
     "description": "Uptime Kuma is a simple, easy-to-use uptime monitoring tool.\nIt's a great way to monitor your website or server uptime.  \nIt's also a great way to monitor your server resources.\n",
     "services": [
       "docker"
-    ]
+    ],
+    "createdAt": "2025-04-23T14:59:14+03:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "wikijs",
@@ -2240,7 +2352,9 @@
     "description": "A modern, lightweight and powerful wiki app built on NodeJS\n",
     "services": [
       "postgres"
-    ]
+    ],
+    "createdAt": "2025-05-06T15:16:20+03:00",
+    "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
     "id": "wordpress",
@@ -2282,7 +2396,9 @@
           "content": "#!/bin/bash\nmkdir -p ./data/db\nmkdir -p ./wordpress\nsudo chown -R 999:999 ./data/db\n"
         }
       ]
-    }
+    },
+    "createdAt": "2024-11-25T21:39:49+02:00",
+    "updatedAt": "2025-12-04T23:06:38+02:00"
   },
   {
     "id": "zulipchat",
@@ -2325,6 +2441,8 @@
         "PORT": "8080",
         "SECRET_KEY": "${GENERATED_HASH}"
       }
-    }
+    },
+    "createdAt": "2025-08-13T10:50:46+03:00",
+    "updatedAt": "2025-08-13T16:15:07+03:00"
   }
 ]
