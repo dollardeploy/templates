@@ -1,6 +1,7 @@
 import yaml from "js-yaml";
 import fs from "node:fs";
 import path from "node:path";
+import { execSync } from "node:child_process";
 
 const logger = console;
 
@@ -73,6 +74,29 @@ const resolveFileReferences = (template, templateDir) => {
 };
 
 /**
+ * Get git timestamps for a template directory
+ */
+const getGitTimestamps = (basePath, templateId) => {
+  const relativePath = templateId;
+  try {
+    const updatedAt = execSync(
+      `git log -1 --format=%aI -- "${relativePath}"`,
+      { cwd: basePath, encoding: "utf-8" }
+    ).trim();
+    const createdAt = execSync(
+      `git log --follow --format=%aI -- "${relativePath}" | tail -1`,
+      { cwd: basePath, encoding: "utf-8", shell: true }
+    ).trim();
+    return {
+      createdAt: createdAt || null,
+      updatedAt: updatedAt || null,
+    };
+  } catch {
+    return { createdAt: null, updatedAt: null };
+  }
+};
+
+/**
  * Get a single template from the local filesystem
  */
 const getLocalTemplate = (basePath, templateId, optional = false) => {
@@ -93,6 +117,10 @@ const getLocalTemplate = (basePath, templateId, optional = false) => {
 
   let template = parseConfigFile(configFile);
   template = resolveFileReferences(template, templatePath);
+
+  const { createdAt, updatedAt } = getGitTimestamps(basePath, templateId);
+  template.createdAt = createdAt;
+  template.updatedAt = updatedAt;
 
   return template;
 };
