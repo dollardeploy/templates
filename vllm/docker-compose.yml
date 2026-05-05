@@ -2,7 +2,7 @@ services:
   vllm:
     image: docker.io/vllm/vllm-openai:cu130-nightly
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     volumes:
       - ./data:/data
     pull_policy: always
