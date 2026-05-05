@@ -1,0 +1,29 @@
+services:
+  vllm:
+    image: docker.io/vllm/vllm-openai:cu130-nightly
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    pull_policy: always
+    restart: unless-stopped
+    runtime: nvidia
+    ipc: host
+    environment:
+      - HF_HOME=/data/.huggingface
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+      - OMP_NUM_THREADS=4
+    command: >
+      --model Qwen/Qwen3-Coder-Next
+      --port 8000
+      --tensor-parallel-size 2
+      --enable-auto-tool-choice
+      --tool-call-parser qwen3_coder
+      --nnodes 1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

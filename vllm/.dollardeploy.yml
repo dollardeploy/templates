@@ -1,0 +1,32 @@
+id: vllm
+name: vLLM
+intro: Run an OpenAI-compatible inference endpoint with vLLM and GPU acceleration.
+logo: https://avatars.githubusercontent.com/u/136942915
+tags:
+  - ai
+  - llm
+  - openai
+  - inference
+deployTime: ~15 minutes
+description: |
+  Deploy an OpenAI-compatible REST API endpoint using vLLM with GPU acceleration.
+  This template runs Qwen/Qwen3-Coder-Next across 2 GPUs with tensor parallelism,
+  tool calling support, and HuggingFace model caching.
+  The endpoint is fully compatible with the OpenAI Chat Completions API, making it
+  a drop-in replacement for any OpenAI SDK client.
+  Use **DataCrunch** servers with 2xA100, 2xH100, or similar multi-GPU configurations.
+requirements:
+  memory: 32768
+  cpu: 8
+  storage: 200
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: vllm
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  mainPort: 8000
+  env:
+    HUGGING_FACE_HUB_TOKEN: ""
