@@ -1,7 +1,7 @@
-id: vllm
+id: vllm-qwen3-coder
 name: vLLM
-intro: Run an OpenAI-compatible inference endpoint with vLLM and GPU acceleration.
-logo: https://avatars.githubusercontent.com/u/136942915
+intro: Run an OpenAI-compatible inference endpoint with Qwen3-Coder
+logo: https://avatars.githubusercontent.com/u/136984999
 tags:
   - ai
   - llm
@@ -12,9 +12,11 @@ description: |
   Deploy an OpenAI-compatible REST API endpoint using vLLM with GPU acceleration.
   This template runs Qwen/Qwen3-Coder-Next across 2 GPUs with tensor parallelism,
   tool calling support, and HuggingFace model caching.
+  
   The endpoint is fully compatible with the OpenAI Chat Completions API, making it
   a drop-in replacement for any OpenAI SDK client.
-  Use **DataCrunch** servers with 2xA100, 2xH100, or similar multi-GPU configurations.
+  
+  Use **Verda** servers with 2xA100, 2xH100, or similar multi-GPU configurations.
 requirements:
   memory: 32768
   cpu: 8
