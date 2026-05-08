@@ -2325,11 +2325,11 @@
       "inference"
     ],
     "deployTime": "~15 minutes",
-    "description": "Deploy an OpenAI-compatible REST API endpoint using vLLM with GPU acceleration.\nThis template runs Qwen/Qwen3-Coder-Next across 2 GPUs with tensor parallelism,\ntool calling support, and HuggingFace model caching.\n\nThe endpoint is fully compatible with the OpenAI Chat Completions API, making it\na drop-in replacement for any OpenAI SDK client.\n\nUse **Verda** servers with 2xA100, 2xH100, or similar multi-GPU configurations.\n",
+    "description": "Deploy an OpenAI-compatible REST API endpoint using vLLM with GPU acceleration.\nThis template runs Qwen/Qwen3-Coder-Next across 2+ GPUs with tensor parallelism,\ntool calling support, and HuggingFace model caching.\n\nThe endpoint is fully compatible with the OpenAI Chat Completions API, making it\na drop-in replacement for any OpenAI SDK client.\n\nUse **Verda** servers with 2xA100, 2xH100, or similar multi-GPU configurations. Make sure to set\nHF_TOKEN environment variable to your HuggingFace token to be able to properly download the model.\n",
     "requirements": {
       "memory": 32768,
       "cpu": 8,
-      "storage": 200
+      "storage": 300
     },
     "services": [
       "docker"
@@ -2342,11 +2342,11 @@
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 8000,
       "env": {
-        "HUGGING_FACE_HUB_TOKEN": ""
+        "HF_TOKEN": ""
       }
     },
     "createdAt": "2026-05-05T12:59:10+03:00",
-    "updatedAt": "2026-05-05T12:59:10+03:00"
+    "updatedAt": "2026-05-08T09:07:02+03:00"
   },
   {
     "id": "wikijs",
