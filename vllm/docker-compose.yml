@@ -11,7 +11,7 @@ services:
     ipc: host
     environment:
       - HF_HOME=/data/.huggingface
-      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+      - HF_TOKEN=${HF_TOKEN}
       - OMP_NUM_THREADS=4
     command: >
       --model Qwen/Qwen3-Coder-Next
