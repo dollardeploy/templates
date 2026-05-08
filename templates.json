@@ -2342,11 +2342,15 @@
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 8000,
       "env": {
-        "HF_TOKEN": ""
+        "HF_TOKEN": "",
+        "APP_HEALTHCHECK_PATH": "/health",
+        "DOCKER_COMPOSE_PULL": "always",
+        "DOCKER_COMPOSE_WAIT_TIMEOUT": 900,
+        "APP_READY_TIMEOUT": 900
       }
     },
     "createdAt": "2026-05-05T12:59:10+03:00",
-    "updatedAt": "2026-05-08T09:07:02+03:00"
+    "updatedAt": "2026-05-08T09:46:58+03:00"
   },
   {
     "id": "wikijs",
