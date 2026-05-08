@@ -33,3 +33,7 @@ app:
   mainPort: 8000
   env:
     HF_TOKEN: ""
+    APP_HEALTHCHECK_PATH: "/health"
+    DOCKER_COMPOSE_PULL: always
+    DOCKER_COMPOSE_WAIT_TIMEOUT: 900
+    APP_READY_TIMEOUT: 900
