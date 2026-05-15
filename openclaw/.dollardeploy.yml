@@ -36,6 +36,7 @@ app:
     ANTHROPIC_API_KEY: ""
     OPENAI_API_KEY: ""
     OPENROUTER_API_KEY: ""
+    DOCKER_COMPOSE_PULL: always
     DOCKER_COMPOSE_WAIT_TIMEOUT: 120
 postLaunchNote: |
   OpenClaw is running!
