@@ -1605,8 +1605,7 @@
   {
     "id": "openclaw",
     "name": "OpenClaw",
-    "experimental": true,
-    "intro": "Self-hosted AI assistant that integrates with WhatsApp, Telegram, Slack, Discord and more",
+    "intro": "Self-hosted AI assistant that integrates with WhatsApp, Telegram, Slack, Discord and more.",
     "logo": "https://avatars.githubusercontent.com/u/252820863",
     "tags": [
       "ai",
@@ -1614,34 +1613,38 @@
       "automation",
       "oss",
       "messaging",
-      "claude"
+      "docker"
     ],
-    "deployTime": "~15 minutes",
-    "description": "OpenClaw is your own personal AI assistant that runs natively with Node.js and integrates with multiple platforms.\nIt provides a unified control center for interacting with AI models through your existing communication\napps—WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, and others.\n\nFeatures:\n- Multi-channel messaging integration (WhatsApp, Telegram, Slack, Discord, etc.)\n- Native browser control with VNC server for advanced browser automation\n- Voice interaction and browser automation capabilities\n- Extensible tools including browser control, file operations, and cron scheduling\n- Security-first design with pairing-based access control\n- Canvas visualization and skills registry system\n\nThis template installs OpenClaw natively with:\n- Node.js 22 (via nvm)\n- pnpm package manager\n- VNC server for browser control\n- systemd services for auto-start\n- Browser extension for enhanced capabilities\n\nAfter deployment:\n1. The deploy.sh script will handle all installation steps\n2. OpenClaw will be available as a global command\n3. VNC server will run on display :1 (port 5901)\n4. Browser extension will be symlinked to ~/openclaw-extension\n",
+    "deployTime": "~5 minutes",
+    "description": "OpenClaw is a self-hosted AI assistant platform with built-in browser automation.\nIt supports multiple AI providers (Anthropic, OpenAI, OpenRouter, Gemini, xAI, Groq, Mistral, AWS Bedrock, Ollama, and more)\nand integrates with messaging platforms like WhatsApp, Telegram, Slack, and Discord.\n\nIncludes a headless browser container for web automation tasks.\n",
     "requirements": {
-      "memory": 8192,
-      "cpu": 4,
-      "storage": 60
+      "memory": 4096,
+      "cpu": 2,
+      "storage": 20
     },
-    "services": [],
+    "services": [
+      "docker"
+    ],
     "app": {
-      "type": "native",
+      "type": "docker-compose",
       "repositoryUrl": "https://github.com/dollardeploy/templates",
       "sourcePath": "openclaw",
       "sourceBranch": "main",
-      "preStartCmd": "nohup deploy.sh &",
-      "startScript": "server.js",
-      "mainPort": 3000,
+      "dockerComposeFile": "docker-compose.yml",
       "env": {
+        "PORT": "8080",
+        "AUTH_USERNAME": "admin",
+        "AUTH_PASSWORD": "${GENERATED_PWD}",
+        "OPENCLAW_GATEWAY_TOKEN": "${GENERATED_HASH}",
         "ANTHROPIC_API_KEY": "",
         "OPENAI_API_KEY": "",
         "OPENROUTER_API_KEY": "",
-        "VNC_PASSWORD": "${GENERATED_PWD}"
+        "DOCKER_COMPOSE_WAIT_TIMEOUT": 120
       }
     },
-    "postLaunchNote": "OpenClaw installation has started! 🚀\n\n📊 View installation progress and status: ${APP_URL}\n\nThe deploy.sh script is running in the background and will:\n- Install Node.js 22, pnpm, and dependencies\n- Configure VNC server for browser control\n- Install OpenClaw globally\n- Set up systemd services\n\nOnce complete (check the status page):\n1. SSH into your server\n2. Run: openclaw\n3. VNC available at: localhost:5901\n4. Browser extension: ~/openclaw-extension\n\n📚 Documentation: https://docs.openclaw.ai/\n💻 GitHub: https://github.com/openclaw/openclaw\n",
+    "postLaunchNote": "OpenClaw is running!\n\nLogin credentials:\n- **Username**: admin\n- **Password**: ${GENERATED_PWD}\n\nConfigure your AI provider API keys in the environment variables to start using OpenClaw.\n\nDocumentation: https://docs.openclaw.ai/\n",
     "createdAt": "2026-02-02T09:19:41+02:00",
-    "updatedAt": "2026-02-12T20:06:05+02:00"
+    "updatedAt": "2026-05-15T16:11:07+03:00"
   },
   {
     "id": "openvpn",
