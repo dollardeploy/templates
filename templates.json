@@ -1639,12 +1639,13 @@
         "ANTHROPIC_API_KEY": "",
         "OPENAI_API_KEY": "",
         "OPENROUTER_API_KEY": "",
+        "DOCKER_COMPOSE_PULL": "always",
         "DOCKER_COMPOSE_WAIT_TIMEOUT": 120
       }
     },
     "postLaunchNote": "OpenClaw is running!\n\nLogin credentials:\n- **Username**: admin\n- **Password**: ${GENERATED_PWD}\n\nConfigure your AI provider API keys in the environment variables to start using OpenClaw.\n\nDocumentation: https://docs.openclaw.ai/\n",
     "createdAt": "2026-02-02T09:19:41+02:00",
-    "updatedAt": "2026-05-15T16:11:07+03:00"
+    "updatedAt": "2026-05-15T16:27:19+03:00"
   },
   {
     "id": "openvpn",
