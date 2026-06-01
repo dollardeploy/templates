@@ -36,6 +36,5 @@ services:
       - metanet1
 networks:
   metanet1:
-    driver: bridge
 volumes:
   postgres:
