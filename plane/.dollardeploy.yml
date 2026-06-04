@@ -37,7 +37,7 @@ app:
     POSTGRES_PASSWORD: ${GENERATED_PWD}
     POSTGRES_DB: plane
     POSTGRES_PORT: '5432'
-    DATABASE_URL: 'postgresql://plane:${GENERATED_PWD}@plane-db/plane'
+    DATABASE_URL: 'postgresql://plane:${POSTGRES_PASSWORD}@plane-db/plane'
     REDIS_HOST: plane-redis
     REDIS_PORT: '6379'
     REDIS_URL: 'redis://plane-redis:6379/'
@@ -46,7 +46,7 @@ app:
     RABBITMQ_USER: plane
     RABBITMQ_PASSWORD: ${GENERATED_PWD}
     RABBITMQ_VHOST: plane
-    AMQP_URL: 'amqp://plane:${GENERATED_PWD}@plane-mq:5672/plane'
+    AMQP_URL: 'amqp://plane:${RABBITMQ_PASSWORD}@plane-mq:5672/plane'
     USE_MINIO: '1'
     AWS_ACCESS_KEY_ID: access-key
     AWS_SECRET_ACCESS_KEY: ${GENERATED_HASH}
