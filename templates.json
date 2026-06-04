@@ -368,8 +368,8 @@
         "POSTGRES_HOST": "postgres",
         "POSTGRES_PASSWORD": "123",
         "POSTGRES_USERNAME": "postgres",
-        "REDIS_URL": "redis://redis:6379",
-        "REDIS_PASSWORD": "",
+        "REDIS_URL": "redis://:${REDIS_PASSWORD}@redis:6379",
+        "REDIS_PASSWORD": "${GENERATED_PWD}",
         "SECRET_KEY_BASE": "${GENERATED_HASH}",
         "PORT": "3000",
         "CHATWOOT_VERSION": "v4.5.2-ce",
@@ -377,7 +377,7 @@
       }
     },
     "createdAt": "2024-11-24T13:32:15+02:00",
-    "updatedAt": "2025-09-08T23:01:58+03:00"
+    "updatedAt": "2026-06-04T11:51:54+03:00"
   },
   {
     "id": "chatwoot3",
@@ -426,14 +426,15 @@
         "POSTGRES_HOST": "postgres",
         "POSTGRES_PASSWORD": "123",
         "POSTGRES_USERNAME": "postgres",
-        "REDIS_URL": "redis://redis:6379",
+        "REDIS_URL": "redis://:${REDIS_PASSWORD}@redis:6379",
+        "REDIS_PASSWORD": "${GENERATED_PWD}",
         "SECRET_KEY_BASE": "ahkaec8eeveiyieL",
         "PORT": "3000",
         "PRE_START_TIMEOUT": "300"
       }
     },
     "createdAt": "2025-01-20T18:13:09+02:00",
-    "updatedAt": "2025-09-09T19:25:56+03:00"
+    "updatedAt": "2026-06-04T11:51:54+03:00"
   },
   {
     "id": "code-server",
