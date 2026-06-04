@@ -1834,6 +1834,76 @@
     "updatedAt": "2025-06-23T16:24:54+03:00"
   },
   {
+    "id": "plane",
+    "name": "Plane",
+    "intro": "Open source project management and issue tracking",
+    "description": "Plane is an open-source project tracking tool for teams to plan, track, and manage software development",
+    "logo": "https://avatars.githubusercontent.com/u/115727700",
+    "tags": [
+      "oss",
+      "management",
+      "devops"
+    ],
+    "deployTime": "~5 minutes",
+    "requirements": {
+      "memory": 4096,
+      "cpu": 2,
+      "storage": 10
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "repositoryUrl": "https://github.com/dollardeploy/templates/",
+      "sourceBranch": "main",
+      "sourcePath": "plane",
+      "type": "docker-compose",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": "3000",
+        "APP_RELEASE": "stable",
+        "APP_DOMAIN": "${APP_HOSTNAME}",
+        "WEB_URL": "${APP_URL}",
+        "CORS_ALLOWED_ORIGINS": "${APP_URL}",
+        "SECRET_KEY": "${GENERATED_SECRET}",
+        "DEBUG": "0",
+        "GUNICORN_WORKERS": "1",
+        "SITE_ADDRESS": ":80",
+        "LISTEN_HTTP_PORT": "80",
+        "PGHOST": "plane-db",
+        "PGDATABASE": "plane",
+        "POSTGRES_USER": "plane",
+        "POSTGRES_PASSWORD": "${GENERATED_PWD}",
+        "POSTGRES_DB": "plane",
+        "POSTGRES_PORT": "5432",
+        "DATABASE_URL": "postgresql://plane:${GENERATED_PWD}@plane-db/plane",
+        "REDIS_HOST": "plane-redis",
+        "REDIS_PORT": "6379",
+        "REDIS_URL": "redis://plane-redis:6379/",
+        "RABBITMQ_HOST": "plane-mq",
+        "RABBITMQ_PORT": "5672",
+        "RABBITMQ_USER": "plane",
+        "RABBITMQ_PASSWORD": "${GENERATED_PWD}",
+        "RABBITMQ_VHOST": "plane",
+        "AMQP_URL": "amqp://plane:${GENERATED_PWD}@plane-mq:5672/plane",
+        "USE_MINIO": "1",
+        "AWS_ACCESS_KEY_ID": "access-key",
+        "AWS_SECRET_ACCESS_KEY": "${GENERATED_HASH}",
+        "AWS_S3_ENDPOINT_URL": "http://plane-minio:9000",
+        "AWS_S3_BUCKET_NAME": "uploads",
+        "FILE_SIZE_LIMIT": "5242880",
+        "MINIO_ENDPOINT_SSL": "0",
+        "LIVE_SERVER_SECRET_KEY": "${GENERATED_HASH}",
+        "API_BASE_URL": "http://api:8000",
+        "API_KEY_RATE_LIMIT": "60/minute",
+        "DOCKER_COMPOSE_WAIT_TIMEOUT": "300",
+        "PRE_START_TIMEOUT": "300"
+      }
+    },
+    "createdAt": "2026-06-04T12:25:11+03:00",
+    "updatedAt": "2026-06-04T12:25:11+03:00"
+  },
+  {
     "id": "plausible",
     "name": "Plausible CE",
     "logo": "https://raw.githubusercontent.com/plausible/community-edition/refs/heads/v2.1.1/images/logo_light.svg",
