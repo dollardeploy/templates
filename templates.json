@@ -1891,6 +1891,7 @@
         "AWS_SECRET_ACCESS_KEY": "${GENERATED_HASH}",
         "AWS_S3_ENDPOINT_URL": "http://plane-minio:9000",
         "AWS_S3_BUCKET_NAME": "uploads",
+        "BUCKET_NAME": "uploads",
         "FILE_SIZE_LIMIT": "5242880",
         "MINIO_ENDPOINT_SSL": "0",
         "LIVE_SERVER_SECRET_KEY": "${GENERATED_HASH}",
@@ -1901,7 +1902,7 @@
       }
     },
     "createdAt": "2026-06-04T12:25:11+03:00",
-    "updatedAt": "2026-06-04T13:14:34+03:00"
+    "updatedAt": "2026-06-04T13:23:52+03:00"
   },
   {
     "id": "plausible",
