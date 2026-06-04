@@ -34,6 +34,10 @@ services:
     command: ./bin/docker-entrypoint-api.sh
     restart: always
     env_file: .env
+    # Override the global PORT=3000 (used by DollarDeploy/proxy); the
+    # backend must listen on 8000 where the Caddy proxy routes /api/*.
+    environment:
+      PORT: "8000"
     volumes:
       - logs_api:/code/plane/logs
     depends_on:
