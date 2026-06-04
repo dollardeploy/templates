@@ -45,8 +45,8 @@ app:
     POSTGRES_HOST: postgres
     POSTGRES_PASSWORD: '123'
     POSTGRES_USERNAME: postgres
-    REDIS_URL: 'redis://redis:6379'
-    REDIS_PASSWORD: ''
+    REDIS_URL: 'redis://:${REDIS_PASSWORD}@redis:6379'
+    REDIS_PASSWORD: ${GENERATED_PWD}
     SECRET_KEY_BASE: ${GENERATED_HASH}
     PORT: '3000'
     CHATWOOT_VERSION: 'v4.5.2-ce'

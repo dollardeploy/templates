@@ -40,7 +40,8 @@ app:
     POSTGRES_HOST: postgres
     POSTGRES_PASSWORD: '123'
     POSTGRES_USERNAME: postgres
-    REDIS_URL: 'redis://redis:6379'
+    REDIS_URL: 'redis://:${REDIS_PASSWORD}@redis:6379'
+    REDIS_PASSWORD: ${GENERATED_PWD}
     SECRET_KEY_BASE: ahkaec8eeveiyieL
     PORT: '3000'
     PRE_START_TIMEOUT: '300'
