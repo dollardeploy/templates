@@ -36,9 +36,9 @@ app:
   env:
     PORT: "8000"
     SOLIDTIME_IMAGE_TAG: "0.14.0"
-    APP_URL: "${APP_URL}"
-    APP_HOSTNAME: "${APP_HOSTNAME}"
-    USER_EMAIL: "${USER_EMAIL}"
+    PUBLIC_URL: "${APP_URL}"
+    PUBLIC_HOSTNAME: "${APP_HOSTNAME}"
+    ADMIN_EMAIL: "${USER_EMAIL}"
     DB_DATABASE: solidtime
     DB_USERNAME: solidtime
     DB_PASSWORD: "${GENERATED_PWD}"

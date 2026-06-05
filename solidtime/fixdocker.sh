@@ -26,8 +26,10 @@ fi
 chmod 600 ./app_key.txt ./oauth-private.key
 
 # Fail loudly if the required values didn't arrive, instead of writing a broken
-# laravel.env that silently misconfigures the app.
-: "${APP_URL:?APP_URL not set}"
+# laravel.env that silently misconfigures the app. APP_URL/APP_HOSTNAME/USER_EMAIL
+# are DollarDeploy reserved vars, so the template passes them in via the
+# non-reserved aliases PUBLIC_URL / PUBLIC_HOSTNAME / ADMIN_EMAIL.
+: "${PUBLIC_URL:?PUBLIC_URL not set}"
 : "${DB_DATABASE:?DB_DATABASE not set}"
 : "${DB_USERNAME:?DB_USERNAME not set}"
 : "${DB_PASSWORD:?DB_PASSWORD not set}"
@@ -38,7 +40,7 @@ APP_NAME="solidtime"
 VITE_APP_NAME="solidtime"
 APP_ENV="production"
 APP_DEBUG="false"
-APP_URL="${APP_URL}"
+APP_URL="${PUBLIC_URL}"
 APP_FORCE_HTTPS="true"
 TRUSTED_PROXIES="0.0.0.0/0,2000:0:0:0:0:0:0:0/3"
 LOG_CHANNEL="stderr"
@@ -55,9 +57,9 @@ QUEUE_CONNECTION="database"
 FILESYSTEM_DISK="local"
 PUBLIC_FILESYSTEM_DISK="public"
 GOTENBERG_URL="http://gotenberg:3000"
-SUPER_ADMINS="${USER_EMAIL}"
+SUPER_ADMINS="${ADMIN_EMAIL}"
 MAIL_MAILER="log"
-MAIL_FROM_ADDRESS="no-reply@${APP_HOSTNAME:-localhost}"
+MAIL_FROM_ADDRESS="no-reply@${PUBLIC_HOSTNAME:-localhost}"
 MAIL_FROM_NAME="solidtime"
 APP_KEY="$(cat ./app_key.txt)"
 PASSPORT_PRIVATE_KEY="$(cat ./oauth-private.key)"
