@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+# Load deploy-time variables. DollarDeploy makes the template `env` map available
+# to docker compose — either as a ./.env file and/or as exported shell env. We
+# source the .env (if present) so values like APP_URL / DB_PASSWORD are usable
+# here as real shell variables, rather than relying on file-content substitution.
+set -a
+[ -f ./.env ] && . ./.env
+set +a
+
 # Persisted app storage + logs (bind-mounted into the containers, owned by the
 # image's runtime user 1000:1000).
 mkdir -p ./app-storage ./logs
@@ -17,35 +25,41 @@ if [ ! -f ./oauth-private.key ]; then
 fi
 chmod 600 ./app_key.txt ./oauth-private.key
 
+# Fail loudly if the required values didn't arrive, instead of writing a broken
+# laravel.env that silently misconfigures the app.
+: "${APP_URL:?APP_URL not set}"
+: "${DB_DATABASE:?DB_DATABASE not set}"
+: "${DB_USERNAME:?DB_USERNAME not set}"
+: "${DB_PASSWORD:?DB_PASSWORD not set}"
+
 # Build the application env file consumed by the app/scheduler/queue containers.
-# DollarDeploy substitutes the ${...} placeholders below at deploy time.
-{
-  echo 'APP_NAME="solidtime"'
-  echo 'VITE_APP_NAME="solidtime"'
-  echo 'APP_ENV="production"'
-  echo 'APP_DEBUG="false"'
-  echo 'APP_URL="${APP_URL}"'
-  echo 'APP_FORCE_HTTPS="true"'
-  echo 'TRUSTED_PROXIES="0.0.0.0/0,2000:0:0:0:0:0:0:0/3"'
-  echo 'LOG_CHANNEL="stderr"'
-  echo 'LOG_LEVEL="error"'
-  echo 'AUTO_DB_MIGRATE="true"'
-  echo 'DB_CONNECTION="pgsql"'
-  echo 'DB_HOST="database"'
-  echo 'DB_PORT="5432"'
-  echo 'DB_SSLMODE="disable"'
-  echo 'DB_DATABASE="${DB_DATABASE}"'
-  echo 'DB_USERNAME="${DB_USERNAME}"'
-  echo 'DB_PASSWORD="${DB_PASSWORD}"'
-  echo 'QUEUE_CONNECTION="database"'
-  echo 'FILESYSTEM_DISK="local"'
-  echo 'PUBLIC_FILESYSTEM_DISK="public"'
-  echo 'GOTENBERG_URL="http://gotenberg:3000"'
-  echo 'SUPER_ADMINS="${USER_EMAIL}"'
-  echo 'MAIL_MAILER="log"'
-  echo 'MAIL_FROM_ADDRESS="no-reply@${APP_HOSTNAME}"'
-  echo 'MAIL_FROM_NAME="solidtime"'
-  printf 'APP_KEY="%s"\n' "$(cat ./app_key.txt)"
-  printf 'PASSPORT_PRIVATE_KEY="%s"\n' "$(cat ./oauth-private.key)"
-  printf 'PASSPORT_PUBLIC_KEY="%s"\n' "$(cat ./oauth-public.key)"
-} > laravel.env
+cat > laravel.env <<EOF
+APP_NAME="solidtime"
+VITE_APP_NAME="solidtime"
+APP_ENV="production"
+APP_DEBUG="false"
+APP_URL="${APP_URL}"
+APP_FORCE_HTTPS="true"
+TRUSTED_PROXIES="0.0.0.0/0,2000:0:0:0:0:0:0:0/3"
+LOG_CHANNEL="stderr"
+LOG_LEVEL="error"
+AUTO_DB_MIGRATE="true"
+DB_CONNECTION="pgsql"
+DB_HOST="database"
+DB_PORT="5432"
+DB_SSLMODE="disable"
+DB_DATABASE="${DB_DATABASE}"
+DB_USERNAME="${DB_USERNAME}"
+DB_PASSWORD="${DB_PASSWORD}"
+QUEUE_CONNECTION="database"
+FILESYSTEM_DISK="local"
+PUBLIC_FILESYSTEM_DISK="public"
+GOTENBERG_URL="http://gotenberg:3000"
+SUPER_ADMINS="${USER_EMAIL}"
+MAIL_MAILER="log"
+MAIL_FROM_ADDRESS="no-reply@${APP_HOSTNAME:-localhost}"
+MAIL_FROM_NAME="solidtime"
+APP_KEY="$(cat ./app_key.txt)"
+PASSPORT_PRIVATE_KEY="$(cat ./oauth-private.key)"
+PASSPORT_PUBLIC_KEY="$(cat ./oauth-public.key)"
+EOF
