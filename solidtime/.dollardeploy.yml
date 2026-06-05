@@ -48,16 +48,57 @@ app:
     APP_READY_TIMEOUT: "600"
     DOCKER_COMPOSE_WAIT_TIMEOUT: "600"
     POST_START_TIMEOUT: "180"
+    # --- Application config (Laravel) ---
+    APP_NAME: solidtime
+    APP_ENV: production
+    APP_DEBUG: "false"
+    APP_FORCE_HTTPS: "true"
     APP_ENABLE_REGISTRATION: "true"
+    TRUSTED_PROXIES: "0.0.0.0/0,2000:0:0:0:0:0:0:0/3"
+    LOG_CHANNEL: stderr
+    LOG_LEVEL: error
+    AUTO_DB_MIGRATE: "true"
+    # --- Database (app side; the postgres service uses DB_DATABASE/USERNAME/PASSWORD) ---
+    DB_CONNECTION: pgsql
+    DB_HOST: database
+    DB_PORT: "5432"
+    DB_SSLMODE: disable
+    # --- Queue / storage / services ---
+    QUEUE_CONNECTION: database
+    FILESYSTEM_DISK: local
+    PUBLIC_FILESYSTEM_DISK: public
+    GOTENBERG_URL: "http://gotenberg:3000"
+    # --- Mail (defaults to the log driver; fill these in for real SMTP) ---
+    MAIL_MAILER: log
+    MAIL_HOST: ""
+    MAIL_PORT: ""
+    MAIL_USERNAME: ""
+    MAIL_PASSWORD: ""
+    MAIL_ENCRYPTION: tls
+    MAIL_FROM_NAME: solidtime
 postLaunchNote: |
   First boot takes a few minutes while the database migrates and the app, queue,
   scheduler, and Gotenberg containers come up.
 
   Public registration is **enabled** so you can create that first account
   (Solidtime disables it by default). Once you're in, you can lock signups by
-  setting `APP_ENABLE_REGISTRATION="false"` in `fixdocker.sh` and redeploying, or
-  create users from the CLI instead:
-  `docker compose exec scheduler php artisan admin:user:create "Your Name" "youremail@example.com" --verify-email`
+  setting `APP_ENABLE_REGISTRATION` to `false` in this app's **Environment**
+  settings and redeploying.
 
-  Email is set to the `log` driver by default (no mail is sent). To enable
-  signup verification and invites, configure the `MAIL_*` settings and redeploy.
+  **API tokens** work out of the box — the personal access client is created
+  automatically on first deploy.
+
+  **Connecting the Solidtime desktop app / browser extension** needs an
+  *Instance Client ID*. One is created automatically for the desktop app; find it
+  in this deploy's **logs** (look for "Solidtime Instance Client ID"). Then in the
+  desktop app's Instance Settings enter:
+  - Instance URL: **$[APP_URL]**
+  - Client ID: *(the value from the logs)*
+
+  For a browser extension, create a client with its redirect URIs:
+  `docker compose exec scheduler php artisan passport:client --name=browser-extension --redirect_uri="<chrome+firefox redirect uris>"`
+
+  Email uses the `log` driver by default (no mail is sent). To enable signup
+  verification and invites, set the `MAIL_*` values in **Environment** settings
+  (host, port, username, password, encryption) and switch `MAIL_MAILER` to `smtp`,
+  then redeploy.

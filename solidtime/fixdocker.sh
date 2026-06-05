@@ -3,8 +3,10 @@ set -e
 
 # Load deploy-time variables. DollarDeploy makes the template `env` map available
 # to docker compose — either as a ./.env file and/or as exported shell env. We
-# source the .env (if present) so values like APP_URL / DB_PASSWORD are usable
-# here as real shell variables, rather than relying on file-content substitution.
+# source the .env (if present) so the configured values are usable here as real
+# shell variables. Most app config lives in the template `env` map (visible and
+# editable in .dollardeploy.yml); only secrets and values derived from reserved
+# vars are computed below.
 set -a
 [ -f ./.env ] && . ./.env
 set +a
@@ -35,33 +37,41 @@ chmod 600 ./app_key.txt ./oauth-private.key
 : "${DB_PASSWORD:?DB_PASSWORD not set}"
 
 # Build the application env file consumed by the app/scheduler/queue containers.
+# Plain config comes from the template `env` map (with safe fallbacks); APP_URL
+# and SUPER_ADMINS are derived from reserved vars; the keys are the generated
+# secrets above.
 cat > laravel.env <<EOF
-APP_NAME="solidtime"
-VITE_APP_NAME="solidtime"
-APP_ENV="production"
-APP_DEBUG="false"
+APP_NAME="${APP_NAME:-solidtime}"
+VITE_APP_NAME="${APP_NAME:-solidtime}"
+APP_ENV="${APP_ENV:-production}"
+APP_DEBUG="${APP_DEBUG:-false}"
 APP_URL="${PUBLIC_URL}"
-APP_FORCE_HTTPS="true"
-APP_ENABLE_REGISTRATION="${APP_ENABLE_REGISTRATION}"
-TRUSTED_PROXIES="0.0.0.0/0,2000:0:0:0:0:0:0:0/3"
-LOG_CHANNEL="stderr"
-LOG_LEVEL="error"
-AUTO_DB_MIGRATE="true"
-DB_CONNECTION="pgsql"
-DB_HOST="database"
-DB_PORT="5432"
-DB_SSLMODE="disable"
+APP_FORCE_HTTPS="${APP_FORCE_HTTPS:-true}"
+APP_ENABLE_REGISTRATION="${APP_ENABLE_REGISTRATION:-true}"
+TRUSTED_PROXIES="${TRUSTED_PROXIES:-0.0.0.0/0,2000:0:0:0:0:0:0:0/3}"
+LOG_CHANNEL="${LOG_CHANNEL:-stderr}"
+LOG_LEVEL="${LOG_LEVEL:-error}"
+AUTO_DB_MIGRATE="${AUTO_DB_MIGRATE:-true}"
+DB_CONNECTION="${DB_CONNECTION:-pgsql}"
+DB_HOST="${DB_HOST:-database}"
+DB_PORT="${DB_PORT:-5432}"
+DB_SSLMODE="${DB_SSLMODE:-disable}"
 DB_DATABASE="${DB_DATABASE}"
 DB_USERNAME="${DB_USERNAME}"
 DB_PASSWORD="${DB_PASSWORD}"
-QUEUE_CONNECTION="database"
-FILESYSTEM_DISK="local"
-PUBLIC_FILESYSTEM_DISK="public"
-GOTENBERG_URL="http://gotenberg:3000"
+QUEUE_CONNECTION="${QUEUE_CONNECTION:-database}"
+FILESYSTEM_DISK="${FILESYSTEM_DISK:-local}"
+PUBLIC_FILESYSTEM_DISK="${PUBLIC_FILESYSTEM_DISK:-public}"
+GOTENBERG_URL="${GOTENBERG_URL:-http://gotenberg:3000}"
 SUPER_ADMINS="${ADMIN_EMAIL}"
-MAIL_MAILER="log"
-MAIL_FROM_ADDRESS="no-reply@${PUBLIC_HOSTNAME:-localhost}"
-MAIL_FROM_NAME="solidtime"
+MAIL_MAILER="${MAIL_MAILER:-log}"
+MAIL_HOST="${MAIL_HOST:-}"
+MAIL_PORT="${MAIL_PORT:-}"
+MAIL_USERNAME="${MAIL_USERNAME:-}"
+MAIL_PASSWORD="${MAIL_PASSWORD:-}"
+MAIL_ENCRYPTION="${MAIL_ENCRYPTION:-tls}"
+MAIL_FROM_ADDRESS="${MAIL_FROM_ADDRESS:-no-reply@${PUBLIC_HOSTNAME:-localhost}}"
+MAIL_FROM_NAME="${MAIL_FROM_NAME:-solidtime}"
 APP_KEY="$(cat ./app_key.txt)"
 PASSPORT_PRIVATE_KEY="$(cat ./oauth-private.key)"
 PASSPORT_PUBLIC_KEY="$(cat ./oauth-public.key)"
