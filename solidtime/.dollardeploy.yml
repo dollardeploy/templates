@@ -45,13 +45,16 @@ app:
     APP_HEALTHCHECK_PATH: "/health-check/up"
     APP_READY_TIMEOUT: "600"
     DOCKER_COMPOSE_WAIT_TIMEOUT: "600"
+    APP_ENABLE_REGISTRATION: "true"
 postLaunchNote: |
   First boot takes a few minutes while the database migrates and the app, queue,
   scheduler, and Gotenberg containers come up.
 
-  Open the app and **register** using your email **${USER_EMAIL}** — that address
-  is pre-configured as a super admin, so the first account you create with it
-  gets full administrative access.
+  Public registration is **enabled** so you can create that first account
+  (Solidtime disables it by default). Once you're in, you can lock signups by
+  setting `APP_ENABLE_REGISTRATION="false"` in `fixdocker.sh` and redeploying, or
+  create users from the CLI instead:
+  `docker compose exec scheduler php artisan admin:user:create "Your Name" "youremail@example.com" --verify-email`
 
   Email is set to the `log` driver by default (no mail is sent). To enable
   signup verification and invites, configure the `MAIL_*` settings and redeploy.
