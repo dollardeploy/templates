@@ -1,0 +1,102 @@
+# Based on https://github.com/solidtime-io/self-hosting-examples/tree/main/1-docker-with-database
+# Adapted for DollarDeploy: app bound to 127.0.0.1:${PORT}, DD terminates TLS and reverse-proxies.
+services:
+  app:
+    restart: always
+    image: "solidtime/solidtime:${SOLIDTIME_IMAGE_TAG:-latest}"
+    user: "1000:1000"
+    ports:
+      - "127.0.0.1:${PORT:-8000}:8000"
+    networks:
+      - internal
+    volumes:
+      - "app-storage:/var/www/html/storage"
+      - "./logs:/var/www/html/storage/logs"
+      - "./app-storage:/var/www/html/storage/app"
+    environment:
+      CONTAINER_MODE: http
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8000/health-check/up"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    env_file:
+      - laravel.env
+    depends_on:
+      database:
+        condition: service_healthy
+  scheduler:
+    restart: always
+    image: "solidtime/solidtime:${SOLIDTIME_IMAGE_TAG:-latest}"
+    user: "1000:1000"
+    networks:
+      - internal
+    volumes:
+      - "app-storage:/var/www/html/storage"
+      - "./logs:/var/www/html/storage/logs"
+      - "./app-storage:/var/www/html/storage/app"
+    environment:
+      CONTAINER_MODE: scheduler
+    healthcheck:
+      test: ["CMD", "healthcheck"]
+    env_file:
+      - laravel.env
+    depends_on:
+      database:
+        condition: service_healthy
+  queue:
+    restart: always
+    image: "solidtime/solidtime:${SOLIDTIME_IMAGE_TAG:-latest}"
+    user: "1000:1000"
+    networks:
+      - internal
+    volumes:
+      - "app-storage:/var/www/html/storage"
+      - "./logs:/var/www/html/storage/logs"
+      - "./app-storage:/var/www/html/storage/app"
+    environment:
+      CONTAINER_MODE: worker
+      WORKER_COMMAND: "php /var/www/html/artisan queue:work"
+    healthcheck:
+      test: ["CMD", "healthcheck"]
+    env_file:
+      - laravel.env
+    depends_on:
+      database:
+        condition: service_healthy
+  database:
+    restart: always
+    image: 'postgres:15'
+    environment:
+      PGPASSWORD: '${DB_PASSWORD:-secret}'
+      POSTGRES_DB: '${DB_DATABASE}'
+      POSTGRES_USER: '${DB_USERNAME}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    volumes:
+      - 'database-storage:/var/lib/postgresql/data'
+    networks:
+      - internal
+    healthcheck:
+      test:
+        - CMD
+        - pg_isready
+        - '-q'
+        - '-d'
+        - '${DB_DATABASE}'
+        - '-U'
+        - '${DB_USERNAME}'
+      retries: 5
+      timeout: 5s
+  gotenberg:
+    image: gotenberg/gotenberg:8
+    restart: always
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--fail", "http://localhost:3000/health"]
+networks:
+  internal:
+volumes:
+  database-storage:
+  app-storage:

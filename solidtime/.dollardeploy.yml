@@ -1,0 +1,54 @@
+---
+id: solidtime
+name: Solidtime
+intro: Open source time tracker — the modern, self-hostable Toggl alternative.
+logo: https://avatars.githubusercontent.com/u/156823565
+tags:
+  - solidtime
+  - oss
+  - time-tracking
+  - productivity
+  - laravel
+deployTime: ~5 minutes
+description: |
+  Version: ${SOLIDTIME_IMAGE_TAG}. Solidtime is a modern open-source time
+  tracking application. Track time across projects and clients, manage teams and
+  organizations, set billable rates, and export detailed reports and invoices.
+  A privacy-friendly, self-hostable alternative to Toggl and Clockify, built on
+  Laravel + Vue. Ships as an all-in-one deployment with PostgreSQL, a queue
+  worker, a scheduler, and Gotenberg for PDF export.
+requirements:
+  memory: 4096
+  cpu: 2
+  storage: 20
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: solidtime
+  dockerComposeFile: docker-compose.yml
+  preStartCmd: bash ./fixdocker.sh
+  backupCmd: docker compose exec -T database pg_dump -U ${DB_USERNAME} ${DB_DATABASE} > solidtime.sql
+  files:
+    - path: fixdocker.sh
+  env:
+    PORT: "8000"
+    SOLIDTIME_IMAGE_TAG: "v0.14.0"
+    DB_DATABASE: solidtime
+    DB_USERNAME: solidtime
+    DB_PASSWORD: "${GENERATED_PWD}"
+    APP_HEALTHCHECK_PATH: "/health-check/up"
+    APP_READY_TIMEOUT: "600"
+    DOCKER_COMPOSE_WAIT_TIMEOUT: "600"
+postLaunchNote: |
+  First boot takes a few minutes while the database migrates and the app, queue,
+  scheduler, and Gotenberg containers come up.
+
+  Open the app and **register** using your email **${USER_EMAIL}** — that address
+  is pre-configured as a super admin, so the first account you create with it
+  gets full administrative access.
+
+  Email is set to the `log` driver by default (no mail is sent). To enable
+  signup verification and invites, configure the `MAIL_*` settings and redeploy.
