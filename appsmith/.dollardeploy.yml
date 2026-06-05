@@ -1,0 +1,39 @@
+---
+id: appsmith
+name: Appsmith
+intro: Open source low-code platform to build, ship and maintain internal tools.
+logo: https://avatars.githubusercontent.com/u/67620218
+tags:
+  - appsmith
+  - oss
+  - low-code
+  - internal-tools
+  - dashboard
+  - admin-panel
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: appsmith
+  dockerComposeFile: docker-compose.yml
+  backupCmd: tar czf appsmith-backup.tar.gz ./stacks
+  env:
+    PORT: "3000"
+    APPSMITH_VERSION: "v1.94"
+    APP_HEALTHCHECK_PATH: "/api/v1/health"
+    APP_READY_TIMEOUT: "600"
+    DOCKER_COMPOSE_WAIT_TIMEOUT: "600"
+requirements:
+  memory: 4096
+  cpu: 2
+  storage: 20
+deployTime: "~5 minutes"
+introVideoUrl: https://www.youtube-nocookie.com/embed/NnQc1Vg2pQA
+description: |
+  Appsmith is an open-source, low-code platform for
+  building internal tools, admin panels, dashboards, and CRUD apps. Drag-and-drop
+  pre-built widgets, connect to any database or REST/GraphQL API, and wire up logic
+  with JavaScript anywhere. The all-in-one container bundles the backend, real-time
+  service, MongoDB, and Redis, so no external services are required.
+services:
+  - docker

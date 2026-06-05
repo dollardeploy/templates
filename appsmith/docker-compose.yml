@@ -1,0 +1,18 @@
+# https://docs.appsmith.com/getting-started/setup/installation-guides/docker
+services:
+  appsmith:
+    image: appsmith/appsmith-ee:${APPSMITH_VERSION:-v1.94}
+    container_name: appsmith
+    ports:
+      # DollarDeploy terminates TLS and reverse-proxies to $PORT.
+      # Only expose Appsmith's HTTP port (80), bound to localhost.
+      - "127.0.0.1:${PORT:-3000}:80"
+    volumes:
+      - ./stacks:/appsmith-stacks
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:80/api/v1/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 90s
