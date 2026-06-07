@@ -1872,9 +1872,9 @@
     ],
     "experimental": true,
     "requirements": {
-      "memory": 2048,
+      "memory": 4096,
       "cpu": 2,
-      "storage": 20
+      "storage": 40
     },
     "app": {
       "type": "docker-compose",
@@ -1882,38 +1882,25 @@
       "sourceBranch": "main",
       "sourcePath": "pelican",
       "dockerComposeFile": "docker-compose.yml",
-      "postStartCmd": "source .env\ndocker compose exec panel php artisan key:generate --force || true\ndocker compose exec panel php artisan migrate --force || true\ndocker compose exec panel php artisan config:cache || true\ndocker compose exec panel php artisan p:user:make --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD} --admin=1 --username=${ADMIN_USERNAME} --name-first=Test --name-last=Test || true\n",
       "env": {
         "PORT": "3000",
         "APP_TIMEZONE": "UTC",
-        "APP_SERVICE_AUTHOR": "admin@localhost",
-        "HASHIDS_SALT": "${GENERATED_PWD}${GENERATED_PWD}",
-        "MYSQL_PASSWORD": "${GENERATED_PWD}",
-        "MYSQL_ROOT_PASSWORD": "${GENERATED_PWD}",
-        "MAIL_FROM": "noreply@localhost",
-        "MAIL_DRIVER": "smtp",
-        "MAIL_HOST": "mail",
-        "MAIL_PORT": "1025",
-        "MAIL_USERNAME": "",
-        "MAIL_PASSWORD": "",
         "ADMIN_EMAIL": "${USER_EMAIL}",
-        "ADMIN_USERNAME": "admin",
-        "ADMIN_PASSWORD": "${GENERATED_PWD}",
         "PORT_WINGS": "8080",
         "PORT_SFTP": "2022",
-        "WINGS_UID": "${USER_UID}",
-        "WINGS_GID": "${USER_GID}",
-        "WINGS_USERNAME": "admin"
+        "WINGS_UID": "988",
+        "WINGS_GID": "988",
+        "WINGS_USERNAME": "pelican"
       }
     },
     "services": [
       "docker"
     ],
     "deployTime": "~5 minutes",
-    "postLaunchNote": "Use username `${ADMIN_USERNAME}` and password `${ADMIN_PASSWORD}` to login.",
+    "postLaunchNote": "The panel is up. Finish setup in the browser at **${APP_URL}/installer** —\nchoose the default **SQLite** database and create your admin account there.\nMigrations run automatically during install.\n\nThe panel's encryption key (`APP_KEY`) is generated automatically on first boot.\nBack it up if you want to be safe:\n\n```\ndocker compose logs panel | grep 'Generated app key'\n```\n\nTo host servers, add a **Node** in the panel pointing wings at this server's\nIP on port `${PORT_WINGS}` (SFTP on `${PORT_SFTP}`), then drop the generated\nconfig into `/etc/pelican/config.yml` and restart the wings container.\n",
     "description": "From prehistoric to peak performance: Pelican takes flight! Pelican is the ultimate,\nfree game server control panel offering high flying security. It's a breeze to manage\nyour servers with our sleek and user-friendly interface. Thanks to Docker, every server\nruns in its own safe space. Pelican is 100% free and open source—forever—for you,\nyour friends, family, and community. We support Minecraft, Terraria, Palworld, Valheim,\nFactorio, and so much more. Whether you're just playing with friends or running a gaming\ncommunity, Pelican scales to the sky. Security is built in, with SSL, 2FA, AES-256\nencryption, and more. One click installs, automatic updates, and an active community\nmake Pelican the best way to host your game servers.\n",
     "createdAt": "2025-06-23T16:24:54+03:00",
-    "updatedAt": "2025-06-23T16:24:54+03:00"
+    "updatedAt": "2026-06-07T22:06:40+03:00"
   },
   {
     "id": "plane",
