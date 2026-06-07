@@ -41,6 +41,9 @@ services:
       - "/var/log/pelican/:/var/log/pelican/"
       - "/tmp/pelican/:/tmp/pelican/"
       - "/etc/ssl/certs:/etc/ssl/certs:ro"
+      # Let's Encrypt certs for wings SSL (node FQDN). Whole tree mounted so the
+      # live/ symlinks into archive/ resolve inside the container.
+      - "/etc/letsencrypt/:/etc/letsencrypt/:ro"
 
 volumes:
   pelican-data:
