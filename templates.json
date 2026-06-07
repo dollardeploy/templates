@@ -560,6 +560,46 @@
     "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
+    "id": "crafty-controller",
+    "name": "Crafty Controller",
+    "intro": "Self-hosted web panel to create, run, and manage Minecraft servers.",
+    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/crafty-controller.svg",
+    "tags": [
+      "minecraft",
+      "gaming",
+      "management",
+      "docker",
+      "oss"
+    ],
+    "experimental": true,
+    "requirements": {
+      "memory": 4096,
+      "cpu": 2,
+      "storage": 40
+    },
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "crafty-controller",
+      "dockerComposeFile": "docker-compose.yml",
+      "env": {
+        "PORT": "8443",
+        "APP_HEALTHCHECK_ENABLE": "0",
+        "DOCKER_COMPOSE_WAIT_TIMEOUT": "300"
+      }
+    },
+    "services": [
+      "docker"
+    ],
+    "deployTime": "~3 minutes",
+    "description": "Crafty Controller is a free, open-source web-based control panel for managing\nMinecraft servers — without the Pterodactyl-style wings/node setup.\n\nFrom a single container you can:\n- Create and run multiple servers: Vanilla, Paper, Spigot, Purpur, Forge, Fabric, and modpacks\n- Auto-download server jars by type and version\n- Use the built-in web console, file manager, and player management\n- Schedule automated restarts and backups\n- Watch live CPU/RAM and server status\n\nJava servers use the 25500–25600 port range, Bedrock uses 19132/udp, and Dynmap\nuses 8123 — all published so players can connect directly.\n",
+    "postLaunchNote": "Open the panel at **${APP_URL}** (you may need to accept the self-signed cert).\n\nCrafty generates a **random admin password on first boot**. Retrieve it from the\nserver with either:\n\n```\ncat ./docker/config/default-creds.txt\n```\n\nor by checking the container logs (`docker logs crafty`). Log in as **admin**\nand change the password immediately.\n",
+    "source": "https://github.com/dollardeploy/templates",
+    "createdAt": "2026-06-07T21:02:21+03:00",
+    "updatedAt": "2026-06-07T21:02:21+03:00"
+  },
+  {
     "id": "directus",
     "name": "Directus",
     "intro": "The Modern & Powerful CMS and BaaS",
