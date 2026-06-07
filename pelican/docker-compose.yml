@@ -1,56 +1,31 @@
-x-common:
-  panel:
-    &panel-environment
-    APP_URL: "${APP_URL}"
-    ADMIN_EMAIL: "${ADMIN_EMAIL}"
-
-    APP_DEBUG: "false"
-    APP_ENV: "production"
-
-  mail:
-    &mail-environment
-    MAIL_DRIVER: "${MAIL_DRIVER}"
-    MAIL_HOST: "${MAIL_HOST}"
-    MAIL_PORT: "${MAIL_PORT}"
-    MAIL_FROM: "${MAIL_FROM}"
-    MAIL_USERNAME: "${MAIL_USERNAME}"
-    MAIL_PASSWORD: "${MAIL_PASSWORD}"
-    # MAIL_SCHEME: ""
-
-#
-# ------------------------------------------------------------------------------------------
-# DANGER ZONE BELOW
-#
-# The remainder of this file likely does not need to be changed. Please only make modifications
-# below if you understand what you are doing.
-#
-
 services:
   panel:
     image: ghcr.io/pelican-dev/panel:latest
-    build: .
     restart: always
     networks:
       - default
     ports:
-      - "${PORT}:80"
-      # - "9000:9000" # enable when not using caddy to be able to reach php-fpm
+      # Web UI served by Caddy on :80 (BEHIND_PROXY) — routed via DollarDeploy
+      - "127.0.0.1:${PORT}:80"
     extra_hosts:
-      - "host.docker.internal:host-gateway" # shows the panel on the internal docker network as well. usually '172.17.0.1'
+      - "host.docker.internal:host-gateway"
     volumes:
       - pelican-data:/pelican-data
       - pelican-logs:/var/www/html/storage/logs
     environment:
-      <<: [*panel-environment, *mail-environment]
       XDG_DATA_HOME: /pelican-data
-      # SKIP_CADDY: true # enable when not using caddy.
+      APP_URL: "${APP_URL}"
+      ADMIN_EMAIL: "${ADMIN_EMAIL}"
+      # Run Caddy on plain HTTP :80 with auto_https off; DollarDeploy terminates TLS.
+      BEHIND_PROXY: "true"
+
   wings:
     image: ghcr.io/pelican-dev/wings:latest
     restart: always
     networks:
       - wings0
     ports:
-      - "${PORT_PANEL}:8080"
+      - "${PORT_WINGS}:8080"
       - "${PORT_SFTP}:2022"
     tty: true
     environment:
@@ -66,10 +41,6 @@ services:
       - "/var/log/pelican/:/var/log/pelican/"
       - "/tmp/pelican/:/tmp/pelican/"
       - "/etc/ssl/certs:/etc/ssl/certs:ro"
-      # you may need /srv/daemon-data if you are upgrading from an old daemon
-      #- "/srv/daemon-data/:/srv/daemon-data/"
-      # Required for ssl if you use let's encrypt. uncomment to use.
-      #- "/etc/letsencrypt/:/etc/letsencrypt/"
 
 volumes:
   pelican-data:

@@ -8,51 +8,44 @@ tags:
   - server-management
 experimental: true
 requirements:
-  memory: 2048
+  memory: 4096
   cpu: 2
-  storage: 20
+  storage: 40
 app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates
   sourceBranch: main
   sourcePath: pelican
   dockerComposeFile: docker-compose.yml
-  postStartCmd: |
-    source .env
-    docker compose exec panel php artisan key:generate --force || true
-    docker compose exec panel php artisan migrate --force || true
-    docker compose exec panel php artisan config:cache || true
-    docker compose exec panel php artisan p:user:make --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD} --admin=1 --username=${ADMIN_USERNAME} --name-first=Test --name-last=Test || true
   env:
     PORT: "3000"
+    # Panel
     APP_TIMEZONE: "UTC"
-    APP_SERVICE_AUTHOR: "admin@localhost"
-    HASHIDS_SALT: "${GENERATED_PWD}${GENERATED_PWD}"
-    # MySQL section
-    MYSQL_PASSWORD: "${GENERATED_PWD}"
-    MYSQL_ROOT_PASSWORD: "${GENERATED_PWD}"
-    # Mail section
-    MAIL_FROM: "noreply@localhost"
-    MAIL_DRIVER: "smtp"
-    MAIL_HOST: "mail"
-    MAIL_PORT: "1025"
-    MAIL_USERNAME: ""
-    MAIL_PASSWORD: ""
-    # MAIL_ENCRYPTION: "true"
-    # Credentials
     ADMIN_EMAIL: "${USER_EMAIL}"
-    ADMIN_USERNAME: "admin"
-    ADMIN_PASSWORD: "${GENERATED_PWD}"
-    # Wings
+    # Wings (official defaults)
     PORT_WINGS: "8080"
     PORT_SFTP: "2022"
-    WINGS_UID: ${USER_UID}
-    WINGS_GID: ${USER_GID}
-    WINGS_USERNAME: "admin"
+    WINGS_UID: "988"
+    WINGS_GID: "988"
+    WINGS_USERNAME: "pelican"
 services:
   - docker
 deployTime: ~5 minutes
-postLaunchNote: Use username `${ADMIN_USERNAME}` and password `${ADMIN_PASSWORD}` to login.
+postLaunchNote: |
+  The panel is up. Finish setup in the browser at **${APP_URL}/installer** —
+  choose the default **SQLite** database and create your admin account there.
+  Migrations run automatically during install.
+
+  The panel's encryption key (`APP_KEY`) is generated automatically on first boot.
+  Back it up if you want to be safe:
+
+  ```
+  docker compose logs panel | grep 'Generated app key'
+  ```
+
+  To host servers, add a **Node** in the panel pointing wings at this server's
+  IP on port `${PORT_WINGS}` (SFTP on `${PORT_SFTP}`), then drop the generated
+  config into `/etc/pelican/config.yml` and restart the wings container.
 description: |
   From prehistoric to peak performance: Pelican takes flight! Pelican is the ultimate,
   free game server control panel offering high flying security. It's a breeze to manage
