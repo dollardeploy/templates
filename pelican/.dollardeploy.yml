@@ -46,6 +46,17 @@ postLaunchNote: |
   To host servers, add a **Node** in the panel pointing wings at this server's
   IP on port `${PORT_WINGS}` (SFTP on `${PORT_SFTP}`), then drop the generated
   config into `/etc/pelican/config.yml` and restart the wings container.
+
+  **Uploading mods, worlds, or files:** use SFTP. Each server's *Settings → SFTP
+  Details* shows the host and username (port `${PORT_SFTP}`); log in with your
+  panel password. Drop mod jars in `/mods` and worlds in `/world` — files land
+  with the correct ownership automatically.
+
+  **Two things that trip people up:**
+  - Always give a server a real **memory limit** — never `0`, or game-server
+    installers run out of memory and fail silently.
+  - Open your **game ports** (e.g. `25565`) in the host firewall so players can
+    actually connect.
 description: |
   From prehistoric to peak performance: Pelican takes flight! Pelican is the ultimate,
   free game server control panel offering high flying security. It's a breeze to manage
