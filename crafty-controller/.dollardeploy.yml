@@ -1,0 +1,55 @@
+id: crafty-controller
+name: Crafty Controller
+intro: Self-hosted web panel to create, run, and manage Minecraft servers.
+logo: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/crafty-controller.svg
+tags:
+  - minecraft
+  - gaming
+  - management
+  - docker
+  - oss
+experimental: true
+requirements:
+  memory: 4096
+  cpu: 2
+  storage: 40
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: crafty-controller
+  dockerComposeFile: docker-compose.yml
+  env:
+    PORT: "8443"
+    # Crafty's web UI is HTTPS-only (self-signed); skip the plain-HTTP healthcheck
+    APP_HEALTHCHECK_ENABLE: "0"
+    DOCKER_COMPOSE_WAIT_TIMEOUT: "300"
+services:
+  - docker
+deployTime: ~3 minutes
+description: |
+  Crafty Controller is a free, open-source web-based control panel for managing
+  Minecraft servers — without the Pterodactyl-style wings/node setup.
+
+  From a single container you can:
+  - Create and run multiple servers: Vanilla, Paper, Spigot, Purpur, Forge, Fabric, and modpacks
+  - Auto-download server jars by type and version
+  - Use the built-in web console, file manager, and player management
+  - Schedule automated restarts and backups
+  - Watch live CPU/RAM and server status
+
+  Java servers use the 25500–25600 port range, Bedrock uses 19132/udp, and Dynmap
+  uses 8123 — all published so players can connect directly.
+postLaunchNote: |
+  Open the panel at **${APP_URL}** (you may need to accept the self-signed cert).
+
+  Crafty generates a **random admin password on first boot**. Retrieve it from the
+  server with either:
+
+  ```
+  cat ./docker/config/default-creds.txt
+  ```
+
+  or by checking the container logs (`docker logs crafty`). Log in as **admin**
+  and change the password immediately.
+source: https://github.com/dollardeploy/templates

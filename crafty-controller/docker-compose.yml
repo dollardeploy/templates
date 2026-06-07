@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  crafty:
+    image: registry.gitlab.com/crafty-controller/crafty-4:latest
+    container_name: crafty
+    restart: always
+    environment:
+      - TZ=Etc/UTC
+    ports:
+      # Web admin panel — proxied via DollarDeploy on APP_URL
+      - "127.0.0.1:${PORT}:8443"
+      # Game ports — must be publicly reachable by players
+      - "25500-25600:25500-25600"   # Java servers (Crafty default range)
+      - "19132:19132/udp"           # Bedrock
+      - "8123:8123"                 # Dynmap
+    volumes:
+      - ./docker/backups:/crafty/backups
+      - ./docker/logs:/crafty/logs
+      - ./docker/servers:/crafty/servers
+      - ./docker/config:/crafty/app/config
+      - ./docker/import:/crafty/import
