@@ -2571,6 +2571,47 @@
     "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
+    "id": "victorialogs",
+    "name": "VictoriaLogs",
+    "intro": "Fast, cost-effective and scalable open source log database by VictoriaMetrics.",
+    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/victorialogs.svg",
+    "tags": [
+      "logs",
+      "observability",
+      "monitoring",
+      "database",
+      "oss"
+    ],
+    "deployTime": "~2 minutes",
+    "description": "VictoriaLogs is an open source, easy to use and fast log management database\nbuilt by the VictoriaMetrics team. It ingests logs via many protocols\n(Elasticsearch, Loki, OpenTelemetry, Syslog, Journald and more) and queries\nthem with the powerful LogsQL language.\n\nThis template runs the single-node VictoriaLogs server behind vmauth for\nauthentication and routing, as recommended by the VictoriaLogs security guide.\nOnly vmauth is exposed (bound to localhost behind the DollarDeploy reverse\nproxy); VictoriaLogs itself stays on the internal Docker network. Two\ncredentials are generated: an admin user for the web UI and querying, and a\nseparate ingestion-only user for log shippers.\n",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 20
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "victorialogs",
+      "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 9428,
+      "env": {
+        "APP_HEALTHCHECK_PATH": "/health",
+        "VLOGS_USERNAME": "vlogs",
+        "VLOGS_PASSWORD": "${GENERATED_PWD}",
+        "VLOGS_INGEST_USERNAME": "${GENERATED_HASH}",
+        "VLOGS_INGEST_PASSWORD": "${GENERATED_SECRET}"
+      }
+    },
+    "postLaunchNote": "VictoriaLogs is protected with Basic Auth via vmauth.\n\nWeb UI and querying (full access):\n  URL:      ${APP_URL}/select/vmui\n  Username: vlogs\n  Password: ${GENERATED_PWD}\n\nLog ingestion (restricted to /insert/* for log shippers):\n  Endpoint: ${APP_URL}/insert/\n  Username: ${GENERATED_HASH}\n  Password: ${GENERATED_SECRET}\n\nData ingestion docs: https://docs.victoriametrics.com/victorialogs/data-ingestion/\n",
+    "createdAt": "2026-06-10T19:29:31+03:00",
+    "updatedAt": "2026-06-10T19:29:31+03:00"
+  },
+  {
     "id": "vllm-qwen3-coder",
     "name": "vLLM",
     "intro": "Run an OpenAI-compatible inference endpoint with Qwen3-Coder",
