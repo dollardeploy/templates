@@ -1,0 +1,27 @@
+# vmauth authorization config for VictoriaLogs.
+#
+# Credentials are injected from the environment by DollarDeploy at deploy time
+# using vmauth's %{ENV_VAR} expansion, so no secrets are stored in this file.
+# See https://docs.victoriametrics.com/victorialogs/security-and-lb/
+
+# Allow only the health endpoint without authentication so DollarDeploy can
+# health-check the app. Everything else requires a valid user below.
+unauthorized_user:
+  url_map:
+    - src_paths:
+        - "/health"
+      url_prefix: "http://victorialogs:9428"
+
+users:
+  # Admin user: full access to querying, the web UI and ingestion.
+  - username: "%{VLOGS_USERNAME}"
+    password: "%{VLOGS_PASSWORD}"
+    url_prefix: "http://victorialogs:9428"
+
+  # Ingestion-only user for log shippers: restricted to the /insert/* endpoints.
+  - username: "%{VLOGS_INGEST_USERNAME}"
+    password: "%{VLOGS_INGEST_PASSWORD}"
+    url_map:
+      - src_paths:
+          - "/insert/.*"
+        url_prefix: "http://victorialogs:9428"
