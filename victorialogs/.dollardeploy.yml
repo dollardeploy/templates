@@ -44,6 +44,8 @@ app:
     # Ingestion-only user: both username and password generated.
     VLOGS_INGEST_USERNAME: ${GENERATED_HASH}
     VLOGS_INGEST_PASSWORD: ${GENERATED_SECRET}
+    RETENTION_DAYS: "30d"
+    RETENTION_MAX_DISK_SIZE: "10GiB"
 postLaunchNote: |
   VictoriaLogs is protected with Basic Auth via vmauth.
 
