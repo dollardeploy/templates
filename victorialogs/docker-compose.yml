@@ -11,6 +11,8 @@ services:
     restart: always
     command:
       - "--storageDataPath=/vlogs"
+      - "--retentionPeriod=${RETENTION_PERIOD:-30d}"
+      - "--retention.maxDiskSpaceUsageBytes=${RETENTION_MAX_DISK_SIZE:-10GiB}"
       - "--httpListenAddr=:9428"
     volumes:
       - ./data:/vlogs
