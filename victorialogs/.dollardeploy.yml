@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dollardeploy/.github/refs/heads/main/template.schema.json
+id: victorialogs
+name: VictoriaLogs
+intro: Fast, cost-effective and scalable open source log database by VictoriaMetrics.
+logo: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/victorialogs.svg
+tags:
+  - logs
+  - observability
+  - monitoring
+  - database
+  - oss
+deployTime: ~2 minutes
+description: |
+  VictoriaLogs is an open source, easy to use and fast log management database
+  built by the VictoriaMetrics team. It ingests logs via many protocols
+  (Elasticsearch, Loki, OpenTelemetry, Syslog, Journald and more) and queries
+  them with the powerful LogsQL language.
+
+  This template runs the single-node VictoriaLogs server behind vmauth for
+  authentication and routing, as recommended by the VictoriaLogs security guide.
+  Only vmauth is exposed (bound to localhost behind the DollarDeploy reverse
+  proxy); VictoriaLogs itself stays on the internal Docker network. Two
+  credentials are generated: an admin user for the web UI and querying, and a
+  separate ingestion-only user for log shippers.
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 20
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: victorialogs
+  dockerComposeFile: docker-compose.yml
+  mainPort: 9428
+  env:
+    # vmauth /health is public; everything else needs auth, so check /health.
+    APP_HEALTHCHECK_PATH: /health
+    # Admin user (full access): fixed username, generated password.
+    VLOGS_USERNAME: vlogs
+    VLOGS_PASSWORD: ${GENERATED_PWD}
+    # Ingestion-only user: both username and password generated.
+    VLOGS_INGEST_USERNAME: ${GENERATED_HASH}
+    VLOGS_INGEST_PASSWORD: ${GENERATED_SECRET}
+postLaunchNote: |
+  VictoriaLogs is protected with Basic Auth via vmauth.
+
+  Web UI and querying (full access):
+    URL:      ${APP_URL}/select/vmui
+    Username: vlogs
+    Password: ${GENERATED_PWD}
+
+  Log ingestion (restricted to /insert/* for log shippers):
+    Endpoint: ${APP_URL}/insert/
+    Username: ${GENERATED_HASH}
+    Password: ${GENERATED_SECRET}
+
+  Data ingestion docs: https://docs.victoriametrics.com/victorialogs/data-ingestion/

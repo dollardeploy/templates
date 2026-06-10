@@ -1,0 +1,36 @@
+# VictoriaLogs single-node fronted by vmauth for authentication and routing.
+#
+# DollarDeploy terminates HTTPS at its own reverse proxy and forwards plain HTTP
+# to 127.0.0.1:${PORT} -> vmauth (:8427). Only vmauth is published on the host;
+# VictoriaLogs itself stays on the internal Docker network, which is the
+# "trusted network" recommended by the VictoriaLogs security guide:
+# https://docs.victoriametrics.com/victorialogs/security-and-lb/
+services:
+  victorialogs:
+    image: victoriametrics/victoria-logs:latest
+    restart: always
+    command:
+      - "--storageDataPath=/vlogs"
+      - "--httpListenAddr=:9428"
+    volumes:
+      - ./data:/vlogs
+
+  vmauth:
+    image: victoriametrics/vmauth:latest
+    restart: always
+    depends_on:
+      - victorialogs
+    # Published on localhost only; DollarDeploy proxies the public HTTPS host to it.
+    ports:
+      - "127.0.0.1:${PORT}:8427"
+    # Credentials are provided by DollarDeploy via the env file and consumed in
+    # auth.yml through vmauth's %{ENV_VAR} expansion.
+    environment:
+      VLOGS_USERNAME: ${VLOGS_USERNAME}
+      VLOGS_PASSWORD: ${VLOGS_PASSWORD}
+      VLOGS_INGEST_USERNAME: ${VLOGS_INGEST_USERNAME}
+      VLOGS_INGEST_PASSWORD: ${VLOGS_INGEST_PASSWORD}
+    volumes:
+      - ./auth.yml:/etc/auth.yml:ro
+    command:
+      - "--auth.config=/etc/auth.yml"
