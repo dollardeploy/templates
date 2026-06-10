@@ -2609,7 +2609,7 @@
     },
     "postLaunchNote": "VictoriaLogs is protected with Basic Auth via vmauth.\n\nWeb UI and querying (full access):\n  URL:      ${APP_URL}/select/vmui\n  Username: vlogs\n  Password: ${GENERATED_PWD}\n\nLog ingestion (restricted to /insert/* for log shippers):\n  Endpoint: ${APP_URL}/insert/\n  Username: ${GENERATED_HASH}\n  Password: ${GENERATED_SECRET}\n\nData ingestion docs: https://docs.victoriametrics.com/victorialogs/data-ingestion/\n",
     "createdAt": "2026-06-10T19:29:31+03:00",
-    "updatedAt": "2026-06-10T19:29:31+03:00"
+    "updatedAt": "2026-06-10T20:42:17+03:00"
   },
   {
     "id": "vllm-qwen3-coder",
