@@ -24,7 +24,7 @@ if [ ! -f .env.password ]; then
   # 96-char random secret (openssl rand -hex 48 == 96 hex chars).
   PASSWORD_SECRET=$(openssl rand -hex 48)
   # SHA-256 of the admin password, exactly as .env.example prescribes.
-  ROOT_PASSWORD_SHA2=$(printf '%s' "${GENERATED_PWD}" | sha256sum | cut -d' ' -f1)
+  ROOT_PASSWORD_SHA2=$(printf '%s' "${GRAYLOG_PASSWORD}" | sha256sum | cut -d' ' -f1)
 
   cat > .env.password <<EOF
 GRAYLOG_PASSWORD_SECRET=${PASSWORD_SECRET}
