@@ -2230,6 +2230,7 @@
   {
     "id": "solid-nextjs",
     "name": "Solid Next.js (Free)",
+    "logo": "https://avatars.githubusercontent.com/u/89612077",
     "intro": "Solid free Next.js SaaS/Startup template (Next 16, React 19, Tailwind)",
     "tags": [
       "nextjs",
@@ -2244,7 +2245,7 @@
       "mainPort": 3000
     },
     "createdAt": "2026-02-17T22:11:33+02:00",
-    "updatedAt": "2026-02-17T22:11:33+02:00"
+    "updatedAt": "2026-06-12T17:29:56+03:00"
   },
   {
     "id": "solidtime",
