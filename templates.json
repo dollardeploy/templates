@@ -1015,12 +1015,14 @@
         "GRAYLOG_IMAGE": "graylog/graylog:7.1",
         "DATANODE_IMAGE": "graylog/graylog-datanode:7.1",
         "GRAYLOG_USERNAME": "admin",
-        "GRAYLOG_PASSWORD": "${GENERATED_PWD}"
+        "GRAYLOG_PASSWORD": "${GENERATED_PWD}",
+        "DOCKER_COMPOSE_WAIT": 0,
+        "APP_HEALTHCHECK_ENABLE": 0
       }
     },
-    "postLaunchNote": "Graylog can take a few minutes to finish starting after deploy.\n\nURL:      ${APP_URL}\nUsername: admin\nPassword: ${GENERATED_PWD}\n",
+    "postLaunchNote": "Graylog can take a few minutes to finish starting after deploy. To login, use username: admin, password: ${GENERATED_PWD}\n",
     "createdAt": "2026-06-12T11:46:30+03:00",
-    "updatedAt": "2026-06-12T12:09:14+03:00"
+    "updatedAt": "2026-06-12T12:29:12+03:00"
   },
   {
     "id": "homarr",
