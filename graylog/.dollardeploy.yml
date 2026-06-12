@@ -40,6 +40,8 @@ app:
   env:
     GRAYLOG_IMAGE: graylog/graylog:7.1
     DATANODE_IMAGE: graylog/graylog-datanode:7.1
+    GRAYLOG_USERNAME: admin
+    GRAYLOG_PASSWORD: ${GENERATED_PWD}
 postLaunchNote: |
   Graylog can take a few minutes to finish starting after deploy.
 
