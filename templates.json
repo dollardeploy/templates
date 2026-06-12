@@ -982,6 +982,45 @@
     "updatedAt": "2025-11-04T08:40:22+02:00"
   },
   {
+    "id": "graylog",
+    "name": "Graylog Open",
+    "intro": "Centralized log management — collect, search, and analyze your logs.",
+    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/graylog.svg",
+    "tags": [
+      "logs",
+      "observability",
+      "monitoring",
+      "siem",
+      "oss"
+    ],
+    "deployTime": "~5 minutes",
+    "description": "Graylog is an open source log management platform. It collects, indexes, and\nanalyzes both structured and unstructured data, with powerful search, dashboards,\nand alerting.\n\nThis template runs the official open-core stack (Graylog, a Graylog Data Node,\nand MongoDB). The web UI is published on localhost behind the DollarDeploy\nreverse proxy, and Graylog's external URI is set to your app URL so generated\nlinks resolve correctly.\n\nThe password secret and the hashed admin password are generated during deploy\ninto a `.env.password` file (never committed) and injected into the containers\nvia Docker Compose's `env_file` directive.\n",
+    "requirements": {
+      "memory": 8192,
+      "cpu": 4,
+      "storage": 40
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "graylog",
+      "dockerComposeFile": "docker-compose.yml",
+      "preStartCmd": "bash setup.sh",
+      "mainPort": 9000,
+      "env": {
+        "GRAYLOG_IMAGE": "graylog/graylog:7.1",
+        "DATANODE_IMAGE": "graylog/graylog-datanode:7.1"
+      }
+    },
+    "postLaunchNote": "Graylog can take a few minutes to finish starting after deploy.\n\nURL:      ${APP_URL}\nUsername: admin\nPassword: ${GENERATED_PWD}\n",
+    "createdAt": "2026-06-12T11:46:30+03:00",
+    "updatedAt": "2026-06-12T11:46:30+03:00"
+  },
+  {
     "id": "homarr",
     "name": "Homarr",
     "intro": "A simple, yet powerful dashboard for your server.",
