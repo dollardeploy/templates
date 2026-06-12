@@ -1020,7 +1020,7 @@
     },
     "postLaunchNote": "Graylog can take a few minutes to finish starting after deploy.\n\nURL:      ${APP_URL}\nUsername: admin\nPassword: ${GENERATED_PWD}\n",
     "createdAt": "2026-06-12T11:46:30+03:00",
-    "updatedAt": "2026-06-12T12:08:21+03:00"
+    "updatedAt": "2026-06-12T12:09:14+03:00"
   },
   {
     "id": "homarr",
