@@ -1,0 +1,94 @@
+# Graylog Open (open-core) adapted for DollarDeploy.
+#
+# Based on https://github.com/Graylog2/docker-compose/blob/main/open-core/docker-compose.yml
+#
+# DollarDeploy terminates HTTPS at its own reverse proxy and forwards plain HTTP
+# to 127.0.0.1:${PORT} -> graylog (:9000). The public URL is provided to Graylog
+# via GRAYLOG_HTTP_EXTERNAL_URI=${APP_URL} so generated links point at the real
+# host instead of localhost.
+#
+# The password secret and the hashed root password are NOT kept here. They are
+# generated once at deploy time (see setup.sh) into .env.password, which is wired
+# into the graylog and datanode containers through the env_file directive.
+services:
+  mongodb:
+    image: "mongo:7.0"
+    restart: "on-failure"
+    networks:
+      - graylog
+    volumes:
+      - "mongodb_data:/data/db"
+      - "mongodb_config:/data/configdb"
+
+  datanode:
+    image: "${DATANODE_IMAGE:-graylog/graylog-datanode:7.1}"
+    hostname: "datanode"
+    # GRAYLOG_DATANODE_PASSWORD_SECRET is injected from .env.password.
+    env_file:
+      - .env.password
+    environment:
+      GRAYLOG_DATANODE_NODE_ID_FILE: "/var/lib/graylog-datanode/node-id"
+      GRAYLOG_DATANODE_MONGODB_URI: "mongodb://mongodb:27017/graylog"
+    ulimits:
+      memlock:
+        hard: -1
+        soft: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    ports:
+      - "127.0.0.1:8999:8999/tcp"
+      - "127.0.0.1:9200:9200/tcp"
+      - "127.0.0.1:9300:9300/tcp"
+    networks:
+      - graylog
+    volumes:
+      - "graylog-datanode:/var/lib/graylog-datanode"
+    restart: "on-failure"
+
+  graylog:
+    hostname: "server"
+    image: "${GRAYLOG_IMAGE:-graylog/graylog:7.1}"
+    depends_on:
+      mongodb:
+        condition: "service_started"
+      datanode:
+        condition: "service_started"
+    entrypoint: "/usr/bin/tini --  /docker-entrypoint.sh"
+    # GRAYLOG_PASSWORD_SECRET and GRAYLOG_ROOT_PASSWORD_SHA2 are injected from
+    # .env.password (created during deploy by setup.sh).
+    env_file:
+      - .env.password
+    environment:
+      GRAYLOG_NODE_ID_FILE: "/usr/share/graylog/data/data/node-id"
+      GRAYLOG_HTTP_BIND_ADDRESS: "0.0.0.0:9000"
+      GRAYLOG_HTTP_EXTERNAL_URI: "${APP_URL}/"
+      GRAYLOG_MONGODB_URI: "mongodb://mongodb:27017/graylog"
+    ports:
+      # Web UI / API, published on localhost only for the DollarDeploy proxy.
+      - "127.0.0.1:${PORT}:9000/tcp"
+      # Log inputs (Beats, syslog, GELF, etc.) published on localhost.
+      - "127.0.0.1:5044:5044/tcp"
+      - "127.0.0.1:5140:5140/udp"
+      - "127.0.0.1:5140:5140/tcp"
+      - "127.0.0.1:5555:5555/tcp"
+      - "127.0.0.1:5555:5555/udp"
+      - "127.0.0.1:12201:12201/tcp"
+      - "127.0.0.1:12201:12201/udp"
+      - "127.0.0.1:13301:13301/tcp"
+      - "127.0.0.1:13302:13302/tcp"
+    networks:
+      - graylog
+    volumes:
+      - "graylog_data:/usr/share/graylog/data"
+    restart: "on-failure"
+
+networks:
+  graylog:
+    driver: "bridge"
+
+volumes:
+  mongodb_data:
+  mongodb_config:
+  graylog-datanode:
+  graylog_data:
