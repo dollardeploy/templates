@@ -40,12 +40,10 @@ app:
   env:
     GRAYLOG_IMAGE: graylog/graylog:7.1
     DATANODE_IMAGE: graylog/graylog-datanode:7.1
+    GRAYLOG_USERNAME: admin
+    GRAYLOG_PASSWORD: ${GENERATED_PWD}
+    DOCKER_COMPOSE_WAIT: 0
+    APP_HEALTHCHECK_ENABLE: 0
 postLaunchNote: |
-  Graylog can take a few minutes to finish starting after deploy.
+  Graylog can take a few minutes to finish starting after deploy. To login, use username: admin, password: ${GENERATED_PWD}
 
-  On first boot Graylog shows a preflight setup screen to provision the data
-  node. Log in there (and afterwards to Graylog itself) with:
-
-  URL:      ${APP_URL}
-  Username: admin
-  Password: ${GENERATED_PWD}
