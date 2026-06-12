@@ -64,6 +64,9 @@ services:
       GRAYLOG_HTTP_BIND_ADDRESS: "0.0.0.0:9000"
       GRAYLOG_HTTP_EXTERNAL_URI: "${APP_URL}/"
       GRAYLOG_MONGODB_URI: "mongodb://mongodb:27017/graylog"
+      # Pin the first-boot preflight setup password (otherwise Graylog prints a
+      # random one to the logs). Username is the root user, "admin".
+      GRAYLOG_PREFLIGHT_WEB_PASSWORD: "${GENERATED_PWD}"
     ports:
       # Web UI / API, published on localhost only for the DollarDeploy proxy.
       - "127.0.0.1:${PORT}:9000/tcp"

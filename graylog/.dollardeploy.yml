@@ -43,6 +43,9 @@ app:
 postLaunchNote: |
   Graylog can take a few minutes to finish starting after deploy.
 
+  On first boot Graylog shows a preflight setup screen to provision the data
+  node. Log in there (and afterwards to Graylog itself) with:
+
   URL:      ${APP_URL}
   Username: admin
   Password: ${GENERATED_PWD}
