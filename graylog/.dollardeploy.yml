@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dollardeploy/.github/refs/heads/main/template.schema.json
+id: graylog
+name: Graylog Open
+intro: Centralized log management — collect, search, and analyze your logs.
+logo: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/graylog.svg
+tags:
+  - logs
+  - observability
+  - monitoring
+  - siem
+  - oss
+deployTime: ~5 minutes
+description: |
+  Graylog is an open source log management platform. It collects, indexes, and
+  analyzes both structured and unstructured data, with powerful search, dashboards,
+  and alerting.
+
+  This template runs the official open-core stack (Graylog, a Graylog Data Node,
+  and MongoDB). The web UI is published on localhost behind the DollarDeploy
+  reverse proxy, and Graylog's external URI is set to your app URL so generated
+  links resolve correctly.
+
+  The password secret and the hashed admin password are generated during deploy
+  into a `.env.password` file (never committed) and injected into the containers
+  via Docker Compose's `env_file` directive.
+requirements:
+  memory: 8192
+  cpu: 4
+  storage: 40
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: graylog
+  dockerComposeFile: docker-compose.yml
+  preStartCmd: bash setup.sh
+  mainPort: 9000
+  env:
+    GRAYLOG_IMAGE: graylog/graylog:7.1
+    DATANODE_IMAGE: graylog/graylog-datanode:7.1
+postLaunchNote: |
+  Graylog can take a few minutes to finish starting after deploy.
+
+  URL:      ${APP_URL}
+  Username: admin
+  Password: ${GENERATED_PWD}
