@@ -46,3 +46,4 @@ app:
     APP_HEALTHCHECK_ENABLE: 0
 postLaunchNote: |
   Graylog can take a few minutes to finish starting after deploy. To login, use username: admin, password: ${GENERATED_PWD}
+
