@@ -68,13 +68,13 @@
       "storage": 20
     },
     "deployTime": "~5 minutes",
-    "introVideoUrl": "https://www.youtube-nocookie.com/embed/NnQc1Vg2pQA",
+    "introVideoUrl": "https://www.youtube-nocookie.com/embed/NnaJdA1A11s",
     "description": "Appsmith is an open-source, low-code platform for\nbuilding internal tools, admin panels, dashboards, and CRUD apps. Drag-and-drop\npre-built widgets, connect to any database or REST/GraphQL API, and wire up logic\nwith JavaScript anywhere. The all-in-one container bundles the backend, real-time\nservice, MongoDB, and Redis, so no external services are required.\n",
     "services": [
       "docker"
     ],
     "createdAt": "2026-06-05T14:55:59+03:00",
-    "updatedAt": "2026-06-05T14:55:59+03:00"
+    "updatedAt": "2026-06-15T20:09:26+03:00"
   },
   {
     "id": "baserow",
