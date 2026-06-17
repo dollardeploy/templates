@@ -24,9 +24,9 @@ app:
     APP_READY_TIMEOUT: "600"
     DOCKER_COMPOSE_WAIT_TIMEOUT: "600"
 requirements:
-  memory: 4096
+  memory: 8192
   cpu: 2
-  storage: 20
+  storage: 30
 deployTime: "~5 minutes"
 introVideoUrl: https://www.youtube-nocookie.com/embed/NnaJdA1A11s
 description: |
