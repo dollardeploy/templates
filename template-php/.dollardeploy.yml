@@ -1,0 +1,26 @@
+id: template-php
+name: PHP app boilerplate
+intro: A boilerplate for building a PHP application. Fork this repo and start building your own app quickly.
+description: |
+  A boilerplate for building a PHP application
+  Fork this repo and start building your own app quickly.
+  This template is a simple PHP application that can be used as a starting point for building your own app.
+demoUrl: "https://php.demo.dollardeploy.dev/"
+logo: https://www.php.net/images/logos/new-php-logo.svg
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+deployTime: ~3 minutes
+tags:
+  - php
+  - template
+  - oss
+app:
+  type: php
+  repositoryUrl: https://github.com/dollardeploy/example-php
+  sourceBranch: main
+  preStartCmd: DEBIAN_FRONTEND=noninteractive sudo apt install -y php-fpm php-pgsql php-mysql
+  startCmd: php -S 0.0.0.0:8080 -t . index.php
+  env:
+    PORT: 8080
