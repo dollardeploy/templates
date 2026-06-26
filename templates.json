@@ -2451,6 +2451,37 @@
     "updatedAt": "2025-12-25T10:41:54+02:00"
   },
   {
+    "id": "template-deno",
+    "name": "Deno app boilerplate",
+    "intro": "A boilerplate for building a Deno application. Fork this repo and start building your own app quickly.",
+    "description": "A boilerplate for building a Deno application\nFork this repo and start building your own app quickly.\nThis template is a simple Deno application that can be used as a starting point for building your own app.\n",
+    "demoUrl": "https://deno.demo.dollardeploy.dev/",
+    "logo": "https://avatars.githubusercontent.com/u/42048915",
+    "experimental": true,
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "deployTime": "~3 minutes",
+    "tags": [
+      "deno",
+      "typescript",
+      "template",
+      "oss"
+    ],
+    "app": {
+      "type": "deno",
+      "repositoryUrl": "https://github.com/dollardeploy/example-deno",
+      "sourceBranch": "main",
+      "env": {
+        "PORT": 3000
+      }
+    },
+    "createdAt": "2026-06-26T14:27:05+03:00",
+    "updatedAt": "2026-06-26T14:27:05+03:00"
+  },
+  {
     "id": "template-go",
     "name": "Go app boilerplate",
     "intro": "A boilerplate for building a Go application. Fork this repo and start building your own app quikly.",
