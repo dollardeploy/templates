@@ -1,0 +1,32 @@
+# RustFS single-node: S3-compatible object storage written in Rust.
+#
+# DollarDeploy terminates HTTPS and forwards plain HTTP to 127.0.0.1:${PORT}
+# (the S3 API). The web console is published on 127.0.0.1:${PORT_CONSOLE}.
+# Data lives in a bind-mounted ./data so it is captured by DollarDeploy backups.
+services:
+  rustfs:
+    image: rustfs/rustfs:${RUSTFS_VERSION:-1.0.0-beta.8}
+    restart: always
+    user: "$USER_UID:$USER_GID"
+    ports:
+      - "127.0.0.1:${PORT:-9000}:9000"
+      - "127.0.0.1:${PORT_CONSOLE:-9001}:9001"
+    volumes:
+      - ./data:/data
+    depends_on:
+      fix-permissions:
+        condition: service_completed_successfully
+    environment:
+      RUSTFS_VOLUMES: /data
+      RUSTFS_ADDRESS: 0.0.0.0:9000
+      RUSTFS_CONSOLE_ADDRESS: 0.0.0.0:9001
+      RUSTFS_CONSOLE_ENABLE: "true"
+      RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY:-rustfsadmin}
+      RUSTFS_SECRET_KEY: ${RUSTFS_SECRET_KEY:-rustfsadmin}
+      RUSTFS_OBS_LOGGER_LEVEL: info
+
+  fix-permissions:
+    image: alpine
+    volumes:
+      - ./:/root
+    command: sh -c "mkdir -p /root/data && chown $USER_UID:$USER_GID /root/data"
