@@ -5,7 +5,6 @@ description: |
   A boilerplate for building a Deno application
   Fork this repo and start building your own app quickly.
   This template is a simple Deno application that can be used as a starting point for building your own app.
-demoUrl: "https://deno.demo.dollardeploy.dev/"
 logo: https://avatars.githubusercontent.com/u/42048915
 experimental: true
 requirements:
@@ -20,7 +19,7 @@ tags:
   - oss
 app:
   type: deno
-  repositoryUrl: https://github.com/dollardeploy/example-deno
+  repositoryUrl: https://github.com/huksley/example-deno
   sourceBranch: main
   env:
     PORT: 3000
