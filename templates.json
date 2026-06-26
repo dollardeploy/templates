@@ -2228,6 +2228,47 @@
     "updatedAt": "2025-06-21T03:19:38+03:00"
   },
   {
+    "id": "rustfs",
+    "name": "RustFS",
+    "intro": "High-performance, S3-compatible distributed object storage written in Rust.",
+    "description": "RustFS is a high-performance, S3-compatible distributed object storage system\nwritten in Rust. It is a fast, secure and cost-effective alternative to MinIO,\nbuilt for AI/ML, analytics and data-intensive workloads.\n🔹 S3 API Compatible – Works with existing S3 tools and SDKs\n🔹 Written in Rust – Memory-safe and fast, with a small footprint\n🔹 Web Console – Manage buckets, objects and access keys from the browser\n\nThis template runs single-node RustFS with data on a bind-mounted volume\n(captured by DollarDeploy backups). The S3 API is exposed at the app URL and\nthe web console is available on a separate local port behind the reverse proxy.\n",
+    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/rustfs.svg",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "deployTime": "~3 minutes",
+    "tags": [
+      "storage",
+      "s3",
+      "cloud",
+      "rust",
+      "oss"
+    ],
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "rustfs",
+      "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 9000,
+      "env": {
+        "PORT": 9000,
+        "PORT_CONSOLE": 9001,
+        "RUSTFS_ACCESS_KEY": "${GENERATED_PWD}",
+        "RUSTFS_SECRET_KEY": "${GENERATED_HASH}",
+        "RUSTFS_VERSION": "1.0.0-beta.8"
+      }
+    },
+    "postLaunchNote": "RustFS is ready.\n\nS3 API endpoint: ${APP_URL}\nWeb console:     reachable on the host at 127.0.0.1:${PORT_CONSOLE}\n\nCredentials:\n  Access key: ${RUSTFS_ACCESS_KEY}\n  Secret key: ${RUSTFS_SECRET_KEY}\n\nGet started with the AWS CLI:\n\n```bash\nexport AWS_ACCESS_KEY_ID=${RUSTFS_ACCESS_KEY}\nexport AWS_SECRET_ACCESS_KEY=${RUSTFS_SECRET_KEY}\naws s3api --endpoint-url ${APP_URL} create-bucket --bucket test\necho \"Hello, world!\" | aws s3 --endpoint-url ${APP_URL} cp - s3://test/hello.txt\n```\n",
+    "createdAt": "2026-06-26T08:25:24+03:00",
+    "updatedAt": "2026-06-26T08:25:24+03:00"
+  },
+  {
     "id": "solid-nextjs",
     "name": "Solid Next.js (Free)",
     "logo": "https://avatars.githubusercontent.com/u/89612077",
