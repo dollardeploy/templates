@@ -2257,6 +2257,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 9000,
       "env": {
+        "APP_HEALTHCHECK_PATH": "/health",
         "PORT": 9000,
         "PORT_CONSOLE": 9001,
         "RUSTFS_ACCESS_KEY": "${GENERATED_PWD}",
@@ -2264,9 +2265,9 @@
         "RUSTFS_VERSION": "1.0.0-beta.8"
       }
     },
-    "postLaunchNote": "RustFS is ready.\n\nS3 API endpoint: ${APP_URL}\nWeb console:     reachable on the host at 127.0.0.1:${PORT_CONSOLE}\n\nCredentials:\n  Access key: ${RUSTFS_ACCESS_KEY}\n  Secret key: ${RUSTFS_SECRET_KEY}\n\nGet started with the AWS CLI:\n\n```bash\nexport AWS_ACCESS_KEY_ID=${RUSTFS_ACCESS_KEY}\nexport AWS_SECRET_ACCESS_KEY=${RUSTFS_SECRET_KEY}\naws s3api --endpoint-url ${APP_URL} create-bucket --bucket test\necho \"Hello, world!\" | aws s3 --endpoint-url ${APP_URL} cp - s3://test/hello.txt\n```\n",
+    "postLaunchNote": "RustFS is ready.\n\nS3 API endpoint: ${APP_URL}\nWeb console:     reachable on the host at 127.0.0.1:${PORT_CONSOLE}\n\nAccess key: `${RUSTFS_ACCESS_KEY}`\nSecret key: `${RUSTFS_SECRET_KEY}`\n\nGet started with the AWS CLI:\n\n```bash\nexport AWS_ACCESS_KEY_ID=${RUSTFS_ACCESS_KEY}\nexport AWS_SECRET_ACCESS_KEY=${RUSTFS_SECRET_KEY}\naws s3api --endpoint-url ${APP_URL} create-bucket --bucket test\necho \"Hello, world!\" | aws s3 --endpoint-url ${APP_URL} cp - s3://test/hello.txt\n```\n",
     "createdAt": "2026-06-26T08:25:24+03:00",
-    "updatedAt": "2026-06-26T08:25:24+03:00"
+    "updatedAt": "2026-06-26T08:43:43+03:00"
   },
   {
     "id": "solid-nextjs",
