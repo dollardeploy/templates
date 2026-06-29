@@ -46,6 +46,13 @@ app:
     NEXT_PRIVATE_RESEND_API_KEY: ""
     NEXT_PRIVATE_SMTP_FROM_ADDRESS: "example@example.com"
     NEXT_PRIVATE_SMTP_FROM_NAME: "Documenso"
+    NEXT_PRIVATE_SIGNING_LOCAL_FILE_PATH: "/app/certs/cert.p12"
+    CERT_INFO_COUNTRY_NAME: "US"
+    CERT_INFO_STATE_OR_PROVIDENCE: "State"
+    CERT_INFO_LOCALITY_NAME: "City"
+    CERT_INFO_ORGANIZATION_NAME: "Organization"
+    CERT_INFO_ORGANIZATIONAL_UNIT: "IT Department"
+    CERT_INFO_EMAIL: "example@example.com"
 postLaunchNote: |
   Open ${APP_URL} and create your admin account by signing up — the first
   registered user becomes the administrator.
