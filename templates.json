@@ -743,8 +743,9 @@
       "mainPort": 3000,
       "env": {
         "PORT": 3000,
-        "APP_URL": "${APP_URL}",
-        "APP_HOSTNAME": "${APP_HOSTNAME}",
+        "NEXTAUTH_URL": "${APP_URL}",
+        "NEXT_PUBLIC_WEBAPP_URL": "${APP_URL}",
+        "DOCUMENSO_HOST": "${APP_HOSTNAME}",
         "POSTGRES_PASSWORD": "${GENERATED_PWD}",
         "NEXTAUTH_SECRET": "${GENERATED_SECRET}",
         "NEXT_PRIVATE_ENCRYPTION_KEY": "${GENERATED_HASH}",
@@ -754,7 +755,7 @@
     },
     "postLaunchNote": "Documenso is starting at ${APP_URL}. The first boot generates a local signing\ncertificate, so initial startup may take a minute.\n\nOpen ${APP_URL} and create your admin account by signing up — the first\nregistered user becomes the administrator.\n\nSMTP email is not configured by default. To send signing invitations and\nreset emails, add `NEXT_PRIVATE_SMTP_*` environment variables in the app\nsettings. See https://docs.documenso.com/developers/local-development/signing-certificate\n",
     "createdAt": "2026-06-29T19:32:25+03:00",
-    "updatedAt": "2026-06-29T19:32:25+03:00"
+    "updatedAt": "2026-06-29T21:43:23+03:00"
   },
   {
     "id": "dozzle",
