@@ -1,0 +1,22 @@
+id: boilerplate-bun
+name: Bun Boilerplate
+intro: A minimal Bun web server boilerplate.
+description: |
+  A tiny, zero-dependency Bun web app that serves a single HTML page with Bun.serve.
+  Fork this repo and start building your own Bun app quickly. See https://bun.sh to learn more.
+logo: https://bun.sh/logo.svg
+requirements:
+  memory: 512
+  cpu: 1
+  storage: 5
+deployTime: ~2 minutes
+tags:
+  - bun
+  - template
+  - typescript
+app:
+  type: bun
+  repositoryUrl: https://github.com/zeriaxdev/dollardeploy-bun-boilerplate
+  sourceBranch: main
+  env:
+    PORT: 3000
