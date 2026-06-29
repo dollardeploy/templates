@@ -152,6 +152,34 @@
     "updatedAt": "2025-08-27T11:47:28+03:00"
   },
   {
+    "id": "boilerplate-bun",
+    "name": "Bun Boilerplate",
+    "intro": "A minimal Bun web server boilerplate.",
+    "description": "A tiny, zero-dependency Bun web app that serves a single HTML page with Bun.serve.\nFork this repo and start building your own Bun app quickly. See https://bun.sh to learn more.\n",
+    "logo": "https://bun.sh/logo.svg",
+    "requirements": {
+      "memory": 512,
+      "cpu": 1,
+      "storage": 5
+    },
+    "deployTime": "~2 minutes",
+    "tags": [
+      "bun",
+      "template",
+      "typescript"
+    ],
+    "app": {
+      "type": "bun",
+      "repositoryUrl": "https://github.com/zeriaxdev/dollardeploy-bun-boilerplate",
+      "sourceBranch": "main",
+      "env": {
+        "PORT": 3000
+      }
+    },
+    "createdAt": "2026-06-29T18:43:16+03:00",
+    "updatedAt": "2026-06-29T18:43:16+03:00"
+  },
+  {
     "id": "boilerplate-python",
     "name": "Lithium Python Boilerplate",
     "intro": "A boilerplate for building modern Python Django app.",
