@@ -714,6 +714,49 @@
     "updatedAt": "2025-11-02T21:35:50+02:00"
   },
   {
+    "id": "documenso",
+    "name": "Documenso",
+    "intro": "The open source DocuSign alternative for signing documents digitally.",
+    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/documenso.svg",
+    "tags": [
+      "documents",
+      "signing",
+      "esignature",
+      "oss",
+      "popular"
+    ],
+    "deployTime": "~3 minutes",
+    "description": "Documenso is the open source signing infrastructure and a DocuSign\nalternative. Upload documents, collect legally binding electronic signatures,\nand manage signing workflows — all self-hosted. This template runs Documenso\nwith a PostgreSQL database and generates a local signing certificate on first\nboot.\n",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 10
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "documenso",
+      "sourceBranch": "main",
+      "mainPort": 3000,
+      "env": {
+        "PORT": 3000,
+        "APP_URL": "${APP_URL}",
+        "APP_HOSTNAME": "${APP_HOSTNAME}",
+        "POSTGRES_PASSWORD": "${GENERATED_PWD}",
+        "NEXTAUTH_SECRET": "${GENERATED_SECRET}",
+        "NEXT_PRIVATE_ENCRYPTION_KEY": "${GENERATED_HASH}",
+        "NEXT_PRIVATE_ENCRYPTION_SECONDARY_KEY": "${GENERATED_SECRET}${GENERATED_HASH}",
+        "NEXT_PRIVATE_SIGNING_LOCAL_FILE_PASSPHRASE": "${GENERATED_HASH}${GENERATED_PWD}"
+      }
+    },
+    "postLaunchNote": "Documenso is starting at ${APP_URL}. The first boot generates a local signing\ncertificate, so initial startup may take a minute.\n\nOpen ${APP_URL} and create your admin account by signing up — the first\nregistered user becomes the administrator.\n\nSMTP email is not configured by default. To send signing invitations and\nreset emails, add `NEXT_PRIVATE_SMTP_*` environment variables in the app\nsettings. See https://docs.documenso.com/developers/local-development/signing-certificate\n",
+    "createdAt": "2026-06-29T19:32:25+03:00",
+    "updatedAt": "2026-06-29T19:32:25+03:00"
+  },
+  {
     "id": "dozzle",
     "name": "Dozzle",
     "intro": "A simple, lightweight web interface for monitoring Docker containers.",
