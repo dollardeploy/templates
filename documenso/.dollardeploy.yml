@@ -37,13 +37,18 @@ app:
     NEXT_PRIVATE_ENCRYPTION_KEY: ${GENERATED_HASH}
     NEXT_PRIVATE_ENCRYPTION_SECONDARY_KEY: ${GENERATED_SECRET}${GENERATED_HASH}
     NEXT_PRIVATE_SIGNING_LOCAL_FILE_PASSPHRASE: ${GENERATED_HASH}${GENERATED_PWD}
+    NEXT_PRIVATE_SMTP_TRANSPORT: "smtp-auth"
+    NEXT_PRIVATE_SMTP_HOST: "127.0.0.1"
+    NEXT_PRIVATE_SMTP_PORT: 587
+    NEXT_PRIVATE_SMTP_USERNAME: ""
+    NEXT_PRIVATE_SMTP_PASSWORD: ""
+    NEXT_PRIVATE_SMTP_SECURE: false
+    NEXT_PRIVATE_RESEND_API_KEY: ""
+    NEXT_PRIVATE_SMTP_FROM_ADDRESS: "example@example.com"
+    NEXT_PRIVATE_SMTP_FROM_NAME: "Documenso"
 postLaunchNote: |
-  Documenso is starting at ${APP_URL}. The first boot generates a local signing
-  certificate, so initial startup may take a minute.
-
   Open ${APP_URL} and create your admin account by signing up — the first
   registered user becomes the administrator.
 
-  SMTP email is not configured by default. To send signing invitations and
-  reset emails, add `NEXT_PRIVATE_SMTP_*` environment variables in the app
-  settings. See https://docs.documenso.com/developers/local-development/signing-certificate
+  To send login confirmation, signing invitations and reset emails, change `NEXT_PRIVATE_SMTP_*` environment variables in the app
+  settings. See https://docs.documenso.com/docs/self-hosting/configuration/environment
