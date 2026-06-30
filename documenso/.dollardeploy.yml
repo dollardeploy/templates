@@ -18,7 +18,7 @@ description: |
 requirements:
   memory: 2048
   cpu: 2
-  storage: 10
+  storage: 20
 services:
   - docker
 app:
