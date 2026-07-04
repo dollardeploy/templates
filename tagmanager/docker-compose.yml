@@ -4,9 +4,30 @@ services:
     cpus: 1
     mem_limit: 512M
     env_file: .env
+    restart: unless-stopped
+    labels:
+      - autoheal=true
     ports:
       - 127.0.0.1:${PORT:-8080}:${PORT:-8080}
     environment:
       CONTAINER_CONFIG: ${CONTAINER_CONFIG}
       RUN_AS_PREVIEW_SERVER: ${RUN_AS_PREVIEW_SERVER:-false}
       PORT: ${PORT:-8080}
+    healthcheck:
+      test:
+        - CMD
+        - /nodejs/bin/node
+        - -e
+        - "require('http').get('http://localhost:'+(process.env.PORT||8080)+'/healthy',r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  autoheal:
+    image: willfarrell/autoheal:latest
+    restart: unless-stopped
+    environment:
+      AUTOHEAL_CONTAINER_LABEL: autoheal
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
