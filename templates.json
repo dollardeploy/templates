@@ -2536,7 +2536,7 @@
     },
     "postLaunchNote": "Make sure to properly configure `CONTAINER_CONFIG` variable, see [docs](https://developers.google.com/tag-platform/tag-manager/server-side/manual-setup-guide#manually_provision_a_server-side_tagging_cluster)",
     "createdAt": "2025-08-04T13:29:12+03:00",
-    "updatedAt": "2025-12-25T10:41:54+02:00"
+    "updatedAt": "2026-07-04T10:24:43+03:00"
   },
   {
     "id": "template-deno",
