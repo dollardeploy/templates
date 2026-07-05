@@ -254,6 +254,7 @@
     },
     "app": {
       "type": "next",
+      "mainPort": 3000,
       "env": {
         "NEXT_PUBLIC_WEBAPP_URL": "https://${APP_HOSTNAME}",
         "NEXT_PUBLIC_API_V2_URL": "https://${APP_HOSTNAME}/api/v2",
@@ -281,7 +282,7 @@
       "postgres"
     ],
     "createdAt": "2025-01-17T15:51:08+02:00",
-    "updatedAt": "2025-05-17T20:53:14+03:00"
+    "updatedAt": "2026-07-05T10:46:26+03:00"
   },
   {
     "id": "cal-com-docker",
@@ -365,6 +366,7 @@
     },
     "app": {
       "type": "next",
+      "mainPort": 3000,
       "env": {
         "NEXT_PUBLIC_WEBAPP_URL": "https://${APP_HOSTNAME}",
         "NEXTAUTH_URL": "https://${APP_HOSTNAME}",
@@ -389,7 +391,7 @@
       "postgres"
     ],
     "createdAt": "2025-01-17T09:35:58+02:00",
-    "updatedAt": "2025-05-17T20:53:14+03:00"
+    "updatedAt": "2026-07-05T10:46:26+03:00"
   },
   {
     "id": "chatwoot",
@@ -2300,6 +2302,7 @@
       "sourceBranch": "main",
       "sourcePath": "pterodactyl-wings",
       "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 8080,
       "env": {
         "PORT_PANEL": "8080",
         "PORT_SFTP": "2022",
@@ -2313,7 +2316,7 @@
     "postLaunchNote": "Wings has been deployed. Make sure your Panel connects to port `${PORT_PANEL}` and SFTP runs on `${PORT_SFTP}`.\nYou may configure node settings in the panel using the appropriate IP and port.\n",
     "description": "Pterodactyl Wings is Pterodactyl's server control plane, built for the rapidly changing\ngaming industry and designed to be highly performant and secure. Wings provides\nan HTTP API allowing you to interface directly with running server instances,\nfetch server logs, generate backups, and control all aspects of the server lifecycle.\n",
     "createdAt": "2025-06-21T03:19:38+03:00",
-    "updatedAt": "2025-06-21T03:19:38+03:00"
+    "updatedAt": "2026-07-05T10:46:26+03:00"
   },
   {
     "id": "rustfs",
