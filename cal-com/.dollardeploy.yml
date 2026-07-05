@@ -16,6 +16,7 @@ requirements:
   storage: 20
 app:
   type: next
+  mainPort: 3000
   env:
     NEXT_PUBLIC_WEBAPP_URL: https://${APP_HOSTNAME}
     NEXT_PUBLIC_API_V2_URL: https://${APP_HOSTNAME}/api/v2

@@ -16,6 +16,7 @@ requirements:
   storage: 10
 app:
   type: next
+  mainPort: 3000
   env:
     NEXT_PUBLIC_WEBAPP_URL: https://${APP_HOSTNAME}
     NEXTAUTH_URL: https://${APP_HOSTNAME}

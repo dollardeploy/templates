@@ -18,6 +18,7 @@ app:
   sourceBranch: main
   sourcePath: pterodactyl-wings
   dockerComposeFile: docker-compose.yml
+  mainPort: 8080
   env:
     PORT_PANEL: "8080"
     PORT_SFTP: "2022"
