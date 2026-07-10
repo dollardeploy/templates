@@ -156,6 +156,7 @@
     "name": "Bun Boilerplate",
     "intro": "A minimal Bun web server boilerplate.",
     "description": "A tiny, zero-dependency Bun web app that serves a single HTML page with Bun.serve.\nFork this repo and start building your own Bun app quickly. See https://bun.sh to learn more.\n",
+    "demoUrl": "https://bun.demo.dollardeploy.dev",
     "logo": "https://bun.sh/logo.svg",
     "requirements": {
       "memory": 512,
@@ -177,7 +178,7 @@
       }
     },
     "createdAt": "2026-06-29T18:43:16+03:00",
-    "updatedAt": "2026-06-29T18:43:16+03:00"
+    "updatedAt": "2026-07-10T16:27:17+03:00"
   },
   {
     "id": "boilerplate-python",
