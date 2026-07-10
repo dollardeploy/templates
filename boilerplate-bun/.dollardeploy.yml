@@ -4,6 +4,7 @@ intro: A minimal Bun web server boilerplate.
 description: |
   A tiny, zero-dependency Bun web app that serves a single HTML page with Bun.serve.
   Fork this repo and start building your own Bun app quickly. See https://bun.sh to learn more.
+demoUrl: "https://bun.demo.dollardeploy.dev"
 logo: https://bun.sh/logo.svg
 requirements:
   memory: 512
