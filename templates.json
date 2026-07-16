@@ -1862,6 +1862,46 @@
     "updatedAt": "2025-09-01T00:19:39+03:00"
   },
   {
+    "id": "ntfy",
+    "name": "ntfy",
+    "experimental": true,
+    "intro": "Send push notifications to your phone or desktop from any script via a simple HTTP PUT/POST.",
+    "logo": "https://raw.githubusercontent.com/binwiederhier/ntfy/main/web/public/static/images/pwa-512x512.png",
+    "tags": [
+      "notifications",
+      "pub-sub",
+      "developer-tools",
+      "oss",
+      "experimental"
+    ],
+    "deployTime": "~1 minute",
+    "description": "ntfy (pronounced \"notify\") is a simple, HTTP-based pub-sub notification\nservice. It lets you send push notifications to your phone or desktop from any\ncomputer or script with a simple HTTP request, entirely without sign-up.\n\nThis template runs a self-hosted ntfy server. Cache, attachments, and the user\ndatabase are persisted to a local volume. By default the server is open\n(read-write); set AUTH_DEFAULT_ACCESS to deny-all and create users with the\nntfy CLI to lock it down.\n\nThis template is experimental — verify the deployment on your own server\nbefore relying on it.\n",
+    "requirements": {
+      "memory": 512,
+      "cpu": 1,
+      "storage": 5
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "ntfy",
+      "sourceBranch": "main",
+      "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 8080,
+      "env": {
+        "PORT": "8080",
+        "AUTH_DEFAULT_ACCESS": "read-write",
+        "APP_HEALTHCHECK_PATH": "/v1/health",
+        "DOCKER_COMPOSE_PULL": "always"
+      }
+    },
+    "createdAt": "2026-07-16T05:09:22+03:00",
+    "updatedAt": "2026-07-16T05:09:22+03:00"
+  },
+  {
     "id": "openclaw",
     "name": "OpenClaw",
     "intro": "Self-hosted AI assistant that integrates with WhatsApp, Telegram, Slack, Discord and more.",
