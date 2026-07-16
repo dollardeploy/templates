@@ -2810,6 +2810,47 @@
     "updatedAt": "2025-05-17T20:53:14+03:00"
   },
   {
+    "id": "vaultwarden",
+    "name": "Vaultwarden",
+    "experimental": true,
+    "intro": "Lightweight, self-hosted password manager compatible with Bitwarden clients.",
+    "logo": "https://raw.githubusercontent.com/dani-garcia/vaultwarden/main/resources/vaultwarden-icon.svg",
+    "tags": [
+      "password-manager",
+      "security",
+      "bitwarden",
+      "oss",
+      "experimental"
+    ],
+    "deployTime": "~2 minutes",
+    "description": "Vaultwarden is an unofficial, lightweight implementation of the Bitwarden\nserver API written in Rust. It is fully compatible with the official Bitwarden\nclients (desktop, browser extensions, mobile, CLI) while using a fraction of\nthe resources of the official server.\n\nData is persisted to a local volume. After the first deploy, open the app,\ncreate your account, then set SIGNUPS_ALLOWED to false to lock down\nregistration. Set ADMIN_TOKEN to enable the /admin panel.\n\nThis template is experimental — verify the deployment on your own server\nbefore relying on it for production secrets.\n",
+    "requirements": {
+      "memory": 512,
+      "cpu": 1,
+      "storage": 5
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "vaultwarden",
+      "sourceBranch": "main",
+      "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 8080,
+      "env": {
+        "PORT": "8080",
+        "SIGNUPS_ALLOWED": "true",
+        "ADMIN_TOKEN": "",
+        "APP_HEALTHCHECK_PATH": "/alive",
+        "DOCKER_COMPOSE_PULL": "always"
+      }
+    },
+    "createdAt": "2026-07-16T05:06:31+03:00",
+    "updatedAt": "2026-07-16T05:06:31+03:00"
+  },
+  {
     "id": "victorialogs",
     "name": "VictoriaLogs",
     "intro": "Fast, cost-effective and scalable open source log database by VictoriaMetrics.",
