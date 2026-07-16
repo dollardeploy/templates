@@ -1037,6 +1037,48 @@
     "updatedAt": "2025-07-02T14:13:48+03:00"
   },
   {
+    "id": "gitea",
+    "name": "Gitea",
+    "experimental": true,
+    "intro": "Lightweight, self-hosted Git service — a fast alternative to GitHub/GitLab.",
+    "logo": "https://raw.githubusercontent.com/go-gitea/gitea/main/public/assets/img/logo.svg",
+    "tags": [
+      "git",
+      "vcs",
+      "developer-tools",
+      "oss",
+      "experimental"
+    ],
+    "deployTime": "~3 minutes",
+    "description": "Gitea is a painless, lightweight, self-hosted Git service written in Go.\nIt provides repository hosting, issues, pull requests, a wiki, and CI hooks\nwhile running comfortably on modest hardware.\n\nThis template runs Gitea backed by a PostgreSQL database. Repository and\ndatabase data are persisted to local volumes. Git over HTTPS works through the\napp URL out of the box; Git over SSH is exposed on the host port SSH_PORT\n(default 2222) — open that port in your server firewall to use it.\n\nThis template is experimental — verify the deployment on your own server\nbefore relying on it.\n",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 20
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "gitea",
+      "sourceBranch": "main",
+      "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 3000,
+      "env": {
+        "PORT": "3000",
+        "SSH_PORT": "2222",
+        "DB_PASSWORD": "gitea${GENERATED_HASH}",
+        "APP_HEALTHCHECK_PATH": "/api/healthz",
+        "DOCKER_COMPOSE_PULL": "always",
+        "APP_READY_TIMEOUT": 300
+      }
+    },
+    "createdAt": "2026-07-16T05:08:37+03:00",
+    "updatedAt": "2026-07-16T05:08:37+03:00"
+  },
+  {
     "id": "gpt-oss",
     "name": "GPT-OSS",
     "intro": "Running GPT-OSS on your server with GPU acceleration using ollama.",
