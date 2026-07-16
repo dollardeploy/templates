@@ -1,0 +1,50 @@
+id: vllm-native
+name: vLLM (native)
+experimental: true
+intro: Run an OpenAI-compatible inference endpoint with vLLM natively via systemd — no Docker.
+logo: https://avatars.githubusercontent.com/u/136984999
+tags:
+  - ai
+  - llm
+  - openai
+  - inference
+  - experimental
+deployTime: ~15 minutes
+description: |
+  Deploy an OpenAI-compatible REST API endpoint using vLLM with GPU
+  acceleration — running natively under systemd instead of Docker. This template
+  runs Qwen/Qwen3-Coder-Next across 2 GPUs with tensor parallelism, tool calling
+  support, and HuggingFace model caching.
+
+  The endpoint is fully compatible with the OpenAI Chat Completions API, making
+  it a drop-in replacement for any OpenAI SDK client.
+
+  Use a GPU server with NVIDIA drivers already installed (Verda 2xA100, 2xH100,
+  or similar). The pip vLLM wheels bundle the CUDA runtime, so no CUDA toolkit
+  install is required. Set HF_TOKEN to your HuggingFace token to download gated
+  models, and adjust the tensor-parallel size in the start command to match your
+  GPU count.
+
+  This template is experimental — verify the deployment on your own GPU server
+  before relying on it.
+requirements:
+  memory: 32768
+  cpu: 8
+  storage: 300
+app:
+  type: native
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: vllm-native
+  sourceBranch: main
+  preStartCmd: curl -LsSf https://astral.sh/uv/install.sh | sh
+  buildCmd: uv venv && uv pip install -r requirements.txt
+  startCmd: >-
+    uv run vllm serve Qwen/Qwen3-Coder-Next
+    --host 0.0.0.0 --port 8000
+    --tensor-parallel-size 2
+    --enable-auto-tool-choice --tool-call-parser qwen3_coder
+  env:
+    PORT: "8000"
+    HF_TOKEN: ""
+    APP_HEALTHCHECK_PATH: "/health"
+    APP_READY_TIMEOUT: 1800
