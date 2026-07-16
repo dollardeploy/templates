@@ -1,0 +1,43 @@
+id: vaultwarden
+name: Vaultwarden
+experimental: true
+intro: Lightweight, self-hosted password manager compatible with Bitwarden clients.
+logo: https://raw.githubusercontent.com/dani-garcia/vaultwarden/main/resources/vaultwarden-icon.svg
+tags:
+  - password-manager
+  - security
+  - bitwarden
+  - oss
+  - experimental
+deployTime: ~2 minutes
+description: |
+  Vaultwarden is an unofficial, lightweight implementation of the Bitwarden
+  server API written in Rust. It is fully compatible with the official Bitwarden
+  clients (desktop, browser extensions, mobile, CLI) while using a fraction of
+  the resources of the official server.
+
+  Data is persisted to a local volume. After the first deploy, open the app,
+  create your account, then set SIGNUPS_ALLOWED to false to lock down
+  registration. Set ADMIN_TOKEN to enable the /admin panel.
+
+  This template is experimental — verify the deployment on your own server
+  before relying on it for production secrets.
+requirements:
+  memory: 512
+  cpu: 1
+  storage: 5
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: vaultwarden
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  mainPort: 8080
+  env:
+    PORT: "8080"
+    SIGNUPS_ALLOWED: "true"
+    ADMIN_TOKEN: ""
+    APP_HEALTHCHECK_PATH: "/alive"
+    DOCKER_COMPOSE_PULL: always

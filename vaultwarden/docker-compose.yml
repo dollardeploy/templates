@@ -1,0 +1,13 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PORT}:80"
+    volumes:
+      - ./data:/data
+    environment:
+      - DOMAIN=${APP_URL}
+      - SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED}
+      - ADMIN_TOKEN=${ADMIN_TOKEN}
+      - ROCKET_PORT=80
