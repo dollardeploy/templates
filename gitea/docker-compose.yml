@@ -1,0 +1,39 @@
+services:
+  gitea:
+    image: gitea/gitea:1.22
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PORT}:3000"
+      - "${SSH_PORT}:22"
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=db:5432
+      - GITEA__database__NAME=gitea
+      - GITEA__database__USER=gitea
+      - GITEA__database__PASSWD=${DB_PASSWORD}
+      - GITEA__server__DOMAIN=${APP_HOSTNAME}
+      - GITEA__server__ROOT_URL=${APP_URL}
+      - GITEA__server__SSH_DOMAIN=${APP_HOSTNAME}
+      - GITEA__server__SSH_PORT=${SSH_PORT}
+    volumes:
+      - ./data:/data
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=gitea
+      - POSTGRES_USER=gitea
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gitea -d gitea"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
