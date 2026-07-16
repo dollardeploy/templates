@@ -1,0 +1,42 @@
+id: ntfy
+name: ntfy
+experimental: true
+intro: Send push notifications to your phone or desktop from any script via a simple HTTP PUT/POST.
+logo: https://raw.githubusercontent.com/binwiederhier/ntfy/main/web/public/static/images/pwa-512x512.png
+tags:
+  - notifications
+  - pub-sub
+  - developer-tools
+  - oss
+  - experimental
+deployTime: ~1 minute
+description: |
+  ntfy (pronounced "notify") is a simple, HTTP-based pub-sub notification
+  service. It lets you send push notifications to your phone or desktop from any
+  computer or script with a simple HTTP request, entirely without sign-up.
+
+  This template runs a self-hosted ntfy server. Cache, attachments, and the user
+  database are persisted to a local volume. By default the server is open
+  (read-write); set AUTH_DEFAULT_ACCESS to deny-all and create users with the
+  ntfy CLI to lock it down.
+
+  This template is experimental — verify the deployment on your own server
+  before relying on it.
+requirements:
+  memory: 512
+  cpu: 1
+  storage: 5
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: ntfy
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  mainPort: 8080
+  env:
+    PORT: "8080"
+    AUTH_DEFAULT_ACCESS: "read-write"
+    APP_HEALTHCHECK_PATH: "/v1/health"
+    DOCKER_COMPOSE_PULL: always

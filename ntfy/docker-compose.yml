@@ -1,0 +1,16 @@
+services:
+  ntfy:
+    image: binwiederhier/ntfy:latest
+    command: serve
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PORT}:80"
+    environment:
+      - NTFY_BASE_URL=${APP_URL}
+      - NTFY_BEHIND_PROXY=true
+      - NTFY_AUTH_FILE=/var/lib/ntfy/user.db
+      - NTFY_AUTH_DEFAULT_ACCESS=${AUTH_DEFAULT_ACCESS}
+      - NTFY_CACHE_FILE=/var/lib/ntfy/cache.db
+      - NTFY_ATTACHMENT_CACHE_DIR=/var/lib/ntfy/attachments
+    volumes:
+      - ./data:/var/lib/ntfy
