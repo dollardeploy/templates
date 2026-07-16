@@ -2903,7 +2903,7 @@
     "name": "Umami",
     "experimental": true,
     "intro": "Privacy-focused, GDPR-compliant web analytics — a simple, self-hosted Google Analytics alternative.",
-    "logo": "https://raw.githubusercontent.com/umami-software/umami/master/public/images/logo.svg",
+    "logo": "https://raw.githubusercontent.com/umami-software/umami/master/src/assets/logo.svg",
     "tags": [
       "analytics",
       "privacy",
@@ -2938,7 +2938,7 @@
       }
     },
     "createdAt": "2026-07-16T05:07:12+03:00",
-    "updatedAt": "2026-07-16T05:07:12+03:00"
+    "updatedAt": "2026-07-16T13:22:49+03:00"
   },
   {
     "id": "uptime-kuma",
@@ -3131,8 +3131,8 @@
         "APP_READY_TIMEOUT": 1800
       }
     },
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-07-16T05:20:43+03:00",
+    "updatedAt": "2026-07-16T05:20:43+03:00"
   },
   {
     "id": "wikijs",
