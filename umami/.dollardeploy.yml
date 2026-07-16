@@ -1,0 +1,43 @@
+id: umami
+name: Umami
+experimental: true
+intro: Privacy-focused, GDPR-compliant web analytics — a simple, self-hosted Google Analytics alternative.
+logo: https://raw.githubusercontent.com/umami-software/umami/master/public/images/logo.svg
+tags:
+  - analytics
+  - privacy
+  - gdpr
+  - oss
+  - experimental
+deployTime: ~2 minutes
+description: |
+  Umami is a simple, fast, privacy-focused alternative to Google Analytics.
+  It collects the metrics you care about — page views, referrers, devices —
+  without cookies and while staying GDPR compliant.
+
+  This template runs the Umami app backed by a PostgreSQL database. Database
+  data is persisted to a local volume. The default login after first deploy is
+  username `admin` / password `umami` — change it immediately.
+
+  This template is experimental — verify the deployment on your own server
+  before relying on it.
+requirements:
+  memory: 2048
+  cpu: 1
+  storage: 10
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: umami
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  mainPort: 3000
+  env:
+    PORT: "3000"
+    DB_PASSWORD: "umami${GENERATED_HASH}"
+    APP_SECRET: "${GENERATED_HASH}"
+    APP_HEALTHCHECK_PATH: "/api/heartbeat"
+    DOCKER_COMPOSE_PULL: always
+    APP_READY_TIMEOUT: 300
