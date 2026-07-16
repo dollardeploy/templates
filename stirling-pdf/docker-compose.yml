@@ -1,0 +1,14 @@
+services:
+  stirling-pdf:
+    image: stirlingtools/stirling-pdf:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PORT}:8080"
+    environment:
+      - DISABLE_ADDITIONAL_FEATURES=false
+      - LANGS=en_US
+    volumes:
+      - ./trainingData:/usr/share/tessdata
+      - ./configs:/configs
+      - ./customFiles:/customFiles
+      - ./logs:/logs

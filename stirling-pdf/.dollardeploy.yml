@@ -1,0 +1,41 @@
+id: stirling-pdf
+name: Stirling PDF
+experimental: true
+intro: A locally-hosted web app to perform 50+ operations on PDFs — merge, split, convert, OCR, and more.
+logo: https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/main/docs/stirling.png
+tags:
+  - pdf
+  - productivity
+  - tools
+  - oss
+  - experimental
+deployTime: ~2 minutes
+description: |
+  Stirling PDF is a powerful, locally-hosted web application for performing a
+  wide range of operations on PDF files — merging, splitting, converting,
+  rotating, compressing, adding passwords, OCR, and more than 50 tools in total.
+
+  Everything runs on your own server; files are processed locally and are not
+  sent to any third party. Configs, logs, and OCR training data are persisted to
+  local volumes.
+
+  This template is experimental — verify the deployment on your own server
+  before relying on it.
+requirements:
+  memory: 2048
+  cpu: 2
+  storage: 10
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: stirling-pdf
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  mainPort: 8080
+  env:
+    PORT: "8080"
+    APP_HEALTHCHECK_PATH: "/"
+    DOCKER_COMPOSE_PULL: always
+    APP_READY_TIMEOUT: 300
