@@ -1030,11 +1030,12 @@
         "MAIL_USERNAME": "username",
         "MAIL_PASSWORD": "password",
         "MAIL_SECURE": false,
-        "BULK_EMAIL_BATCH": 5
+        "BULK_EMAIL_BATCH": 5,
+        "GHOST_TAG": "5-alpine"
       }
     },
     "createdAt": "2024-12-11T15:06:09+02:00",
-    "updatedAt": "2025-07-02T14:13:48+03:00"
+    "updatedAt": "2026-08-07T20:34:52+03:00"
   },
   {
     "id": "gitea",
