@@ -3084,7 +3084,7 @@
     "app": {
       "type": "native",
       "repositoryUrl": "https://github.com/dollardeploy/templates",
-      "sourcePath": "vllm-native",
+      "sourcePath": "vllm",
       "sourceBranch": "main",
       "backupExcludeFiles": "cache",
       "preStartCmd": "curl -LsSf https://astral.sh/uv/install.sh | sh",
@@ -3107,7 +3107,7 @@
     },
     "postLaunchNote": "",
     "createdAt": "2026-05-05T12:59:10+03:00",
-    "updatedAt": "2026-08-08T10:38:17+03:00"
+    "updatedAt": "2026-08-08T10:38:52+03:00"
   },
   {
     "id": "vllm-qwen3-coder",
