@@ -3059,7 +3059,7 @@
     "updatedAt": "2026-06-10T20:43:08+03:00"
   },
   {
-    "id": "vllm-native",
+    "id": "vllm",
     "name": "vLLM",
     "intro": "Run an OpenAI & Claude inference endpoint with vLLM",
     "logo": "https://avatars.githubusercontent.com/u/136984999",
@@ -3087,9 +3087,9 @@
       "sourcePath": "vllm",
       "sourceBranch": "main",
       "backupExcludeFiles": "cache",
+      "buildCmd": "true",
       "preStartCmd": "curl -LsSf https://astral.sh/uv/install.sh | sh",
-      "buildCmd": "uv venv && uv pip install -r requirements.txt",
-      "startCmd": "uv run vllm serve ${MODEL_NAME:-Qwen/Qwen3-Coder-Next} \\ --host 0.0.0.0 --port ${PORT:-8000} \\ --tensor-parallel-size ${TENSOR_PARALLEL_SIZE:-2} \\ --enable-auto-tool-choice --tool-call-parser ${MODEL_CALL_PARSER:-qwen3_coder} \\ --api-key ${VLLM_API_KEY:-} --mm-processor-cache-gb ${MM_PROCESSOR_CACHE_GB:-8} \\ --kv-cache-dtype fp8 \\ --kv-cache-dtype-skip-layers sliding_window",
+      "startCmd": "uv venv && \\\nuv pip install -r requirements.txt && \\\nuv run vllm serve ${MODEL_NAME} \\\n--host 127.0.0.1 \\\n--port ${PORT:-8000} \\\n--tensor-parallel-size ${TENSOR_PARALLEL_SIZE:-2} \\\n--enable-auto-tool-choice --tool-call-parser ${MODEL_CALL_PARSER:-qwen3_coder} \\\n--api-key ${VLLM_API_KEY:-} \\\n--mm-processor-cache-gb ${MM_PROCESSOR_CACHE_GB:-8} \\\n--kv-cache-dtype fp8 \\\n--kv-cache-dtype-skip-layers sliding_window\n",
       "env": {
         "PORT": "8000",
         "HF_TOKEN": "",
@@ -3105,9 +3105,9 @@
         "MM_PROCESSOR_CACHE_GB": 8
       }
     },
-    "postLaunchNote": "",
+    "postLaunchNote": "WARNING: You might need to add your HF_TOKEN to the environment variables to download the model. \nChange it in the app env variables and redeploy. \n",
     "createdAt": "2026-05-05T12:59:10+03:00",
-    "updatedAt": "2026-08-08T10:38:52+03:00"
+    "updatedAt": "2026-08-08T11:01:31+03:00"
   },
   {
     "id": "vllm-qwen3-coder",
