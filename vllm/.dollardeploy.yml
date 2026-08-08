@@ -41,30 +41,31 @@ app:
   backupExcludeFiles: cache
   buildCmd: "true"
   preStartCmd: curl -LsSf https://astral.sh/uv/install.sh | sh
-  startCmd: |
-    uv venv && \
-    uv pip install -r requirements.txt && \
-    uv run vllm serve ${MODEL_NAME} \
-    --host 127.0.0.1 \
-    --port ${PORT:-8000} \
-    --tensor-parallel-size ${TENSOR_PARALLEL_SIZE:-2} \
-    --enable-auto-tool-choice --tool-call-parser ${MODEL_CALL_PARSER:-qwen3_coder} \
-    --api-key ${VLLM_API_KEY:-} \
-    --mm-processor-cache-gb ${MM_PROCESSOR_CACHE_GB:-8} \
-    --kv-cache-dtype fp8 \
+  startCmd: >-
+    sync && rm -Rf .venv && uv venv && uv pip install -r requirements.txt &&
+    uv run vllm serve ${MODEL_NAME}
+    --host 127.0.0.1
+    --port ${PORT}
+    --tensor-parallel-size ${TENSOR_PARALLEL_SIZE}
+    --enable-auto-tool-choice --tool-call-parser ${MODEL_CALL_PARSER}
+    --api-key ${VLLM_API_KEY}
+    --mm-processor-cache-gb ${MM_PROCESSOR_CACHE_GB}
+    --kv-cache-dtype fp8
     --kv-cache-dtype-skip-layers sliding_window
   env:
     PORT: "8000"
     HF_TOKEN: ""
-    VLLM_CACHE_ROOT: "cache"
-    VLLM_API_KEY: ${GENERATED_PWD}
     APP_HEALTHCHECK_PATH: "/health"
     APP_READY_TIMEOUT: 1800
-    TENSOR_PARALLEL_SIZE: "2"
     MODEL_NAME: "Qwen/Qwen3-Coder-Next"
     MODEL_CALL_PARSER: "qwen3_coder"
-    NGINX_STATIC_PATHS: "/:web"
+    TENSOR_PARALLEL_SIZE: "2"
+    NGINX_STATIC_PATHS: "/index.html:web/index.html"
+    VLLM_API_KEY: ${GENERATED_HASH}
+    VLLM_CACHE_ROOT: "cache"
     VLLM_SERVER_DEV_MODE: 0
+    VLLM_LOGGING_LEVEL: "DEBUG"
+    VLLM_CONFIGURE_LOGGING: "1"
     MM_PROCESSOR_CACHE_GB: 8
 postLaunchNote: |
     WARNING: You might need to add your HF_TOKEN to the environment variables to download the model. 
