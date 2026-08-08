@@ -1,46 +1,37 @@
-# vLLM — OpenAI-Compatible Inference Endpoint
+# vLLM (native)
 
-## Description
+Run an OpenAI-compatible inference endpoint with vLLM natively via systemd — no Docker.
 
-Deploy an OpenAI-compatible REST API using [vLLM](https://github.com/vllm-project/vllm) with GPU acceleration.
-This template runs **Qwen/Qwen3-Coder-Next** across 2 GPUs with tensor parallelism and native tool calling support.
+> **Experimental template.** Verify the deployment on your own GPU server before relying on it.
 
-Any client that works with the OpenAI SDK can point to this endpoint without code changes:
+## What you get
 
-```python
-from openai import OpenAI
-
-client = OpenAI(base_url="http://<your-server>:8080/v1", api_key="none")
-
-response = client.chat.completions.create(
-    model="Qwen/Qwen3-Coder-Next",
-    messages=[{"role": "user", "content": "Hello!"}],
-)
-print(response.choices[0].message.content)
-```
-
-## Environment Variables
-
-| Variable | Description |
-|---|---|
-| `HUGGING_FACE_HUB_TOKEN` | HuggingFace token for downloading gated models |
-
-## Endpoints
-
-| Path | Description |
-|---|---|
-| `GET /health` | Health check |
-| `GET /v1/models` | List available models |
-| `POST /v1/chat/completions` | OpenAI-compatible chat endpoint |
-| `POST /v1/completions` | OpenAI-compatible completions endpoint |
+- An OpenAI Chat Completions-compatible endpoint served by [vLLM](https://github.com/vllm-project/vllm)
+- Qwen/Qwen3-Coder-Next across 2 GPUs with tensor parallelism and tool-calling support
+- Runs natively under systemd — no Docker layer
 
 ## Requirements
 
-- 2× NVIDIA A100 / H100 / similar 80GB GPU (tensor-parallel-size 2)
-- ~200 GB storage for model weights cache
+- A GPU server with **NVIDIA drivers already installed** (Verda 2xA100, 2xH100, or similar). The pip `vllm` wheels bundle the CUDA runtime, so no CUDA toolkit install is needed — but the driver must be present.
+- `HF_TOKEN` set to a HuggingFace token for gated model downloads.
 
-## Links
+## How it works
 
-- https://github.com/vllm-project/vllm
-- https://docs.vllm.ai
-- https://huggingface.co/Qwen/Qwen3-Coder-Next
+| Phase | Command |
+| --- | --- |
+| preStart | installs [uv](https://astral.sh/uv) |
+| build | `uv venv && uv pip install -r requirements.txt` (installs vLLM) |
+| start | `uv run vllm serve Qwen/Qwen3-Coder-Next --tensor-parallel-size 2 …` |
+
+## Tuning
+
+- **GPU count:** change `--tensor-parallel-size` in `startCmd` to match the number of GPUs on your server.
+- **Model:** replace `Qwen/Qwen3-Coder-Next` in `startCmd` with any vLLM-supported model.
+
+## Usage
+
+```bash
+curl https://<your-app-url>/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model": "Qwen/Qwen3-Coder-Next", "messages": [{"role": "user", "content": "Hello"}]}'
+```

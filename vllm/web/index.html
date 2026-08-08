@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vLLM Inference Endpoint · DollarDeploy</title>
+  <meta name="description" content="OpenAI & Claude compatible AI inference endpoint powered by vLLM, deployed with DollarDeploy." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cpath d='M21.646 15.48H111.583V102.82L89.223 81.106V37.194H44.006Z' fill='%236366F1'/%3E%3Cpath d='M44.006 37.194 89.223 81.106v43.428L-0.714 37.194Z' fill='%236366F1'/%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          },
+          colors: {
+            brand: {
+              50: "#eef2ff", 100: "#e0e7ff", 400: "#818cf8",
+              500: "#6366f1", 600: "#4f46e5", 700: "#4338ca",
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { background: radial-gradient(circle at 15% 0%, rgba(99,102,241,0.12) 0%, transparent 45%), radial-gradient(circle at 85% 100%, rgba(59,130,246,0.10) 0%, transparent 45%), #0b1120; }
+    pre::-webkit-scrollbar { height: 8px; }
+    pre::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    .tab-active { background: rgba(99,102,241,0.15); color: #a5b4fc; border-color: rgba(99,102,241,0.4); }
+  </style>
+</head>
+<body class="font-sans text-slate-200 min-h-screen antialiased">
+  <div class="max-w-4xl mx-auto px-5 py-10 sm:py-16">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between mb-14">
+      <div class="flex items-center gap-3">
+        <svg viewBox="0 0 128 128" class="w-9 h-9" aria-hidden="true">
+          <path d="M21.646 15.48H111.583V102.82L89.223 81.106V37.194H44.006Z" fill="#818cf8"/>
+          <path d="M44.006 37.194 89.223 81.106v43.428L-0.714 37.194Z" fill="#6366f1"/>
+        </svg>
+        <span class="font-bold text-lg tracking-tight text-white">Dollar<span class="text-brand-400">Deploy</span></span>
+      </div>
+      <div id="status" class="flex items-center gap-2 text-sm px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700">
+        <span id="status-dot" class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        <span id="status-text" class="text-slate-400">checking…</span>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="mb-12">
+      <div class="inline-flex items-center gap-2 text-xs font-medium text-brand-400 bg-brand-500/10 border border-brand-500/30 rounded-full px-3 py-1 mb-5">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span> Powered by vLLM
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        Your AI Inference Endpoint
+      </h1>
+      <p class="mt-4 text-lg text-slate-400 max-w-2xl">
+        An <span class="text-slate-200 font-medium">OpenAI</span> &amp; <span class="text-slate-200 font-medium">Claude</span> compatible
+        inference API running on your own GPU server. Drop it into any SDK, agent, or coding tool below.
+      </p>
+    </section>
+
+    <!-- Endpoint card -->
+    <section class="grid sm:grid-cols-2 gap-4 mb-12">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5">
+        <div class="text-xs uppercase tracking-wider text-slate-500 mb-2">Base URL</div>
+        <div class="flex items-center justify-between gap-2">
+          <code id="base-url" class="font-mono text-brand-400 text-sm truncate">https://…</code>
+          <button data-copy="#base-url" class="copy-btn shrink-0 text-slate-500 hover:text-white transition" title="Copy">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5">
+        <div class="text-xs uppercase tracking-wider text-slate-500 mb-2">Model</div>
+        <div class="flex items-center justify-between gap-2">
+          <code id="model-name" class="font-mono text-slate-200 text-sm truncate">Qwen/Qwen3-Coder-Next</code>
+          <button data-copy="#model-name" class="copy-btn shrink-0 text-slate-500 hover:text-white transition" title="Copy">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- API key note -->
+    <div class="flex items-start gap-3 bg-amber-500/5 border border-amber-500/20 rounded-xl p-4 mb-12 text-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+      <p class="text-slate-400">
+        Requests are authenticated with your <code class="font-mono text-amber-300">VLLM_API_KEY</code>.
+        Find it in your app's environment variables in the DollarDeploy dashboard, and send it as a
+        <code class="font-mono text-amber-300">Bearer</code> token. Replace <code class="font-mono text-amber-300">YOUR_API_KEY</code> in the snippets below.
+      </p>
+    </div>
+
+    <!-- Tabs -->
+    <section>
+      <h2 class="text-xl font-semibold text-white mb-5">Connect your tools</h2>
+      <div id="tabs" class="flex flex-wrap gap-2 mb-5">
+        <button data-tab="curl" class="tab px-4 py-2 rounded-lg text-sm font-medium border border-slate-700 bg-slate-900/40 text-slate-400 hover:text-white transition">curl</button>
+        <button data-tab="python" class="tab px-4 py-2 rounded-lg text-sm font-medium border border-slate-700 bg-slate-900/40 text-slate-400 hover:text-white transition">Python (OpenAI)</button>
+        <button data-tab="node" class="tab px-4 py-2 rounded-lg text-sm font-medium border border-slate-700 bg-slate-900/40 text-slate-400 hover:text-white transition">JavaScript (OpenAI)</button>
+        <button data-tab="opencode" class="tab px-4 py-2 rounded-lg text-sm font-medium border border-slate-700 bg-slate-900/40 text-slate-400 hover:text-white transition">opencode</button>
+        <button data-tab="claude" class="tab px-4 py-2 rounded-lg text-sm font-medium border border-slate-700 bg-slate-900/40 text-slate-400 hover:text-white transition">Claude Code</button>
+      </div>
+
+      <div class="relative bg-[#0d1526] border border-slate-800 rounded-2xl overflow-hidden">
+        <button data-copy="#code" class="copy-btn absolute top-3 right-3 z-10 flex items-center gap-1.5 text-xs text-slate-400 hover:text-white bg-slate-800/80 border border-slate-700 rounded-md px-2.5 py-1.5 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+        <p id="code-hint" class="px-5 pt-4 text-xs text-slate-500"></p>
+        <pre class="px-5 py-4 overflow-x-auto text-sm leading-relaxed"><code id="code" class="font-mono text-slate-200"></code></pre>
+      </div>
+    </section>
+
+    <!-- Endpoints reference -->
+    <section class="mt-12">
+      <h2 class="text-xl font-semibold text-white mb-4">Available endpoints</h2>
+      <div class="grid sm:grid-cols-3 gap-3 text-sm">
+        <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-4">
+          <code class="font-mono text-brand-400">POST /v1/chat/completions</code>
+          <p class="text-slate-500 mt-1">OpenAI chat completions</p>
+        </div>
+        <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-4">
+          <code class="font-mono text-brand-400">POST /v1/messages</code>
+          <p class="text-slate-500 mt-1">Claude Messages API</p>
+        </div>
+        <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-4">
+          <code class="font-mono text-brand-400">GET /v1/models</code>
+          <p class="text-slate-500 mt-1">List served models</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+      <div class="flex items-center gap-2">
+        <svg viewBox="0 0 128 128" class="w-5 h-5" aria-hidden="true">
+          <path d="M21.646 15.48H111.583V102.82L89.223 81.106V37.194H44.006Z" fill="#818cf8"/>
+          <path d="M44.006 37.194 89.223 81.106v43.428L-0.714 37.194Z" fill="#6366f1"/>
+        </svg>
+        <span>Deployed with <a href="https://dollardeploy.com" class="text-brand-400 hover:text-brand-500 font-medium">DollarDeploy</a></span>
+      </div>
+      <div class="flex items-center gap-5">
+        <a href="https://docs.dollardeploy.com" class="hover:text-slate-300">Docs</a>
+        <a href="https://github.com/vllm-project/vllm" class="hover:text-slate-300">vLLM</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const BASE = window.location.origin;
+    const MODEL = "Qwen/Qwen3-Coder-Next";
+
+    // Fill in dynamic values
+    document.getElementById("base-url").textContent = BASE;
+
+    // Code snippets per tab
+    const snippets = {
+      curl: {
+        hint: "Send a chat completion request with curl.",
+        code: `curl ${BASE}/v1/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -d '{
+    "model": "${MODEL}",
+    "messages": [
+      { "role": "user", "content": "Write a haiku about GPUs." }
+    ]
+  }'`,
+      },
+      python: {
+        hint: "pip install openai — then point the SDK at your endpoint.",
+        code: `from openai import OpenAI
+
+client = OpenAI(
+    base_url="${BASE}/v1",
+    api_key="YOUR_API_KEY",  # your VLLM_API_KEY
+)
+
+resp = client.chat.completions.create(
+    model="${MODEL}",
+    messages=[
+        {"role": "user", "content": "Write a haiku about GPUs."}
+    ],
+)
+
+print(resp.choices[0].message.content)`,
+      },
+      node: {
+        hint: "npm install openai — the same official SDK, custom baseURL.",
+        code: `import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "${BASE}/v1",
+  apiKey: process.env.VLLM_API_KEY, // your VLLM_API_KEY
+});
+
+const resp = await client.chat.completions.create({
+  model: "${MODEL}",
+  messages: [
+    { role: "user", content: "Write a haiku about GPUs." },
+  ],
+});
+
+console.log(resp.choices[0].message.content);`,
+      },
+      opencode: {
+        hint: "Add this endpoint as a provider in opencode.json (project root or ~/.config/opencode/). Then run: opencode -m vllm/" + MODEL,
+        code: `{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "vllm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "vLLM (DollarDeploy)",
+      "options": {
+        "baseURL": "${BASE}/v1",
+        "apiKey": "YOUR_API_KEY"
+      },
+      "models": {
+        "${MODEL}": { "name": "Qwen3 Coder Next" }
+      }
+    }
+  }
+}`,
+      },
+      claude: {
+        hint: "This endpoint speaks the Claude Messages API, so Claude Code can talk to it directly. Set these env vars, then run: claude",
+        code: `export ANTHROPIC_BASE_URL="${BASE}"
+export ANTHROPIC_AUTH_TOKEN="YOUR_API_KEY"
+export ANTHROPIC_MODEL="${MODEL}"
+export ANTHROPIC_SMALL_FAST_MODEL="${MODEL}"
+
+claude`,
+      },
+    };
+
+    const codeEl = document.getElementById("code");
+    const hintEl = document.getElementById("code-hint");
+    const tabs = document.querySelectorAll(".tab");
+
+    function selectTab(name) {
+      const s = snippets[name];
+      codeEl.textContent = s.code;
+      hintEl.textContent = s.hint;
+      tabs.forEach((t) => t.classList.toggle("tab-active", t.dataset.tab === name));
+    }
+    tabs.forEach((t) => t.addEventListener("click", () => selectTab(t.dataset.tab)));
+    selectTab("curl");
+
+    // Copy buttons
+    document.querySelectorAll(".copy-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const text = document.querySelector(btn.dataset.copy).textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          const label = btn.querySelector(".copy-label");
+          if (label) { label.textContent = "Copied!"; setTimeout(() => (label.textContent = "Copy"), 1500); }
+        } catch (e) {}
+      });
+    });
+
+    // Health status pill
+    const dot = document.getElementById("status-dot");
+    const txt = document.getElementById("status-text");
+    fetch(BASE + "/health", { method: "GET" })
+      .then((r) => {
+        if (r.ok) {
+          dot.className = "w-2 h-2 rounded-full bg-emerald-400";
+          txt.textContent = "endpoint ready";
+          txt.className = "text-emerald-300";
+        } else { throw new Error(); }
+      })
+      .catch(() => {
+        dot.className = "w-2 h-2 rounded-full bg-slate-500";
+        txt.textContent = "status unknown";
+        txt.className = "text-slate-500";
+      });
+  </script>
+</body>
+</html>
