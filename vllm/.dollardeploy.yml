@@ -36,7 +36,7 @@ requirements:
 app:
   type: native
   repositoryUrl: https://github.com/dollardeploy/templates
-  sourcePath: vllm-native
+  sourcePath: vllm
   sourceBranch: main
   backupExcludeFiles: cache
   preStartCmd: curl -LsSf https://astral.sh/uv/install.sh | sh
