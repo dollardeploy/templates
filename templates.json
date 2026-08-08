@@ -3059,8 +3059,59 @@
     "updatedAt": "2026-06-10T20:43:08+03:00"
   },
   {
-    "id": "vllm-qwen3-coder",
+    "id": "vllm-native",
     "name": "vLLM",
+    "intro": "Run an OpenAI & Claude inference endpoint with vLLM",
+    "logo": "https://avatars.githubusercontent.com/u/136984999",
+    "tags": [
+      "ai",
+      "llm",
+      "openai",
+      "inference",
+      "vllm"
+    ],
+    "deployTime": "~15 minutes",
+    "description": "Deploy an OpenAI & Claude compatible REST API endpoint using vLLM with GPU\nacceleration — running natively under systemd instead of Docker. This template\nruns Qwen/Qwen3-Coder-Next across 2 GPUs with tensor parallelism, tool calling\nsupport, and HuggingFace model caching.\n\nThe endpoint is fully compatible with the OpenAI  /v1/chat/completions and Claude /v1/messages, \nmaking it a drop-in replacement for any OpenAI compatible SDK client.\n\nUse a GPU server with NVIDIA drivers already installed (e.g. Verda 2xA100, 2xH100,\nor similar). The pip vLLM wheels bundle the CUDA runtime, so no CUDA toolkit\ninstall is required. Set HF_TOKEN to your HuggingFace token to download gated\nmodels, and adjust the tensor-parallel size in the start command to match your\nGPU count.\n\nThis template is experimental — verify the deployment on your own GPU server\nbefore relying on it.\n",
+    "requirements": {
+      "memory": 32768,
+      "cpu": 8,
+      "storage": 300,
+      "gpu": {
+        "model": "H100",
+        "count": 2
+      }
+    },
+    "app": {
+      "type": "native",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "vllm-native",
+      "sourceBranch": "main",
+      "backupExcludeFiles": "cache",
+      "preStartCmd": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "buildCmd": "uv venv && uv pip install -r requirements.txt",
+      "startCmd": "uv run vllm serve ${MODEL_NAME:-Qwen/Qwen3-Coder-Next} \\ --host 0.0.0.0 --port ${PORT:-8000} \\ --tensor-parallel-size ${TENSOR_PARALLEL_SIZE:-2} \\ --enable-auto-tool-choice --tool-call-parser ${MODEL_CALL_PARSER:-qwen3_coder} \\ --api-key ${VLLM_API_KEY:-} --mm-processor-cache-gb ${MM_PROCESSOR_CACHE_GB:-8} \\ --kv-cache-dtype fp8 \\ --kv-cache-dtype-skip-layers sliding_window",
+      "env": {
+        "PORT": "8000",
+        "HF_TOKEN": "",
+        "VLLM_CACHE_ROOT": "cache",
+        "VLLM_API_KEY": "${GENERATED_PWD}",
+        "APP_HEALTHCHECK_PATH": "/health",
+        "APP_READY_TIMEOUT": 1800,
+        "TENSOR_PARALLEL_SIZE": "2",
+        "MODEL_NAME": "Qwen/Qwen3-Coder-Next",
+        "MODEL_CALL_PARSER": "qwen3_coder",
+        "NGINX_STATIC_PATHS": "/:web",
+        "VLLM_SERVER_DEV_MODE": 0,
+        "MM_PROCESSOR_CACHE_GB": 8
+      }
+    },
+    "postLaunchNote": "",
+    "createdAt": "2026-05-05T12:59:10+03:00",
+    "updatedAt": "2026-08-08T10:38:17+03:00"
+  },
+  {
+    "id": "vllm-qwen3-coder",
+    "name": "vLLM (Docker)",
     "intro": "Run an OpenAI-compatible inference endpoint with Qwen3-Coder",
     "logo": "https://avatars.githubusercontent.com/u/136984999",
     "tags": [
@@ -3094,46 +3145,8 @@
         "APP_READY_TIMEOUT": 900
       }
     },
-    "createdAt": "2026-05-05T12:59:10+03:00",
-    "updatedAt": "2026-05-08T09:46:58+03:00"
-  },
-  {
-    "id": "vllm-native",
-    "name": "vLLM (native)",
-    "experimental": true,
-    "intro": "Run an OpenAI-compatible inference endpoint with vLLM natively via systemd — no Docker.",
-    "logo": "https://avatars.githubusercontent.com/u/136984999",
-    "tags": [
-      "ai",
-      "llm",
-      "openai",
-      "inference",
-      "experimental"
-    ],
-    "deployTime": "~15 minutes",
-    "description": "Deploy an OpenAI-compatible REST API endpoint using vLLM with GPU\nacceleration — running natively under systemd instead of Docker. This template\nruns Qwen/Qwen3-Coder-Next across 2 GPUs with tensor parallelism, tool calling\nsupport, and HuggingFace model caching.\n\nThe endpoint is fully compatible with the OpenAI Chat Completions API, making\nit a drop-in replacement for any OpenAI SDK client.\n\nUse a GPU server with NVIDIA drivers already installed (Verda 2xA100, 2xH100,\nor similar). The pip vLLM wheels bundle the CUDA runtime, so no CUDA toolkit\ninstall is required. Set HF_TOKEN to your HuggingFace token to download gated\nmodels, and adjust the tensor-parallel size in the start command to match your\nGPU count.\n\nThis template is experimental — verify the deployment on your own GPU server\nbefore relying on it.\n",
-    "requirements": {
-      "memory": 32768,
-      "cpu": 8,
-      "storage": 300
-    },
-    "app": {
-      "type": "native",
-      "repositoryUrl": "https://github.com/dollardeploy/templates",
-      "sourcePath": "vllm-native",
-      "sourceBranch": "main",
-      "preStartCmd": "curl -LsSf https://astral.sh/uv/install.sh | sh",
-      "buildCmd": "uv venv && uv pip install -r requirements.txt",
-      "startCmd": "uv run vllm serve Qwen/Qwen3-Coder-Next --host 0.0.0.0 --port 8000 --tensor-parallel-size 2 --enable-auto-tool-choice --tool-call-parser qwen3_coder",
-      "env": {
-        "PORT": "8000",
-        "HF_TOKEN": "",
-        "APP_HEALTHCHECK_PATH": "/health",
-        "APP_READY_TIMEOUT": 1800
-      }
-    },
-    "createdAt": "2026-07-16T05:20:43+03:00",
-    "updatedAt": "2026-07-16T05:20:43+03:00"
+    "createdAt": "2026-08-08T10:38:17+03:00",
+    "updatedAt": "2026-08-08T10:38:17+03:00"
   },
   {
     "id": "wikijs",
