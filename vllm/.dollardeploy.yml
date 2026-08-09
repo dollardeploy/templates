@@ -43,6 +43,10 @@ app:
   buildCmd: "true"
   preStartCmd: curl -LsSf https://astral.sh/uv/install.sh | sh
   startCmd: >-
+    rm -Rf .venv &&
+    export UV_PYTHON_INSTALL_DIR="$PWD/cache/uv-python"
+    UV_CACHE_DIR="$PWD/cache/uv"
+    TRITON_CACHE_DIR="$PWD/cache/triton" &&
     uv sync &&
     uv run vllm serve ${MODEL_NAME}
     --host 127.0.0.1
@@ -61,14 +65,20 @@ app:
     MODEL_NAME: "Qwen/Qwen3-Coder-Next"
     MODEL_CALL_PARSER: "qwen3_coder"
     UV_TORCH_BACKEND: "auto"
+    UV_PYTHON: "3.12"
+    UV_PYTHON_PREFERENCE: "only-managed"
     TENSOR_PARALLEL_SIZE: "2"
-    NGINX_STATIC_PATHS: "/index.html:web/index.html"
+    NGINX_STATIC_PATHS: "/:web"
     VLLM_API_KEY: ${GENERATED_HASH}
     VLLM_CACHE_ROOT: "cache"
     VLLM_SERVER_DEV_MODE: 0
-    VLLM_LOGGING_LEVEL: "DEBUG"
+    VLLM_LOGGING_LEVEL: "INFO"
     VLLM_CONFIGURE_LOGGING: "1"
     MM_PROCESSOR_CACHE_GB: 8
+    SYSTEMD_PRIVATE_DEVICES: "false"
+    SYSTEMD_PRIVATE_TMP: "false"
+    SYSTEMD_LIMIT_NOFILE: "65535"
+    SYSTEMD_EXEC_PATHS: "/app/.triton /home/ubuntu/.triton"
 postLaunchNote: |
     WARNING: You might need to add your HF_TOKEN to the environment variables to download the model. 
     Change it in the app env variables and redeploy. 
