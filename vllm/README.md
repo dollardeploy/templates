@@ -12,16 +12,28 @@ Run an OpenAI-compatible inference endpoint with vLLM natively via systemd — n
 
 ## Requirements
 
-- A GPU server with **NVIDIA drivers already installed** (Verda 2xA100, 2xH100, or similar). The pip `vllm` wheels bundle the CUDA runtime, so no CUDA toolkit install is needed — but the driver must be present.
+- A GPU server with **NVIDIA drivers already installed** (Verda 2xA100, 2xH100, or similar). No CUDA toolkit install is needed — but the driver must be present.
 - `HF_TOKEN` set to a HuggingFace token for gated model downloads.
 
 ## How it works
 
+Dependencies are declared in a native uv [`pyproject.toml`](./pyproject.toml) and installed with `uv sync`.
+
 | Phase | Command |
 | --- | --- |
 | preStart | installs [uv](https://astral.sh/uv) |
-| build | `uv venv && uv pip install -r requirements.txt` (installs vLLM) |
-| start | `uv run vllm serve Qwen/Qwen3-Coder-Next --tensor-parallel-size 2 …` |
+| start | `uv sync && uv run vllm serve Qwen/Qwen3-Coder-Next --tensor-parallel-size 2 …` |
+
+### PyTorch / driver matching
+
+`UV_TORCH_BACKEND=auto` (also set as `torch-backend = "auto"` in `pyproject.toml`) tells uv to
+select the PyTorch CUDA wheels that match the NVIDIA driver installed on the host. Without it, uv
+installs a generic CUDA build of torch that fails to initialize NVML on newer drivers (CUDA 12.9 /
+13.0), and vLLM aborts device detection with:
+
+```
+RuntimeError: Failed to infer device type ... vLLM is running on UnspecifiedPlatform
+```
 
 ## Tuning
 

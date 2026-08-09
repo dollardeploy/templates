@@ -19,10 +19,11 @@ description: |
   making it a drop-in replacement for any OpenAI compatible SDK client.
 
   Use a GPU server with NVIDIA drivers already installed (e.g. Verda 2xA100, 2xH100,
-  or similar). The pip vLLM wheels bundle the CUDA runtime, so no CUDA toolkit
-  install is required. Set HF_TOKEN to your HuggingFace token to download gated
-  models, and adjust the tensor-parallel size in the start command to match your
-  GPU count.
+  or similar). Dependencies are managed with uv from a native pyproject.toml, and
+  uv auto-selects the PyTorch CUDA wheels matching the host driver (CUDA 12.9 / 13.0),
+  so no CUDA toolkit install is required. Set HF_TOKEN to your HuggingFace token to
+  download gated models, and adjust the tensor-parallel size in the start command to
+  match your GPU count.
 
   This template is experimental — verify the deployment on your own GPU server
   before relying on it.
@@ -42,7 +43,7 @@ app:
   buildCmd: "true"
   preStartCmd: curl -LsSf https://astral.sh/uv/install.sh | sh
   startCmd: >-
-    sync && rm -Rf .venv && uv venv && uv pip install -r requirements.txt &&
+    uv sync &&
     uv run vllm serve ${MODEL_NAME}
     --host 127.0.0.1
     --port ${PORT}
@@ -59,6 +60,7 @@ app:
     APP_READY_TIMEOUT: 1800
     MODEL_NAME: "Qwen/Qwen3-Coder-Next"
     MODEL_CALL_PARSER: "qwen3_coder"
+    UV_TORCH_BACKEND: "auto"
     TENSOR_PARALLEL_SIZE: "2"
     NGINX_STATIC_PATHS: "/index.html:web/index.html"
     VLLM_API_KEY: ${GENERATED_HASH}

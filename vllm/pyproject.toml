@@ -1,0 +1,23 @@
+[project]
+name = "vllm-inference"
+version = "0.1.0"
+description = "OpenAI & Claude compatible inference endpoint powered by vLLM"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "vllm==0.26.0",
+]
+
+[tool.uv]
+# This is a runnable application, not an installable library — don't try to
+# build/install the project itself, just its dependencies.
+package = false
+
+# Pick the PyTorch CUDA wheels that match the NVIDIA driver actually installed
+# on the host (Verda A100 with CUDA 12.9 / 13.0). Without this, uv installs a
+# generic CUDA build of torch that can't initialize NVML on newer drivers, and
+# vLLM fails device inference with:
+#   RuntimeError: Failed to infer device type ... UnspecifiedPlatform
+# Equivalent to `uv sync --torch-backend=auto`; also enforced via the
+# UV_TORCH_BACKEND=auto environment variable in .dollardeploy.yml.
+torch-backend = "auto"
