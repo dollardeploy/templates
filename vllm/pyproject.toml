@@ -13,11 +13,18 @@ dependencies = [
 # build/install the project itself, just its dependencies.
 package = false
 
-# Pick the PyTorch CUDA wheels that match the NVIDIA driver actually installed
-# on the host (Verda A100 with CUDA 12.9 / 13.0). Without this, uv installs a
-# generic CUDA build of torch that can't initialize NVML on newer drivers, and
-# vLLM fails device inference with:
-#   RuntimeError: Failed to infer device type ... UnspecifiedPlatform
-# Equivalent to `uv sync --torch-backend=auto`; also enforced via the
-# UV_TORCH_BACKEND=auto environment variable in .dollardeploy.yml.
+# Use uv's own managed (python-build-standalone) CPython instead of the host's
+# /usr/bin/python3. The system interpreter has no development headers, so
+# Triton's runtime JIT (used by Qwen3-Next's linear-attention kernels) fails to
+# compile with: "fatal error: Python.h: No such file or directory". The managed
+# builds bundle the headers. Also enforced via UV_PYTHON_PREFERENCE=only-managed
+# and UV_PYTHON=3.12 in .dollardeploy.yml.
+python-preference = "only-managed"
+
+# Install the CUDA build of PyTorch that matches the host NVIDIA driver.
+# "auto" detects the driver at sync time (via nvidia-smi) and selects the right
+# cuXXX wheels. Also enforced via UV_TORCH_BACKEND=auto in .dollardeploy.yml.
+# If a host's driver can't be probed and torch falls back to a CPU wheel (vLLM
+# then fails with "Failed to infer device type"), pin a specific build here
+# instead, e.g. "cu128".
 torch-backend = "auto"

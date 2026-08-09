@@ -35,6 +35,18 @@ installs a generic CUDA build of torch that fails to initialize NVML on newer dr
 RuntimeError: Failed to infer device type ... vLLM is running on UnspecifiedPlatform
 ```
 
+### Managed Python & writable caches
+
+`UV_PYTHON_PREFERENCE=only-managed` makes uv use its own standalone CPython, which ships the
+development headers Triton needs to JIT-compile Qwen3-Next's linear-attention kernels (the host's
+`/usr/bin/python3` has none, so the build fails with `fatal error: Python.h: No such file or
+directory`). Because the systemd unit runs with a read-only filesystem, `startCmd` points uv's
+Python install dir and the uv/Triton caches at the app's writable, backup-excluded `cache/`
+directory (`UV_PYTHON_INSTALL_DIR`, `UV_CACHE_DIR`, `TRITON_CACHE_DIR`).
+
+GPU device access is granted to the service via `SYSTEMD_PRIVATE_DEVICES=false` (a private `/dev`
+would hide `/dev/nvidia*`).
+
 ## Tuning
 
 - **GPU count:** change `--tensor-parallel-size` in `startCmd` to match the number of GPUs on your server.
