@@ -17,7 +17,7 @@ description: |
   This template runs both halves on one domain: the cobalt web frontend at `/`
   (built from source at deploy time) and your own processing instance — the API
   that does the actual work — at `/api/`. Nothing is shared with cobalt.tools.
-  You can also point any cobalt client at `${APP_URL}/api/` directly.
+  You can also point any cobalt client at that `/api/` path directly.
 
   Bandwidth, not CPU, is the limit: tunnelled downloads stream through your
   server. Keep it to yourself, or turn on Cloudflare Turnstile
