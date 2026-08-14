@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dollardeploy/.github/refs/heads/main/template.schema.json
+id: cobalt-instance
+name: Cobalt Instance
+experimental: true
+intro: Your own cobalt processing instance — the API that saves media, no frontend.
+logo: https://avatars.githubusercontent.com/u/152056268
+deployTime: ~2 minutes
+tags:
+  - media
+  - downloader
+  - api
+  - privacy
+  - oss
+description: |
+  Cobalt saves media from social platforms without ads, trackers, or paywalls.
+  This template runs the **processing instance** — the API that does the work.
+  There's no web UI: point any cobalt frontend at it (cobalt.tools → settings →
+  instances → custom) or call it from your own scripts.
+
+  Want the frontend hosted on your server too? Deploy the **Cobalt** template
+  instead — it runs both on one domain.
+
+  An API key is generated on first boot and printed in the deploy logs. Keys
+  bypass rate limits, and can be made mandatory with `API_AUTH_REQUIRED=1`.
+
+  Bandwidth, not CPU, is the limit: downloads stream through your server.
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourceBranch: main
+  sourcePath: cobalt-instance
+  dockerComposeFile: docker-compose.yml
+  mainPort: 9000
+  env:
+    PORT: "9000"
+    API_URL: ${APP_URL}
+    JWT_SECRET: ${GENERATED_HASH}
+    API_AUTH_REQUIRED: "0"
+    TURNSTILE_SITEKEY: ""
+    TURNSTILE_SECRET: ""
+    RATELIMIT_WINDOW: "60"
+    RATELIMIT_MAX: "20"
+    DURATION_LIMIT: "10800"
+    APP_HEALTHCHECK_PATH: "/"
+    DOCKER_COMPOSE_PULL: always
+postLaunchNote: |
+  Open **${APP_URL}** — a JSON blurb with your cobalt version means it works.
+
+  To use it from cobalt.tools: settings → instances → custom → **${APP_URL}**.
+
+  **Your API key** is the UUID in `keys/keys.json` on the server (also printed
+  in the `keygen` logs from the first deploy). Send it as
+  `Authorization: Api-Key <uuid>`, or paste it into the frontend's api key
+  field. Edit that file to add more keys, then restart the app.
+
+  The instance is open by default. To lock it down, set `API_AUTH_REQUIRED` to
+  `1` (key required), and/or fill in `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`
+  for browser users.
