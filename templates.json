@@ -512,9 +512,60 @@
   {
     "id": "cobalt",
     "name": "Cobalt",
-    "intro": "Your own media downloader instance — the cobalt processing API, self-hosted.",
+    "intro": "Save media from social platforms — the full cobalt web app plus its own processing instance.",
     "logo": "https://avatars.githubusercontent.com/u/152056268",
     "experimental": true,
+    "deployTime": "~8 minutes",
+    "tags": [
+      "media",
+      "downloader",
+      "privacy",
+      "api",
+      "oss"
+    ],
+    "description": "Cobalt saves media from social platforms without ads, trackers, or paywalls.\n\nThis template runs both halves on one domain: the cobalt web frontend at `/`\n(built from source at deploy time) and your own processing instance — the API\nthat does the actual work — at `/api/`. Nothing is shared with cobalt.tools.\nYou can also point any cobalt client at `${APP_URL}/api/` directly.\n\nBandwidth, not CPU, is the limit: tunnelled downloads stream through your\nserver. Keep it to yourself, or turn on Cloudflare Turnstile\n(`TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`) before sharing the URL.\n\nThe frontend is licensed CC-BY-NC-SA-4.0 — unmodified non-commercial hosting\nonly, and cobalt branding stays copyrighted.\n",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 15
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "cobalt",
+      "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 8080,
+      "env": {
+        "DOCKER_COMPOSE_BUILD": 1,
+        "PORT": "8080",
+        "COBALT_REF": "main",
+        "API_URL": "${APP_URL}",
+        "WEB_DEFAULT_API": "${APP_URL}/api/",
+        "WEB_HOST": "${APP_HOSTNAME}",
+        "JWT_SECRET": "${GENERATED_HASH}",
+        "TURNSTILE_SITEKEY": "",
+        "TURNSTILE_SECRET": "",
+        "RATELIMIT_WINDOW": "60",
+        "RATELIMIT_MAX": "20",
+        "DURATION_LIMIT": "10800",
+        "APP_HEALTHCHECK_PATH": "/",
+        "APP_READY_TIMEOUT": "900"
+      }
+    },
+    "postLaunchNote": "Open **${APP_URL}** and paste a link — that's the whole app, running on your\nown instance. The API lives at **${APP_URL}/api/** if you want to use it from\na script or another cobalt client.\n\nIt's public by default. To gate it, set `TURNSTILE_SITEKEY` and\n`TURNSTILE_SECRET` in the app's environment and redeploy.\n\nFirst deploy builds the frontend from source, so give it a few extra minutes.\n",
+    "createdAt": "2026-08-14T22:58:57+03:00",
+    "updatedAt": "2026-08-14T23:44:25+03:00"
+  },
+  {
+    "id": "cobalt-instance",
+    "name": "Cobalt Instance",
+    "experimental": true,
+    "intro": "Your own cobalt processing instance — the API that saves media, no frontend.",
+    "logo": "https://avatars.githubusercontent.com/u/152056268",
     "deployTime": "~2 minutes",
     "tags": [
       "media",
@@ -523,7 +574,7 @@
       "privacy",
       "oss"
     ],
-    "description": "Cobalt saves media from social platforms without ads, trackers, or paywalls.\nThis template runs the cobalt **processing instance** (the API) — the part\nthat does the actual work. There is no web UI to log into: point the official\nfrontend at it via cobalt.tools → settings → instance → custom, or call the\nAPI directly (`POST /` with `{\"url\": \"...\"}`).\n\nBandwidth, not CPU, is the limit: tunnelled downloads stream through your\nserver. Keep the instance private, or turn on Cloudflare Turnstile\n(`TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`) before sharing the URL.\n",
+    "description": "Cobalt saves media from social platforms without ads, trackers, or paywalls.\nThis template runs the **processing instance** — the API that does the work.\nThere's no web UI: point any cobalt frontend at it (cobalt.tools → settings →\ninstances → custom) or call it from your own scripts.\n\nWant the frontend hosted on your server too? Deploy the **Cobalt** template\ninstead — it runs both on one domain.\n\nAn API key is generated on first boot and printed in the deploy logs. Keys\nbypass rate limits, and can be made mandatory with `API_AUTH_REQUIRED=1`.\n\nBandwidth, not CPU, is the limit: downloads stream through your server.\n",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -536,13 +587,14 @@
       "type": "docker-compose",
       "repositoryUrl": "https://github.com/dollardeploy/templates",
       "sourceBranch": "main",
-      "sourcePath": "cobalt",
+      "sourcePath": "cobalt-instance",
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 9000,
       "env": {
         "PORT": "9000",
         "API_URL": "${APP_URL}",
         "JWT_SECRET": "${GENERATED_HASH}",
+        "API_AUTH_REQUIRED": "0",
         "TURNSTILE_SITEKEY": "",
         "TURNSTILE_SECRET": "",
         "RATELIMIT_WINDOW": "60",
@@ -552,9 +604,9 @@
         "DOCKER_COMPOSE_PULL": "always"
       }
     },
-    "postLaunchNote": "Your instance is the API at **${APP_URL}** — open it and you should see a JSON\nversion blurb, that means it works.\n\nTo use it: go to https://cobalt.tools → settings → instance → custom, and paste\n**${APP_URL}**. The instance is public by default; set `TURNSTILE_SITEKEY` and\n`TURNSTILE_SECRET` in the app's environment to gate it behind bot protection.\n",
-    "createdAt": "2026-08-14T22:58:57+03:00",
-    "updatedAt": "2026-08-14T22:58:57+03:00"
+    "postLaunchNote": "Open **${APP_URL}** — a JSON blurb with your cobalt version means it works.\n\nTo use it from cobalt.tools: settings → instances → custom → **${APP_URL}**.\n\n**Your API key** is the UUID in `keys/keys.json` on the server (also printed\nin the `keygen` logs from the first deploy). Send it as\n`Authorization: Api-Key <uuid>`, or paste it into the frontend's api key\nfield. Edit that file to add more keys, then restart the app.\n\nThe instance is open by default. To lock it down, set `API_AUTH_REQUIRED` to\n`1` (key required), and/or fill in `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`\nfor browser users.\n",
+    "createdAt": "2026-08-14T23:44:47+03:00",
+    "updatedAt": "2026-08-14T23:44:47+03:00"
   },
   {
     "id": "code-server",
