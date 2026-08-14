@@ -510,6 +510,53 @@
     "updatedAt": "2026-06-04T11:51:54+03:00"
   },
   {
+    "id": "cobalt",
+    "name": "Cobalt",
+    "intro": "Your own media downloader instance — the cobalt processing API, self-hosted.",
+    "logo": "https://avatars.githubusercontent.com/u/152056268",
+    "experimental": true,
+    "deployTime": "~2 minutes",
+    "tags": [
+      "media",
+      "downloader",
+      "api",
+      "privacy",
+      "oss"
+    ],
+    "description": "Cobalt saves media from social platforms without ads, trackers, or paywalls.\nThis template runs the cobalt **processing instance** (the API) — the part\nthat does the actual work. There is no web UI to log into: point the official\nfrontend at it via cobalt.tools → settings → instance → custom, or call the\nAPI directly (`POST /` with `{\"url\": \"...\"}`).\n\nBandwidth, not CPU, is the limit: tunnelled downloads stream through your\nserver. Keep the instance private, or turn on Cloudflare Turnstile\n(`TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`) before sharing the URL.\n",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourceBranch": "main",
+      "sourcePath": "cobalt",
+      "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 9000,
+      "env": {
+        "PORT": "9000",
+        "API_URL": "${APP_URL}",
+        "JWT_SECRET": "${GENERATED_HASH}",
+        "TURNSTILE_SITEKEY": "",
+        "TURNSTILE_SECRET": "",
+        "RATELIMIT_WINDOW": "60",
+        "RATELIMIT_MAX": "20",
+        "DURATION_LIMIT": "10800",
+        "APP_HEALTHCHECK_PATH": "/",
+        "DOCKER_COMPOSE_PULL": "always"
+      }
+    },
+    "postLaunchNote": "Your instance is the API at **${APP_URL}** — open it and you should see a JSON\nversion blurb, that means it works.\n\nTo use it: go to https://cobalt.tools → settings → instance → custom, and paste\n**${APP_URL}**. The instance is public by default; set `TURNSTILE_SITEKEY` and\n`TURNSTILE_SECRET` in the app's environment to gate it behind bot protection.\n",
+    "createdAt": "2026-08-14T22:58:57+03:00",
+    "updatedAt": "2026-08-14T22:58:57+03:00"
+  },
+  {
     "id": "code-server",
     "name": "Code Server",
     "intro": "Run VS Code on any machine anywhere and access it in the browser.",
