@@ -46,6 +46,7 @@ app:
     WEB_DEFAULT_API: ${APP_URL}
     WEB_HOST: ${APP_HOSTNAME}
     JWT_SECRET: ${GENERATED_HASH}
+    API_AUTH_REQUIRED: "0"
     TURNSTILE_SITEKEY: ""
     TURNSTILE_SECRET: ""
     RATELIMIT_WINDOW: "60"
@@ -58,7 +59,10 @@ postLaunchNote: |
   own instance. The same URL is also the processing API — point another cobalt
   client at it, or `POST` to it with `{"url": "..."}` from a script.
 
-  It's public by default. To gate it, set `TURNSTILE_SITEKEY` and
-  `TURNSTILE_SECRET` in the app's environment and redeploy.
+  It's public by default. To lock it down, set `API_AUTH_REQUIRED` to `1` — then
+  only requests carrying the API key in `keys/keys.json` (printed in the
+  `keygen` deploy logs) get through. Paste that UUID into settings → processing
+  → instance access key. `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET` gate browser
+  users instead.
 
   First deploy builds the frontend from source, so give it a few extra minutes.

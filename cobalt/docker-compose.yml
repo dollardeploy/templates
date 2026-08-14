@@ -13,6 +13,17 @@ services:
     depends_on:
       - cobalt
 
+  # generates an api key (uuid v4) on first boot, keeps it across redeploys.
+  # ponytail: a 3-line init beats asking people to hand-write keys.json.
+  keygen:
+    image: alpine:3
+    volumes:
+      - ./keys:/keys
+    command: >
+      sh -c 'test -f /keys/keys.json ||
+      printf "{\"%s\":{\"name\":\"default\",\"limit\":\"unlimited\"}}" "$$(cat /proc/sys/kernel/random/uuid)" > /keys/keys.json;
+      echo "cobalt api key file:"; cat /keys/keys.json'
+
   cobalt:
     image: ghcr.io/imputnet/cobalt:11
     init: true
@@ -20,9 +31,18 @@ services:
     restart: unless-stopped
     expose:
       - "9000"
+    depends_on:
+      keygen:
+        condition: service_completed_successfully
+    volumes:
+      - ./keys:/keys:ro
     environment:
       API_URL: ${API_URL}
       JWT_SECRET: ${JWT_SECRET}
+      API_KEY_URL: "file:///keys/keys.json"
+      # 1 = nobody gets in without an api key (or turnstile, if configured).
+      # 0 = keys just bypass the rate limits, everyone else is rate limited.
+      API_AUTH_REQUIRED: ${API_AUTH_REQUIRED}
       # optional bot protection: create a Turnstile widget at
       # https://dash.cloudflare.com/?to=/:account/turnstile and set both values.
       # turnstile only kicks in when sitekey + secret are both non-empty.
