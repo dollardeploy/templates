@@ -22,7 +22,7 @@
     "app": {
       "type": "php",
       "repositoryUrl": "https://github.com/vrana/adminer",
-      "sourceBranch": "master",
+      "sourceBranch": "main",
       "installCmd": "git submodule update --init",
       "buildCmd": "php compile.php && cp adminer.php index.php",
       "preStartCmd": "sudo apt install -y php-fpm php-pgsql php-mysql",
@@ -32,7 +32,7 @@
       }
     },
     "createdAt": "2025-11-29T09:15:45+02:00",
-    "updatedAt": "2025-12-01T14:55:56+02:00"
+    "updatedAt": "2026-08-14T13:17:56+03:00"
   },
   {
     "id": "appsmith",
