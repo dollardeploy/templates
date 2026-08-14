@@ -16,8 +16,8 @@ description: |
 
   This template runs both halves on one domain: the cobalt web frontend at `/`
   (built from source at deploy time) and your own processing instance — the API
-  that does the actual work — at `/api/`. Nothing is shared with cobalt.tools.
-  You can also point any cobalt client at that `/api/` path directly.
+  that does the actual work — on the same origin. Nothing is shared with
+  cobalt.tools, and any cobalt client can point at this domain directly.
 
   Bandwidth, not CPU, is the limit: tunnelled downloads stream through your
   server. Keep it to yourself, or turn on Cloudflare Turnstile
@@ -43,7 +43,7 @@ app:
     PORT: "8080"
     COBALT_REF: main
     API_URL: ${APP_URL}
-    WEB_DEFAULT_API: ${APP_URL}/api/
+    WEB_DEFAULT_API: ${APP_URL}
     WEB_HOST: ${APP_HOSTNAME}
     JWT_SECRET: ${GENERATED_HASH}
     TURNSTILE_SITEKEY: ""
@@ -55,8 +55,8 @@ app:
     APP_READY_TIMEOUT: "900"
 postLaunchNote: |
   Open **${APP_URL}** and paste a link — that's the whole app, running on your
-  own instance. The API lives at **${APP_URL}/api/** if you want to use it from
-  a script or another cobalt client.
+  own instance. The same URL is also the processing API — point another cobalt
+  client at it, or `POST` to it with `{"url": "..."}` from a script.
 
   It's public by default. To gate it, set `TURNSTILE_SITEKEY` and
   `TURNSTILE_SECRET` in the app's environment and redeploy.

@@ -21,3 +21,4 @@ RUN pnpm --filter=@imput/cobalt-web build
 FROM nginx:alpine
 COPY --from=build /app/web/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY cobalt-proxy.conf /etc/nginx/cobalt-proxy.conf
