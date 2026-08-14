@@ -523,7 +523,7 @@
       "api",
       "oss"
     ],
-    "description": "Cobalt saves media from social platforms without ads, trackers, or paywalls.\n\nThis template runs both halves on one domain: the cobalt web frontend at `/`\n(built from source at deploy time) and your own processing instance — the API\nthat does the actual work — at `/api/`. Nothing is shared with cobalt.tools.\nYou can also point any cobalt client at `${APP_URL}/api/` directly.\n\nBandwidth, not CPU, is the limit: tunnelled downloads stream through your\nserver. Keep it to yourself, or turn on Cloudflare Turnstile\n(`TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`) before sharing the URL.\n\nThe frontend is licensed CC-BY-NC-SA-4.0 — unmodified non-commercial hosting\nonly, and cobalt branding stays copyrighted.\n",
+    "description": "Cobalt saves media from social platforms without ads, trackers, or paywalls.\n\nThis template runs both halves on one domain: the cobalt web frontend at `/`\n(built from source at deploy time) and your own processing instance — the API\nthat does the actual work — at `/api/`. Nothing is shared with cobalt.tools.\nYou can also point any cobalt client at that `/api/` path directly.\n\nBandwidth, not CPU, is the limit: tunnelled downloads stream through your\nserver. Keep it to yourself, or turn on Cloudflare Turnstile\n(`TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`) before sharing the URL.\n\nThe frontend is licensed CC-BY-NC-SA-4.0 — unmodified non-commercial hosting\nonly, and cobalt branding stays copyrighted.\n",
     "requirements": {
       "memory": 2048,
       "cpu": 2,
@@ -558,7 +558,7 @@
     },
     "postLaunchNote": "Open **${APP_URL}** and paste a link — that's the whole app, running on your\nown instance. The API lives at **${APP_URL}/api/** if you want to use it from\na script or another cobalt client.\n\nIt's public by default. To gate it, set `TURNSTILE_SITEKEY` and\n`TURNSTILE_SECRET` in the app's environment and redeploy.\n\nFirst deploy builds the frontend from source, so give it a few extra minutes.\n",
     "createdAt": "2026-08-14T22:58:57+03:00",
-    "updatedAt": "2026-08-14T23:44:25+03:00"
+    "updatedAt": "2026-08-14T23:53:01+03:00"
   },
   {
     "id": "cobalt-instance",
