@@ -1,0 +1,19 @@
+services:
+  cobalt:
+    image: ghcr.io/imputnet/cobalt:11
+    init: true
+    read_only: true
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PORT}:9000"
+    environment:
+      API_URL: ${API_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      # optional bot protection: create a Turnstile widget at
+      # https://dash.cloudflare.com/?to=/:account/turnstile and set both values.
+      # turnstile only kicks in when sitekey + secret are both non-empty.
+      TURNSTILE_SITEKEY: ${TURNSTILE_SITEKEY}
+      TURNSTILE_SECRET: ${TURNSTILE_SECRET}
+      RATELIMIT_WINDOW: ${RATELIMIT_WINDOW}
+      RATELIMIT_MAX: ${RATELIMIT_MAX}
+      DURATION_LIMIT: ${DURATION_LIMIT}
