@@ -1,29 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dollardeploy/.github/refs/heads/main/template.schema.json
 id: cobalt
 name: Cobalt
-intro: Your own media downloader instance — the cobalt processing API, self-hosted.
+intro: Save media from social platforms — the full cobalt web app plus its own processing instance.
 logo: https://avatars.githubusercontent.com/u/152056268
 experimental: true
-deployTime: ~2 minutes
+deployTime: ~8 minutes
 tags:
   - media
   - downloader
-  - api
   - privacy
+  - api
   - oss
 description: |
   Cobalt saves media from social platforms without ads, trackers, or paywalls.
-  This template runs the cobalt **processing instance** (the API) — the part
-  that does the actual work. There is no web UI to log into: point the official
-  frontend at it via cobalt.tools → settings → instance → custom, or call the
-  API directly (`POST /` with `{"url": "..."}`).
+
+  This template runs both halves on one domain: the cobalt web frontend at `/`
+  (built from source at deploy time) and your own processing instance — the API
+  that does the actual work — at `/api/`. Nothing is shared with cobalt.tools.
+  You can also point any cobalt client at `${APP_URL}/api/` directly.
 
   Bandwidth, not CPU, is the limit: tunnelled downloads stream through your
-  server. Keep the instance private, or turn on Cloudflare Turnstile
+  server. Keep it to yourself, or turn on Cloudflare Turnstile
   (`TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`) before sharing the URL.
+
+  The frontend is licensed CC-BY-NC-SA-4.0 — unmodified non-commercial hosting
+  only, and cobalt branding stays copyrighted.
 requirements:
-  memory: 1024
-  cpu: 1
-  storage: 10
+  memory: 2048
+  cpu: 2
+  storage: 15
 services:
   - docker
 app:
@@ -32,10 +37,14 @@ app:
   sourceBranch: main
   sourcePath: cobalt
   dockerComposeFile: docker-compose.yml
-  mainPort: 9000
+  mainPort: 8080
   env:
-    PORT: "9000"
+    DOCKER_COMPOSE_BUILD: 1
+    PORT: "8080"
+    COBALT_REF: main
     API_URL: ${APP_URL}
+    WEB_DEFAULT_API: ${APP_URL}/api/
+    WEB_HOST: ${APP_HOSTNAME}
     JWT_SECRET: ${GENERATED_HASH}
     TURNSTILE_SITEKEY: ""
     TURNSTILE_SECRET: ""
@@ -43,11 +52,13 @@ app:
     RATELIMIT_MAX: "20"
     DURATION_LIMIT: "10800"
     APP_HEALTHCHECK_PATH: "/"
-    DOCKER_COMPOSE_PULL: always
+    APP_READY_TIMEOUT: "900"
 postLaunchNote: |
-  Your instance is the API at **${APP_URL}** — open it and you should see a JSON
-  version blurb, that means it works.
+  Open **${APP_URL}** and paste a link — that's the whole app, running on your
+  own instance. The API lives at **${APP_URL}/api/** if you want to use it from
+  a script or another cobalt client.
 
-  To use it: go to https://cobalt.tools → settings → instance → custom, and paste
-  **${APP_URL}**. The instance is public by default; set `TURNSTILE_SITEKEY` and
-  `TURNSTILE_SECRET` in the app's environment to gate it behind bot protection.
+  It's public by default. To gate it, set `TURNSTILE_SITEKEY` and
+  `TURNSTILE_SECRET` in the app's environment and redeploy.
+
+  First deploy builds the frontend from source, so give it a few extra minutes.

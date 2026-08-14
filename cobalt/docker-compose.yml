@@ -1,11 +1,25 @@
 services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        COBALT_REF: ${COBALT_REF}
+        WEB_DEFAULT_API: ${WEB_DEFAULT_API}
+        WEB_HOST: ${WEB_HOST}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PORT}:80"
+    depends_on:
+      - cobalt
+
   cobalt:
     image: ghcr.io/imputnet/cobalt:11
     init: true
     read_only: true
     restart: unless-stopped
-    ports:
-      - "127.0.0.1:${PORT}:9000"
+    expose:
+      - "9000"
     environment:
       API_URL: ${API_URL}
       JWT_SECRET: ${JWT_SECRET}
@@ -17,3 +31,5 @@ services:
       RATELIMIT_WINDOW: ${RATELIMIT_WINDOW}
       RATELIMIT_MAX: ${RATELIMIT_MAX}
       DURATION_LIMIT: ${DURATION_LIMIT}
+# ponytail: no watchtower (upstream's example uses it) — redeploy from
+# DollarDeploy to pull a new image instead of mounting the docker socket.
