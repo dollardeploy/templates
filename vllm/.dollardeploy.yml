@@ -89,7 +89,10 @@ app:
     VLLM_USE_DEEP_GEMM: "0"
     VLLM_MOE_USE_DEEP_GEMM: "0"
     SYSTEMD_PRIVATE_DEVICES: "false"
-    SYSTEMD_PRIVATE_TMP: "false"
+    # Keep DollarDeploy's default PrivateTmp=true: ProtectSystem=strict makes the
+    # real /tmp read-only, so a private (writable) /tmp is what lets nvcc and other
+    # JIT compilers write their scratch files. Don't set this to "false".
+    SYSTEMD_PRIVATE_TMP: "true"
     SYSTEMD_LIMIT_NOFILE: "65535"
     # Verda/DataCrunch GPU hosts deploy as root under /app; grant that tree write
     # access so the app's cache/ dir (uv, triton, HF, tmp) is writable.

@@ -53,11 +53,16 @@ would hide `/dev/nvidia*`).
 ### FP8 / linear-attention kernels without a CUDA toolkit
 
 vLLM's DeepGEMM path and FlashInfer's Gated-Delta-Net (linear attention) prefill kernel JIT-compile
-with `nvcc` at engine startup. On a driver-only image with a read-only `/tmp` this fails with
-`nvcc fatal : Could not open output file` or `NVCC compilation failed`. Two settings avoid the
-`nvcc` dependency: `VLLM_USE_DEEP_GEMM=0` / `VLLM_MOE_USE_DEEP_GEMM=0` (fall back to vLLM's prebuilt
-CUTLASS FP8 kernels) and `--gdn-prefill-backend triton` (Triton compiles with the managed-Python
-headers instead). A writable `TMPDIR` (above) covers anything that still shells out to `nvcc`.
+with `nvcc` at engine startup, which needs a writable scratch dir. DollarDeploy runs services with
+`ProtectSystem=strict`, so the real `/tmp` is read-only — the writable `/tmp` comes from
+`PrivateTmp=true`, which is DollarDeploy's default. **Do not set `SYSTEMD_PRIVATE_TMP=false`** (an
+earlier version of this template did, which is why `nvcc` failed with
+`nvcc fatal : Could not open output file`).
+
+For extra robustness on images that ship only the driver, this template also avoids the `nvcc` JIT
+paths entirely: `VLLM_USE_DEEP_GEMM=0` / `VLLM_MOE_USE_DEEP_GEMM=0` fall back to vLLM's prebuilt
+CUTLASS FP8 kernels, and `--gdn-prefill-backend triton` compiles the linear-attention kernel with
+Triton (using the managed-Python headers) instead. `TMPDIR` is also pointed at the app cache dir.
 
 ## Tuning
 
