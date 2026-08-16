@@ -19,10 +19,10 @@ Run an OpenAI-compatible inference endpoint with vLLM natively via systemd — n
 
 Dependencies are declared in a native uv [`pyproject.toml`](./pyproject.toml) and installed with `uv sync`.
 
-| Phase | Command |
-| --- | --- |
-| preStart | installs [uv](https://astral.sh/uv) |
-| start | `uv sync && uv run vllm serve Qwen/Qwen3.8-27B-FP8 --tensor-parallel-size 1 …` |
+| Phase    | Command                                                                        |
+| -------- | ------------------------------------------------------------------------------ |
+| preStart | installs [uv](https://astral.sh/uv)                                            |
+| start    | `uv sync && uv run vllm serve Qwen/Qwen3.8-27B-FP8 --tensor-parallel-size 1 …` |
 
 ### PyTorch / driver matching
 
@@ -41,11 +41,14 @@ RuntimeError: Failed to infer device type ... vLLM is running on UnspecifiedPlat
 development headers Triton needs to JIT-compile Qwen3.8's linear-attention kernels (the host's
 `/usr/bin/python3` has none, so the build fails with `fatal error: Python.h: No such file or
 directory`). Because the systemd unit runs with a read-only filesystem, `startCmd` points uv's
-Python install dir and the uv/Triton/HF caches — plus `TMPDIR` — at the app's writable,
-backup-excluded `cache/` directory (`UV_PYTHON_INSTALL_DIR`, `UV_CACHE_DIR`, `TRITON_CACHE_DIR`,
-`HF_HOME`, `TMPDIR`). The paths are resolved from `$(pwd)` at runtime rather than a baked `$PWD`,
-so they land in the app directory on root-home hosts (Verda/DataCrunch deploy as root under `/app`).
-`SYSTEMD_EXEC_PATHS=/app` grants that tree write access.
+Python install dir and the uv/Triton/HF caches — plus `TMPDIR` and the CUDA JIT compute cache — at
+the app's writable, backup-excluded `cache/` directory (`UV_PYTHON_INSTALL_DIR`, `UV_CACHE_DIR`,
+`TRITON_CACHE_DIR`, `HF_HOME`, `TMPDIR`, `CUDA_CACHE_PATH`). `CUDA_CACHE_PATH` matters because
+`ProtectHome=read-only` makes CUDA's default `~/.nv/ComputeCache` unwritable — redirecting it keeps
+PTX JIT caching (faster warm restarts) without loosening the sandbox. The paths are resolved from
+`$(pwd)` at runtime rather than a baked `$PWD`, so they land in the app directory on root-home hosts
+(Verda/DataCrunch deploy as root under `/app`). `SYSTEMD_EXEC_PATHS=/app` grants that tree write
+access.
 
 GPU device access is granted to the service via `SYSTEMD_PRIVATE_DEVICES=false` (a private `/dev`
 would hide `/dev/nvidia*`).
@@ -71,11 +74,11 @@ Triton (using the managed-Python headers) instead. `TMPDIR` is also pointed at t
 
 ### Sizing (FP8, single request)
 
-| Model | Params | GPUs (Verda) |
-| --- | --- | --- |
-| Qwen/Qwen3.8-27B-FP8 | 27B dense | 1× H200 141GB |
-| zai-org/GLM-5.2-FP8 | ~355B MoE | 4× H200 / 4× B200 |
-| moonshotai/Kimi-K3 | ~1T MoE | 8× B200 |
+| Model                | Params    | GPUs (Verda)      |
+| -------------------- | --------- | ----------------- |
+| Qwen/Qwen3.8-27B-FP8 | 27B dense | 1× H200 141GB     |
+| zai-org/GLM-5.2-FP8  | ~355B MoE | 4× H200 / 4× B200 |
+| moonshotai/Kimi-K3   | ~1T MoE   | 8× B200           |
 
 ## Usage
 

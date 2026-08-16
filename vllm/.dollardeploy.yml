@@ -1,6 +1,6 @@
 id: vllm
 name: vLLM
-intro: Run an OpenAI & Claude inference endpoint with vLLM 
+intro: Run an OpenAI & Claude inference endpoint with vLLM
 logo: https://avatars.githubusercontent.com/u/136984999
 tags:
   - ai
@@ -47,12 +47,13 @@ app:
     rm -Rf .venv &&
     export APP_DIR="$(pwd)" &&
     mkdir -p "$APP_DIR/cache/uv" "$APP_DIR/cache/uv-python" "$APP_DIR/cache/triton"
-    "$APP_DIR/cache/huggingface" "$APP_DIR/cache/tmp" &&
+    "$APP_DIR/cache/huggingface" "$APP_DIR/cache/tmp" "$APP_DIR/cache/nv" &&
     export TMPDIR="$APP_DIR/cache/tmp"
     HF_HOME="$APP_DIR/cache/huggingface"
     UV_PYTHON_INSTALL_DIR="$APP_DIR/cache/uv-python"
     UV_CACHE_DIR="$APP_DIR/cache/uv"
-    TRITON_CACHE_DIR="$APP_DIR/cache/triton" &&
+    TRITON_CACHE_DIR="$APP_DIR/cache/triton"
+    CUDA_CACHE_PATH="$APP_DIR/cache/nv" &&
     uv sync &&
     uv run vllm serve ${MODEL_NAME}
     --host 127.0.0.1
@@ -98,6 +99,5 @@ app:
     # access so the app's cache/ dir (uv, triton, HF, tmp) is writable.
     SYSTEMD_EXEC_PATHS: "/app"
 postLaunchNote: |
-    WARNING: You might need to add your HF_TOKEN to the environment variables to download the model. 
-    Change it in the app env variables and redeploy. 
-  
+  WARNING: You might need to add your HF_TOKEN to the environment variables to download the model. 
+  Change it in the app env variables and redeploy.
