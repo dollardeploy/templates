@@ -5,7 +5,7 @@ description = "OpenAI & Claude compatible inference endpoint powered by vLLM"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "vllm==0.26.0",
+    "vllm==0.27.1",
 ]
 
 [tool.uv]
@@ -15,7 +15,7 @@ package = false
 
 # Use uv's own managed (python-build-standalone) CPython instead of the host's
 # /usr/bin/python3. The system interpreter has no development headers, so
-# Triton's runtime JIT (used by Qwen3-Next's linear-attention kernels) fails to
+# Triton's runtime JIT (used by Qwen3.8's linear-attention kernels) fails to
 # compile with: "fatal error: Python.h: No such file or directory". The managed
 # builds bundle the headers. Also enforced via UV_PYTHON_PREFERENCE=only-managed
 # and UV_PYTHON=3.12 in .dollardeploy.yml.

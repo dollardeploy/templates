@@ -7,12 +7,12 @@ Run an OpenAI-compatible inference endpoint with vLLM natively via systemd — n
 ## What you get
 
 - An OpenAI Chat Completions-compatible endpoint served by [vLLM](https://github.com/vllm-project/vllm)
-- Qwen/Qwen3-Coder-Next across 2 GPUs with tensor parallelism and tool-calling support
+- Qwen/Qwen3.8-27B-FP8 on a single FP8-native GPU with tool-calling support
 - Runs natively under systemd — no Docker layer
 
 ## Requirements
 
-- A GPU server with **NVIDIA drivers already installed** (Verda 2xA100, 2xH100, or similar). No CUDA toolkit install is needed — but the driver must be present.
+- A GPU server with **NVIDIA drivers already installed** and **native FP8 support** (Hopper or newer — Verda 1xH200, or scale to 2x/4x/8x for larger models). No CUDA toolkit install is needed — but the driver must be present.
 - `HF_TOKEN` set to a HuggingFace token for gated model downloads.
 
 ## How it works
@@ -22,7 +22,7 @@ Dependencies are declared in a native uv [`pyproject.toml`](./pyproject.toml) an
 | Phase | Command |
 | --- | --- |
 | preStart | installs [uv](https://astral.sh/uv) |
-| start | `uv sync && uv run vllm serve Qwen/Qwen3-Coder-Next --tensor-parallel-size 2 …` |
+| start | `uv sync && uv run vllm serve Qwen/Qwen3.8-27B-FP8 --tensor-parallel-size 1 …` |
 
 ### PyTorch / driver matching
 
@@ -38,7 +38,7 @@ RuntimeError: Failed to infer device type ... vLLM is running on UnspecifiedPlat
 ### Managed Python & writable caches
 
 `UV_PYTHON_PREFERENCE=only-managed` makes uv use its own standalone CPython, which ships the
-development headers Triton needs to JIT-compile Qwen3-Next's linear-attention kernels (the host's
+development headers Triton needs to JIT-compile Qwen3.8's linear-attention kernels (the host's
 `/usr/bin/python3` has none, so the build fails with `fatal error: Python.h: No such file or
 directory`). Because the systemd unit runs with a read-only filesystem, `startCmd` points uv's
 Python install dir and the uv/Triton caches at the app's writable, backup-excluded `cache/`
@@ -49,13 +49,21 @@ would hide `/dev/nvidia*`).
 
 ## Tuning
 
-- **GPU count:** change `--tensor-parallel-size` in `startCmd` to match the number of GPUs on your server.
-- **Model:** replace `Qwen/Qwen3-Coder-Next` in `startCmd` with any vLLM-supported model.
+- **GPU count:** set `TENSOR_PARALLEL_SIZE` (env) to match the number of GPUs on your server.
+- **Model:** set `MODEL_NAME` (env) to any vLLM-supported model, and `MODEL_CALL_PARSER` to its matching tool-call parser (e.g. `qwen3_xml` for Qwen3.x, `glm45` for GLM, `kimi_k2`/`kimi_k3` for Kimi).
+
+### Sizing (FP8, single request)
+
+| Model | Params | GPUs (Verda) |
+| --- | --- | --- |
+| Qwen/Qwen3.8-27B-FP8 | 27B dense | 1× H200 141GB |
+| zai-org/GLM-5.2-FP8 | ~355B MoE | 4× H200 / 4× B200 |
+| moonshotai/Kimi-K3 | ~1T MoE | 8× B200 |
 
 ## Usage
 
 ```bash
 curl https://<your-app-url>/v1/chat/completions \
   -H "Content-Type: application/json" \
-  -d '{"model": "Qwen/Qwen3-Coder-Next", "messages": [{"role": "user", "content": "Hello"}]}'
+  -d '{"model": "Qwen/Qwen3.8-27B-FP8", "messages": [{"role": "user", "content": "Hello"}]}'
 ```

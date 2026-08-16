@@ -11,19 +11,20 @@ tags:
 deployTime: ~15 minutes
 description: |
   Deploy an OpenAI & Claude compatible REST API endpoint using vLLM with GPU
-  acceleration — running natively under systemd instead of Docker. This template
-  runs Qwen/Qwen3-Coder-Next across 2 GPUs with tensor parallelism, tool calling
-  support, and HuggingFace model caching.
+  acceleration — running natively under systemd instead of Docker. Out of the box
+  this template serves Qwen/Qwen3.8-27B-FP8 on a single FP8-native GPU with
+  tool calling support and HuggingFace model caching.
 
-  The endpoint is fully compatible with the OpenAI  /v1/chat/completions and Claude /v1/messages, 
+  The endpoint is fully compatible with the OpenAI  /v1/chat/completions and Claude /v1/messages,
   making it a drop-in replacement for any OpenAI compatible SDK client.
 
-  Use a GPU server with NVIDIA drivers already installed (e.g. Verda 2xA100, 2xH100,
-  or similar). Dependencies are managed with uv from a native pyproject.toml, and
-  uv auto-selects the PyTorch CUDA wheels matching the host driver (CUDA 12.9 / 13.0),
+  Use a GPU server with NVIDIA drivers already installed and native FP8 support
+  (Hopper or newer — e.g. Verda 1xH200, or scale to 2x/4x/8x for larger models).
+  Dependencies are managed with uv from a native pyproject.toml, and uv
+  auto-selects the PyTorch CUDA wheels matching the host driver (CUDA 12.9 / 13.0),
   so no CUDA toolkit install is required. Set HF_TOKEN to your HuggingFace token to
-  download gated models, and adjust the tensor-parallel size in the start command to
-  match your GPU count.
+  download gated models, and set MODEL_NAME and TENSOR_PARALLEL_SIZE to match the
+  model and GPU count.
 
   This template is experimental — verify the deployment on your own GPU server
   before relying on it.
@@ -31,9 +32,9 @@ requirements:
   memory: 32768
   cpu: 8
   storage: 300
-  gpu: 
-    model: H100
-    count: 2
+  gpu:
+    model: H200
+    count: 1
 app:
   type: native
   repositoryUrl: https://github.com/dollardeploy/templates
@@ -62,12 +63,12 @@ app:
     HF_TOKEN: ""
     APP_HEALTHCHECK_PATH: "/health"
     APP_READY_TIMEOUT: 1800
-    MODEL_NAME: "Qwen/Qwen3-Coder-Next"
-    MODEL_CALL_PARSER: "qwen3_coder"
+    MODEL_NAME: "Qwen/Qwen3.8-27B-FP8"
+    MODEL_CALL_PARSER: "qwen3_xml"
     UV_TORCH_BACKEND: "auto"
     UV_PYTHON: "3.12"
     UV_PYTHON_PREFERENCE: "only-managed"
-    TENSOR_PARALLEL_SIZE: "2"
+    TENSOR_PARALLEL_SIZE: "1"
     NGINX_STATIC_PATHS: "/:web"
     VLLM_API_KEY: ${GENERATED_HASH}
     VLLM_CACHE_ROOT: "cache"
