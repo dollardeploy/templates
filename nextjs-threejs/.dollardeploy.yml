@@ -1,0 +1,22 @@
+id: nextjs-threejs
+name: Next.js Example - Three.js
+tags:
+  - example
+  - nextjs
+  - javascript
+intro: Example of using NextJS with Three.js
+logo: "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png"
+deployTime: "~1 minute"
+description: This example nicely shows how we can deploy NextJS apps to any host. It
+  demonstrates using NextJS with Three.js, a lightweight, 3D library with a default
+  WebGL renderer.
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+app:
+  repositoryUrl: "https://github.com/vercel/next.js"
+  sourcePath: /examples/with-three-js
+  type: next
+  env:
+    PORT: "3004"
