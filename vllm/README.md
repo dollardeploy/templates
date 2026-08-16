@@ -41,11 +41,23 @@ RuntimeError: Failed to infer device type ... vLLM is running on UnspecifiedPlat
 development headers Triton needs to JIT-compile Qwen3.8's linear-attention kernels (the host's
 `/usr/bin/python3` has none, so the build fails with `fatal error: Python.h: No such file or
 directory`). Because the systemd unit runs with a read-only filesystem, `startCmd` points uv's
-Python install dir and the uv/Triton caches at the app's writable, backup-excluded `cache/`
-directory (`UV_PYTHON_INSTALL_DIR`, `UV_CACHE_DIR`, `TRITON_CACHE_DIR`).
+Python install dir and the uv/Triton/HF caches — plus `TMPDIR` — at the app's writable,
+backup-excluded `cache/` directory (`UV_PYTHON_INSTALL_DIR`, `UV_CACHE_DIR`, `TRITON_CACHE_DIR`,
+`HF_HOME`, `TMPDIR`). The paths are resolved from `$(pwd)` at runtime rather than a baked `$PWD`,
+so they land in the app directory on root-home hosts (Verda/DataCrunch deploy as root under `/app`).
+`SYSTEMD_EXEC_PATHS=/app` grants that tree write access.
 
 GPU device access is granted to the service via `SYSTEMD_PRIVATE_DEVICES=false` (a private `/dev`
 would hide `/dev/nvidia*`).
+
+### FP8 / linear-attention kernels without a CUDA toolkit
+
+vLLM's DeepGEMM path and FlashInfer's Gated-Delta-Net (linear attention) prefill kernel JIT-compile
+with `nvcc` at engine startup. On a driver-only image with a read-only `/tmp` this fails with
+`nvcc fatal : Could not open output file` or `NVCC compilation failed`. Two settings avoid the
+`nvcc` dependency: `VLLM_USE_DEEP_GEMM=0` / `VLLM_MOE_USE_DEEP_GEMM=0` (fall back to vLLM's prebuilt
+CUTLASS FP8 kernels) and `--gdn-prefill-backend triton` (Triton compiles with the managed-Python
+headers instead). A writable `TMPDIR` (above) covers anything that still shells out to `nvcc`.
 
 ## Tuning
 

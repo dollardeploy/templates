@@ -45,14 +45,20 @@ app:
   preStartCmd: curl -LsSf https://astral.sh/uv/install.sh | sh
   startCmd: >-
     rm -Rf .venv &&
-    export UV_PYTHON_INSTALL_DIR="$PWD/cache/uv-python"
-    UV_CACHE_DIR="$PWD/cache/uv"
-    TRITON_CACHE_DIR="$PWD/cache/triton" &&
+    export APP_DIR="$(pwd)" &&
+    mkdir -p "$APP_DIR/cache/uv" "$APP_DIR/cache/uv-python" "$APP_DIR/cache/triton"
+    "$APP_DIR/cache/huggingface" "$APP_DIR/cache/tmp" &&
+    export TMPDIR="$APP_DIR/cache/tmp"
+    HF_HOME="$APP_DIR/cache/huggingface"
+    UV_PYTHON_INSTALL_DIR="$APP_DIR/cache/uv-python"
+    UV_CACHE_DIR="$APP_DIR/cache/uv"
+    TRITON_CACHE_DIR="$APP_DIR/cache/triton" &&
     uv sync &&
     uv run vllm serve ${MODEL_NAME}
     --host 127.0.0.1
     --port ${PORT}
     --tensor-parallel-size ${TENSOR_PARALLEL_SIZE}
+    --gdn-prefill-backend triton
     --enable-auto-tool-choice --tool-call-parser ${MODEL_CALL_PARSER}
     --api-key ${VLLM_API_KEY}
     --mm-processor-cache-gb ${MM_PROCESSOR_CACHE_GB}
@@ -76,10 +82,18 @@ app:
     VLLM_LOGGING_LEVEL: "INFO"
     VLLM_CONFIGURE_LOGGING: "1"
     MM_PROCESSOR_CACHE_GB: 8
+    # DeepGEMM and FlashInfer JIT-compile FP8/linear-attention kernels with nvcc.
+    # Disable DeepGEMM (vLLM falls back to prebuilt CUTLASS FP8 kernels) and use
+    # the Triton GDN prefill backend (--gdn-prefill-backend triton) so the deploy
+    # doesn't depend on nvcc + a writable /tmp.
+    VLLM_USE_DEEP_GEMM: "0"
+    VLLM_MOE_USE_DEEP_GEMM: "0"
     SYSTEMD_PRIVATE_DEVICES: "false"
     SYSTEMD_PRIVATE_TMP: "false"
     SYSTEMD_LIMIT_NOFILE: "65535"
-    SYSTEMD_EXEC_PATHS: "/app/.triton /home/ubuntu/.triton"
+    # Verda/DataCrunch GPU hosts deploy as root under /app; grant that tree write
+    # access so the app's cache/ dir (uv, triton, HF, tmp) is writable.
+    SYSTEMD_EXEC_PATHS: "/app"
 postLaunchNote: |
     WARNING: You might need to add your HF_TOKEN to the environment variables to download the model. 
     Change it in the app env variables and redeploy. 
