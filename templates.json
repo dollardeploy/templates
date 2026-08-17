@@ -1919,6 +1919,62 @@
     "updatedAt": "2025-12-21T13:02:32+01:00"
   },
   {
+    "id": "nextjs-startup",
+    "name": "Next.js Startup",
+    "intro": "Free NextJS template SaaS starter",
+    "tags": [
+      "template",
+      "nextjs",
+      "typescript"
+    ],
+    "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+    "deployTime": "~1 minute",
+    "description": "Free version of NextJS SaaS starter template. See more here https://nextjstemplates.com/templates/saas-starter-startup",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "app": {
+      "repositoryUrl": "https://github.com/NextJSTemplates/startup-nextjs",
+      "type": "next",
+      "installCmd": "npm install",
+      "env": {
+        "PORT": "3002"
+      }
+    },
+    "createdAt": "2026-08-17T08:27:41+03:00",
+    "updatedAt": "2026-08-17T08:27:41+03:00"
+  },
+  {
+    "id": "nextjs-threejs",
+    "name": "Next.js Example - Three.js",
+    "tags": [
+      "example",
+      "nextjs",
+      "javascript"
+    ],
+    "intro": "Example of using NextJS with Three.js",
+    "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+    "deployTime": "~1 minute",
+    "description": "This example nicely shows how we can deploy NextJS apps to any host. It demonstrates using NextJS with Three.js, a lightweight, 3D library with a default WebGL renderer.",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "app": {
+      "repositoryUrl": "https://github.com/vercel/next.js",
+      "sourcePath": "/examples/with-three-js",
+      "type": "next",
+      "env": {
+        "PORT": "3004"
+      }
+    },
+    "createdAt": "2026-08-17T08:27:41+03:00",
+    "updatedAt": "2026-08-17T08:27:41+03:00"
+  },
+  {
     "id": "nodebb",
     "name": "NodeBB",
     "intro": "Next generation community forum software. It's powerful, mobile-ready and easy to use.",
@@ -3113,6 +3169,41 @@
     },
     "createdAt": "2026-07-16T05:06:31+03:00",
     "updatedAt": "2026-07-16T05:06:31+03:00"
+  },
+  {
+    "id": "vercel-commerce",
+    "name": "Vercel Commerce",
+    "tags": [
+      "template"
+    ],
+    "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+    "intro": "The fastest way to build an online store with Next.js and Vercel.",
+    "experimental": true,
+    "deployTime": "~1 minute",
+    "description": "Example template of NextJS based commerce app.\n\nFIXME: Requires shopify credentials or else it will fail to start.\n",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "app": {
+      "repositoryUrl": "https://github.com/vercel/commerce",
+      "sourceBranch": "main",
+      "type": "next",
+      "env": {
+        "NEXT_PUBLIC_VERCEL_URL": "${APP_URL}",
+        "PORT": "3002",
+        "COMPANY_NAME": "Example Inc.",
+        "TWITTER_CREATOR": "@example",
+        "TWITTER_SITE": "https://example.com",
+        "SITE_NAME": "Next.js Commerce with DollarDeply",
+        "SHOPIFY_REVALIDATION_SECRET": "changeme",
+        "SHOPIFY_STOREFRONT_ACCESS_TOKEN": "changeme",
+        "SHOPIFY_STORE_DOMAIN": "changeme.myshopify.com"
+      }
+    },
+    "createdAt": "2026-08-17T08:27:41+03:00",
+    "updatedAt": "2026-08-17T08:27:41+03:00"
   },
   {
     "id": "victorialogs",
