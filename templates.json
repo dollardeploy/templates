@@ -547,6 +547,7 @@
         "WEB_DEFAULT_API": "${APP_URL}",
         "WEB_HOST": "${APP_HOSTNAME}",
         "JWT_SECRET": "${GENERATED_HASH}",
+        "API_AUTH_REQUIRED": "0",
         "TURNSTILE_SITEKEY": "",
         "TURNSTILE_SECRET": "",
         "RATELIMIT_WINDOW": "60",
@@ -556,9 +557,9 @@
         "APP_READY_TIMEOUT": "900"
       }
     },
-    "postLaunchNote": "Open **${APP_URL}** and paste a link — that's the whole app, running on your\nown instance. The same URL is also the processing API — point another cobalt\nclient at it, or `POST` to it with `{\"url\": \"...\"}` from a script.\n\nIt's public by default. To gate it, set `TURNSTILE_SITEKEY` and\n`TURNSTILE_SECRET` in the app's environment and redeploy.\n\nFirst deploy builds the frontend from source, so give it a few extra minutes.\n",
+    "postLaunchNote": "Open **${APP_URL}** and paste a link — that's the whole app, running on your\nown instance. The same URL is also the processing API — point another cobalt\nclient at it, or `POST` to it with `{\"url\": \"...\"}` from a script.\n\nIt's public by default. To lock it down, set `API_AUTH_REQUIRED` to `1` — then\nonly requests carrying the API key in `keys/keys.json` (printed in the\n`keygen` deploy logs) get through. Paste that UUID into settings → processing\n→ instance access key. `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET` gate browser\nusers instead.\n\nFirst deploy builds the frontend from source, so give it a few extra minutes.\n",
     "createdAt": "2026-08-14T22:58:57+03:00",
-    "updatedAt": "2026-08-15T00:11:38+03:00"
+    "updatedAt": "2026-08-15T00:57:15+03:00"
   },
   {
     "id": "cobalt-instance",
