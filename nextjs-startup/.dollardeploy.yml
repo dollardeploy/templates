@@ -1,0 +1,20 @@
+id: nextjs-startup
+name: Next.js Startup
+intro: Free NextJS template SaaS starter
+tags:
+  - template
+  - nextjs
+  - typescript
+logo: "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png"
+deployTime: "~1 minute"
+description: Free version of NextJS SaaS starter template. See more here https://nextjstemplates.com/templates/saas-starter-startup
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+app:
+  repositoryUrl: "https://github.com/NextJSTemplates/startup-nextjs"
+  type: next
+  installCmd: npm install
+  env:
+    PORT: "3002"
