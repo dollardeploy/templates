@@ -1,0 +1,60 @@
+id: tangled-appview
+name: Tangled Appview
+experimental: true
+intro: Self-hosted web frontend for Tangled — repos, issues and pull requests over AT Protocol.
+logo: https://tangled.org/static/logos/dolly.svg
+tags:
+  - git
+  - vcs
+  - atproto
+  - developer-tools
+  - oss
+  - experimental
+deployTime: ~25 minutes
+description: |
+  The appview is the web half of [Tangled](https://tangled.org): repo browsing,
+  issues, pull requests, timelines and OAuth login. It holds no git data — code
+  lives on knots (see the **Tangled Knot** template), and identity lives on each
+  user's AT Protocol PDS. This instance just indexes the firehose and renders it.
+
+  Users sign in with their existing Bluesky/atproto handle, so no local accounts
+  are created. `DEFAULT_KNOT` picks the knot offered when someone creates a repo
+  — point it at your own knot's domain if you run one.
+
+  A cookie secret and an OAuth client key are generated per deploy and kept in
+  the data volume, so sessions survive redeploys.
+
+  Everything is compiled from the upstream Nix flake at deploy time, which is
+  slow (roughly 15–25 minutes) and disk-hungry on first launch.
+
+  Experimental — Tangled is alpha and the appview is not documented for
+  self-hosting. Verify the deploy before relying on it.
+requirements:
+  memory: 4096
+  cpu: 2
+  storage: 30
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: tangled-appview
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  mainPort: 3000
+  env:
+    PORT: "3000"
+    APPVIEW_NAME: Tangled
+    COOKIE_SECRET: ${GENERATED_HASH}
+    TANGLED_VERSION: v1.16.1-alpha
+    DEFAULT_KNOT: ""
+    PLC_URL: https://plc.directory
+    JETSTREAM_ENDPOINT: wss://jetstream1.us-east.bsky.network/subscribe
+    DOCKER_COMPOSE_BUILD: 1
+    APP_READY_TIMEOUT: "2400"
+postLaunchNote: |
+  Your appview is at ${APP_URL}. Sign in with any atproto handle — accounts come
+  from the network, not from this server.
+
+  Set `DEFAULT_KNOT` to your knot's domain if you deployed the **Tangled Knot**
+  template, otherwise new repos land on the public default knot.

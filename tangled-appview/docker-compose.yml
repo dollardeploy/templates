@@ -1,0 +1,40 @@
+services:
+  appview:
+    build:
+      context: .
+      args:
+        TAG: ${TANGLED_VERSION:-v1.16.1-alpha}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PORT}:3000"
+    environment:
+      TANGLED_APPVIEW_HOST: ${APP_HOSTNAME}
+      TANGLED_APPVIEW_NAME: ${APPVIEW_NAME:-Tangled}
+      TANGLED_COOKIE_SECRET: ${COOKIE_SECRET}
+      TANGLED_LISTEN_ADDR: 0.0.0.0:3000
+      TANGLED_DB_PATH: /var/lib/appview/appview.db
+      TANGLED_REDIS_ADDR: redis:6379
+      TANGLED_PLC_URL: ${PLC_URL:-https://plc.directory}
+      TANGLED_JETSTREAM_ENDPOINT: ${JETSTREAM_ENDPOINT:-wss://jetstream1.us-east.bsky.network/subscribe}
+      TANGLED_KNOT_DEFAULT: ${DEFAULT_KNOT}
+    volumes:
+      - appview-data:/var/lib/appview
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --save 60 1
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  appview-data:
+  redis-data:
