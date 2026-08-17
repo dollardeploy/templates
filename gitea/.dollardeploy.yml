@@ -1,6 +1,5 @@
 id: gitea
 name: Gitea
-experimental: true
 intro: Lightweight, self-hosted Git service — a fast alternative to GitHub/GitLab.
 logo: https://raw.githubusercontent.com/go-gitea/gitea/main/public/assets/img/logo.svg
 tags:
@@ -8,7 +7,6 @@ tags:
   - vcs
   - developer-tools
   - oss
-  - experimental
 deployTime: ~3 minutes
 description: |
   Gitea is a painless, lightweight, self-hosted Git service written in Go.
@@ -18,10 +16,8 @@ description: |
   This template runs Gitea backed by a PostgreSQL database. Repository and
   database data are persisted to local volumes. Git over HTTPS works through the
   app URL out of the box; Git over SSH is exposed on the host port SSH_PORT
-  (default 2222) — open that port in your server firewall to use it.
-
-  This template is experimental — verify the deployment on your own server
-  before relying on it.
+  (default 2222), which the deploy opens in the host firewall for you. A
+  firewall at your cloud provider still needs the rule added by hand.
 requirements:
   memory: 1024
   cpu: 1
@@ -35,6 +31,8 @@ app:
   sourceBranch: main
   dockerComposeFile: docker-compose.yml
   mainPort: 3000
+  # opens the git-over-ssh port when the host runs the firewall service
+  preStartCmd: sudo ufw status >/dev/null 2>&1 && sudo ufw allow ${SSH_PORT}/tcp || true
   env:
     PORT: "3000"
     SSH_PORT: "2222"

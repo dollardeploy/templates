@@ -1,7 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dollardeploy/.github/refs/heads/main/template.schema.json
 id: cobalt-instance
 name: Cobalt Instance
-experimental: true
 intro: Your own cobalt processing instance — the API that saves media, no frontend.
 logo: https://avatars.githubusercontent.com/u/152056268
 deployTime: ~2 minutes

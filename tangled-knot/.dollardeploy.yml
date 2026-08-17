@@ -21,9 +21,11 @@ description: |
   Settings → Knots on tangled.org, add this app's domain and hit **verify**;
   that writes the `sh.tangled.knot` record on your PDS which announces the knot.
 
-  Git over SSH is published on host port `SSH_PORT` (default 2222) — open it in
-  your firewall and clone with `ssh://git@<domain>:2222/...`. Set it to `22` if
-  nothing else uses that port, so plain `git@<domain>` URLs work.
+  Git over SSH is published on host port `SSH_PORT` (default 2222); clone with
+  `ssh://git@<domain>:2222/...`. Set it to `22` if nothing else uses that port,
+  so plain `git@<domain>` URLs work. The deploy opens the port in the host
+  firewall automatically — a firewall at your cloud provider (Hetzner Cloud
+  firewall, AWS security group) still needs the rule added by hand.
 
   The knot is compiled from source on deploy (`KNOT_VERSION` pins the tag), so
   first launch takes several minutes.
@@ -42,6 +44,8 @@ app:
   sourceBranch: main
   dockerComposeFile: docker-compose.yml
   mainPort: 5555
+  # opens the git-over-ssh port when the host runs the firewall service
+  preStartCmd: sudo ufw status >/dev/null 2>&1 && sudo ufw allow ${SSH_PORT}/tcp || true
   env:
     PORT: "5555"
     SSH_PORT: "2222"
@@ -55,4 +59,5 @@ postLaunchNote: |
 
   1. Tangled → Settings → Knots → add `${APP_HOSTNAME}` → **verify**.
   2. Make sure `KNOT_SERVER_OWNER` holds your DID (empty = no repo creation).
-  3. Open port ${SSH_PORT} in your firewall for git over SSH.
+  3. If your cloud provider has its own firewall, allow port ${SSH_PORT} there —
+     the host firewall rule is added for you.

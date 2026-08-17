@@ -1,6 +1,5 @@
 id: vaultwarden
 name: Vaultwarden
-experimental: true
 intro: Lightweight, self-hosted password manager compatible with Bitwarden clients.
 logo: https://raw.githubusercontent.com/dani-garcia/vaultwarden/main/resources/vaultwarden-icon.svg
 tags:
@@ -8,7 +7,6 @@ tags:
   - security
   - bitwarden
   - oss
-  - experimental
 deployTime: ~2 minutes
 description: |
   Vaultwarden is an unofficial, lightweight implementation of the Bitwarden
@@ -19,9 +17,6 @@ description: |
   Data is persisted to a local volume. After the first deploy, open the app,
   create your account, then set SIGNUPS_ALLOWED to false to lock down
   registration. Set ADMIN_TOKEN to enable the /admin panel.
-
-  This template is experimental — verify the deployment on your own server
-  before relying on it for production secrets.
 requirements:
   memory: 512
   cpu: 1

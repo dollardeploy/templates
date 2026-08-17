@@ -1,6 +1,5 @@
 id: ntfy
 name: ntfy
-experimental: true
 intro: Send push notifications to your phone or desktop from any script via a simple HTTP PUT/POST.
 logo: https://raw.githubusercontent.com/binwiederhier/ntfy/main/web/public/static/images/pwa-512x512.png
 tags:
@@ -8,7 +7,6 @@ tags:
   - pub-sub
   - developer-tools
   - oss
-  - experimental
 deployTime: ~1 minute
 description: |
   ntfy (pronounced "notify") is a simple, HTTP-based pub-sub notification
@@ -19,9 +17,6 @@ description: |
   database are persisted to a local volume. By default the server is open
   (read-write); set AUTH_DEFAULT_ACCESS to deny-all and create users with the
   ntfy CLI to lock it down.
-
-  This template is experimental — verify the deployment on your own server
-  before relying on it.
 requirements:
   memory: 512
   cpu: 1
