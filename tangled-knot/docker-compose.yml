@@ -1,0 +1,29 @@
+services:
+  knot:
+    # ponytail: build from the upstream knot-docker context — no vendored
+    # Dockerfile/s6 tree here, and the published images are a year stale.
+    build:
+      context: https://tangled.org/@tangled.org/knot-docker.git
+      args:
+        TAG: ${KNOT_VERSION:-v1.16.1-alpha}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PORT}:5555"
+      - "${SSH_PORT}:22" # git over ssh
+    environment:
+      KNOT_SERVER_HOSTNAME: ${APP_HOSTNAME}
+      KNOT_SERVER_OWNER: ${KNOT_SERVER_OWNER}
+      APPVIEW_ENDPOINT: ${APPVIEW_ENDPOINT:-https://tangled.org}
+      KNOT_SERVER_DB_PATH: /app/knotserver.db
+      KNOT_REPO_SCAN_PATH: /home/git/repositories
+      KNOT_SERVER_INTERNAL_LISTEN_ADDR: localhost:5444
+    volumes:
+      # named volumes, not binds: they inherit the image's git:git ownership
+      - keys:/etc/ssh/keys
+      - repositories:/home/git/repositories
+      - server:/app
+
+volumes:
+  keys:
+  repositories:
+  server:
