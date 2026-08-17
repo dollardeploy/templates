@@ -1,6 +1,6 @@
 id: vllm
 name: vLLM
-intro: Run an OpenAI & Claude inference endpoint with vLLM 
+intro: Run an OpenAI & Claude inference endpoint with vLLM
 logo: https://avatars.githubusercontent.com/u/136984999
 tags:
   - ai
@@ -11,19 +11,20 @@ tags:
 deployTime: ~15 minutes
 description: |
   Deploy an OpenAI & Claude compatible REST API endpoint using vLLM with GPU
-  acceleration — running natively under systemd instead of Docker. This template
-  runs Qwen/Qwen3-Coder-Next across 2 GPUs with tensor parallelism, tool calling
-  support, and HuggingFace model caching.
+  acceleration — running natively under systemd instead of Docker. Out of the box
+  this template serves Qwen/Qwen3.8-27B-FP8 on a single FP8-native GPU with
+  tool calling support and HuggingFace model caching.
 
-  The endpoint is fully compatible with the OpenAI  /v1/chat/completions and Claude /v1/messages, 
+  The endpoint is fully compatible with the OpenAI  /v1/chat/completions and Claude /v1/messages,
   making it a drop-in replacement for any OpenAI compatible SDK client.
 
-  Use a GPU server with NVIDIA drivers already installed (e.g. Verda 2xA100, 2xH100,
-  or similar). Dependencies are managed with uv from a native pyproject.toml, and
-  uv auto-selects the PyTorch CUDA wheels matching the host driver (CUDA 12.9 / 13.0),
+  Use a GPU server with NVIDIA drivers already installed and native FP8 support
+  (Hopper or newer — e.g. Verda 1xH200, or scale to 2x/4x/8x for larger models).
+  Dependencies are managed with uv from a native pyproject.toml, and uv
+  auto-selects the PyTorch CUDA wheels matching the host driver (CUDA 12.9 / 13.0),
   so no CUDA toolkit install is required. Set HF_TOKEN to your HuggingFace token to
-  download gated models, and adjust the tensor-parallel size in the start command to
-  match your GPU count.
+  download gated models, and set MODEL_NAME and TENSOR_PARALLEL_SIZE to match the
+  model and GPU count.
 
   This template is experimental — verify the deployment on your own GPU server
   before relying on it.
@@ -31,9 +32,9 @@ requirements:
   memory: 32768
   cpu: 8
   storage: 300
-  gpu: 
-    model: H100
-    count: 2
+  gpu:
+    model: H200
+    count: 1
 app:
   type: native
   repositoryUrl: https://github.com/dollardeploy/templates
@@ -44,14 +45,21 @@ app:
   preStartCmd: curl -LsSf https://astral.sh/uv/install.sh | sh
   startCmd: >-
     rm -Rf .venv &&
-    export UV_PYTHON_INSTALL_DIR="$PWD/cache/uv-python"
-    UV_CACHE_DIR="$PWD/cache/uv"
-    TRITON_CACHE_DIR="$PWD/cache/triton" &&
+    export APP_DIR="$(pwd)" &&
+    mkdir -p "$APP_DIR/cache/uv" "$APP_DIR/cache/uv-python" "$APP_DIR/cache/triton"
+    "$APP_DIR/cache/huggingface" "$APP_DIR/cache/tmp" "$APP_DIR/cache/nv" &&
+    export TMPDIR="$APP_DIR/cache/tmp"
+    HF_HOME="$APP_DIR/cache/huggingface"
+    UV_PYTHON_INSTALL_DIR="$APP_DIR/cache/uv-python"
+    UV_CACHE_DIR="$APP_DIR/cache/uv"
+    TRITON_CACHE_DIR="$APP_DIR/cache/triton"
+    CUDA_CACHE_PATH="$APP_DIR/cache/nv" &&
     uv sync &&
     uv run vllm serve ${MODEL_NAME}
     --host 127.0.0.1
     --port ${PORT}
     --tensor-parallel-size ${TENSOR_PARALLEL_SIZE}
+    --gdn-prefill-backend triton
     --enable-auto-tool-choice --tool-call-parser ${MODEL_CALL_PARSER}
     --api-key ${VLLM_API_KEY}
     --mm-processor-cache-gb ${MM_PROCESSOR_CACHE_GB}
@@ -62,12 +70,12 @@ app:
     HF_TOKEN: ""
     APP_HEALTHCHECK_PATH: "/health"
     APP_READY_TIMEOUT: 1800
-    MODEL_NAME: "Qwen/Qwen3-Coder-Next"
-    MODEL_CALL_PARSER: "qwen3_coder"
+    MODEL_NAME: "Qwen/Qwen3.8-27B-FP8"
+    MODEL_CALL_PARSER: "qwen3_xml"
     UV_TORCH_BACKEND: "auto"
     UV_PYTHON: "3.12"
     UV_PYTHON_PREFERENCE: "only-managed"
-    TENSOR_PARALLEL_SIZE: "2"
+    TENSOR_PARALLEL_SIZE: "1"
     NGINX_STATIC_PATHS: "/:web"
     VLLM_API_KEY: ${GENERATED_HASH}
     VLLM_CACHE_ROOT: "cache"
@@ -75,11 +83,21 @@ app:
     VLLM_LOGGING_LEVEL: "INFO"
     VLLM_CONFIGURE_LOGGING: "1"
     MM_PROCESSOR_CACHE_GB: 8
+    # DeepGEMM and FlashInfer JIT-compile FP8/linear-attention kernels with nvcc.
+    # Disable DeepGEMM (vLLM falls back to prebuilt CUTLASS FP8 kernels) and use
+    # the Triton GDN prefill backend (--gdn-prefill-backend triton) so the deploy
+    # doesn't depend on nvcc + a writable /tmp.
+    VLLM_USE_DEEP_GEMM: "0"
+    VLLM_MOE_USE_DEEP_GEMM: "0"
     SYSTEMD_PRIVATE_DEVICES: "false"
-    SYSTEMD_PRIVATE_TMP: "false"
+    # Keep DollarDeploy's default PrivateTmp=true: ProtectSystem=strict makes the
+    # real /tmp read-only, so a private (writable) /tmp is what lets nvcc and other
+    # JIT compilers write their scratch files. Don't set this to "false".
+    SYSTEMD_PRIVATE_TMP: "true"
     SYSTEMD_LIMIT_NOFILE: "65535"
-    SYSTEMD_EXEC_PATHS: "/app/.triton /home/ubuntu/.triton"
+    # Verda/DataCrunch GPU hosts deploy as root under /app; grant that tree write
+    # access so the app's cache/ dir (uv, triton, HF, tmp) is writable.
+    SYSTEMD_EXEC_PATHS: "/app"
 postLaunchNote: |
-    WARNING: You might need to add your HF_TOKEN to the environment variables to download the model. 
-    Change it in the app env variables and redeploy. 
-  
+  WARNING: You might need to add your HF_TOKEN to the environment variables to download the model. 
+  Change it in the app env variables and redeploy.
