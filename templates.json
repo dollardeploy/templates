@@ -2822,6 +2822,51 @@
     "updatedAt": "2026-07-04T10:24:43+03:00"
   },
   {
+    "id": "tangled-knot",
+    "name": "Tangled Knot",
+    "experimental": true,
+    "intro": "Self-hosted git server for Tangled, the AT Protocol social coding platform.",
+    "logo": "https://tangled.org/static/logos/dolly.svg",
+    "tags": [
+      "git",
+      "vcs",
+      "atproto",
+      "developer-tools",
+      "oss",
+      "experimental"
+    ],
+    "deployTime": "~10 minutes",
+    "description": "A knot is the headless git server behind [Tangled](https://tangled.org) — the\nsocial coding platform built on the AT Protocol. Your repositories live on\nyour own server; issues, pull requests and identity stay on the network.\n\nSet `KNOT_SERVER_OWNER` to your DID (Tangled → Settings) before deploying —\nthe knot refuses to accept repos without it. After it boots, go to\nSettings → Knots on tangled.org, add this app's domain and hit **verify**;\nthat writes the `sh.tangled.knot` record on your PDS which announces the knot.\n\nGit over SSH is published on host port `SSH_PORT` (default 2222) — open it in\nyour firewall and clone with `ssh://git@<domain>:2222/...`. Set it to `22` if\nnothing else uses that port, so plain `git@<domain>` URLs work.\n\nThe knot is compiled from source on deploy (`KNOT_VERSION` pins the tag), so\nfirst launch takes several minutes.\n\nExperimental — Tangled itself is alpha. Verify the deploy before relying on it.\n",
+    "requirements": {
+      "memory": 2048,
+      "cpu": 2,
+      "storage": 20
+    },
+    "services": [
+      "docker"
+    ],
+    "app": {
+      "type": "docker-compose",
+      "repositoryUrl": "https://github.com/dollardeploy/templates",
+      "sourcePath": "tangled-knot",
+      "sourceBranch": "main",
+      "dockerComposeFile": "docker-compose.yml",
+      "mainPort": 5555,
+      "env": {
+        "PORT": "5555",
+        "SSH_PORT": "2222",
+        "KNOT_SERVER_OWNER": "",
+        "KNOT_VERSION": "v1.16.1-alpha",
+        "APPVIEW_ENDPOINT": "https://tangled.org",
+        "DOCKER_COMPOSE_BUILD": 1,
+        "APP_READY_TIMEOUT": "900"
+      }
+    },
+    "postLaunchNote": "Your knot is up at ${APP_URL}. Finish setup:\n\n1. Tangled → Settings → Knots → add `${APP_HOSTNAME}` → **verify**.\n2. Make sure `KNOT_SERVER_OWNER` holds your DID (empty = no repo creation).\n3. Open port ${SSH_PORT} in your firewall for git over SSH.\n",
+    "createdAt": "2026-08-17T15:21:38+03:00",
+    "updatedAt": "2026-08-17T15:21:38+03:00"
+  },
+  {
     "id": "template-deno",
     "name": "Deno app boilerplate",
     "intro": "A boilerplate for building a Deno application. Fork this repo and start building your own app quickly.",
