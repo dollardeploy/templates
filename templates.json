@@ -514,7 +514,6 @@
     "name": "Cobalt",
     "intro": "Save media from social platforms — the full cobalt web app plus its own processing instance.",
     "logo": "https://avatars.githubusercontent.com/u/152056268",
-    "experimental": true,
     "deployTime": "~8 minutes",
     "tags": [
       "media",
@@ -559,12 +558,11 @@
     },
     "postLaunchNote": "Open **${APP_URL}** and paste a link — that's the whole app, running on your\nown instance. The same URL is also the processing API — point another cobalt\nclient at it, or `POST` to it with `{\"url\": \"...\"}` from a script.\n\nIt's public by default. To lock it down, set `API_AUTH_REQUIRED` to `1` — then\nonly requests carrying the API key in `keys/keys.json` (printed in the\n`keygen` deploy logs) get through. Paste that UUID into settings → processing\n→ instance access key. `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET` gate browser\nusers instead.\n\nFirst deploy builds the frontend from source, so give it a few extra minutes.\n",
     "createdAt": "2026-08-14T22:58:57+03:00",
-    "updatedAt": "2026-08-15T00:57:15+03:00"
+    "updatedAt": "2026-08-17T15:42:35+03:00"
   },
   {
     "id": "cobalt-instance",
     "name": "Cobalt Instance",
-    "experimental": true,
     "intro": "Your own cobalt processing instance — the API that saves media, no frontend.",
     "logo": "https://avatars.githubusercontent.com/u/152056268",
     "deployTime": "~2 minutes",
@@ -607,7 +605,7 @@
     },
     "postLaunchNote": "Open **${APP_URL}** — a JSON blurb with your cobalt version means it works.\n\nTo use it from cobalt.tools: settings → instances → custom → **${APP_URL}**.\n\n**Your API key** is the UUID in `keys/keys.json` on the server (also printed\nin the `keygen` logs from the first deploy). Send it as\n`Authorization: Api-Key <uuid>`, or paste it into the frontend's api key\nfield. Edit that file to add more keys, then restart the app.\n\nThe instance is open by default. To lock it down, set `API_AUTH_REQUIRED` to\n`1` (key required), and/or fill in `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`\nfor browser users.\n",
     "createdAt": "2026-08-14T23:44:47+03:00",
-    "updatedAt": "2026-08-14T23:44:47+03:00"
+    "updatedAt": "2026-08-17T15:42:35+03:00"
   },
   {
     "id": "code-server",
@@ -1140,18 +1138,16 @@
   {
     "id": "gitea",
     "name": "Gitea",
-    "experimental": true,
     "intro": "Lightweight, self-hosted Git service — a fast alternative to GitHub/GitLab.",
     "logo": "https://raw.githubusercontent.com/go-gitea/gitea/main/public/assets/img/logo.svg",
     "tags": [
       "git",
       "vcs",
       "developer-tools",
-      "oss",
-      "experimental"
+      "oss"
     ],
     "deployTime": "~3 minutes",
-    "description": "Gitea is a painless, lightweight, self-hosted Git service written in Go.\nIt provides repository hosting, issues, pull requests, a wiki, and CI hooks\nwhile running comfortably on modest hardware.\n\nThis template runs Gitea backed by a PostgreSQL database. Repository and\ndatabase data are persisted to local volumes. Git over HTTPS works through the\napp URL out of the box; Git over SSH is exposed on the host port SSH_PORT\n(default 2222) — open that port in your server firewall to use it.\n\nThis template is experimental — verify the deployment on your own server\nbefore relying on it.\n",
+    "description": "Gitea is a painless, lightweight, self-hosted Git service written in Go.\nIt provides repository hosting, issues, pull requests, a wiki, and CI hooks\nwhile running comfortably on modest hardware.\n\nThis template runs Gitea backed by a PostgreSQL database. Repository and\ndatabase data are persisted to local volumes. Git over HTTPS works through the\napp URL out of the box; Git over SSH is exposed on the host port SSH_PORT\n(default 2222), which the deploy opens in the host firewall for you. A\nfirewall at your cloud provider still needs the rule added by hand.\n",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -1167,6 +1163,7 @@
       "sourceBranch": "main",
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 3000,
+      "preStartCmd": "sudo ufw status >/dev/null 2>&1 && sudo ufw allow ${SSH_PORT}/tcp || true",
       "env": {
         "PORT": "3000",
         "SSH_PORT": "2222",
@@ -1177,7 +1174,7 @@
       }
     },
     "createdAt": "2026-07-16T05:08:37+03:00",
-    "updatedAt": "2026-07-16T05:08:37+03:00"
+    "updatedAt": "2026-08-17T15:42:35+03:00"
   },
   {
     "id": "gpt-oss",
@@ -2021,18 +2018,16 @@
   {
     "id": "ntfy",
     "name": "ntfy",
-    "experimental": true,
     "intro": "Send push notifications to your phone or desktop from any script via a simple HTTP PUT/POST.",
     "logo": "https://raw.githubusercontent.com/binwiederhier/ntfy/main/web/public/static/images/pwa-512x512.png",
     "tags": [
       "notifications",
       "pub-sub",
       "developer-tools",
-      "oss",
-      "experimental"
+      "oss"
     ],
     "deployTime": "~1 minute",
-    "description": "ntfy (pronounced \"notify\") is a simple, HTTP-based pub-sub notification\nservice. It lets you send push notifications to your phone or desktop from any\ncomputer or script with a simple HTTP request, entirely without sign-up.\n\nThis template runs a self-hosted ntfy server. Cache, attachments, and the user\ndatabase are persisted to a local volume. By default the server is open\n(read-write); set AUTH_DEFAULT_ACCESS to deny-all and create users with the\nntfy CLI to lock it down.\n\nThis template is experimental — verify the deployment on your own server\nbefore relying on it.\n",
+    "description": "ntfy (pronounced \"notify\") is a simple, HTTP-based pub-sub notification\nservice. It lets you send push notifications to your phone or desktop from any\ncomputer or script with a simple HTTP request, entirely without sign-up.\n\nThis template runs a self-hosted ntfy server. Cache, attachments, and the user\ndatabase are persisted to a local volume. By default the server is open\n(read-write); set AUTH_DEFAULT_ACCESS to deny-all and create users with the\nntfy CLI to lock it down.\n",
     "requirements": {
       "memory": 512,
       "cpu": 1,
@@ -2056,7 +2051,7 @@
       }
     },
     "createdAt": "2026-07-16T05:09:22+03:00",
-    "updatedAt": "2026-07-16T05:09:22+03:00"
+    "updatedAt": "2026-08-17T15:42:35+03:00"
   },
   {
     "id": "openclaw",
@@ -2707,18 +2702,16 @@
   {
     "id": "stirling-pdf",
     "name": "Stirling PDF",
-    "experimental": true,
     "intro": "A locally-hosted web app to perform 50+ operations on PDFs — merge, split, convert, OCR, and more.",
     "logo": "https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/main/docs/stirling.png",
     "tags": [
       "pdf",
       "productivity",
       "tools",
-      "oss",
-      "experimental"
+      "oss"
     ],
     "deployTime": "~2 minutes",
-    "description": "Stirling PDF is a powerful, locally-hosted web application for performing a\nwide range of operations on PDF files — merging, splitting, converting,\nrotating, compressing, adding passwords, OCR, and more than 50 tools in total.\n\nEverything runs on your own server; files are processed locally and are not\nsent to any third party. Configs, logs, and OCR training data are persisted to\nlocal volumes.\n\nThis template is experimental — verify the deployment on your own server\nbefore relying on it.\n",
+    "description": "Stirling PDF is a powerful, locally-hosted web application for performing a\nwide range of operations on PDF files — merging, splitting, converting,\nrotating, compressing, adding passwords, OCR, and more than 50 tools in total.\n\nEverything runs on your own server; files are processed locally and are not\nsent to any third party. Configs, logs, and OCR training data are persisted to\nlocal volumes.\n",
     "requirements": {
       "memory": 2048,
       "cpu": 2,
@@ -2742,7 +2735,7 @@
       }
     },
     "createdAt": "2026-07-16T05:10:11+03:00",
-    "updatedAt": "2026-07-16T14:01:36+03:00"
+    "updatedAt": "2026-08-17T15:42:35+03:00"
   },
   {
     "id": "stripe-sync",
@@ -2866,7 +2859,7 @@
     },
     "postLaunchNote": "Your appview is at ${APP_URL}. Sign in with any atproto handle — accounts come\nfrom the network, not from this server.\n\nSet `DEFAULT_KNOT` to your knot's domain if you deployed the **Tangled Knot**\ntemplate, otherwise new repos land on the public default knot.\n",
     "createdAt": "2026-08-17T15:29:59+03:00",
-    "updatedAt": "2026-08-17T15:29:59+03:00"
+    "updatedAt": "2026-08-18T10:37:26+03:00"
   },
   {
     "id": "tangled-knot",
@@ -2883,7 +2876,7 @@
       "experimental"
     ],
     "deployTime": "~10 minutes",
-    "description": "A knot is the headless git server behind [Tangled](https://tangled.org) — the\nsocial coding platform built on the AT Protocol. Your repositories live on\nyour own server; issues, pull requests and identity stay on the network.\n\nSet `KNOT_SERVER_OWNER` to your DID (Tangled → Settings) before deploying —\nthe knot refuses to accept repos without it. After it boots, go to\nSettings → Knots on tangled.org, add this app's domain and hit **verify**;\nthat writes the `sh.tangled.knot` record on your PDS which announces the knot.\n\nGit over SSH is published on host port `SSH_PORT` (default 2222) — open it in\nyour firewall and clone with `ssh://git@<domain>:2222/...`. Set it to `22` if\nnothing else uses that port, so plain `git@<domain>` URLs work.\n\nThe knot is compiled from source on deploy (`KNOT_VERSION` pins the tag), so\nfirst launch takes several minutes.\n\nExperimental — Tangled itself is alpha. Verify the deploy before relying on it.\n",
+    "description": "A knot is the headless git server behind [Tangled](https://tangled.org) — the\nsocial coding platform built on the AT Protocol. Your repositories live on\nyour own server; issues, pull requests and identity stay on the network.\n\nSet `KNOT_SERVER_OWNER` to your DID (Tangled → Settings) before deploying —\nthe knot refuses to accept repos without it. After it boots, go to\nSettings → Knots on tangled.org, add this app's domain and hit **verify**;\nthat writes the `sh.tangled.knot` record on your PDS which announces the knot.\n\nGit over SSH is published on host port `SSH_PORT` (default 2222); clone with\n`ssh://git@<domain>:2222/...`. Set it to `22` if nothing else uses that port,\nso plain `git@<domain>` URLs work. The deploy opens the port in the host\nfirewall automatically — a firewall at your cloud provider (Hetzner Cloud\nfirewall, AWS security group) still needs the rule added by hand.\n\nThe knot is compiled from source on deploy (`KNOT_VERSION` pins the tag), so\nfirst launch takes several minutes.\n\nExperimental — Tangled itself is alpha. Verify the deploy before relying on it.\n",
     "requirements": {
       "memory": 2048,
       "cpu": 2,
@@ -2899,6 +2892,7 @@
       "sourceBranch": "main",
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 5555,
+      "preStartCmd": "sudo ufw status >/dev/null 2>&1 && sudo ufw allow ${SSH_PORT}/tcp || true",
       "env": {
         "PORT": "5555",
         "SSH_PORT": "2222",
@@ -2909,9 +2903,9 @@
         "APP_READY_TIMEOUT": "900"
       }
     },
-    "postLaunchNote": "Your knot is up at ${APP_URL}. Finish setup:\n\n1. Tangled → Settings → Knots → add `${APP_HOSTNAME}` → **verify**.\n2. Make sure `KNOT_SERVER_OWNER` holds your DID (empty = no repo creation).\n3. Open port ${SSH_PORT} in your firewall for git over SSH.\n",
+    "postLaunchNote": "Your knot is up at ${APP_URL}. Finish setup:\n\n1. Tangled → Settings → Knots → add `${APP_HOSTNAME}` → **verify**.\n2. Make sure `KNOT_SERVER_OWNER` holds your DID (empty = no repo creation).\n3. If your cloud provider has its own firewall, allow port ${SSH_PORT} there —\n   the host firewall rule is added for you.\n",
     "createdAt": "2026-08-17T15:21:38+03:00",
-    "updatedAt": "2026-08-17T15:21:38+03:00"
+    "updatedAt": "2026-08-17T15:42:35+03:00"
   },
   {
     "id": "template-deno",
@@ -3150,18 +3144,16 @@
   {
     "id": "umami",
     "name": "Umami",
-    "experimental": true,
     "intro": "Privacy-focused, GDPR-compliant web analytics — a simple, self-hosted Google Analytics alternative.",
     "logo": "https://raw.githubusercontent.com/umami-software/umami/master/src/assets/logo.svg",
     "tags": [
       "analytics",
       "privacy",
       "gdpr",
-      "oss",
-      "experimental"
+      "oss"
     ],
     "deployTime": "~2 minutes",
-    "description": "Umami is a simple, fast, privacy-focused alternative to Google Analytics.\nIt collects the metrics you care about — page views, referrers, devices —\nwithout cookies and while staying GDPR compliant.\n\nThis template runs the Umami app backed by a PostgreSQL database. Database\ndata is persisted to a local volume. The default login after first deploy is\nusername `admin` / password `umami` — change it immediately.\n\nThis template is experimental — verify the deployment on your own server\nbefore relying on it.\n",
+    "description": "Umami is a simple, fast, privacy-focused alternative to Google Analytics.\nIt collects the metrics you care about — page views, referrers, devices —\nwithout cookies and while staying GDPR compliant.\n\nThis template runs the Umami app backed by a PostgreSQL database. Database\ndata is persisted to a local volume. The default login after first deploy is\nusername `admin` / password `umami` — change it immediately.\n",
     "requirements": {
       "memory": 2048,
       "cpu": 1,
@@ -3187,7 +3179,7 @@
       }
     },
     "createdAt": "2026-07-16T05:07:12+03:00",
-    "updatedAt": "2026-07-16T13:22:49+03:00"
+    "updatedAt": "2026-08-17T15:42:35+03:00"
   },
   {
     "id": "uptime-kuma",
@@ -3225,18 +3217,16 @@
   {
     "id": "vaultwarden",
     "name": "Vaultwarden",
-    "experimental": true,
     "intro": "Lightweight, self-hosted password manager compatible with Bitwarden clients.",
     "logo": "https://raw.githubusercontent.com/dani-garcia/vaultwarden/main/resources/vaultwarden-icon.svg",
     "tags": [
       "password-manager",
       "security",
       "bitwarden",
-      "oss",
-      "experimental"
+      "oss"
     ],
     "deployTime": "~2 minutes",
-    "description": "Vaultwarden is an unofficial, lightweight implementation of the Bitwarden\nserver API written in Rust. It is fully compatible with the official Bitwarden\nclients (desktop, browser extensions, mobile, CLI) while using a fraction of\nthe resources of the official server.\n\nData is persisted to a local volume. After the first deploy, open the app,\ncreate your account, then set SIGNUPS_ALLOWED to false to lock down\nregistration. Set ADMIN_TOKEN to enable the /admin panel.\n\nThis template is experimental — verify the deployment on your own server\nbefore relying on it for production secrets.\n",
+    "description": "Vaultwarden is an unofficial, lightweight implementation of the Bitwarden\nserver API written in Rust. It is fully compatible with the official Bitwarden\nclients (desktop, browser extensions, mobile, CLI) while using a fraction of\nthe resources of the official server.\n\nData is persisted to a local volume. After the first deploy, open the app,\ncreate your account, then set SIGNUPS_ALLOWED to false to lock down\nregistration. Set ADMIN_TOKEN to enable the /admin panel.\n",
     "requirements": {
       "memory": 512,
       "cpu": 1,
@@ -3261,7 +3251,7 @@
       }
     },
     "createdAt": "2026-07-16T05:06:31+03:00",
-    "updatedAt": "2026-07-16T05:06:31+03:00"
+    "updatedAt": "2026-08-17T15:42:35+03:00"
   },
   {
     "id": "vercel-commerce",
