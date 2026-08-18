@@ -10,9 +10,10 @@ ARG FLAKE=git+https://tangled.org/@tangled.org/core
 RUN echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
 
 # goat generates the OAuth client key; appview is the server itself.
-RUN nix profile install \
-      "${FLAKE}?ref=${TAG}#appview" \
-      "${FLAKE}?ref=${TAG}#goat" \
+# ref= resolves against refs/heads/, so tags need the full ref path.
+RUN nix profile add \
+      "${FLAKE}?ref=refs/tags/${TAG}#appview" \
+      "${FLAKE}?ref=refs/tags/${TAG}#goat" \
     && nix store gc
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
