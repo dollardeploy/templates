@@ -2828,8 +2828,8 @@
       "oss",
       "experimental"
     ],
-    "deployTime": "~25 minutes",
-    "description": "The appview is the web half of [Tangled](https://tangled.org): repo browsing,\nissues, pull requests, timelines and OAuth login. It holds no git data — code\nlives on knots (see the **Tangled Knot** template), and identity lives on each\nuser's AT Protocol PDS. This instance just indexes the firehose and renders it.\n\nUsers sign in with their existing Bluesky/atproto handle, so no local accounts\nare created. `DEFAULT_KNOT` picks the knot offered when someone creates a repo\n— point it at your own knot's domain if you run one.\n\nA cookie secret and an OAuth client key are generated per deploy and kept in\nthe data volume, so sessions survive redeploys.\n\nEverything is compiled from the upstream Nix flake at deploy time, which is\nslow (roughly 15–25 minutes) and disk-hungry on first launch.\n\nExperimental — Tangled is alpha and the appview is not documented for\nself-hosting. Verify the deploy before relying on it.\n",
+    "deployTime": "~9 minutes",
+    "description": "The appview is the web half of [Tangled](https://tangled.org): repo browsing,\nissues, pull requests, timelines and OAuth login. It holds no git data — code\nlives on knots (see the **Tangled Knot** template), and identity lives on each\nuser's AT Protocol PDS. This instance just indexes the firehose and renders it.\n\nUsers sign in with their existing Bluesky/atproto handle, so no local accounts\nare created. `DEFAULT_KNOT` picks the knot offered when someone creates a repo\n— point it at your own knot's domain if you run one.\n\nA cookie secret and an OAuth client key are generated per deploy and kept in\nthe data volume, so sessions survive redeploys.\n\nEverything is compiled from the upstream Nix flake at deploy time: the first\nlaunch spends ~7.5 minutes building and needs a few GB of disk. Redeploys\nreuse the Docker layer and start in seconds as long as `TANGLED_VERSION` is\nunchanged.\n\nExperimental — Tangled is alpha and the appview is not documented for\nself-hosting. Verify the deploy before relying on it.\n",
     "requirements": {
       "memory": 4096,
       "cpu": 2,
@@ -2854,12 +2854,12 @@
         "PLC_URL": "https://plc.directory",
         "JETSTREAM_ENDPOINT": "wss://jetstream1.us-east.bsky.network/subscribe",
         "DOCKER_COMPOSE_BUILD": 1,
-        "APP_READY_TIMEOUT": "2400"
+        "APP_READY_TIMEOUT": "240"
       }
     },
     "postLaunchNote": "Your appview is at ${APP_URL}. Sign in with any atproto handle — accounts come\nfrom the network, not from this server.\n\nSet `DEFAULT_KNOT` to your knot's domain if you deployed the **Tangled Knot**\ntemplate, otherwise new repos land on the public default knot.\n",
     "createdAt": "2026-08-17T15:29:59+03:00",
-    "updatedAt": "2026-08-18T10:37:26+03:00"
+    "updatedAt": "2026-08-24T10:19:55+03:00"
   },
   {
     "id": "tangled-knot",
