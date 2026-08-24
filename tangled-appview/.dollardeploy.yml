@@ -10,7 +10,7 @@ tags:
   - developer-tools
   - oss
   - experimental
-deployTime: ~25 minutes
+deployTime: ~9 minutes
 description: |
   The appview is the web half of [Tangled](https://tangled.org): repo browsing,
   issues, pull requests, timelines and OAuth login. It holds no git data — code
@@ -24,8 +24,10 @@ description: |
   A cookie secret and an OAuth client key are generated per deploy and kept in
   the data volume, so sessions survive redeploys.
 
-  Everything is compiled from the upstream Nix flake at deploy time, which is
-  slow (roughly 15–25 minutes) and disk-hungry on first launch.
+  Everything is compiled from the upstream Nix flake at deploy time: the first
+  launch spends ~7.5 minutes building and needs a few GB of disk. Redeploys
+  reuse the Docker layer and start in seconds as long as `TANGLED_VERSION` is
+  unchanged.
 
   Experimental — Tangled is alpha and the appview is not documented for
   self-hosting. Verify the deploy before relying on it.
@@ -51,7 +53,7 @@ app:
     PLC_URL: https://plc.directory
     JETSTREAM_ENDPOINT: wss://jetstream1.us-east.bsky.network/subscribe
     DOCKER_COMPOSE_BUILD: 1
-    APP_READY_TIMEOUT: "2400"
+    APP_READY_TIMEOUT: "240"
 postLaunchNote: |
   Your appview is at ${APP_URL}. Sign in with any atproto handle — accounts come
   from the network, not from this server.

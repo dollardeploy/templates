@@ -19,6 +19,12 @@ services:
       TANGLED_KNOT_DEFAULT: ${DEFAULT_KNOT}
     volumes:
       - appview-data:/var/lib/appview
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+      start_period: 30s
     depends_on:
       redis:
         condition: service_healthy
