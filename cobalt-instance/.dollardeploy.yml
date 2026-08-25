@@ -24,7 +24,7 @@ description: |
 
   Bandwidth, not CPU, is the limit: downloads stream through your server.
 requirements:
-  memory: 1024
+  memory: 2048
   cpu: 1
   storage: 10
 services:

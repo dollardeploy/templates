@@ -25,7 +25,7 @@ description: |
   The frontend is licensed CC-BY-NC-SA-4.0 — unmodified non-commercial hosting
   only, and cobalt branding stays copyrighted.
 requirements:
-  memory: 2048
+  memory: 3072
   cpu: 2
   storage: 15
 services:

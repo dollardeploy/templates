@@ -10,6 +10,16 @@ services:
       printf "{\"%s\":{\"name\":\"default\",\"limit\":\"unlimited\"}}" "$$(cat /proc/sys/kernel/random/uuid)" > /keys/keys.json;
       echo "cobalt api key file:"; cat /keys/keys.json'
 
+  # youtube demands a proof-of-origin token or it calls you a bot. this sidecar
+  # runs headless chromium and mints poToken/visitor_data on demand.
+  # ponytail: sidecar over hand-pasting tokens that expire.
+  yt-session:
+    image: ghcr.io/imputnet/yt-session-generator:webserver
+    init: true
+    restart: unless-stopped
+    expose:
+      - "8080"
+
   cobalt:
     image: ghcr.io/imputnet/cobalt:11
     init: true
@@ -37,5 +47,6 @@ services:
       RATELIMIT_WINDOW: ${RATELIMIT_WINDOW}
       RATELIMIT_MAX: ${RATELIMIT_MAX}
       DURATION_LIMIT: ${DURATION_LIMIT}
+      YOUTUBE_SESSION_SERVER: "http://yt-session:8080/"
 # ponytail: no watchtower (upstream's example uses it) — redeploy from
 # DollarDeploy to pull a new image instead of mounting the docker socket.
