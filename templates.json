@@ -558,7 +558,7 @@
     },
     "postLaunchNote": "Open **${APP_URL}** and paste a link — that's the whole app, running on your\nown instance. The same URL is also the processing API — point another cobalt\nclient at it, or `POST` to it with `{\"url\": \"...\"}` from a script.\n\nIt's public by default. To lock it down, set `API_AUTH_REQUIRED` to `1` — then\nonly requests carrying the API key in `keys/keys.json` (printed in the\n`keygen` deploy logs) get through. Paste that UUID into settings → processing\n→ instance access key. `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET` gate browser\nusers instead.\n\nFirst deploy builds the frontend from source, so give it a few extra minutes.\n",
     "createdAt": "2026-08-14T22:58:57+03:00",
-    "updatedAt": "2026-08-25T14:20:31+03:00"
+    "updatedAt": "2026-08-25T15:11:53+03:00"
   },
   {
     "id": "cobalt-instance",
@@ -605,7 +605,7 @@
     },
     "postLaunchNote": "Open **${APP_URL}** — a JSON blurb with your cobalt version means it works.\n\nTo use it from cobalt.tools: settings → instances → custom → **${APP_URL}**.\n\n**Your API key** is the UUID in `keys/keys.json` on the server (also printed\nin the `keygen` logs from the first deploy). Send it as\n`Authorization: Api-Key <uuid>`, or paste it into the frontend's api key\nfield. Edit that file to add more keys, then restart the app.\n\nThe instance is open by default. To lock it down, set `API_AUTH_REQUIRED` to\n`1` (key required), and/or fill in `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`\nfor browser users.\n",
     "createdAt": "2026-08-14T23:44:47+03:00",
-    "updatedAt": "2026-08-25T14:20:31+03:00"
+    "updatedAt": "2026-08-25T15:11:53+03:00"
   },
   {
     "id": "code-server",
