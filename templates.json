@@ -524,7 +524,7 @@
     ],
     "description": "Cobalt saves media from social platforms without ads, trackers, or paywalls.\n\nThis template runs both halves on one domain: the cobalt web frontend at `/`\n(built from source at deploy time) and your own processing instance — the API\nthat does the actual work — on the same origin. Nothing is shared with\ncobalt.tools, and any cobalt client can point at this domain directly.\n\nBandwidth, not CPU, is the limit: tunnelled downloads stream through your\nserver. Keep it to yourself, or turn on Cloudflare Turnstile\n(`TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`) before sharing the URL.\n\nThe frontend is licensed CC-BY-NC-SA-4.0 — unmodified non-commercial hosting\nonly, and cobalt branding stays copyrighted.\n",
     "requirements": {
-      "memory": 2048,
+      "memory": 3072,
       "cpu": 2,
       "storage": 15
     },
@@ -558,7 +558,7 @@
     },
     "postLaunchNote": "Open **${APP_URL}** and paste a link — that's the whole app, running on your\nown instance. The same URL is also the processing API — point another cobalt\nclient at it, or `POST` to it with `{\"url\": \"...\"}` from a script.\n\nIt's public by default. To lock it down, set `API_AUTH_REQUIRED` to `1` — then\nonly requests carrying the API key in `keys/keys.json` (printed in the\n`keygen` deploy logs) get through. Paste that UUID into settings → processing\n→ instance access key. `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET` gate browser\nusers instead.\n\nFirst deploy builds the frontend from source, so give it a few extra minutes.\n",
     "createdAt": "2026-08-14T22:58:57+03:00",
-    "updatedAt": "2026-08-17T15:42:35+03:00"
+    "updatedAt": "2026-08-25T14:20:31+03:00"
   },
   {
     "id": "cobalt-instance",
@@ -575,7 +575,7 @@
     ],
     "description": "Cobalt saves media from social platforms without ads, trackers, or paywalls.\nThis template runs the **processing instance** — the API that does the work.\nThere's no web UI: point any cobalt frontend at it (cobalt.tools → settings →\ninstances → custom) or call it from your own scripts.\n\nWant the frontend hosted on your server too? Deploy the **Cobalt** template\ninstead — it runs both on one domain.\n\nAn API key is generated on first boot and printed in the deploy logs. Keys\nbypass rate limits, and can be made mandatory with `API_AUTH_REQUIRED=1`.\n\nBandwidth, not CPU, is the limit: downloads stream through your server.\n",
     "requirements": {
-      "memory": 1024,
+      "memory": 2048,
       "cpu": 1,
       "storage": 10
     },
@@ -605,7 +605,7 @@
     },
     "postLaunchNote": "Open **${APP_URL}** — a JSON blurb with your cobalt version means it works.\n\nTo use it from cobalt.tools: settings → instances → custom → **${APP_URL}**.\n\n**Your API key** is the UUID in `keys/keys.json` on the server (also printed\nin the `keygen` logs from the first deploy). Send it as\n`Authorization: Api-Key <uuid>`, or paste it into the frontend's api key\nfield. Edit that file to add more keys, then restart the app.\n\nThe instance is open by default. To lock it down, set `API_AUTH_REQUIRED` to\n`1` (key required), and/or fill in `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`\nfor browser users.\n",
     "createdAt": "2026-08-14T23:44:47+03:00",
-    "updatedAt": "2026-08-17T15:42:35+03:00"
+    "updatedAt": "2026-08-25T14:20:31+03:00"
   },
   {
     "id": "code-server",
