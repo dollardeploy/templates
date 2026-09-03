@@ -77,6 +77,33 @@
     "updatedAt": "2026-06-17T07:43:46+03:00"
   },
   {
+    "id": "astro",
+    "name": "Astro Boilerplate",
+    "tags": [
+      "template",
+      "astro",
+      "typescript"
+    ],
+    "intro": "Boilerplate for Astro to get you started",
+    "logo": "https://raw.githubusercontent.com/huksley/astro-boilerplate/main/src/assets/logo.png",
+    "deployTime": "~1 minute",
+    "description": "This example shows how you can deploy an Astro app to any host with zero\nconfiguration. It runs as a standalone Node server using the\n[@astrojs/node](https://docs.astro.build/en/guides/integrations-guide/node/)\nadapter and demonstrates static pre-rendering, server-side rendering,\n`stale-while-revalidate` caching and built-in image optimization.\n\nLive demo: https://astro.demo.dollardeploy.dev\n",
+    "demoUrl": "https://astro.demo.dollardeploy.dev",
+    "requirements": {
+      "memory": 1024,
+      "cpu": 1,
+      "storage": 10
+    },
+    "app": {
+      "repositoryUrl": "https://github.com/huksley/astro-boilerplate",
+      "sourceBranch": "main",
+      "type": "react",
+      "mainPort": 3000
+    },
+    "createdAt": "2026-09-03T11:52:27+03:00",
+    "updatedAt": "2026-09-03T11:52:27+03:00"
+  },
+  {
     "id": "baserow",
     "name": "Baserow",
     "intro": "Open source no-code database tool and Airtable alternative.",
