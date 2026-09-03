@@ -1,0 +1,27 @@
+id: astro
+name: Astro Boilerplate
+tags:
+  - template
+  - astro
+  - typescript
+intro: Boilerplate for Astro to get you started
+logo: "https://raw.githubusercontent.com/huksley/astro-boilerplate/main/src/assets/logo.png"
+deployTime: ~1 minute
+description: |
+  This example shows how you can deploy an Astro app to any host with zero
+  configuration. It runs as a standalone Node server using the
+  [@astrojs/node](https://docs.astro.build/en/guides/integrations-guide/node/)
+  adapter and demonstrates static pre-rendering, server-side rendering,
+  `stale-while-revalidate` caching and built-in image optimization.
+
+  Live demo: https://astro.demo.dollardeploy.dev
+demoUrl: "https://astro.demo.dollardeploy.dev"
+requirements:
+  memory: 1024
+  cpu: 1
+  storage: 10
+app:
+  repositoryUrl: "https://github.com/huksley/astro-boilerplate"
+  sourceBranch: main
+  type: react
+  mainPort: 3000
