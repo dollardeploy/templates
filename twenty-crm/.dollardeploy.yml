@@ -37,7 +37,9 @@ app:
     STORAGE_TYPE: local
     PORT: 3000
     PG_DATABASE_HOST: db
-    DOCKER_COMPOSE_WAIT_TIMEOUT: 300
+    # First-boot v2 migrations can run for several minutes before the server is
+    # healthy, so allow a long compose wait window on the initial deploy.
+    DOCKER_COMPOSE_WAIT_TIMEOUT: 1200
     # This is for new deployed from a template, a correct path in PG container
     PGDATA_DIR: /var/lib/postgresql/data
     # The default database Twenty connects to; created by the db container.

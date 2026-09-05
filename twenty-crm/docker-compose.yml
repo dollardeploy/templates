@@ -11,11 +11,21 @@ services:
             NODE_PORT: 3000
             PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/${PG_DATABASE_NAME:-default}
             SERVER_URL: ${SERVER_URL}
-            REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+            # Derived from SERVER_URL on v2+; still honoured by older (v1.x) images.
+            FRONT_BASE_URL: ${FRONT_BASE_URL:-$SERVER_URL}
+            FRONTEND_URL: ${FRONTEND_URL:-$SERVER_URL}
+            # Hardcoded to the internal redis service. Do NOT use ${REDIS_URL:-...}:
+            # the platform-provided .env may set REDIS_URL=redis://127.0.0.1:6379,
+            # which would point the server at its own container and hang cache:flush.
+            REDIS_URL: redis://redis:6379
 
             # Migrations and cron jobs run on the server.
+            # ENABLE_DB_MIGRATIONS is kept for backward compatibility with v1.x images.
+            ENABLE_DB_MIGRATIONS: "true"
             DISABLE_DB_MIGRATIONS: "false"
             DISABLE_CRON_JOBS_REGISTRATION: "false"
+            IS_CONFIG_VARIABLES_IN_DB_ENABLED: "${IS_CONFIG_VARIABLES_IN_DB_ENABLED:-true}"
+            SIGN_IN_PREFILLED: "${SIGN_IN_PREFILLED:-false}"
 
             STORAGE_TYPE: ${STORAGE_TYPE}
             STORAGE_S3_REGION: ${STORAGE_S3_REGION}
@@ -23,7 +33,7 @@ services:
             STORAGE_S3_ENDPOINT: ${STORAGE_S3_ENDPOINT}
 
             # ENCRYPTION_KEY encrypts secrets at rest and signs sessions (v2.5+).
-            # APP_SECRET is the legacy fallback for older instances.
+            # APP_SECRET is the legacy fallback for instances that pre-date it.
             ENCRYPTION_KEY: ${ENCRYPTION_KEY}
             APP_SECRET: ${APP_SECRET:-}
         depends_on:
@@ -31,11 +41,14 @@ services:
                 condition: service_healthy
             redis:
                 condition: service_healthy
+        # First boot runs all DB migrations before /healthz responds, which can
+        # take several minutes on a fresh install, so allow a long window here.
         healthcheck:
             test: curl --fail http://localhost:3000/healthz
-            interval: 5s
+            interval: 10s
             timeout: 10s
-            retries: 60
+            retries: 120
+            start_period: 120s
         restart: always
 
     worker:
@@ -48,11 +61,17 @@ services:
         environment:
             PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/${PG_DATABASE_NAME:-default}
             SERVER_URL: ${SERVER_URL}
-            REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+            FRONT_BASE_URL: ${FRONT_BASE_URL:-$SERVER_URL}
+            # Hardcoded to the internal redis service. Do NOT use ${REDIS_URL:-...}:
+            # the platform-provided .env may set REDIS_URL=redis://127.0.0.1:6379,
+            # which would point the server at its own container and hang cache:flush.
+            REDIS_URL: redis://redis:6379
 
             # Migrations and cron jobs already run on the server.
+            ENABLE_DB_MIGRATIONS: "false"
             DISABLE_DB_MIGRATIONS: "true"
             DISABLE_CRON_JOBS_REGISTRATION: "true"
+            IS_CONFIG_VARIABLES_IN_DB_ENABLED: "${IS_CONFIG_VARIABLES_IN_DB_ENABLED:-true}"
 
             STORAGE_TYPE: ${STORAGE_TYPE}
             STORAGE_S3_REGION: ${STORAGE_S3_REGION}
@@ -73,6 +92,8 @@ services:
         volumes:
             - ./data/db:${PGDATA_DIR:-/var/lib/postgresql/data}
         environment:
+            # v2 connects directly to this database on boot and does NOT create
+            # it, so it must be pre-created by the postgres container.
             POSTGRES_DB: ${PG_DATABASE_NAME:-default}
             POSTGRES_USER: ${PGUSER_SUPERUSER:-postgres}
             POSTGRES_PASSWORD: ${PGPASSWORD_SUPERUSER:-postgres}
