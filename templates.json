@@ -3174,7 +3174,7 @@
     "deployTime": "~3 minutes",
     "description": "The #1 Open-Source CRM Modern, powerful, affordable platform to manage your\ncustomer relationships.\nVersion ${TAG}.\nCheck the releases notes at https://twenty.com/releases\nFor upgrading, see the [self-hosted upgrade guide](https://twenty.com/developers/section/self-hosting/upgrade-guide).\n",
     "requirements": {
-      "memory": 2048,
+      "memory": 4096,
       "cpu": 2,
       "storage": 10
     },
@@ -3187,16 +3187,15 @@
       "sourcePath": "twenty-crm",
       "sourceBranch": "main",
       "env": {
+        "ENCRYPTION_KEY": "${GENERATED_SECRET}",
         "APP_SECRET": "${GENERATED_HASH}",
         "SERVER_URL": "${APP_URL}",
         "PGPASSWORD_SUPERUSER": "${GENERATED_PWD}",
-        "TAG": "v1.6",
+        "TAG": "v2.38.1",
         "STORAGE_TYPE": "local",
         "PORT": 3000,
         "PG_DATABASE_HOST": "db",
-        "SIGN_IN_PREFILLED": true,
         "DOCKER_COMPOSE_WAIT_TIMEOUT": 300,
-        "IS_CONFIG_VARIABLES_IN_DB_ENABLED": true,
         "PGDATA_DIR": "/var/lib/postgresql/data",
         "PG_DATABASE_NAME": "default"
       },
@@ -3210,7 +3209,7 @@
       ]
     },
     "createdAt": "2024-12-02T18:08:35+02:00",
-    "updatedAt": "2026-06-12T17:28:50+03:00"
+    "updatedAt": "2026-09-05T10:02:32+03:00"
   },
   {
     "id": "umami",
