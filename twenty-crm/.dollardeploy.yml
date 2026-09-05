@@ -16,7 +16,7 @@ description: |
   Check the releases notes at https://twenty.com/releases
   For upgrading, see the [self-hosted upgrade guide](https://twenty.com/developers/section/self-hosting/upgrade-guide).
 requirements:
-  memory: 2048
+  memory: 4096
   cpu: 2
   storage: 10
 services:
@@ -27,19 +27,20 @@ app:
   sourcePath: twenty-crm
   sourceBranch: main
   env:
+    # ENCRYPTION_KEY encrypts secrets at rest and signs sessions (Twenty v2.5+).
+    ENCRYPTION_KEY: ${GENERATED_SECRET}
+    # APP_SECRET kept as the legacy fallback for compatibility.
     APP_SECRET: ${GENERATED_HASH}
     SERVER_URL: ${APP_URL}
     PGPASSWORD_SUPERUSER: ${GENERATED_PWD}
-    TAG: v1.6
+    TAG: v2.38.1
     STORAGE_TYPE: local
     PORT: 3000
     PG_DATABASE_HOST: db
-    SIGN_IN_PREFILLED: true
     DOCKER_COMPOSE_WAIT_TIMEOUT: 300
-    IS_CONFIG_VARIABLES_IN_DB_ENABLED: true
     # This is for new deployed from a template, a correct path in PG container
     PGDATA_DIR: /var/lib/postgresql/data
-    # This is also for new templates, needed for v0.60+ and v1.0.0.
+    # The default database Twenty connects to; created by the db container.
     PG_DATABASE_NAME: default
   preStartCmd: bash ./fixdocker.sh
   backupCmd: docker compose exec db pg_dumpall -U postgres > databases_backup.sql

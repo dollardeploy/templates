@@ -8,16 +8,11 @@ NOTE: Remember to backup your app before doing an upgrade.
 
 See [official upgrade](https://twenty.com/developers/section/self-hosting/upgrade-guide) guide first.
 
-To upgrade between releases, change environment variable TAG to a new version (see [docker tags](https://hub.docker.com/r/twentycrm/twenty/tags)) for example v1.0.0 etc.
+To upgrade between releases, change environment variable TAG to a new version (see [docker tags](https://hub.docker.com/r/twentycrm/twenty/tags)) for example v2.38.1 etc, then redeploy.
 
-Do not jump between minor versions, i.e. upgrade sequentially v0.55 => v0.56 => v0.57 ....
+Since v1.23 Twenty supports cross-version upgrades — you can jump directly from any supported version to the latest release without stepping through each intermediate version.
 
-After deploying a new version, run manually on the host, in the app folder:
-
-```
-docker compose exec server "yarn database:migrate:prod"
-docker compose exec server "yarn command:prod upgrade"
-```
+Database migrations run automatically on server startup, so no manual `database:migrate:prod` / `command:prod upgrade` step is needed after a redeploy.
 
 ## Links
 

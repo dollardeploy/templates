@@ -1,6 +1,6 @@
 services:
     server:
-        image: twentycrm/twenty:${TAG}
+        image: twentycrm/twenty:${TAG:-latest}
         volumes:
             - ./data/local:/app/packages/twenty-server/${STORAGE_LOCAL_PATH:-.local-storage}
             - ./data/tmp:/app/docker-data
@@ -8,29 +8,28 @@ services:
             - '127.0.0.1:$PORT:3000'
         env_file: ".env"
         environment:
-            PORT: 3000
             NODE_PORT: 3000
-            PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/${PG_DATABASE_NAME:-postgres}
+            PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/${PG_DATABASE_NAME:-default}
             SERVER_URL: ${SERVER_URL}
-            FRONT_BASE_URL: ${FRONT_BASE_URL:-$SERVER_URL}
-            FRONTEND_URL: ${FRONTEND_URL:-$SERVER_URL}
-            REDIS_URL: redis://redis:6379
+            REDIS_URL: ${REDIS_URL:-redis://redis:6379}
 
-            ENABLE_DB_MIGRATIONS: "true"
-            # We will run this ourselves
+            # Migrations and cron jobs run on the server.
             DISABLE_DB_MIGRATIONS: "false"
             DISABLE_CRON_JOBS_REGISTRATION: "false"
-            IS_CONFIG_VARIABLES_IN_DB_ENABLED: "${IS_CONFIG_VARIABLES_IN_DB_ENABLED:-true}"
 
-            SIGN_IN_PREFILLED: ${SIGN_IN_PREFILLED}
             STORAGE_TYPE: ${STORAGE_TYPE}
             STORAGE_S3_REGION: ${STORAGE_S3_REGION}
             STORAGE_S3_NAME: ${STORAGE_S3_NAME}
             STORAGE_S3_ENDPOINT: ${STORAGE_S3_ENDPOINT}
-            
-            APP_SECRET: ${APP_SECRET}
+
+            # ENCRYPTION_KEY encrypts secrets at rest and signs sessions (v2.5+).
+            # APP_SECRET is the legacy fallback for older instances.
+            ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+            APP_SECRET: ${APP_SECRET:-}
         depends_on:
             db:
+                condition: service_healthy
+            redis:
                 condition: service_healthy
         healthcheck:
             test: curl --fail http://localhost:3000/healthz
@@ -40,29 +39,28 @@ services:
         restart: always
 
     worker:
-        image: twentycrm/twenty:${TAG}
+        image: twentycrm/twenty:${TAG:-latest}
         command: ['yarn', 'worker:prod']
         env_file: ".env"
         volumes:
             - ./data/local:/app/packages/twenty-server/${STORAGE_LOCAL_PATH:-.local-storage}
             - ./data/tmp:/app/docker-data
         environment:
-            PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/${PG_DATABASE_NAME:-postgres}
+            PG_DATABASE_URL: postgres://${PGUSER_SUPERUSER:-postgres}:${PGPASSWORD_SUPERUSER:-postgres}@${PG_DATABASE_HOST:-db}:5432/${PG_DATABASE_NAME:-default}
             SERVER_URL: ${SERVER_URL}
-            FRONT_BASE_URL: ${FRONT_BASE_URL:-$SERVER_URL}
-            REDIS_URL: redis://redis:6379
+            REDIS_URL: ${REDIS_URL:-redis://redis:6379}
 
-            ENABLE_DB_MIGRATIONS: "false"
+            # Migrations and cron jobs already run on the server.
             DISABLE_DB_MIGRATIONS: "true"
             DISABLE_CRON_JOBS_REGISTRATION: "true"
-            IS_CONFIG_VARIABLES_IN_DB_ENABLED: "${IS_CONFIG_VARIABLES_IN_DB_ENABLED:-true}"
 
             STORAGE_TYPE: ${STORAGE_TYPE}
             STORAGE_S3_REGION: ${STORAGE_S3_REGION}
             STORAGE_S3_NAME: ${STORAGE_S3_NAME}
             STORAGE_S3_ENDPOINT: ${STORAGE_S3_ENDPOINT}
 
-            APP_SECRET: ${APP_SECRET}
+            ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+            APP_SECRET: ${APP_SECRET:-}
         depends_on:
             db:
                 condition: service_healthy
@@ -73,8 +71,9 @@ services:
     db:
         image: postgres:16
         volumes:
-            - ./data/db:${PGDATA_DIR:-/home/postgres/pgdata}
+            - ./data/db:${PGDATA_DIR:-/var/lib/postgresql/data}
         environment:
+            POSTGRES_DB: ${PG_DATABASE_NAME:-default}
             POSTGRES_USER: ${PGUSER_SUPERUSER:-postgres}
             POSTGRES_PASSWORD: ${PGPASSWORD_SUPERUSER:-postgres}
             ALLOW_NOSSL: 'true'
@@ -89,3 +88,8 @@ services:
         image: redis
         restart: always
         command: ["--maxmemory-policy", "noeviction"]
+        healthcheck:
+            test: ["CMD", "redis-cli", "ping"]
+            interval: 5s
+            timeout: 5s
+            retries: 10
