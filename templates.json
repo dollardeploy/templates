@@ -3459,9 +3459,10 @@
         "SYSTEMD_EXEC_PATHS": "/app"
       }
     },
+    "preLaunchNote": "Before deploying, enter HF_TOKEN in the app environment. Press **Deploy later** to create app\nand continue.\n",
     "postLaunchNote": "WARNING: You might need to add your HF_TOKEN to the environment variables to download the model. \nChange it in the app env variables and redeploy.\n",
     "createdAt": "2026-05-05T12:59:10+03:00",
-    "updatedAt": "2026-08-17T07:55:37+03:00"
+    "updatedAt": "2026-09-25T13:33:30+03:00"
   },
   {
     "id": "vllm-qwen3-coder",
