@@ -13,7 +13,7 @@
 services:
   mongodb:
     image: "mongo:7.0"
-    restart: "on-failure"
+    restart: "unless-stopped"
     networks:
       - graylog
     volumes:
@@ -44,7 +44,7 @@ services:
       - graylog
     volumes:
       - "graylog-datanode:/var/lib/graylog-datanode"
-    restart: "on-failure"
+    restart: "unless-stopped"
 
   graylog:
     hostname: "server"
@@ -88,7 +88,7 @@ services:
       - graylog
     volumes:
       - "graylog_data:/usr/share/graylog/data"
-    restart: "on-failure"
+    restart: "unless-stopped"
 
 networks:
   graylog:
