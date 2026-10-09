@@ -3,6 +3,7 @@ services:
   metabase:
     image: metabase/metabase:${METABASE_VERSION:-v0.58.1}
     hostname: metabase
+    restart: unless-stopped
     volumes:
       - /dev/urandom:/dev/random:ro
       - ./data:/home/metabase/data
@@ -26,6 +27,7 @@ services:
   postgres:
     image: postgres:18
     hostname: postgres
+    restart: unless-stopped
     environment:
       POSTGRES_USER: metabase
       POSTGRES_DB: metabase
