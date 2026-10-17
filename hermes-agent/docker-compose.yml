@@ -1,0 +1,28 @@
+# Hermes Agent gateway + web dashboard in one s6-supervised container.
+# The dashboard binds 0.0.0.0 inside the container, which engages its auth
+# gate; the published port is loopback-only so it is reached exclusively
+# through DollarDeploy's HTTPS reverse proxy.
+services:
+  hermes:
+    image: nousresearch/hermes-agent:${HERMES_VERSION:-v0.22.2}
+    restart: unless-stopped
+    command: ["gateway", "run"]
+    ports:
+      - "127.0.0.1:${PORT:-9119}:9119"
+    volumes:
+      - hermes-data:/opt/data
+    environment:
+      HERMES_DASHBOARD: "1"
+      HERMES_DASHBOARD_HOST: 0.0.0.0
+      HERMES_DASHBOARD_PORT: "9119"
+      HERMES_DASHBOARD_PUBLIC_URL: ${HERMES_DASHBOARD_PUBLIC_URL:-}
+      # Username/password gate. Required: the dashboard refuses a non-loopback
+      # bind without an auth provider.
+      HERMES_DASHBOARD_BASIC_AUTH_USERNAME: ${HERMES_DASHBOARD_BASIC_AUTH_USERNAME:-admin}
+      HERMES_DASHBOARD_BASIC_AUTH_PASSWORD: "${HERMES_DASHBOARD_BASIC_AUTH_PASSWORD:?HERMES_DASHBOARD_BASIC_AUTH_PASSWORD is required}"
+      HERMES_DASHBOARD_BASIC_AUTH_SECRET: "${HERMES_DASHBOARD_BASIC_AUTH_SECRET:?HERMES_DASHBOARD_BASIC_AUTH_SECRET is required}"
+      # Optional: Nous Portal OAuth for internet-facing use (empty = unset).
+      HERMES_DASHBOARD_OAUTH_CLIENT_ID: ${HERMES_DASHBOARD_OAUTH_CLIENT_ID:-}
+
+volumes:
+  hermes-data:

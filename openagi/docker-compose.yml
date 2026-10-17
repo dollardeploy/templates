@@ -1,0 +1,34 @@
+# Builds OpenAGI from the upstream Dockerfile (the GHCR image is not public).
+# DollarDeploy writes this file into the cloned openAGI repo, so the build
+# context "." is the upstream source tree.
+services:
+  openagi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      # Loopback only: DollarDeploy's reverse proxy serves it over HTTPS.
+      - "127.0.0.1:${PORT:-43210}:43210"
+    volumes:
+      - openagi-data:/data
+    environment:
+      HOST: 0.0.0.0
+      PORT: 43210
+      OPENAGI_DATA_DIR: /data
+      # Required: the daemon refuses a non-loopback bind without a token.
+      OPENAGI_AUTH_TOKEN: "${OPENAGI_AUTH_TOKEN:?OPENAGI_AUTH_TOKEN is required}"
+      # Public HTTPS origin for Twilio/Telegram webhooks and node pairing.
+      OPENAGI_PUBLIC_URL: ${OPENAGI_PUBLIC_URL:-}
+      OPENAGI_DAILY_USD_LIMIT: ${OPENAGI_DAILY_USD_LIMIT:-10}
+      # Model API keys are intentionally not passed here: an empty env var
+      # would shadow the keys the setup wizard saves to /data/.env.
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:43210/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  openagi-data:

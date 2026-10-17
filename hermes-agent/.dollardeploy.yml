@@ -1,0 +1,72 @@
+id: hermes-agent
+name: Hermes Agent
+intro: "Self-improving AI agent by Nous Research with memory, skills, cron and a web dashboard."
+logo: https://avatars.githubusercontent.com/u/134168893
+tags:
+  - ai
+  - agent
+  - assistant
+  - automation
+  - mcp
+  - oss
+  - docker
+deployTime: ~5 minutes
+description: |
+  Hermes Agent is an open-source AI agent from Nous Research with a built-in
+  learning loop: it creates skills from experience, improves them during use,
+  keeps persistent memory and searches its own past conversations.
+
+  - Web dashboard to chat, manage config, API keys, skills, cron jobs and sessions
+  - Messaging gateway: Telegram, Discord, Slack, WhatsApp, Signal and more
+  - Built-in cron scheduler with delivery to any platform
+  - Subagents, MCP servers and a headless browser tool
+  - Any model: Nous Portal, OpenRouter, OpenAI, Anthropic or your own endpoint
+  - Connect Hermes Desktop to it as a remote backend
+
+  Runs the official `nousresearch/hermes-agent` image. Gateway and dashboard
+  are supervised in one container; all state lives in a persistent volume.
+
+  License: MIT. Source: https://github.com/NousResearch/hermes-agent
+requirements:
+  memory: 2048
+  cpu: 2
+  storage: 20
+services:
+  - docker
+preLaunchNote: |
+  You will need an API key for a model provider (OpenRouter, OpenAI,
+  Anthropic, ...) or a Nous Portal account. Enter it in the dashboard after
+  launch.
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: hermes-agent
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  mainPort: 9119
+  env:
+    PORT: 9119
+    APP_HEALTHCHECK_PATH: /api/health
+    HERMES_VERSION: v0.22.2
+    HERMES_DASHBOARD_PUBLIC_URL: ${APP_URL}
+    HERMES_DASHBOARD_BASIC_AUTH_USERNAME: admin
+    HERMES_DASHBOARD_BASIC_AUTH_PASSWORD: ${GENERATED_HASH}
+    HERMES_DASHBOARD_BASIC_AUTH_SECRET: ${GENERATED_SECRET}
+    HERMES_DASHBOARD_OAUTH_CLIENT_ID: ""
+    DOCKER_COMPOSE_WAIT_TIMEOUT: 300
+postLaunchNote: |
+  Hermes Agent is running!
+
+  Dashboard: ${APP_URL}
+
+  - **Username**: admin
+  - **Password**: ${HERMES_DASHBOARD_BASIC_AUTH_PASSWORD}
+
+  Add a model provider key in the dashboard, then connect a chat platform
+  (Telegram, Discord, Slack, ...) if you want to talk to it from your phone.
+
+  The username/password login is a single shared credential. For stronger
+  protection, register the dashboard with Nous Portal and set
+  `HERMES_DASHBOARD_OAUTH_CLIENT_ID` in the app env.
+
+  Docs: https://hermes-agent.nousresearch.com/docs/

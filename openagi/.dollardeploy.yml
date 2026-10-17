@@ -1,0 +1,67 @@
+id: openagi
+name: OpenAGI
+intro: "Proactive, self-improving personal AI agent that learns your routines and reaches out first."
+logo: https://raw.githubusercontent.com/Spshulem/openAGI/main/assets/logo.png
+tags:
+  - ai
+  - agent
+  - assistant
+  - automation
+  - mcp
+  - docker
+deployTime: ~5 minutes
+description: |
+  OpenAGI is an always-on agent daemon. Instead of waiting for prompts, it
+  watches your activity, mines recurring routines, drafts skills for them and
+  reaches out with what it can take off your plate.
+
+  - Directional adaptive scrutiny: scores every signal and decides to act, ask, watch, ignore or propagate
+  - Tiered memory (short / medium / long-term) with condensing and decay
+  - Propagation: spawns bounded specialist sub-agents for repetitive work
+  - Chat UI, skills, MCP servers (stdio and HTTP+OAuth), cron and scheduled prompts
+  - Channels: HTTP, Telegram and Twilio SMS
+  - Bring your own LLM: Anthropic, OpenAI or any OpenAI Responses-compatible API
+
+  All state lives in a persistent volume on your server. Built from source at
+  the pinned release tag.
+
+  License: PolyForm Noncommercial 1.0.0 (source-available, free for
+  noncommercial use). Source: https://github.com/Spshulem/openAGI
+requirements:
+  memory: 2048
+  cpu: 1
+  storage: 10
+services:
+  - docker
+preLaunchNote: |
+  You will need an Anthropic or OpenAI API key. Enter it in the setup wizard
+  after launch; it is stored on your server, not in DollarDeploy.
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/Spshulem/openAGI
+  sourceBranch: v0.0.58
+  dockerComposeFile: docker-compose.yml
+  mainPort: 43210
+  env:
+    PORT: 43210
+    APP_HEALTHCHECK_PATH: /health
+    OPENAGI_AUTH_TOKEN: ${GENERATED_SECRET}
+    OPENAGI_PUBLIC_URL: ${APP_URL}
+    OPENAGI_DAILY_USD_LIMIT: 10
+    DOCKER_COMPOSE_WAIT_TIMEOUT: 300
+  files:
+    - path: docker-compose.yml
+postLaunchNote: |
+  OpenAGI is running!
+
+  Open the setup wizard (the token is saved in a cookie after the first visit):
+
+  ${APP_URL}/setup?token=${OPENAGI_AUTH_TOKEN}
+
+  Add your Anthropic or OpenAI API key there. `OPENAGI_DAILY_USD_LIMIT` caps
+  daily model spend (default $10).
+
+  For Telegram or SMS, point webhooks at `${APP_URL}/channels/telegram/webhook`
+  or `${APP_URL}/channels/twilio/webhook`.
+
+  Docs: https://github.com/Spshulem/openAGI
