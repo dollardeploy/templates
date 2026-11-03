@@ -1,6 +1,6 @@
 services:
   mailpit:
-    image: axllent/mailpit
+    image: axllent/mailpit:${MAILPIT_VERSION:-latest}
     restart: unless-stopped
     user: "$USER_UID:$USER_GID"
     volumes:
