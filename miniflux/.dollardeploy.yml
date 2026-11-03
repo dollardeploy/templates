@@ -18,7 +18,7 @@ services:
 app:
   type: native
   repositoryUrl: https://github.com/miniflux/v2/
-  sourceBranch: main
+  sourceBranch: 2.3.4
   startCmd: ./miniflux-linux-amd64
   buildCmd: make linux-amd64
   env:
