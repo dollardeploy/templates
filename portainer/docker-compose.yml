@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   portainer:
-    image: portainer/portainer-ce:latest
+    image: portainer/portainer-ce:${PORTAINER_VERSION:-latest}
     container_name: portainer
     ports:
       - "${PORTAINER_AGENT_PORT}:8000"
