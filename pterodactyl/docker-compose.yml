@@ -34,7 +34,7 @@ x-common:
 #
 services:
   wings:
-    image: ghcr.io/pterodactyl/wings:latest
+    image: ghcr.io/pterodactyl/wings:${PTERODACTYL_WINGS_VERSION:-latest}
     restart: always
     networks:
       - pterodactyl1
@@ -72,7 +72,7 @@ services:
     networks:
       - pterodactyl1
   panel:
-    image: ghcr.io/pterodactyl/panel:latest
+    image: ghcr.io/pterodactyl/panel:${PTERODACTYL_PANEL_VERSION:-latest}
     restart: always
     ports:
       - "${PORT}:80"
