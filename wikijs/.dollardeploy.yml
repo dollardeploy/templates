@@ -13,8 +13,8 @@ requirements:
   storage: 10
 app:
   type: react
-  repositoryUrl: https://github.com/requarks/wiki
-  sourceBranch: main
+  repositoryUrl: https://github.com/requarks/wiki-v2
+  sourceBranch: v2.5.317
   buildScript: build
   startScript: start
   # modify the package.json to set dev: false
