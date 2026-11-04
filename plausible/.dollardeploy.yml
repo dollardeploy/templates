@@ -19,7 +19,7 @@ requirements:
   storage: 10
 app:
   repositoryUrl: "https://github.com/plausible/community-edition"
-  sourceBranch: v2.1.4
+  sourceBranch: v3.2.1
   type: docker-compose
   dockerComposeFile: compose.yml
   preStartCmd: bash ./fixdocker.sh
