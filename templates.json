@@ -1811,7 +1811,7 @@
     "app": {
       "type": "native",
       "repositoryUrl": "https://github.com/miniflux/v2/",
-      "sourceBranch": "main",
+      "sourceBranch": "2.3.4",
       "startCmd": "./miniflux-linux-amd64",
       "buildCmd": "make linux-amd64",
       "env": {
@@ -1828,7 +1828,7 @@
     },
     "postLaunchNote": "Username is your e-mail and password is in environment variable `ADMIN_PASSWORD`.\n",
     "createdAt": "2025-04-26T15:19:06+03:00",
-    "updatedAt": "2025-05-17T20:53:14+03:00"
+    "updatedAt": "2026-11-03T19:53:38+02:00"
   },
   {
     "id": "minio",
