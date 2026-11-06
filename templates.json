@@ -697,12 +697,14 @@
       "sourcePath": "courselit",
       "sourceBranch": "main",
       "env": {
+        "COURSELIT_VERSION": "v0.74.4",
         "NODE_ENV": "production",
         "SERVER_URL": "${APP_URL}",
         "AUTH_SECRET": "${GENERATED_HASH}",
         "AUTH_TRUST_HOST": true,
         "PORT": 3000,
         "DB_CONNECTION_STRING": "mongodb://courselit:123456@mongo/courselit?authSource=admin",
+        "DB_TRANSACTIONS": "false",
         "EMAIL_USER": "test@example.com",
         "EMAIL_PASS": "test",
         "EMAIL_HOST": "smtp.example.com",
@@ -714,7 +716,7 @@
     },
     "postLaunchNote": "Username is your e-mail. To login, setup SMTP server settings\nin the environment variables, redeploy and try to login.\n\n  \n",
     "createdAt": "2025-05-11T20:59:46+03:00",
-    "updatedAt": "2025-05-17T20:53:14+03:00"
+    "updatedAt": "2026-11-03T19:54:06+02:00"
   },
   {
     "id": "crafty-controller",
