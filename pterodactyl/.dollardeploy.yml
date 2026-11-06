@@ -18,6 +18,8 @@ app:
   dockerComposeFile: docker-compose.yml
   postStartCmd: source .env && docker compose exec panel php artisan p:user:make --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD} --admin=1 --username=${ADMIN_USERNAME} --name-first=Test --name-last=Test || true
   env:
+    PTERODACTYL_PANEL_VERSION: "v1.15.2"
+    PTERODACTYL_WINGS_VERSION: "v1.13.4"
     PORT: "3000"
     APP_TIMEZONE: "UTC"
     APP_SERVICE_AUTHOR: "admin@localhost"
