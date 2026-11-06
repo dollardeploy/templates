@@ -168,6 +168,7 @@
       "sourcePath": "beszel",
       "dockerComposeFile": "docker-compose.yml",
       "env": {
+        "BESZEL_VERSION": "0.21.1",
         "PORT": "8090",
         "HUB_URL": "${APP_URL}",
         "TOKEN": "${GENERATED_HASH}",
@@ -176,7 +177,7 @@
     },
     "postLaunchNote": "After first run, manually add local agent to the hub, update KEY= and TOKEN= variables, and redeploy.\nSee https://beszel.dev/guide/getting-started#_4-start-the-agent\n",
     "createdAt": "2025-07-29T20:02:15+03:00",
-    "updatedAt": "2025-08-27T11:47:28+03:00"
+    "updatedAt": "2026-11-06T08:05:49+02:00"
   },
   {
     "id": "boilerplate-bun",
@@ -1395,11 +1396,11 @@
         "INNGEST_SIGNING_KEY": "${GENERATED_SECRET}",
         "INNGEST_ENV": "prod",
         "INNGEST_DEV": 0,
-        "TAG": "v1.12.1"
+        "TAG": "v1.49.0"
       }
     },
     "createdAt": "2025-07-29T16:40:11+03:00",
-    "updatedAt": "2025-10-23T17:12:28+03:00"
+    "updatedAt": "2026-11-06T08:06:10+02:00"
   },
   {
     "id": "local-ai-cpu",
@@ -2302,14 +2303,15 @@
         "SECRET_KEY": "${GENERATED_SECRET}",
         "GOOGLE_CLIENT_ID": "",
         "GOOGLE_CLIENT_SECRET": "",
-        "IMAGE_TAG": "0.86.1",
+        "IMAGE_TAG": "1.12.0",
+        "POSTGRES_VERSION": "17.10",
         "PGSSLMODE": "disable",
         "DOCKER_IMAGE": "docker.getoutline.com/outlinewiki/outline"
       }
     },
     "postLaunchNote": "> Remember to configure the SMTP settings and \n> authentication settings in the environment variables and redeploy after that.\n> See the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.\n",
     "createdAt": "2025-06-11T18:54:14+03:00",
-    "updatedAt": "2025-09-01T11:43:40+03:00"
+    "updatedAt": "2026-11-06T08:05:17+02:00"
   },
   {
     "id": "outline-ws",
