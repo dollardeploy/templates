@@ -24,7 +24,7 @@ app:
   dockerComposeFile: docker-compose.yml
   env:
     PORT: "4567"
-    NODEBB_VERSION: "v4.4.6"
+    NODEBB_VERSION: "v4.16.4"
     NODEBB_URL: "${APP_URL}"
     REDIS_PASSWORD: "redis"
     NODEBB_ADMIN_PASSWORD: "${GENERATED_PWD}"
