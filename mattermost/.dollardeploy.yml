@@ -23,7 +23,7 @@ app:
     MM_SERVICESETTINGS_SITEURL: ${APP_URL}
     TZ: UTC
     RESTART_POLICY: unless-stopped
-    POSTGRES_IMAGE_TAG: 13-alpine
+    POSTGRES_IMAGE_TAG: 18.6-alpine
     POSTGRES_DATA_PATH: ./volumes/db/data
     POSTGRES_USER: postgres
     POSTGRES_PASSWORD: postgres
@@ -37,7 +37,7 @@ app:
     MATTERMOST_BLEVE_INDEXES_PATH: ./volumes/app/mattermost/bleve-indexes
     MM_BLEVESETTINGS_INDEXDIR: /mattermost/bleve-indexes
     MATTERMOST_IMAGE: mattermost-team-edition
-    MATTERMOST_IMAGE_TAG: 9.11.2
+    MATTERMOST_IMAGE_TAG: 10.11.25
     MATTERMOST_CONTAINER_READONLY: 'false'
     MM_SERVICESETTINGS_ALLOWED_ORIGINS: ${APP_URL}
     PORT: '3005'
@@ -52,7 +52,7 @@ app:
         mkdir -p ./volumes/app/mattermost/{config,data,logs,plugins,client/plugins,bleve-indexes}
         mkdir -p ./volumes/db/data
         # 70 is the standard uid/gid for "postgres" in Alpine
-        # https://github.com/docker-library/postgres/blob/master/13/alpine3.20/Dockerfile
+        # https://github.com/docker-library/postgres/blob/master/18/alpine3.23/Dockerfile
         sudo chown -R 70:70 ./volumes/db
         # Download config which enables uploads and focalboard plugin
         curl -o ./volumes/app/mattermost/config/config.json https://gist.githubusercontent.com/huksley/5721e15687fc63e2a197749c4752d80f/raw/1506bb567305ca4fa33db231fb6ab20a091a75f6/mattermost-config.json
