@@ -21,6 +21,7 @@ app:
   preStartCmd: bash ./fixdocker.sh
   env:
     PORT: "8025"
+    MAILPIT_VERSION: "v1.32.0"
     MP_MAX_MESSAGES: 5000
     MP_DATABASE: /data/mailpit.db
     MP_SMTP_AUTH_ACCEPT_ANY: 0
