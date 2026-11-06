@@ -1505,6 +1505,7 @@
       "preStartCmd": "bash ./fixdocker.sh",
       "env": {
         "PORT": "8025",
+        "MAILPIT_VERSION": "v1.32.0",
         "MP_MAX_MESSAGES": 5000,
         "MP_DATABASE": "/data/mailpit.db",
         "MP_SMTP_AUTH_ACCEPT_ANY": 0,
@@ -1540,7 +1541,7 @@
       "docker"
     ],
     "createdAt": "2025-01-29T09:54:17+02:00",
-    "updatedAt": "2025-05-17T20:53:14+03:00"
+    "updatedAt": "2026-11-03T19:53:43+02:00"
   },
   {
     "id": "mattermost",
