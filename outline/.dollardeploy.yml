@@ -37,7 +37,8 @@ app:
     SECRET_KEY: "${GENERATED_SECRET}"
     GOOGLE_CLIENT_ID: ""
     GOOGLE_CLIENT_SECRET: ""
-    IMAGE_TAG: "0.86.1"
+    IMAGE_TAG: "1.12.0"
+    POSTGRES_VERSION: "17.10"
     PGSSLMODE: "disable"
     DOCKER_IMAGE: "docker.getoutline.com/outlinewiki/outline"
 postLaunchNote: |
