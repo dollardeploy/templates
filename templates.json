@@ -3623,8 +3623,8 @@
     },
     "app": {
       "type": "react",
-      "repositoryUrl": "https://github.com/requarks/wiki",
-      "sourceBranch": "main",
+      "repositoryUrl": "https://github.com/requarks/wiki-v2",
+      "sourceBranch": "v2.5.317",
       "buildScript": "build",
       "startScript": "start",
       "preStartCmd": "node -e \"const fs = require('fs'); const package = require('./package.json'); package.dev = false; fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));\"",
@@ -3647,7 +3647,7 @@
       "postgres"
     ],
     "createdAt": "2025-05-06T15:16:20+03:00",
-    "updatedAt": "2025-05-17T20:53:14+03:00"
+    "updatedAt": "2026-11-04T06:09:58+02:00"
   },
   {
     "id": "wordpress",
