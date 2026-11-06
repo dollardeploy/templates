@@ -3700,7 +3700,7 @@
       "oss",
       "popular"
     ],
-    "description": "WordPress is open source software you can use to create a beautiful website, blog, or app.\n",
+    "description": "Zulip is an open source team chat app with topic-based threading, combining the immediacy of real-time chat with the productivity benefits of threaded conversations.\n",
     "requirements": {
       "memory": 2048,
       "cpu": 1,
@@ -3726,12 +3726,13 @@
         "SMTP_EMAIL_FROM": "email@example.com",
         "SMTP_USE_SSL": "False",
         "SMTP_USE_TLS": "True",
-        "ZULIP_VERSION": "10.4-0",
+        "ZULIP_VERSION": "11.6-0",
+        "ZULIP_GIT_REF": "11.6",
         "PORT": "8080",
         "SECRET_KEY": "${GENERATED_HASH}"
       }
     },
     "createdAt": "2025-08-13T10:50:46+03:00",
-    "updatedAt": "2025-08-13T16:15:07+03:00"
+    "updatedAt": "2026-11-05T06:13:08+02:00"
   }
 ]
