@@ -24,6 +24,7 @@ app:
   dockerComposeFile: docker-compose.yml
   env:
     PORT: "8080"
+    DOZZLE_VERSION: "v11.3.5"
     DOZZLE_AUTH_PROVIDER: simple
     DOZZLE_ENABLE_ACTIONS: true
     DOZZLE_ENABLE_SHELL: true
