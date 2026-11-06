@@ -28,6 +28,7 @@ app:
   sourcePath: beszel
   dockerComposeFile: docker-compose.yml
   env:
+    BESZEL_VERSION: "0.21.1"
     PORT: "8090"
     HUB_URL: "${APP_URL}"
     TOKEN: "${GENERATED_HASH}"
