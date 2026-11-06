@@ -27,12 +27,14 @@ app:
   sourcePath: courselit
   sourceBranch: main
   env:
+    COURSELIT_VERSION: "v0.74.4"
     NODE_ENV: production
     SERVER_URL: ${APP_URL}
     AUTH_SECRET: ${GENERATED_HASH}
     AUTH_TRUST_HOST: true
     PORT: 3000
     DB_CONNECTION_STRING: 'mongodb://courselit:123456@mongo/courselit?authSource=admin'
+    DB_TRANSACTIONS: "false"
     EMAIL_USER: 'test@example.com'
     EMAIL_PASS: 'test'
     EMAIL_HOST: 'smtp.example.com'
