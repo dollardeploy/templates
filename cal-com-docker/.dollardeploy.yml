@@ -37,8 +37,8 @@ app:
     DOCKER_COMPOSE_WAIT_TIMEOUT: 600
     REDIS_URL: redis://redis:6379
     PORT: 3000
-  repositoryUrl: https://github.com/calcom/cal.com
-  sourceBranch: main
+  repositoryUrl: https://github.com/calcom/cal.diy
+  sourceBranch: v6.2.0
   dockerComposeFile: docker-compose.yml
   preStartCmd: bash ./fixdocker.sh
   files:
@@ -46,7 +46,12 @@ app:
       content: |
         #!/bin/bash
         sed -e "s/- 3000:3000/- 127.0.0.1:\$PORT:3000/g" -i docker-compose.yml
-        sed -e "s/studio:/studio-optional:\n    profiles: [withstudio]/g" -i docker-compose.yml  
+        sed -e "s/studio:/studio-optional:\n    profiles: [withstudio]/g" -i docker-compose.yml
+        # Upstream renamed the image to calcom/cal.diy, which has never been published.
+        # Pin to the last published image, matching the checked out tag.
+        sed -e 's|image: calcom.docker.scarf.sh/calcom/cal.com$|image: calcom.docker.scarf.sh/calcom/cal.com:v6.2.0|g' -i docker-compose.yml
+        # Do not expose Redis on the public interface.
+        sed -e 's|^\( *- "\)\(.*:6379"\)$|\1127.0.0.1:\2|g' -i docker-compose.yml
 introVideoUrl: https://www.youtube-nocookie.com/embed/60HJt8DOVNo
 deployTime: "~10 minutes"
 description: Cal.com is a scheduling infrastructure for everyone. It's an open source
