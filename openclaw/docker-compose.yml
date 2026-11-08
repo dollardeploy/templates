@@ -1,6 +1,6 @@
 services:
   openclaw:
-    image: "coollabsio/openclaw:2026.2.6"
+    image: "coollabsio/openclaw:${OPENCLAW_VERSION:-2026.2.6}"
     restart: always
     ports:
       - "127.0.0.1:${PORT}:8080"
@@ -42,6 +42,7 @@ services:
       SYNTHETIC_API_KEY: ${SYNTHETIC_API_KEY:-}
       COPILOT_GITHUB_TOKEN: ${COPILOT_GITHUB_TOKEN:-}
       XIAOMI_API_KEY: ${XIAOMI_API_KEY:-}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
       BROWSER_CDP_URL: http://browser:9223
       BROWSER_DEFAULT_PROFILE: ${BROWSER_DEFAULT_PROFILE:-openclaw}
       BROWSER_EVALUATE_ENABLED: ${BROWSER_EVALUATE_ENABLED:-true}
@@ -68,7 +69,7 @@ services:
       retries: 5
 
   browser:
-    image: "coollabsio/openclaw-browser:latest"
+    image: "coollabsio/openclaw-browser:${OPENCLAW_BROWSER_VERSION:-latest}"
     restart: always
     environment:
       PUID: 1000
