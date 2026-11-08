@@ -19,6 +19,7 @@ app:
     PORT: 3000
     SERVER_URL: ${APP_URL}
     PASSWORD: ${GENERATED_PWD}
+    CODE_SERVER_VERSION: "4.144.0"
   preStartCmd: mkdir -p ../.local && mkdir -p ../.config
 deployTime: "~3 minutes"
 description: This template launches code-server, which is VS Code running on a remote server, accessible through

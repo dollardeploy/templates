@@ -1,6 +1,6 @@
 services:
   code-server:
-    image: codercom/code-server:latest
+    image: codercom/code-server:${CODE_SERVER_VERSION:-latest}
     ports:
       - 127.0.0.1:$PORT:$PORT
     volumes:
