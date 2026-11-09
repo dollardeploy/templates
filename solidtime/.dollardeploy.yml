@@ -37,7 +37,7 @@ app:
     - path: setup-passport-client.sh
   env:
     PORT: "8000"
-    SOLIDTIME_IMAGE_TAG: "0.14.0"
+    SOLIDTIME_IMAGE_TAG: "0.22.1"
     PUBLIC_URL: "${APP_URL}"
     PUBLIC_HOSTNAME: "${APP_HOSTNAME}"
     ADMIN_EMAIL: "${USER_EMAIL}"
@@ -55,6 +55,8 @@ app:
     APP_FORCE_HTTPS: "true"
     APP_ENABLE_REGISTRATION: "true"
     TRUSTED_PROXIES: "0.0.0.0/0,2000:0:0:0:0:0:0:0/3"
+    # Extra hostnames accepted besides the PUBLIC_URL host (comma-separated, "*.example.com" allowed)
+    TRUSTED_HOSTS: ""
     LOG_CHANNEL: stderr
     LOG_LEVEL: error
     AUTO_DB_MIGRATE: "true"
@@ -63,6 +65,7 @@ app:
     DB_HOST: database
     DB_PORT: "5432"
     DB_SSLMODE: disable
+    DB_SSL_MODE: disable
     # --- Queue / storage / services ---
     QUEUE_CONNECTION: database
     FILESYSTEM_DISK: local
@@ -97,6 +100,11 @@ postLaunchNote: |
 
   For a browser extension, create a client with its redirect URIs:
   `docker compose exec scheduler php artisan passport:client --name=browser-extension --redirect_uri="<chrome+firefox redirect uris>"`
+
+  **Custom domain:** Solidtime only accepts requests for the host in `PUBLIC_URL`
+  (and its subdomains); other hostnames get HTTP 400. If you add a custom domain,
+  set `PUBLIC_URL` to it, or add the extra hostname to `TRUSTED_HOSTS`
+  (comma-separated) in **Environment** settings, then redeploy.
 
   Email uses the `log` driver by default (no mail is sent). To enable signup
   verification and invites, set the `MAIL_*` values in **Environment** settings
