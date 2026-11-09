@@ -36,6 +36,10 @@ app:
   dockerComposeFile: docker-compose.yml
   mainPort: 9428
   env:
+    # Pinned image versions for new launches. Existing apps without these
+    # variables fall back to the compose default (latest).
+    VICTORIALOGS_VERSION: "v1.53.0"
+    VMAUTH_VERSION: "v1.155.0"
     # vmauth /health is public; everything else needs auth, so check /health.
     APP_HEALTHCHECK_PATH: /health
     # Admin user (full access): fixed username, generated password.
@@ -44,6 +48,9 @@ app:
     # Ingestion-only user: both username and password generated.
     VLOGS_INGEST_USERNAME: ${GENERATED_HASH}
     VLOGS_INGEST_PASSWORD: ${GENERATED_SECRET}
+    # RETENTION_PERIOD is what docker-compose.yml reads (--retentionPeriod).
+    # RETENTION_DAYS is unused and kept only so existing app envs match.
+    RETENTION_PERIOD: "30d"
     RETENTION_DAYS: "30d"
     RETENTION_MAX_DISK_SIZE: "10GiB"
 postLaunchNote: |
