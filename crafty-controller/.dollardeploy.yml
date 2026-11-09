@@ -20,6 +20,7 @@ app:
   sourcePath: crafty-controller
   dockerComposeFile: docker-compose.yml
   env:
+    CRAFTY_VERSION: "4.11.0"
     PORT: "8443"
     # Crafty's web UI is HTTPS-only (self-signed); skip the plain-HTTP healthcheck
     APP_HEALTHCHECK_ENABLE: "0"
