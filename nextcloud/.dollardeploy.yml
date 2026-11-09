@@ -16,12 +16,16 @@ app:
   repositoryUrl: "https://github.com/dollardeploy/templates"
   sourcePath: "nextcloud"
   sourceBranch: main
-  type: next
+  type: docker-compose
+  dockerComposeFile: docker-compose.yml
   mainPort: 8080
   env:
+    NEXTCLOUD_VERSION: "35.0.2-apache"
     COMPOSE_PROFILES: "withdb,withredis"
     MYSQL_PASSWORD: ${GENERATED_PWD}
     MYSQL_DATABASE: nextcloud
     MYSQL_USER: nextcloud
     MYSQL_HOST: db
     REDIS_HOST: redis
+services:
+  - docker

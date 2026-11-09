@@ -1,6 +1,6 @@
 services:
   app:
-    image: nextcloud:apache
+    image: nextcloud:${NEXTCLOUD_VERSION:-apache}
     restart: always
     volumes:
       - ./data:/var/www/html/data
@@ -33,8 +33,11 @@ services:
     profiles: [withredis]
 
   cron:
-    image: nextcloud:apache
+    image: nextcloud:${NEXTCLOUD_VERSION:-apache}
     restart: always
     volumes:
       - ./html:/var/www/html
     entrypoint: /cron.sh
+
+volumes:
+  db:
