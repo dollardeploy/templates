@@ -111,7 +111,7 @@ services:
       - rabbitmq_data:/var/lib/rabbitmq
 
   plane-minio:
-    image: minio/minio:latest
+    image: ${MINIO_IMAGE:-minio/minio:latest}
     restart: always
     command: server /export --console-address ":9090"
     environment:
