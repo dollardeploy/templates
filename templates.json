@@ -660,7 +660,8 @@
       "env": {
         "PORT": 3000,
         "SERVER_URL": "${APP_URL}",
-        "PASSWORD": "${GENERATED_PWD}"
+        "PASSWORD": "${GENERATED_PWD}",
+        "CODE_SERVER_VERSION": "4.144.0"
       },
       "preStartCmd": "mkdir -p ../.local && mkdir -p ../.config"
     },
@@ -670,7 +671,7 @@
       "docker"
     ],
     "createdAt": "2024-12-15T14:42:55Z",
-    "updatedAt": "2026-01-05T09:35:33+02:00"
+    "updatedAt": "2026-11-10T21:22:34+02:00"
   },
   {
     "id": "courselit",
