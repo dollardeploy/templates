@@ -56,7 +56,7 @@
       "backupCmd": "tar czf appsmith-backup.tar.gz ./stacks",
       "env": {
         "PORT": "3000",
-        "APPSMITH_VERSION": "v1.94",
+        "APPSMITH_VERSION": "v2.6.0",
         "APP_HEALTHCHECK_PATH": "/api/v1/health",
         "APP_READY_TIMEOUT": "600",
         "DOCKER_COMPOSE_WAIT_TIMEOUT": "600"
@@ -69,12 +69,13 @@
     },
     "deployTime": "~5 minutes",
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/NnaJdA1A11s",
+    "postLaunchNote": "Appsmith can take a few minutes to finish starting after deploy. Create the admin account on first visit.\nThen open Admin Settings > Configuration and set the instance URL to `${APP_URL}`: invite and password reset emails are not sent until it is set.\n",
     "description": "Appsmith is an open-source, low-code platform for\nbuilding internal tools, admin panels, dashboards, and CRUD apps. Drag-and-drop\npre-built widgets, connect to any database or REST/GraphQL API, and wire up logic\nwith JavaScript anywhere. The all-in-one container bundles the backend, real-time\nservice, MongoDB, and Redis, so no external services are required.\n",
     "services": [
       "docker"
     ],
     "createdAt": "2026-06-05T14:55:59+03:00",
-    "updatedAt": "2026-06-17T07:43:46+03:00"
+    "updatedAt": "2026-11-10T21:16:53+02:00"
   },
   {
     "id": "astro",
