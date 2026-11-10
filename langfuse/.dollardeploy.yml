@@ -1,0 +1,67 @@
+id: langfuse
+name: Langfuse
+intro: "Open source LLM engineering platform: tracing, evals, prompt management and metrics."
+logo: https://avatars.githubusercontent.com/u/134601687
+tags:
+  - ai
+  - llm
+  - observability
+  - analytics
+  - oss
+deployTime: ~5 minutes
+description: |
+  Langfuse is an open source LLM engineering platform. It helps teams
+  collaboratively develop, monitor, evaluate and debug AI applications with
+  tracing, prompt management, evaluations, datasets and metrics. Integrates
+  with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM and more.
+
+  This template runs the full Langfuse v4 stack with Docker Compose: web,
+  worker, PostgreSQL, ClickHouse, Redis and MinIO. Data is persisted in Docker
+  volumes. An admin user with your e-mail is created on first launch and public
+  sign up is disabled.
+requirements:
+  memory: 8192
+  cpu: 2
+  storage: 30
+services:
+  - docker
+app:
+  type: docker-compose
+  repositoryUrl: https://github.com/dollardeploy/templates
+  sourcePath: langfuse
+  sourceBranch: main
+  dockerComposeFile: docker-compose.yml
+  mainPort: 3000
+  env:
+    PORT: "3000"
+    LANGFUSE_IMAGE_TAG: "4.77.0"
+    CLICKHOUSE_IMAGE_TAG: "26.3.62.3"
+    POSTGRES_IMAGE_TAG: "17"
+    REDIS_IMAGE_TAG: "7"
+    NEXTAUTH_URL: "${APP_URL}"
+    NEXTAUTH_SECRET: "${GENERATED_HASH}"
+    SALT: "salt${GENERATED_HASH}"
+    ENCRYPTION_KEY: "${GENERATED_SECRET}"
+    POSTGRES_PASSWORD: "pg${GENERATED_HASH}"
+    CLICKHOUSE_PASSWORD: "ch${GENERATED_HASH}"
+    REDIS_AUTH: "redis${GENERATED_HASH}"
+    MINIO_ROOT_PASSWORD: "minio${GENERATED_HASH}"
+    AUTH_DISABLE_SIGNUP: "true"
+    TELEMETRY_ENABLED: "true"
+    LANGFUSE_INIT_ORG_ID: "default"
+    LANGFUSE_INIT_ORG_NAME: "Default"
+    LANGFUSE_INIT_PROJECT_ID: "default"
+    LANGFUSE_INIT_PROJECT_NAME: "Default"
+    LANGFUSE_INIT_USER_EMAIL: "${USER_EMAIL}"
+    LANGFUSE_INIT_USER_NAME: "Admin"
+    LANGFUSE_INIT_USER_PASSWORD: "${GENERATED_PWD}"
+    APP_HEALTHCHECK_PATH: "/api/public/health"
+    APP_READY_TIMEOUT: 600
+    DOCKER_COMPOSE_WAIT_TIMEOUT: 600
+postLaunchNote: |
+  Log in with your e-mail, the password is in the `LANGFUSE_INIT_USER_PASSWORD`
+  environment variable. Create API keys in **Project Settings -> API Keys** and
+  point the SDK `LANGFUSE_HOST` (or `LANGFUSE_BASE_URL`) to this app URL.
+
+  > Public sign up is disabled. Set `AUTH_DISABLE_SIGNUP` to `false` and
+  > redeploy to allow it. To upgrade, change `LANGFUSE_IMAGE_TAG` and redeploy.
