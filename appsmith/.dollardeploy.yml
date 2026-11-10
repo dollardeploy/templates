@@ -19,7 +19,7 @@ app:
   backupCmd: tar czf appsmith-backup.tar.gz ./stacks
   env:
     PORT: "3000"
-    APPSMITH_VERSION: "v1.94"
+    APPSMITH_VERSION: "v2.6.0"
     APP_HEALTHCHECK_PATH: "/api/v1/health"
     APP_READY_TIMEOUT: "600"
     DOCKER_COMPOSE_WAIT_TIMEOUT: "600"
@@ -29,6 +29,9 @@ requirements:
   storage: 30
 deployTime: "~5 minutes"
 introVideoUrl: https://www.youtube-nocookie.com/embed/NnaJdA1A11s
+postLaunchNote: |
+  Appsmith can take a few minutes to finish starting after deploy. Create the admin account on first visit.
+  Then open Admin Settings > Configuration and set the instance URL to `${APP_URL}`: invite and password reset emails are not sent until it is set.
 description: |
   Appsmith is an open-source, low-code platform for
   building internal tools, admin panels, dashboards, and CRUD apps. Drag-and-drop
