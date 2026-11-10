@@ -2994,7 +2994,7 @@
       "oss"
     ],
     "deployTime": "~1 minute",
-    "description": "This template provides a Fastify-based server  that exposes a /webhooks endpoint for Stripe, providing a ready-to-run service for real-time Stripe-to-Postgres sync. Read more at  https://github.com/supabase/stripe-sync-engine",
+    "description": "This template provides a Fastify-based server  that exposes a /webhooks endpoint for Stripe, providing a ready-to-run service for real-time Stripe-to-Postgres sync. Read more at  https://github.com/stripe/sync-engine/tree/og",
     "services": [
       "docker",
       "postgres"
@@ -3017,11 +3017,12 @@
         "API_KEY": "${GENERATED_HASH}",
         "POSTGRES_SCHEMA": "stripe",
         "BACKFILL_RELATED_ENTITIES": true,
-        "MAX_POSTGRES_CONNECTIONS": 10
+        "MAX_POSTGRES_CONNECTIONS": 10,
+        "IMAGE_TAG": "v0.48.5"
       }
     },
     "createdAt": "2025-06-12T22:21:09+03:00",
-    "updatedAt": "2025-12-25T11:47:32+02:00"
+    "updatedAt": "2026-11-10T21:18:13+02:00"
   },
   {
     "id": "tagmanager",
