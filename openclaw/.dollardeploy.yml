@@ -30,6 +30,8 @@ app:
   dockerComposeFile: docker-compose.yml
   env:
     PORT: "8080"
+    OPENCLAW_VERSION: "2026.10.9"
+    OPENCLAW_BROWSER_VERSION: "0.3.0"
     AUTH_USERNAME: "admin"
     AUTH_PASSWORD: "${GENERATED_PWD}"
     OPENCLAW_GATEWAY_TOKEN: "${GENERATED_HASH}"
