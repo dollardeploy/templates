@@ -12,7 +12,7 @@ description: >-
   This template provides a Fastify-based server 
   that exposes a /webhooks endpoint for Stripe, providing a ready-to-run service
   for real-time Stripe-to-Postgres sync. Read more at 
-  https://github.com/supabase/stripe-sync-engine
+  https://github.com/stripe/sync-engine/tree/og
 services:
   - docker
   - postgres
@@ -34,3 +34,4 @@ app:
     POSTGRES_SCHEMA: "stripe"
     BACKFILL_RELATED_ENTITIES: true
     MAX_POSTGRES_CONNECTIONS: 10
+    IMAGE_TAG: "v0.48.5"
