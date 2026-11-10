@@ -27,6 +27,8 @@ app:
     MYSQL_ROOT_PASSWORD: ${GENERATED_PWD}
     PUBLIC_URL: ${APP_URL}
     PORT: "8080"
+    WORDPRESS_VERSION: "7.1.4"
+    MARIADB_VERSION: "11.8.9-noble"
   preStartCmd: bash ./fixdocker.sh
   files:
     - path: fixdocker.sh

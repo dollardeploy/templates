@@ -1,6 +1,6 @@
 services:
   wordpress:
-    image: wordpress
+    image: wordpress:${WORDPRESS_VERSION:-latest}
     restart: always
     ports:
       - 127.0.0.1:${PORT}:80
@@ -13,10 +13,11 @@ services:
       - ./wordpress:/var/www/html
     user: "$USER_UID:$USER_GID"
   db:
-    image: mariadb:10.6.20-focal
+    image: mariadb:${MARIADB_VERSION:-10.6.20-focal}
     command: "--default-authentication-plugin=mysql_native_password"
     restart: always
     environment:
+      MARIADB_AUTO_UPGRADE: ${MARIADB_AUTO_UPGRADE:-}
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
