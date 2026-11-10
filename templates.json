@@ -474,12 +474,13 @@
         "REDIS_PASSWORD": "${GENERATED_PWD}",
         "SECRET_KEY_BASE": "${GENERATED_HASH}",
         "PORT": "3000",
-        "CHATWOOT_VERSION": "v4.5.2-ce",
+        "CHATWOOT_VERSION": "v4.19.1-ce",
+        "VIPS_BLOCK_UNTRUSTED": "1",
         "PRE_START_TIMEOUT": "300"
       }
     },
     "createdAt": "2024-11-24T13:32:15+02:00",
-    "updatedAt": "2026-06-04T11:51:54+03:00"
+    "updatedAt": "2026-11-10T21:21:43+02:00"
   },
   {
     "id": "chatwoot3",
