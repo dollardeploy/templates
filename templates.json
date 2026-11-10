@@ -1903,7 +1903,7 @@
         "PORT": 5678,
         "N8N_HOST": "${APP_HOSTNAME}",
         "N8N_PORT": "${PORT}",
-        "N8N_VERSION": "1.120.2",
+        "N8N_VERSION": "2.45.7",
         "N8N_PROTOCOL": "https",
         "WEBHOOK_URL": "${APP_URL}",
         "GENERIC_TIMEZONE": "UTC",
@@ -1932,7 +1932,7 @@
       ]
     },
     "createdAt": "2025-04-29T10:51:14+03:00",
-    "updatedAt": "2025-11-14T15:22:54+02:00"
+    "updatedAt": "2026-11-10T20:59:18+02:00"
   },
   {
     "id": "nextcloud",
