@@ -7,7 +7,7 @@
 # https://docs.victoriametrics.com/victorialogs/security-and-lb/
 services:
   victorialogs:
-    image: victoriametrics/victoria-logs:latest
+    image: victoriametrics/victoria-logs:${VICTORIALOGS_VERSION:-latest}
     restart: always
     command:
       - "--storageDataPath=/vlogs"
@@ -18,7 +18,7 @@ services:
       - ./data:/vlogs
 
   vmauth:
-    image: victoriametrics/vmauth:latest
+    image: victoriametrics/vmauth:${VMAUTH_VERSION:-latest}
     restart: always
     depends_on:
       - victorialogs
