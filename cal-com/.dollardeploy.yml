@@ -11,7 +11,7 @@ tags:
   - booking
   - meeting
 requirements:
-  memory: 4096
+  memory: 8192
   cpu: 2
   storage: 20
 app:
@@ -27,9 +27,9 @@ app:
     NEXT_PUBLIC_LICENSE_CONSENT: agree
     CALCOM_TELEMETRY_DISABLED: true
     PRISMA_SCHEMA_PATH: packages/prisma/schema.prisma
-    NODE_OPTIONS: "--max-old-space-size=4096"
-  repositoryUrl: https://github.com/calcom/cal.com.git
-  sourceBranch: v4.8.19
+    NODE_OPTIONS: "--max-old-space-size=6144"
+  repositoryUrl: https://github.com/calcom/cal.diy
+  sourceBranch: v6.2.0
   startScript: start
   buildScript: build
   buildIncludeFiles: packages/prisma
