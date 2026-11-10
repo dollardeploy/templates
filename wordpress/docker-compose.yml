@@ -1,6 +1,6 @@
 services:
   wordpress:
-    image: wordpress
+    image: wordpress:${WORDPRESS_VERSION:-latest}
     restart: always
     ports:
       - 127.0.0.1:${PORT}:80

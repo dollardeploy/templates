@@ -27,6 +27,7 @@ app:
     MYSQL_ROOT_PASSWORD: ${GENERATED_PWD}
     PUBLIC_URL: ${APP_URL}
     PORT: "8080"
+    WORDPRESS_VERSION: "7.1.4"
   preStartCmd: bash ./fixdocker.sh
   files:
     - path: fixdocker.sh
