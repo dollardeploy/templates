@@ -28,6 +28,7 @@ app:
   sourceBranch: main
   mainPort: 3000
   env:
+    DOCUMENSO_VERSION: "v2.21.1"
     PORT: 3000
     NEXTAUTH_URL: ${APP_URL}
     NEXT_PUBLIC_WEBAPP_URL: ${APP_URL}
