@@ -26,6 +26,7 @@ app:
     WINGS_UID: "988"
     WINGS_GID: "988"
     WINGS_USERNAME: "pterodactyl"
+    WINGS_VERSION: "v1.13.4"
   postStartCmd: |
     echo "Wings daemon started. If you're using Pterodactyl Panel, make sure the node configuration points to port ${PORT_PANEL}."
 

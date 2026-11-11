@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   wings:
-    image: ghcr.io/pterodactyl/wings:latest
+    image: ghcr.io/pterodactyl/wings:${WINGS_VERSION:-latest}
     container_name: pterodactyl-wings
     restart: unless-stopped
     networks:
