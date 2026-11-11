@@ -3673,11 +3673,12 @@
     "app": {
       "type": "docker-compose",
       "repositoryUrl": "https://github.com/dollardeploy/templates",
-      "sourcePath": "vllm",
+      "sourcePath": "vllm-docker",
       "sourceBranch": "main",
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 8000,
       "env": {
+        "VLLM_VERSION": "v0.33.0",
         "HF_TOKEN": "",
         "APP_HEALTHCHECK_PATH": "/health",
         "DOCKER_COMPOSE_PULL": "always",
@@ -3686,7 +3687,7 @@
       }
     },
     "createdAt": "2026-08-08T10:38:17+03:00",
-    "updatedAt": "2026-08-08T10:38:17+03:00"
+    "updatedAt": "2026-11-11T15:58:12+02:00"
   },
   {
     "id": "wikijs",
