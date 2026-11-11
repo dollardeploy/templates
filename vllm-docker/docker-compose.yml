@@ -1,6 +1,6 @@
 services:
   vllm:
-    image: docker.io/vllm/vllm-openai:cu130-nightly
+    image: docker.io/vllm/vllm-openai:${VLLM_VERSION:-cu130-nightly}
     ports:
       - "127.0.0.1:8000:8000"
     volumes:

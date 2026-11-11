@@ -27,11 +27,12 @@ services:
 app:
   type: docker-compose
   repositoryUrl: https://github.com/dollardeploy/templates
-  sourcePath: vllm
+  sourcePath: vllm-docker
   sourceBranch: main
   dockerComposeFile: docker-compose.yml
   mainPort: 8000
   env:
+    VLLM_VERSION: "v0.33.0"
     HF_TOKEN: ""
     APP_HEALTHCHECK_PATH: "/health"
     DOCKER_COMPOSE_PULL: always
