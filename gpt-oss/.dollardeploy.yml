@@ -30,3 +30,4 @@ app:
   env:
     DOCKER_COMPOSE_BUILD: 1
     PORT: 8080
+    OLLAMA_VERSION: "0.40.13"
