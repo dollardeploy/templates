@@ -2,8 +2,11 @@ services:
   knot:
     # ponytail: build from the upstream knot-docker context — no vendored
     # Dockerfile/s6 tree here, and the published images are a year stale.
+    # Pinned to knot-docker aa7fe7c, the last commit whose default Dockerfile
+    # is the Go knot. Upstream switched the default to the Rust knot2 on
+    # 2026-10-30 (0e86744), which needs a different data layout and env.
     build:
-      context: https://tangled.org/@tangled.org/knot-docker.git
+      context: https://tangled.org/@tangled.org/knot-docker.git#aa7fe7c8ff2f9ffa6f71c24ee9ecc9d9db6d87d4
       args:
         TAG: ${KNOT_VERSION:-v1.16.1-alpha}
     restart: unless-stopped
