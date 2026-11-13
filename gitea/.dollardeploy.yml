@@ -34,6 +34,7 @@ app:
   # opens the git-over-ssh port when the host runs the firewall service
   preStartCmd: sudo ufw status >/dev/null 2>&1 && sudo ufw allow ${SSH_PORT}/tcp || true
   env:
+    GITEA_VERSION: "28.3.0"
     PORT: "3000"
     SSH_PORT: "2222"
     DB_PASSWORD: "gitea${GENERATED_HASH}"

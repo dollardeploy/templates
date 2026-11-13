@@ -1,6 +1,6 @@
 services:
   gitea:
-    image: gitea/gitea:1.22
+    image: gitea/gitea:${GITEA_VERSION:-1.22}
     restart: unless-stopped
     ports:
       - "127.0.0.1:${PORT}:3000"
