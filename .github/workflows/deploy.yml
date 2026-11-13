@@ -7,6 +7,7 @@ on:
     paths-ignore:
       - templates.json
       - .github/**
+      - scripts/**
       - README.md
   workflow_dispatch:
     inputs:
@@ -100,7 +101,7 @@ jobs:
           DOLLARDEPLOY_API_KEY: ${{ secrets.DOLLARDEPLOY_API_KEY }}
           DOLLARDEPLOY_BASE_URL: ${{ secrets.DOLLARDEPLOY_BASE_URL }}
           DOLLARDEPLOY_SCREENSHOT_URL: ${{ secrets.DOLLARDEPLOY_SCREENSHOT_URL }}
-          DOLLARDEPLOY_TEST_HOST_ID: ${{ secrets.DOLLARDEPLOY_TEST_HOST_ID }}
+          DOLLARDEPLOY_TEST_HOST_ID: ${{ vars.DOLLARDEPLOY_TEST_HOST_ID }}
         run: |
           failed=0
           {
@@ -112,7 +113,7 @@ jobs:
 
           for template in $TEMPLATES; do
             echo "::group::Deploy $template"
-            if bash .github/scripts/test-deploy-template.sh "$template"; then
+            if bash scripts/deploy-template.sh "$template"; then
               result="passed"
             else
               result="failed"

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Test-deploy one DollarDeploy template on the test host, then remove it.
 #
-# Usage: test-deploy-template.sh <template-id>
+# Usage: scripts/deploy-template.sh <template-id>
 #
 # Env:
 #   DOLLARDEPLOY_API_KEY         required, API key for ddc
-#   DOLLARDEPLOY_TEST_HOST_ID    required, id of the prepared test host (`ddc host list`)
+#   DOLLARDEPLOY_TEST_HOST_ID    required, id of the prepared test host (`ddc host list`), a repository variable
 #   DOLLARDEPLOY_BASE_URL        optional, API base URL (read by ddc itself)
 #   DOLLARDEPLOY_SCREENSHOT_URL  optional, screenshot service; POST {"url": "<app url>"}
 #   DEPLOY_TIMEOUT_MS            optional, per-task timeout passed to ddc (default 30 min)
@@ -27,7 +27,7 @@ if [ -z "${DOLLARDEPLOY_API_KEY:-}" ]; then
 fi
 
 if [ -z "${DOLLARDEPLOY_TEST_HOST_ID:-}" ]; then
-  echo "::error::DOLLARDEPLOY_TEST_HOST_ID is not set. Add the test host id (from \`ddc host list\`) as a repository secret: gh secret set DOLLARDEPLOY_TEST_HOST_ID --body <host-id>"
+  echo "::error::DOLLARDEPLOY_TEST_HOST_ID is not set. Add the test host id (from \`ddc host list\`) as a repository variable: gh variable set DOLLARDEPLOY_TEST_HOST_ID --body <host-id>"
   exit 2
 fi
 
