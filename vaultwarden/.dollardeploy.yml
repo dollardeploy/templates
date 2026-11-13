@@ -31,6 +31,7 @@ app:
   dockerComposeFile: docker-compose.yml
   mainPort: 8080
   env:
+    VAULTWARDEN_VERSION: "1.37.5"
     PORT: "8080"
     SIGNUPS_ALLOWED: "true"
     ADMIN_TOKEN: ""
