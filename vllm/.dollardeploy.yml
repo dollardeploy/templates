@@ -21,8 +21,9 @@ description: |
   Use a GPU server with NVIDIA drivers already installed and native FP8 support
   (Hopper or newer — e.g. Verda 1xH200, or scale to 2x/4x/8x for larger models).
   Dependencies are managed with uv from a native pyproject.toml, and uv
-  auto-selects the PyTorch CUDA wheels matching the host driver (CUDA 12.9 / 13.0),
-  so no CUDA toolkit install is required. Set HF_TOKEN to your HuggingFace token to
+  auto-selects the PyTorch CUDA wheels matching the host driver. vLLM 0.33 ships
+  CUDA 13.0 wheels only, so the host needs an NVIDIA driver with CUDA 13 support
+  (R580 or newer); no CUDA toolkit install is required. Set HF_TOKEN to your HuggingFace token to
   download gated models, and set MODEL_NAME and TENSOR_PARALLEL_SIZE to match the
   model and GPU count.
 
@@ -54,6 +55,7 @@ app:
     UV_CACHE_DIR="$APP_DIR/cache/uv"
     TRITON_CACHE_DIR="$APP_DIR/cache/triton"
     CUDA_CACHE_PATH="$APP_DIR/cache/nv" &&
+    uv add --no-sync "vllm==${VLLM_VERSION:-0.27.1}" &&
     uv sync &&
     uv run vllm serve ${MODEL_NAME}
     --host 127.0.0.1
@@ -77,6 +79,8 @@ app:
     UV_PYTHON_PREFERENCE: "only-managed"
     TENSOR_PARALLEL_SIZE: "1"
     NGINX_STATIC_PATHS: "/:web"
+    # vLLM release installed by startCmd (falls back to the pyproject.toml pin 0.27.1).
+    VLLM_VERSION: "0.33.0"
     VLLM_API_KEY: ${GENERATED_HASH}
     VLLM_CACHE_ROOT: "cache"
     VLLM_SERVER_DEV_MODE: 0
