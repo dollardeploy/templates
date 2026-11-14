@@ -1,7 +1,7 @@
 id: stirling-pdf
 name: Stirling PDF
 intro: A locally-hosted web app to perform 50+ operations on PDFs — merge, split, convert, OCR, and more.
-logo: https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/main/docs/stirling.png
+logo: logo.png
 tags:
   - pdf
   - productivity

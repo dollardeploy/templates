@@ -2,7 +2,7 @@ id: uptime-kuma
 name: Uptime Kuma
 intro: >-
   Uptime Kuma is a simple, easy-to-use uptime monitoring tool.
-logo: https://raw.githubusercontent.com/louislam/uptime-kuma/master/public/icon.svg
+logo: logo.svg
 tags:
   - monitoring
   - uptime

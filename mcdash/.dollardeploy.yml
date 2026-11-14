@@ -1,7 +1,7 @@
 id: mcdash
 name: MCDash
 intro: MCDash is a simple dashboard for your Minecraft server.
-logo: https://mcdash.gnm.dev/img/favicon.png
+logo: logo.png
 tags:
   - minecraft
   - dashboard

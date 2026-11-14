@@ -2,7 +2,7 @@
 id: cobalt
 name: Cobalt
 intro: Save media from social platforms — the full cobalt web app plus its own processing instance.
-logo: https://avatars.githubusercontent.com/u/152056268
+logo: logo.png
 deployTime: ~8 minutes
 tags:
   - media

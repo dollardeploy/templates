@@ -1,7 +1,7 @@
 id: zulipchat
 name: Zulip Chat
 intro: Organized chat for distributed teams
-logo: https://avatars.githubusercontent.com/u/4921959
+logo: logo.png
 deployTime: ~10 minutes
 tags:
   - chat

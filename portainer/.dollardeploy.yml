@@ -1,7 +1,7 @@
 id: portainer
 name: Portainer CE
 intro: Portainer Community Edition is a lightweight, open-source platform for managing Docker, Kubernetes, and Swarm environments with a simple, intuitive web interface.
-logo: https://icon.icepanel.io/Technology/svg/Portainer.svg
+logo: logo.svg
 tags:
   - devops
   - docker-management

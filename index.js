@@ -73,6 +73,58 @@ const resolveFileReferences = (template, templateDir) => {
   return template;
 };
 
+const LOGO_EXTENSIONS = [".svg", ".png", ".jpg", ".jpeg", ".webp", ".gif"];
+const LOGO_MAX_BYTES = 256 * 1024;
+const LOGO_CDN = "https://cdn.jsdelivr.net/gh/dollardeploy/templates";
+
+/**
+ * Resolve the template logo. Logos are stored next to the template config, never hotlinked:
+ * upstream sites move or delete their images and the catalog card breaks. The local file is
+ * served from jsDelivr (correct image MIME type, unlike raw.githubusercontent.com for SVG),
+ * pinned to the commit that last changed it so a replaced logo is never served stale.
+ */
+const resolveLogo = (basePath, templateId, logo) => {
+  if (!logo) {
+    return logo;
+  }
+
+  if (/^[a-z]+:/i.test(logo)) {
+    throw new Error(
+      `Template ${templateId}: logo must be a file in the template directory (e.g. logo: logo.svg), not a URL: ${logo}`
+    );
+  }
+
+  const templatePath = path.join(basePath, templateId);
+  const logoPath = path.resolve(templatePath, logo);
+  if (!logoPath.startsWith(templatePath + path.sep)) {
+    throw new Error(`Template ${templateId}: logo must stay inside the template directory: ${logo}`);
+  }
+
+  if (!LOGO_EXTENSIONS.includes(path.extname(logoPath).toLowerCase())) {
+    throw new Error(`Template ${templateId}: logo must be one of ${LOGO_EXTENSIONS.join(", ")}: ${logo}`);
+  }
+
+  if (!fs.existsSync(logoPath)) {
+    throw new Error(`Template ${templateId}: logo file not found: ${logo}`);
+  }
+
+  const size = fs.statSync(logoPath).size;
+  if (size === 0 || size > LOGO_MAX_BYTES) {
+    throw new Error(`Template ${templateId}: logo must be 1 byte to ${LOGO_MAX_BYTES} bytes, got ${size}: ${logo}`);
+  }
+
+  const relativePath = path.relative(basePath, logoPath).split(path.sep).join("/");
+  let ref = "main";
+  try {
+    ref =
+      execSync(`git log -1 --format=%H -- "${relativePath}"`, { cwd: basePath, encoding: "utf-8" }).trim() || "main";
+  } catch {
+    // Not committed yet (local run): fall back to the branch
+  }
+
+  return `${LOGO_CDN}@${ref}/${relativePath}`;
+};
+
 /**
  * Get git timestamps for a template directory
  */
@@ -117,6 +169,7 @@ const getLocalTemplate = (basePath, templateId, optional = false) => {
 
   let template = parseConfigFile(configFile);
   template = resolveFileReferences(template, templatePath);
+  template.logo = resolveLogo(basePath, templateId, template.logo);
 
   const { createdAt, updatedAt } = getGitTimestamps(basePath, templateId);
   template.createdAt = createdAt;

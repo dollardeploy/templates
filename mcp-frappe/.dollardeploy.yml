@@ -1,7 +1,7 @@
 id: mcp-frappe
 name: Frappe CRM MCP Server
 intro: "MCP Proxy with Frappe MCP Server for SSE transport"
-logo: https://avatars.githubusercontent.com/u/836974
+logo: logo.png
 deployTime: "~2 minutes"
 tags:
   - mcp

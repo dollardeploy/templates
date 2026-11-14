@@ -1,7 +1,7 @@
 id: hermes-agent
 name: Hermes Agent
 intro: "Self-improving AI agent by Nous Research with memory, skills, cron and a web dashboard."
-logo: https://avatars.githubusercontent.com/u/134168893
+logo: logo.png
 tags:
   - ai
   - agent

@@ -1,7 +1,7 @@
 id: crafty-controller
 name: Crafty Controller
 intro: Self-hosted web panel to create, run, and manage Minecraft servers.
-logo: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/crafty-controller.svg
+logo: logo.svg
 tags:
   - minecraft
   - gaming

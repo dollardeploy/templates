@@ -6,7 +6,7 @@ description: |
   Fork this repo and start building your own app quikly.
   This template is a simple Go application that can be used as a starting point for building your own app.
 demoUrl: "https://go.demo.dollardeploy.dev/"
-logo: https://go.dev/images/go-logo-blue.svg
+logo: logo.svg
 requirements:
   memory: 1024
   cpu: 1

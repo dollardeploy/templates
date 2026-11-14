@@ -1,7 +1,7 @@
 id: gpt-oss
 name: GPT-OSS
 intro: Running GPT-OSS on your server with GPU acceleration using ollama.
-logo: https://avatars.githubusercontent.com/u/14957082
+logo: logo.png
 tags:
   - ai
   - chatbot

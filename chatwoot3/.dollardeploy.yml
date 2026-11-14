@@ -2,7 +2,7 @@ id: chatwoot3
 name: Chatwoot 3.16
 intro: Open source live chat software
 description: Chatwoot is a customer support tool for instant messaging channels
-logo: 'https://app.chatwoot.com/brand-assets/logo_thumbnail.svg'
+logo: logo.svg
 deployTime: ~3 minutes
 experimental: true
 tags:

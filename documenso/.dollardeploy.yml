@@ -1,7 +1,7 @@
 id: documenso
 name: Documenso
 intro: "The open source DocuSign alternative for signing documents digitally."
-logo: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/documenso.svg
+logo: logo.svg
 tags:
   - documents
   - signing

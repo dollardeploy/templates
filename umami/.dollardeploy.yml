@@ -1,7 +1,7 @@
 id: umami
 name: Umami
 intro: Privacy-focused, GDPR-compliant web analytics — a simple, self-hosted Google Analytics alternative.
-logo: https://raw.githubusercontent.com/umami-software/umami/master/src/assets/logo.svg
+logo: logo.svg
 tags:
   - analytics
   - privacy

@@ -3,7 +3,7 @@ name: Mattermost
 intro: >-
   Mattermost is an open-source, self-hostable online chat service with file
   sharing, search, and integrations.
-logo: https://avatars.githubusercontent.com/u/9828093
+logo: logo.jpg
 tags:
   - oss
   - chat

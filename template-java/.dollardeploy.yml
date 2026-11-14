@@ -6,7 +6,7 @@ description: |
   Fork this repo and start building your own app quikly.
   This template is a simple Java application that can be used as a starting point for building your own app.
 demoUrl: "https://java.demo.dollardeploy.dev/"
-logo: https://avatars.githubusercontent.com/u/317776
+logo: logo.png
 requirements:
   memory: 2048
   cpu: 1

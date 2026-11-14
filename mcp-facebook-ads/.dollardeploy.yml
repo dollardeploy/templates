@@ -1,7 +1,7 @@
 id: mcp-facebook-ads
 name: Facebook Ads MCP Server
 intro: "MCP Proxy with Facebook Ads MCP Server for SSE transport"
-logo: https://avatars.githubusercontent.com/u/156911525
+logo: logo.png
 tags:
   - facebook
   - marketing

@@ -5,7 +5,7 @@ description: |
   A boilerplate for building a Deno application
   Fork this repo and start building your own app quickly.
   This template is a simple Deno application that can be used as a starting point for building your own app.
-logo: https://avatars.githubusercontent.com/u/42048915
+logo: logo.png
 experimental: true
 requirements:
   memory: 1024

@@ -6,7 +6,7 @@ description: |
   Fork this repo and start building your own app quikly.
   This template is a simple Rust application that can be used as a starting point for building your own app.
 demoUrl: "https://rust.demo.dollardeploy.dev/"
-logo: https://avatars.githubusercontent.com/u/5430905
+logo: logo.png
 requirements:
   memory: 1024
   cpu: 1

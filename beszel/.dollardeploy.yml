@@ -11,7 +11,7 @@ description: |
   and a REST API for integration. The platform consists of a web-based hub and agents
   that collect and report system metrics, making it ideal for secure, resource-efficient
   infrastructure monitoring.
-logo: https://beszel.dev/icon.svg
+logo: logo.svg
 requirements:
   memory: 1024
   cpu: 1

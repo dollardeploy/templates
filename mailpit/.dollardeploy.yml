@@ -2,7 +2,7 @@ id: mailpit
 name: Mailpit
 intro: >-
   Mailpit is a simple SMTP server that allows you to capture emails sent from your application.
-logo: https://mailpit.axllent.org/images/mailpit.svg
+logo: logo.svg
 tags:
   - email
   - smtp

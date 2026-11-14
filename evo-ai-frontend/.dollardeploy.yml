@@ -1,7 +1,7 @@
 id: evo-ai-frontend
 name: EVO AI
 intro:  This is Next.js frontend for EVO AI
-logo: https://avatars.githubusercontent.com/u/136080052
+logo: logo.png
 description: |
   Evo AI is an open-source platform for creating and managing AI agents, 
   enabling integration with different AI models and services. 

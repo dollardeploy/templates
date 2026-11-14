@@ -1,7 +1,7 @@
 id: pterodactyl-wings
 name: Pterodactyl Wings
 intro: The Wings daemon is the core backend of the Pterodactyl game server panel.
-logo: https://pterodactyl.io/logos/pterry.svg
+logo: logo.svg
 tags:
   - devops
   - game-hosting

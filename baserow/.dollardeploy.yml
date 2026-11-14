@@ -2,7 +2,7 @@
 id: baserow
 name: Baserow
 intro: Open source no-code database tool and Airtable alternative.
-logo: https://gitlab.com/uploads/-/system/project/avatar/10858056/Logo.png?width=96
+logo: logo.png
 experimental: true
 tags:
   - baserow
