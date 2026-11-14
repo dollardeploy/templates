@@ -12,17 +12,19 @@ Run an OpenAI-compatible inference endpoint with vLLM natively via systemd — n
 
 ## Requirements
 
-- A GPU server with **NVIDIA drivers already installed** and **native FP8 support** (Hopper or newer — Verda 1xH200, or scale to 2x/4x/8x for larger models). No CUDA toolkit install is needed — but the driver must be present.
+- A GPU server with **NVIDIA drivers already installed** and **native FP8 support** (Hopper or newer — Verda 1xH200, or scale to 2x/4x/8x for larger models). No CUDA toolkit install is needed — but the driver must be present. vLLM 0.33 ships CUDA 13.0 wheels only, so the driver must support CUDA 13 (R580 or newer).
 - `HF_TOKEN` set to a HuggingFace token for gated model downloads.
 
 ## How it works
 
 Dependencies are declared in a native uv [`pyproject.toml`](./pyproject.toml) and installed with `uv sync`.
+The vLLM release is set by `VLLM_VERSION` (`0.33.0` for new launches): the start command pins it in the
+deployed checkout with `uv add --no-sync` before syncing, falling back to the `pyproject.toml` pin (`0.27.1`).
 
-| Phase    | Command                                                                        |
-| -------- | ------------------------------------------------------------------------------ |
-| preStart | installs [uv](https://astral.sh/uv)                                            |
-| start    | `uv sync && uv run vllm serve Qwen/Qwen3.8-27B-FP8 --tensor-parallel-size 1 …` |
+| Phase    | Command                                                                                                                     |
+| -------- | --------------------------------------------------------------------------------------------------------------------------- |
+| preStart | installs [uv](https://astral.sh/uv)                                                                                         |
+| start    | `uv add --no-sync "vllm==${VLLM_VERSION:-0.27.1}" && uv sync && uv run vllm serve Qwen/Qwen3.8-27B-FP8 --tensor-parallel-size 1 …` |
 
 ### PyTorch / driver matching
 
