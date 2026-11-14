@@ -7,12 +7,22 @@ on:
     paths-ignore:
       - templates.json
       - .github/**
+      - scripts/**
       - README.md
+  workflow_dispatch:
+    inputs:
+      template:
+        description: Template id or template directory name to test-deploy
+        required: true
+        type: string
 
-# Run one workflow at a time to avoid conflicts
+# Run one workflow at a time to avoid conflicts on the test host
 concurrency:
   group: deploy-templates
   cancel-in-progress: false
+
+permissions:
+  contents: read
 
 jobs:
   detect-and-deploy:
@@ -26,67 +36,92 @@ jobs:
 
       - name: Detect changed templates
         id: detect
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_TEMPLATE: ${{ inputs.template }}
         run: |
-          # Get list of changed files in the last commit
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+          template_id_of() {
+            grep "^id:" "$1/.dollardeploy.yml" | head -1 | sed 's/^id: *//' | tr -d "\r\"'"
+          }
 
-          echo "Changed files:"
-          echo "$CHANGED_FILES"
+          declare -A seen=()
+          templates=()
 
-          # Find unique template directories (directories containing .dollardeploy.yml)
-          CHANGED_TEMPLATES=""
-
-          for file in $CHANGED_FILES; do
-            # Get the root directory of the changed file
-            dir=$(echo "$file" | cut -d'/' -f1)
-
-            # Check if this directory has a .dollardeploy.yml file
-            if [ -f "$dir/.dollardeploy.yml" ]; then
-              # Extract the template ID from .dollardeploy.yml
-              template_id=$(grep "^id:" "$dir/.dollardeploy.yml" | head -1 | sed 's/^id: *//' | tr -d '\r')
-
-              # Add to list if not already present
-              if [ -n "$template_id" ] && ! echo "$CHANGED_TEMPLATES" | grep -q "$template_id"; then
-                if [ -z "$CHANGED_TEMPLATES" ]; then
-                  CHANGED_TEMPLATES="$template_id"
-                else
-                  CHANGED_TEMPLATES="$CHANGED_TEMPLATES,$template_id"
-                fi
-              fi
+          add_template() {
+            local id="$1"
+            if [ -n "$id" ] && [ -z "${seen[$id]:-}" ]; then
+              seen[$id]=1
+              templates+=("$id")
             fi
-          done
+          }
 
-          echo "Changed templates: $CHANGED_TEMPLATES"
-          echo "templates=$CHANGED_TEMPLATES" >> $GITHUB_OUTPUT
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            input="$(echo "$INPUT_TEMPLATE" | tr -d '[:space:]')"
+            if ! [[ "$input" =~ ^[A-Za-z0-9._-]+$ ]]; then
+              echo "::error::Invalid template input: '$INPUT_TEMPLATE'"
+              exit 1
+            fi
+            # A template directory resolves to the id in its .dollardeploy.yml
+            if [ -f "$input/.dollardeploy.yml" ]; then
+              add_template "$(template_id_of "$input")"
+            else
+              add_template "$input"
+            fi
+          else
+            echo "Changed files:"
+            git diff --name-only HEAD~1 HEAD | tee /tmp/changed-files.txt
+
+            while IFS= read -r file; do
+              dir="${file%%/*}"
+              if [ "$dir" != "$file" ] && [ -f "$dir/.dollardeploy.yml" ]; then
+                add_template "$(template_id_of "$dir")"
+              fi
+            done < /tmp/changed-files.txt
+          fi
+
+          echo "Templates to deploy: ${templates[*]:-none}"
+          echo "templates=${templates[*]:-}" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
+        if: steps.detect.outputs.templates != ''
         uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install DollarDeploy CLI
+        if: steps.detect.outputs.templates != ''
+        run: |
+          npm i -g @dollardeploy/cli@1
+          ddc --version
 
       - name: Deploy templates
         if: steps.detect.outputs.templates != ''
         env:
+          TEMPLATES: ${{ steps.detect.outputs.templates }}
           DOLLARDEPLOY_API_KEY: ${{ secrets.DOLLARDEPLOY_API_KEY }}
           DOLLARDEPLOY_BASE_URL: ${{ secrets.DOLLARDEPLOY_BASE_URL }}
+          DOLLARDEPLOY_SCREENSHOT_URL: ${{ secrets.DOLLARDEPLOY_SCREENSHOT_URL }}
+          DOLLARDEPLOY_TEST_HOST_ID: ${{ vars.DOLLARDEPLOY_TEST_HOST_ID }}
         run: |
-          npm i -g @dollardeploy/cli
-          ddc --version
-          IFS=',' read -ra TEMPLATES <<< "${{ steps.detect.outputs.templates }}"
-          for template in "${TEMPLATES[@]}"; do
-            echo "Deploying template: $template"
+          failed=0
+          {
+            echo "## Template test deploys"
+            echo
+            echo "| Template | Result |"
+            echo "| --- | --- |"
+          } >> "$GITHUB_STEP_SUMMARY"
 
-            # Build the ddc command with optional parameters
-            ddc_command="ddc --verbose --templateId \"$template\" --remove 1"
-
-            # Add optional base URL if set
-            if [ -n "${{ secrets.DOLLARDEPLOY_BASE_URL }}" ]; then
-              ddc_command="$ddc_command --baseUrl \"${{ secrets.DOLLARDEPLOY_BASE_URL }}\""
+          for template in $TEMPLATES; do
+            echo "::group::Deploy $template"
+            if bash scripts/deploy-template.sh "$template"; then
+              result="passed"
+            else
+              result="failed"
+              failed=1
+              echo "::error::Test deploy of template $template failed. See the ddc error above."
             fi
-
-            # Add optional screenshot URL if set
-            if [ -n "${{ secrets.DOLLARDEPLOY_SCREENSHOT_URL }}" ]; then
-              ddc_command="$ddc_command --screenshot \"${{ secrets.DOLLARDEPLOY_SCREENSHOT_URL }}\""
-            fi
-
-            echo "Running: $ddc_command"
-            eval $ddc_command
+            echo "::endgroup::"
+            echo "| \`$template\` | $result |" >> "$GITHUB_STEP_SUMMARY"
           done
+
+          exit "$failed"
