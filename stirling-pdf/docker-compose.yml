@@ -1,6 +1,6 @@
 services:
   stirling-pdf:
-    image: stirlingtools/stirling-pdf:latest
+    image: stirlingtools/stirling-pdf:${STIRLING_PDF_VERSION:-latest}
     restart: unless-stopped
     ports:
       - "127.0.0.1:${PORT}:8080"
