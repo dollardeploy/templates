@@ -48,7 +48,7 @@ app:
     PORT: "3000"
     APPVIEW_NAME: Tangled
     COOKIE_SECRET: ${GENERATED_HASH}
-    TANGLED_VERSION: v1.16.1-alpha
+    TANGLED_VERSION: v1.20.0
     DEFAULT_KNOT: ""
     PLC_URL: https://plc.directory
     JETSTREAM_ENDPOINT: wss://jetstream1.us-east.bsky.network/subscribe
