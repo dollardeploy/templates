@@ -3,7 +3,7 @@
     "id": "adminer",
     "name": "Adminer",
     "intro": "Adminer is a simple database management tool that allows you to manage your MySQL, MariaDB and PostgreSQL databases with a web interface.",
-    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adminer.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/adminer/logo.svg",
     "tags": [
       "database",
       "management",
@@ -32,13 +32,13 @@
       }
     },
     "createdAt": "2025-11-29T09:15:45+02:00",
-    "updatedAt": "2026-11-14T17:17:24+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "appsmith",
     "name": "Appsmith",
     "intro": "Open source low-code platform to build, ship and maintain internal tools.",
-    "logo": "https://avatars.githubusercontent.com/u/67620218",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/appsmith/logo.png",
     "tags": [
       "appsmith",
       "oss",
@@ -75,7 +75,7 @@
       "docker"
     ],
     "createdAt": "2026-06-05T14:55:59+03:00",
-    "updatedAt": "2026-11-10T21:16:53+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "astro",
@@ -86,7 +86,7 @@
       "typescript"
     ],
     "intro": "Boilerplate for Astro to get you started",
-    "logo": "https://raw.githubusercontent.com/huksley/astro-boilerplate/main/src/assets/logo.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/astro/logo.png",
     "deployTime": "~1 minute",
     "description": "This example shows how you can deploy an Astro app to any host with zero\nconfiguration. It runs as a standalone Node server using the\n[@astrojs/node](https://docs.astro.build/en/guides/integrations-guide/node/)\nadapter and demonstrates static pre-rendering, server-side rendering,\n`stale-while-revalidate` caching and built-in image optimization.\n\nLive demo: https://astro.demo.dollardeploy.dev\n",
     "demoUrl": "https://astro.demo.dollardeploy.dev",
@@ -102,13 +102,13 @@
       "mainPort": 3000
     },
     "createdAt": "2026-09-03T11:52:27+03:00",
-    "updatedAt": "2026-09-03T11:52:27+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "baserow",
     "name": "Baserow",
     "intro": "Open source no-code database tool and Airtable alternative.",
-    "logo": "https://gitlab.com/uploads/-/system/project/avatar/10858056/Logo.png?width=96",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/baserow/logo.png",
     "experimental": true,
     "tags": [
       "baserow",
@@ -143,14 +143,14 @@
       "docker"
     ],
     "createdAt": "2024-09-20T15:06:08+03:00",
-    "updatedAt": "2026-11-05T06:13:07+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "beszel",
     "name": "Beszel",
     "intro": "Lightweight, privacy-focused server monitoring platform with Docker stats, historical data, and configurable alerts.",
     "description": "Beszel is a simple, lightweight server monitoring platform that provides real-time\nand historical metrics for your systems and containers. With a friendly web interface,\neasy setup, and no need for public internet exposure, Beszel tracks CPU, memory, disk,\nnetwork, and temperature usage, and supports configurable alerts for system health.\nFeatures include multi-user support, OAuth/OIDC authentication, automatic backups,\nand a REST API for integration. The platform consists of a web-based hub and agents\nthat collect and report system metrics, making it ideal for secure, resource-efficient\ninfrastructure monitoring.\n",
-    "logo": "https://beszel.dev/icon.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/beszel/logo.svg",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -178,7 +178,7 @@
     },
     "postLaunchNote": "After first run, manually add local agent to the hub, update KEY= and TOKEN= variables, and redeploy.\nSee https://beszel.dev/guide/getting-started#_4-start-the-agent\n",
     "createdAt": "2025-07-29T20:02:15+03:00",
-    "updatedAt": "2026-11-06T08:05:49+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "boilerplate-bun",
@@ -186,7 +186,7 @@
     "intro": "A minimal Bun web server boilerplate.",
     "description": "A tiny, zero-dependency Bun web app that serves a single HTML page with Bun.serve.\nFork this repo and start building your own Bun app quickly. See https://bun.sh to learn more.\n",
     "demoUrl": "https://bun.demo.dollardeploy.dev",
-    "logo": "https://bun.sh/logo.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/boilerplate-bun/logo.svg",
     "requirements": {
       "memory": 512,
       "cpu": 1,
@@ -207,14 +207,14 @@
       }
     },
     "createdAt": "2026-06-29T18:43:16+03:00",
-    "updatedAt": "2026-07-10T16:27:17+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "boilerplate-python",
     "name": "Lithium Python Boilerplate",
     "intro": "A boilerplate for building modern Python Django app.",
     "description": "Lithium is a batteries-included Django starter project with everything you need to start coding, including user authentication, static files, default styling, debugging, DRY forms, custom error pages, and more.\nFork this repo and start building your own app quikly. \n",
-    "logo": "https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/boilerplate-python/logo.png",
     "requirements": {
       "memory": 2048,
       "cpu": 2,
@@ -234,14 +234,14 @@
       }
     },
     "createdAt": "2025-05-18T12:50:18+03:00",
-    "updatedAt": "2025-05-18T12:50:18+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "boilerplate-t3-app",
     "name": "Next.js T3 app",
     "intro": "A boilerplate for building modern Next.js app with T3 stack.",
     "description": "The best way to start a full-stack, typesafe Next.js app. \nFork this repo and start building your own app quikly. Or go to https://create.t3.gg to learn more about the T3 stack.\n",
-    "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/boilerplate-t3-app/logo.png",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -262,13 +262,13 @@
       }
     },
     "createdAt": "2025-05-18T12:50:18+03:00",
-    "updatedAt": "2025-05-18T12:50:18+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "cal-com",
     "name": "Cal.com",
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
-    "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/cal-com/logo.png",
     "experimental": true,
     "tags": [
       "oss",
@@ -312,13 +312,13 @@
       "postgres"
     ],
     "createdAt": "2025-01-17T15:51:08+02:00",
-    "updatedAt": "2026-11-14T17:18:06+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "cal-com-docker",
     "name": "Cal.com",
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
-    "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/cal-com-docker/logo.png",
     "experimental": false,
     "tags": [
       "oss",
@@ -374,13 +374,13 @@
       "docker"
     ],
     "createdAt": "2025-01-17T15:51:08+02:00",
-    "updatedAt": "2026-11-04T22:54:19+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "cal-com-old",
     "name": "Cal.com old",
     "intro": "Cal.com is an open-source scheduling infrastructure for absolutely everyone.",
-    "logo": "https://raw.githubusercontent.com/calcom/cal.com/main/apps/web/public/android-chrome-192x192.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/cal.com/logo.png",
     "experimental": true,
     "tags": [
       "oss",
@@ -421,14 +421,14 @@
       "postgres"
     ],
     "createdAt": "2025-01-17T09:35:58+02:00",
-    "updatedAt": "2026-07-05T10:46:26+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "chatwoot",
     "name": "Chatwoot",
     "intro": "Open source live chat software",
     "description": "Chatwoot is a customer support tool for instant messaging channels",
-    "logo": "https://app.chatwoot.com/brand-assets/logo_thumbnail.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/chatwoot/logo.svg",
     "tags": [
       "customer-support",
       "live-chat",
@@ -480,14 +480,14 @@
       }
     },
     "createdAt": "2024-11-24T13:32:15+02:00",
-    "updatedAt": "2026-11-10T21:21:43+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "chatwoot3",
     "name": "Chatwoot 3.16",
     "intro": "Open source live chat software",
     "description": "Chatwoot is a customer support tool for instant messaging channels",
-    "logo": "https://app.chatwoot.com/brand-assets/logo_thumbnail.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/chatwoot3/logo.svg",
     "deployTime": "~3 minutes",
     "experimental": true,
     "tags": [
@@ -537,13 +537,13 @@
       }
     },
     "createdAt": "2025-01-20T18:13:09+02:00",
-    "updatedAt": "2026-06-04T11:51:54+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "cobalt",
     "name": "Cobalt",
     "intro": "Save media from social platforms — the full cobalt web app plus its own processing instance.",
-    "logo": "https://avatars.githubusercontent.com/u/152056268",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/cobalt/logo.png",
     "deployTime": "~8 minutes",
     "tags": [
       "media",
@@ -588,13 +588,13 @@
     },
     "postLaunchNote": "Open **${APP_URL}** and paste a link — that's the whole app, running on your\nown instance. The same URL is also the processing API — point another cobalt\nclient at it, or `POST` to it with `{\"url\": \"...\"}` from a script.\n\nIt's public by default. To lock it down, set `API_AUTH_REQUIRED` to `1` — then\nonly requests carrying the API key in `keys/keys.json` (printed in the\n`keygen` deploy logs) get through. Paste that UUID into settings → processing\n→ instance access key. `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET` gate browser\nusers instead.\n\nFirst deploy builds the frontend from source, so give it a few extra minutes.\n",
     "createdAt": "2026-08-14T22:58:57+03:00",
-    "updatedAt": "2026-08-25T15:11:53+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "cobalt-instance",
     "name": "Cobalt Instance",
     "intro": "Your own cobalt processing instance — the API that saves media, no frontend.",
-    "logo": "https://avatars.githubusercontent.com/u/152056268",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/cobalt-instance/logo.png",
     "deployTime": "~2 minutes",
     "tags": [
       "media",
@@ -635,13 +635,13 @@
     },
     "postLaunchNote": "Open **${APP_URL}** — a JSON blurb with your cobalt version means it works.\n\nTo use it from cobalt.tools: settings → instances → custom → **${APP_URL}**.\n\n**Your API key** is the UUID in `keys/keys.json` on the server (also printed\nin the `keygen` logs from the first deploy). Send it as\n`Authorization: Api-Key <uuid>`, or paste it into the frontend's api key\nfield. Edit that file to add more keys, then restart the app.\n\nThe instance is open by default. To lock it down, set `API_AUTH_REQUIRED` to\n`1` (key required), and/or fill in `TURNSTILE_SITEKEY` + `TURNSTILE_SECRET`\nfor browser users.\n",
     "createdAt": "2026-08-14T23:44:47+03:00",
-    "updatedAt": "2026-08-25T15:11:53+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "code-server",
     "name": "Code Server",
     "intro": "Run VS Code on any machine anywhere and access it in the browser.",
-    "logo": "https://raw.githubusercontent.com/dollardeploy/templates/refs/heads/main/coder-server/icon.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/coder-server/logo.svg",
     "tags": [
       "development",
       "ide",
@@ -671,13 +671,13 @@
       "docker"
     ],
     "createdAt": "2024-12-15T14:42:55Z",
-    "updatedAt": "2026-11-10T21:22:34+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "courselit",
     "name": "CourseLit",
     "intro": "CourseLit is a free and open-source learning management system (LMS) for online courses.",
-    "logo": "https://avatars.githubusercontent.com/u/13856732",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/courselit/logo.png",
     "tags": [
       "lms",
       "education",
@@ -719,13 +719,13 @@
     },
     "postLaunchNote": "Username is your e-mail. To login, setup SMTP server settings\nin the environment variables, redeploy and try to login.\n\n  \n",
     "createdAt": "2025-05-11T20:59:46+03:00",
-    "updatedAt": "2026-11-03T19:54:06+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "crafty-controller",
     "name": "Crafty Controller",
     "intro": "Self-hosted web panel to create, run, and manage Minecraft servers.",
-    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/crafty-controller.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/crafty-controller/logo.svg",
     "tags": [
       "minecraft",
       "gaming",
@@ -760,13 +760,13 @@
     "postLaunchNote": "Open the panel at **${APP_URL}** (you may need to accept the self-signed cert).\n\nCrafty generates a **random admin password on first boot**. Retrieve it from the\nserver with either:\n\n```\ncat ./docker/config/default-creds.txt\n```\n\nor by checking the container logs (`docker logs crafty`). Log in as **admin**\nand change the password immediately.\n",
     "source": "https://github.com/dollardeploy/templates",
     "createdAt": "2026-06-07T21:02:21+03:00",
-    "updatedAt": "2026-11-14T17:17:40+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "directus",
     "name": "Directus",
     "intro": "The Modern & Powerful CMS and BaaS",
-    "logo": "https://avatars.githubusercontent.com/u/15967950",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/directus/logo.png",
     "tags": [
       "headless",
       "cms",
@@ -804,7 +804,7 @@
       ]
     },
     "createdAt": "2024-11-22T16:04:43+02:00",
-    "updatedAt": "2025-09-19T14:26:04+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "discourse",
@@ -812,7 +812,7 @@
     "experimental": true,
     "intro": "A powerful platform for support, teamwork, and everything community",
     "description": "Discourse is the 100% open source discussion platform built for the next decade of the Internet. We make it easy to have meaningful conversations and collaborate anytime, anywhere. \n",
-    "logo": "https://avatars.githubusercontent.com/u/3220138",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/discourse/logo.png",
     "requirements": {
       "memory": 2048,
       "cpu": 1,
@@ -846,13 +846,13 @@
       }
     },
     "createdAt": "2025-08-24T18:48:42+03:00",
-    "updatedAt": "2025-11-02T21:35:50+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "documenso",
     "name": "Documenso",
     "intro": "The open source DocuSign alternative for signing documents digitally.",
-    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/documenso.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/documenso/logo.svg",
     "tags": [
       "documents",
       "signing",
@@ -907,14 +907,14 @@
     },
     "postLaunchNote": "Open ${APP_URL} and create your admin account by signing up — the first\nregistered user becomes the administrator.\n\nTo send login confirmation, signing invitations and reset emails, change `NEXT_PRIVATE_SMTP_*` environment variables in the app\nsettings. See https://docs.documenso.com/docs/self-hosting/configuration/environment\n",
     "createdAt": "2026-06-29T19:32:25+03:00",
-    "updatedAt": "2026-11-10T21:16:10+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "dozzle",
     "name": "Dozzle",
     "intro": "A simple, lightweight web interface for monitoring Docker containers.",
     "description": "Dozzle is a simple, lightweight web interface for monitoring Docker containers.\nIt provides a real-time view of all your containers, with detailed information\nabout each container's status, logs, and metrics.\n",
-    "logo": "https://dozzle.dev/logo.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/dozzle/logo.svg",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -944,13 +944,13 @@
     },
     "postLaunchNote": "Dozzle username: admin, password: ${GENERATED_PWD}\n",
     "createdAt": "2025-07-29T21:21:40+03:00",
-    "updatedAt": "2026-11-05T06:12:56+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "erpnext",
     "name": "Frappe - ERPNext",
     "intro": "ERPNext is a free and open-source integrated Enterprise resource planning",
-    "logo": "https://avatars.githubusercontent.com/u/836974",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/erpnext/logo.png",
     "tags": [
       "erp",
       "business-management",
@@ -982,12 +982,12 @@
       }
     },
     "createdAt": "2025-02-25T18:22:52+02:00",
-    "updatedAt": "2026-11-05T06:13:08+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "evo-ai-api",
     "name": "EVO AI API",
-    "logo": "https://avatars.githubusercontent.com/u/136080052",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/evo-ai-api/logo.png",
     "intro": "Evo AI is an open-source platform for creating and managing AI agents",
     "description": "Evo AI is an open-source platform for creating and managing AI agents, \nenabling integration with different AI models and services. \n",
     "tags": [
@@ -1014,13 +1014,13 @@
       }
     },
     "createdAt": "2025-05-23T17:39:38+03:00",
-    "updatedAt": "2025-05-23T17:43:25+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "evo-ai-frontend",
     "name": "EVO AI",
     "intro": "This is Next.js frontend for EVO AI",
-    "logo": "https://avatars.githubusercontent.com/u/136080052",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/evo-ai-frontend/logo.png",
     "description": "Evo AI is an open-source platform for creating and managing AI agents, \nenabling integration with different AI models and services. \n",
     "tags": [
       "oss",
@@ -1038,13 +1038,13 @@
       }
     },
     "createdAt": "2025-05-23T17:39:38+03:00",
-    "updatedAt": "2025-06-27T09:41:12+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "evolution-api",
     "name": "Evolution API",
     "intro": "Evolution API is an open-source WhatsApp integration API (version ${IMAGE_TAG})",
-    "logo": "https://avatars.githubusercontent.com/u/136080052",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/evolution-api/logo.png",
     "tags": [
       "oss",
       "whatsapp",
@@ -1125,13 +1125,13 @@
       "docker"
     ],
     "createdAt": "2025-05-15T10:21:20+03:00",
-    "updatedAt": "2026-01-05T09:45:25+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "ghost-cms",
     "name": "Ghost CMS",
     "intro": "Ghost is an independent platform for publishing online by web and email newsletter.",
-    "logo": "https://raw.githubusercontent.com/dollardeploy/templates/refs/heads/main/ghost-cms/157884383-1b75feb1-45d8-4430-b636-3f7e06577347.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/ghost-cms/logo.png",
     "tags": [
       "cms",
       "blog",
@@ -1169,13 +1169,13 @@
       }
     },
     "createdAt": "2024-12-11T15:06:09+02:00",
-    "updatedAt": "2026-11-14T17:17:29+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "gitea",
     "name": "Gitea",
     "intro": "Lightweight, self-hosted Git service — a fast alternative to GitHub/GitLab.",
-    "logo": "https://raw.githubusercontent.com/go-gitea/gitea/main/public/assets/img/logo.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/gitea/logo.svg",
     "tags": [
       "git",
       "vcs",
@@ -1211,13 +1211,13 @@
       }
     },
     "createdAt": "2026-07-16T05:08:37+03:00",
-    "updatedAt": "2026-11-13T21:54:16+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "gpt-oss",
     "name": "GPT-OSS",
     "intro": "Running GPT-OSS on your server with GPU acceleration using ollama.",
-    "logo": "https://avatars.githubusercontent.com/u/14957082",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/gpt-oss/logo.png",
     "tags": [
       "ai",
       "chatbot",
@@ -1248,13 +1248,13 @@
       }
     },
     "createdAt": "2025-11-01T10:19:48+02:00",
-    "updatedAt": "2026-11-14T17:17:13+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "graylog",
     "name": "Graylog Open",
     "intro": "Centralized log management — collect, search, and analyze your logs.",
-    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/graylog.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/graylog/logo.svg",
     "tags": [
       "logs",
       "observability",
@@ -1291,13 +1291,13 @@
     },
     "postLaunchNote": "Graylog can take a few minutes to finish starting after deploy. To login, use username: admin, password: ${GENERATED_PWD}\n",
     "createdAt": "2026-06-12T11:46:30+03:00",
-    "updatedAt": "2026-11-14T17:16:41+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "hermes-agent",
     "name": "Hermes Agent",
     "intro": "Self-improving AI agent by Nous Research with memory, skills, cron and a web dashboard.",
-    "logo": "https://avatars.githubusercontent.com/u/134168893",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/hermes-agent/logo.png",
     "tags": [
       "ai",
       "agent",
@@ -1339,13 +1339,13 @@
     },
     "postLaunchNote": "Hermes Agent is running!\n\nDashboard: ${APP_URL}\n\n- **Username**: admin\n- **Password**: ${HERMES_DASHBOARD_BASIC_AUTH_PASSWORD}\n\nAdd a model provider key in the dashboard, then connect a chat platform\n(Telegram, Discord, Slack, ...) if you want to talk to it from your phone.\n\nThe username/password login is a single shared credential. For stronger\nprotection, register the dashboard with Nous Portal and set\n`HERMES_DASHBOARD_OAUTH_CLIENT_ID` in the app env.\n\nDocs: https://hermes-agent.nousresearch.com/docs/\n",
     "createdAt": "2026-10-17T19:47:40+03:00",
-    "updatedAt": "2026-11-14T17:16:46+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "homarr",
     "name": "Homarr",
     "intro": "A simple, yet powerful dashboard for your server.",
-    "logo": "https://homarr.dev/img/favicon.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/homarr/logo.png",
     "tags": [
       "dashboard",
       "server-management",
@@ -1373,14 +1373,14 @@
       }
     },
     "createdAt": "2025-01-05T20:43:18+02:00",
-    "updatedAt": "2025-05-17T20:53:14+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "inngest",
     "name": "Inngest",
     "intro": "The platform for building agentic workflows and agents powering AI products from experiment to production.",
     "description": "Inngest is the orchestration engine for building agentic workflows and fully autonomous AI agents, powering products from experiment to production.\nDevelop reliable, fault-tolerant, and scalable AI applications with step-based workflows, built-in retries, observability, and instant local development.\nFocus on your product, not infrastructure—Inngest provides the building blocks to ship AI features faster, with enterprise-grade reliability and security.\n",
-    "logo": "https://avatars.githubusercontent.com/u/78935958",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/inngest/logo.png",
     "requirements": {
       "memory": 2048,
       "cpu": 1,
@@ -1410,13 +1410,13 @@
       }
     },
     "createdAt": "2025-07-29T16:40:11+03:00",
-    "updatedAt": "2026-11-06T08:06:10+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "langfuse",
     "name": "Langfuse",
     "intro": "Open source LLM engineering platform: tracing, evals, prompt management and metrics.",
-    "logo": "https://avatars.githubusercontent.com/u/134601687",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/langfuse/logo.png",
     "tags": [
       "ai",
       "llm",
@@ -1471,13 +1471,13 @@
     },
     "postLaunchNote": "Log in with your e-mail, the password is in the `LANGFUSE_INIT_USER_PASSWORD`\nenvironment variable. Create API keys in **Project Settings -> API Keys** and\npoint the SDK `LANGFUSE_HOST` (or `LANGFUSE_BASE_URL`) to this app URL.\n\n> Public sign up is disabled. Set `AUTH_DISABLE_SIGNUP` to `false` and\n> redeploy to allow it. To upgrade, change `LANGFUSE_IMAGE_TAG` and redeploy.\n",
     "createdAt": "2026-11-10T21:01:13+02:00",
-    "updatedAt": "2026-11-10T21:01:13+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "local-ai-cpu",
     "name": "Local AI (CPU)",
     "intro": "Local AI is an open-source, self-hostable online OpenAI API compatible service with WebUI to chat, generate images and more.",
-    "logo": "https://github.com/mudler/LocalAI/blob/master/docs/static/android-chrome-192x192.png?raw=true",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/local-ai-cpu/logo.png",
     "tags": [
       "ai",
       "machine-learning",
@@ -1508,13 +1508,13 @@
       "docker"
     ],
     "createdAt": "2025-01-17T11:04:52+02:00",
-    "updatedAt": "2026-01-05T10:10:51+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "local-ai-nvidia-cuda-12",
     "name": "Local AI (NVidia CUDA 12)",
     "intro": "Local AI is an open-source, self-hostable online OpenAI API compatible service with WebUI to chat, generate images and more. Works best with DataCrunch provider and GPU instances.",
-    "logo": "https://github.com/mudler/LocalAI/blob/master/docs/static/android-chrome-192x192.png?raw=true",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/local-ai-nvidia-cuda-12/logo.png",
     "tags": [
       "ai",
       "machine-learning",
@@ -1546,13 +1546,13 @@
       "docker"
     ],
     "createdAt": "2025-01-20T08:56:47+02:00",
-    "updatedAt": "2025-05-17T20:53:14+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "mailpit",
     "name": "Mailpit",
     "intro": "Mailpit is a simple SMTP server that allows you to capture emails sent from your application.",
-    "logo": "https://mailpit.axllent.org/images/mailpit.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/mailpit/logo.svg",
     "tags": [
       "email",
       "smtp",
@@ -1609,13 +1609,13 @@
       "docker"
     ],
     "createdAt": "2025-01-29T09:54:17+02:00",
-    "updatedAt": "2026-11-03T19:53:43+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "mattermost",
     "name": "Mattermost",
     "intro": "Mattermost is an open-source, self-hostable online chat service with file sharing, search, and integrations.",
-    "logo": "https://avatars.githubusercontent.com/u/9828093",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/mattermost/logo.jpg",
     "tags": [
       "oss",
       "chat",
@@ -1674,14 +1674,14 @@
       "docker"
     ],
     "createdAt": "2025-01-02T20:02:12+02:00",
-    "updatedAt": "2026-11-06T08:38:29+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "maybe-finance",
     "name": "Maybe Finance",
     "intro": "The personal finance app for everyone",
     "description": "Maybe is an all-in-one personal finance platform. Track, optimize, grow, and manage your money through every stage of life.",
-    "logo": "https://raw.githubusercontent.com/maybe-finance/maybe/refs/heads/main/app/assets/images/logomark-color.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/maybe-finance/logo.svg",
     "deployTime": "~3 minutes",
     "tags": [
       "finance",
@@ -1710,13 +1710,13 @@
       }
     },
     "createdAt": "2025-05-04T14:16:27+03:00",
-    "updatedAt": "2025-05-17T20:53:14+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "mcdash",
     "name": "MCDash",
     "intro": "MCDash is a simple dashboard for your Minecraft server.",
-    "logo": "https://mcdash.gnm.dev/img/favicon.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/mcdash/logo.png",
     "tags": [
       "minecraft",
       "dashboard",
@@ -1745,13 +1745,13 @@
     "deployTime": "~2 minutes",
     "description": "MCDash is a lightweight and user-friendly dashboard for Minecraft servers.\nIt provides real-time monitoring of your server's performance, player statistics,\nand server status. With a clean and intuitive interface, you can easily track\nserver metrics, manage players, and monitor resource usage.\n",
     "createdAt": "2025-06-18T01:44:46+03:00",
-    "updatedAt": "2025-06-20T16:27:10+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "mcp-facebook-ads",
     "name": "Facebook Ads MCP Server",
     "intro": "MCP Proxy with Facebook Ads MCP Server for SSE transport",
-    "logo": "https://avatars.githubusercontent.com/u/156911525",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/mcp-facebook-ads/logo.png",
     "tags": [
       "facebook",
       "marketing",
@@ -1782,13 +1782,13 @@
       }
     },
     "createdAt": "2025-04-28T18:32:23+03:00",
-    "updatedAt": "2025-06-23T16:03:31+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "mcp-frappe",
     "name": "Frappe CRM MCP Server",
     "intro": "MCP Proxy with Frappe MCP Server for SSE transport",
-    "logo": "https://avatars.githubusercontent.com/u/836974",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/mcp-frappe/logo.png",
     "deployTime": "~2 minutes",
     "tags": [
       "mcp",
@@ -1821,13 +1821,13 @@
       }
     },
     "createdAt": "2025-04-17T15:10:59+03:00",
-    "updatedAt": "2025-06-14T11:02:31+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "metabase",
     "name": "Metabase",
     "intro": "The simplest, fastest way to get business intelligence  and analytics to everyone in your company 😋. ",
-    "logo": "https://avatars.githubusercontent.com/u/10520629",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/metabase/logo.png",
     "tags": [
       "business-intelligence",
       "analytics",
@@ -1857,13 +1857,13 @@
       "docker"
     ],
     "createdAt": "2025-01-26T11:33:21+02:00",
-    "updatedAt": "2026-11-14T17:16:36+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "miniflux",
     "name": "Miniflux",
     "intro": "Minimalist feed reader",
-    "logo": "https://avatars.githubusercontent.com/u/10584991",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/miniflux/logo.png",
     "deployTime": "~3 minutes",
     "tags": [
       "rss",
@@ -1899,14 +1899,14 @@
     },
     "postLaunchNote": "Username is your e-mail and password is in environment variable `ADMIN_PASSWORD`.\n",
     "createdAt": "2025-04-26T15:19:06+03:00",
-    "updatedAt": "2026-11-03T19:53:38+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "minio",
     "name": "MinIO",
     "intro": "High-performance, S3 compatible object store, open sourced under GNU AGPLv3 license.",
     "description": "MinIO is a high-performance, S3-compatible object storage solution released under the GNU AGPL v3.0 license. Designed for speed and scalability, it powers AI/ML, analytics, and data-intensive workloads with industry-leading performance. \n🔹 S3 API Compatible – Seamless integration with existing S3 tools \n🔹 Built for AI & Analytics – Optimized for large-scale data pipelines\n🔹 High Performance – Ideal for demanding storage workloads.\n",
-    "logo": "https://avatars.githubusercontent.com/u/695951",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/minio/logo.png",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -1938,13 +1938,13 @@
     },
     "postLaunchNote": "Get started with using MinIO on the command line or via the SDK:\n\n```bash\nexport AWS_ACCESS_KEY_ID=${MINIO_ROOT_USER}\nexport AWS_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}\naws s3api --endpoint-url ${APP_URL} create-bucket --bucket test\necho \"Hello, world!\" | aws s3 --endpoint-url ${APP_URL} cp - s3://test/hello.txt\n```\n",
     "createdAt": "2025-09-30T21:55:03+03:00",
-    "updatedAt": "2025-10-07T20:42:18+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "n8n",
     "name": "N8N",
     "intro": "Free and source-available fair-code licensed workflow automation tool.",
-    "logo": "https://avatars.githubusercontent.com/u/45487711",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/n8n/logo.jpg",
     "tags": [
       "automation",
       "workflow",
@@ -2000,7 +2000,7 @@
       ]
     },
     "createdAt": "2025-04-29T10:51:14+03:00",
-    "updatedAt": "2026-11-10T20:59:18+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "nextcloud",
@@ -2011,7 +2011,7 @@
       "drive"
     ],
     "intro": "Open source content collaboration platform",
-    "logo": "https://avatars.githubusercontent.com/u/19211038",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/nextcloud/logo.png",
     "deployTime": "~1 minute",
     "description": "Access your Data You can store your files, contacts, calendars, conversations and more on a server of your choosing.",
     "requirements": {
@@ -2040,7 +2040,7 @@
       "docker"
     ],
     "createdAt": "2025-12-01T09:53:48+02:00",
-    "updatedAt": "2026-11-10T21:00:14+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "nextjs-boilerplate",
@@ -2051,7 +2051,7 @@
       "typescript"
     ],
     "intro": "Boilerplate for NextJS 16 to get you started",
-    "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/nextjs-boilerplate/logo.png",
     "deployTime": "~1 minute",
     "description": "This example nicely shows how you can deploy NextJS app to any host.",
     "demoUrl": "https://nextjs.demo.dollardeploy.dev",
@@ -2067,7 +2067,7 @@
       "mainPort": 3000
     },
     "createdAt": "2025-10-30T08:36:02+02:00",
-    "updatedAt": "2025-12-21T13:02:32+01:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "nextjs-startup",
@@ -2078,7 +2078,7 @@
       "nextjs",
       "typescript"
     ],
-    "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/nextjs-startup/logo.png",
     "deployTime": "~1 minute",
     "description": "Free version of NextJS SaaS starter template. See more here https://nextjstemplates.com/templates/saas-starter-startup",
     "requirements": {
@@ -2095,7 +2095,7 @@
       }
     },
     "createdAt": "2026-08-17T08:27:41+03:00",
-    "updatedAt": "2026-08-17T08:27:41+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "nextjs-threejs",
@@ -2106,7 +2106,7 @@
       "javascript"
     ],
     "intro": "Example of using NextJS with Three.js",
-    "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/nextjs-threejs/logo.png",
     "deployTime": "~1 minute",
     "description": "This example nicely shows how we can deploy NextJS apps to any host. It demonstrates using NextJS with Three.js, a lightweight, 3D library with a default WebGL renderer.",
     "requirements": {
@@ -2123,14 +2123,14 @@
       }
     },
     "createdAt": "2026-08-17T08:27:41+03:00",
-    "updatedAt": "2026-08-17T08:27:41+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "nodebb",
     "name": "NodeBB",
     "intro": "Next generation community forum software. It's powerful, mobile-ready and easy to use.",
     "description": "NodeBB takes the spirit and energy of the great online forum communities of old, and empowers it with powerful, mobile-ready and easy to use software. \n",
-    "logo": "https://avatars.githubusercontent.com/u/4449608",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/nodebb/logo.png",
     "requirements": {
       "memory": 2048,
       "cpu": 2,
@@ -2166,13 +2166,13 @@
     },
     "postLaunchNote": "Username is **admin** and password is **${GENERATED_PWD}**. After deploy, give time to the app to build and get ready (5 mins).\n",
     "createdAt": "2025-08-27T00:32:05+03:00",
-    "updatedAt": "2026-11-06T08:06:41+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "ntfy",
     "name": "ntfy",
     "intro": "Send push notifications to your phone or desktop from any script via a simple HTTP PUT/POST.",
-    "logo": "https://raw.githubusercontent.com/binwiederhier/ntfy/main/web/public/static/images/pwa-512x512.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/ntfy/logo.png",
     "tags": [
       "notifications",
       "pub-sub",
@@ -2205,13 +2205,13 @@
       }
     },
     "createdAt": "2026-07-16T05:09:22+03:00",
-    "updatedAt": "2026-11-14T17:17:54+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "openagi",
     "name": "OpenAGI",
     "intro": "Proactive, self-improving personal AI agent that learns your routines and reaches out first.",
-    "logo": "https://raw.githubusercontent.com/Spshulem/openAGI/main/assets/logo.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/openagi/logo.png",
     "tags": [
       "ai",
       "agent",
@@ -2254,13 +2254,13 @@
     },
     "postLaunchNote": "OpenAGI is running!\n\nOpen the setup wizard (the token is saved in a cookie after the first visit):\n\n${APP_URL}/setup?token=${OPENAGI_AUTH_TOKEN}\n\nAdd your Anthropic or OpenAI API key there. `OPENAGI_DAILY_USD_LIMIT` caps\ndaily model spend (default $10).\n\nFor Telegram or SMS, point webhooks at `${APP_URL}/channels/telegram/webhook`\nor `${APP_URL}/channels/twilio/webhook`.\n\nDocs: https://github.com/Spshulem/openAGI\n",
     "createdAt": "2026-10-17T19:47:40+03:00",
-    "updatedAt": "2026-10-17T19:47:40+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "openclaw",
     "name": "OpenClaw",
     "intro": "Self-hosted AI assistant that integrates with WhatsApp, Telegram, Slack, Discord and more.",
-    "logo": "https://avatars.githubusercontent.com/u/252820863",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/openclaw/logo.jpg",
     "tags": [
       "ai",
       "assistant",
@@ -2301,13 +2301,13 @@
     },
     "postLaunchNote": "OpenClaw is running!\n\nLogin credentials:\n- **Username**: admin\n- **Password**: ${GENERATED_PWD}\n\nConfigure your AI provider API keys in the environment variables to start using OpenClaw.\n\nDocumentation: https://docs.openclaw.ai/\n",
     "createdAt": "2026-02-02T09:19:41+02:00",
-    "updatedAt": "2026-11-10T21:24:16+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "openvpn",
     "name": "OpenVPN",
     "intro": "OpenVPN is a secure VPN channel to protect traffic",
-    "logo": "https://avatars.githubusercontent.com/u/1569141",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/openvpn/logo.png",
     "tags": [
       "networking",
       "vpn",
@@ -2339,12 +2339,12 @@
       }
     },
     "createdAt": "2025-03-04T11:59:50+02:00",
-    "updatedAt": "2025-07-08T16:53:57+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "outline",
     "name": "Outline",
-    "logo": "https://avatars.githubusercontent.com/u/1765001",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/outline/logo.jpg",
     "intro": "Outline is a platform for building collaborative knowledge bases.",
     "tags": [
       "knowledge-base",
@@ -2391,13 +2391,13 @@
     },
     "postLaunchNote": "> Remember to configure the SMTP settings and \n> authentication settings in the environment variables and redeploy after that.\n> See the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.\n",
     "createdAt": "2025-06-11T18:54:14+03:00",
-    "updatedAt": "2026-11-06T08:05:17+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "outline-ws",
     "name": "Outline VPN with WebSockets",
     "intro": "Run Outline Shadowsocks server with WebSockets support.",
-    "logo": "https://avatars.githubusercontent.com/u/19845815",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/outline-ws/logo.png",
     "tags": [
       "vpn",
       "shadowsocks",
@@ -2432,14 +2432,14 @@
     "description": "Runs Outline Shadowsocks server with WebSockets support.  \nOutline enables anyone to access the free and open Internet\nmore safely by running their own VPN. \nRunning your own VPN server through Outline makes accessing\nthe Internet safer and establishes a connection that is harder to block.\n",
     "postLaunchNote": "Fork client config from here: https://gist.github.com/huksley/c3453b9a11f5fecd840fc25b48e982dd\nand use \n  * `CLIENT_SECRET: ${CLIENT_SECRET}`\n  * `URL_PATH: ${URL_PATH}`\n  * `HOSTNAME: ${APP_HOSTNAME}`\n",
     "createdAt": "2025-08-29T16:00:00+03:00",
-    "updatedAt": "2025-09-18T19:19:03+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "paperless-ngx",
     "name": "Paperless-ngx",
     "intro": "Scan, index, and archive all your physical documents into a searchable online archive.",
     "description": "Paperless-ngx is a document management system that transforms your physical documents\ninto a searchable online archive so you can keep, well, less paper.\n\nIncludes PostgreSQL for storage, Valkey (Redis-compatible) for task queuing, and\nGotenberg + Apache Tika for full-text OCR and Office document conversion.\n",
-    "logo": "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/refs/heads/dev/docs/assets/logo_leaf.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/paperless-ngx/logo.svg",
     "experimental": true,
     "tags": [
       "oss",
@@ -2478,13 +2478,13 @@
     "postLaunchNote": "Login with username **${PAPERLESS_ADMIN_USER}** and password **${PAPERLESS_ADMIN_PASSWORD}**.\n",
     "source": "https://github.com/dollardeploy/templates",
     "createdAt": "2026-08-24T10:39:34+03:00",
-    "updatedAt": "2026-11-14T17:16:51+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "pelican",
     "name": "Pelican",
     "intro": "Pelican is the ultimate, free game server control panel offering high flying security.",
-    "logo": "https://pelican.dev/img/logo.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/pelican/logo.png",
     "tags": [
       "devops",
       "game-hosting",
@@ -2520,14 +2520,14 @@
     "postLaunchNote": "The panel is up. Finish setup in the browser at **${APP_URL}/installer** —\nchoose the default **SQLite** database and create your admin account there.\nMigrations run automatically during install.\n\nThe panel's encryption key (`APP_KEY`) is generated automatically on first boot.\nBack it up if you want to be safe:\n\n```\ndocker compose logs panel | grep 'Generated app key'\n```\n\nTo host servers, add a **Node** in the panel pointing wings at this server's\nIP on port `${PORT_WINGS}` (SFTP on `${PORT_SFTP}`), then drop the generated\nconfig into `/etc/pelican/config.yml` and restart the wings container.\n\n**Uploading mods, worlds, or files:** use SFTP. Each server's *Settings → SFTP\nDetails* shows the host and username (port `${PORT_SFTP}`); log in with your\npanel password. Drop mod jars in `/mods` and worlds in `/world` — files land\nwith the correct ownership automatically.\n\n**Two things that trip people up:**\n- Always give a server a real **memory limit** — never `0`, or game-server\n  installers run out of memory and fail silently.\n- Open your **game ports** (e.g. `25565`) in the host firewall so players can\n  actually connect.\n",
     "description": "From prehistoric to peak performance: Pelican takes flight! Pelican is the ultimate,\nfree game server control panel offering high flying security. It's a breeze to manage\nyour servers with our sleek and user-friendly interface. Thanks to Docker, every server\nruns in its own safe space. Pelican is 100% free and open source—forever—for you,\nyour friends, family, and community. We support Minecraft, Terraria, Palworld, Valheim,\nFactorio, and so much more. Whether you're just playing with friends or running a gaming\ncommunity, Pelican scales to the sky. Security is built in, with SSL, 2FA, AES-256\nencryption, and more. One click installs, automatic updates, and an active community\nmake Pelican the best way to host your game servers.\n",
     "createdAt": "2025-06-23T16:24:54+03:00",
-    "updatedAt": "2026-06-08T01:04:54+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "plane",
     "name": "Plane",
     "intro": "Open source project management and issue tracking",
     "description": "Plane is an open-source project tracking tool for teams to plan, track, and manage software development",
-    "logo": "https://avatars.githubusercontent.com/u/115727700",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/plane/logo.png",
     "tags": [
       "oss",
       "management",
@@ -2592,12 +2592,12 @@
       }
     },
     "createdAt": "2026-06-04T12:25:11+03:00",
-    "updatedAt": "2026-11-10T21:23:20+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "plausible",
     "name": "Plausible CE",
-    "logo": "https://raw.githubusercontent.com/plausible/community-edition/refs/heads/v2.1.1/images/logo_light.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/plausible/logo.svg",
     "intro": "Simple, lightweight web analytics. No cookies and GDPR compliant.",
     "tags": [
       "analytics",
@@ -2635,13 +2635,13 @@
       ]
     },
     "createdAt": "2025-01-31T06:06:42+02:00",
-    "updatedAt": "2026-11-04T06:10:16+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "portainer",
     "name": "Portainer CE",
     "intro": "Portainer Community Edition is a lightweight, open-source platform for managing Docker, Kubernetes, and Swarm environments with a simple, intuitive web interface.",
-    "logo": "https://icon.icepanel.io/Technology/svg/Portainer.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/portainer/logo.svg",
     "tags": [
       "devops",
       "docker-management",
@@ -2672,14 +2672,14 @@
     "deployTime": "~2 minutes",
     "description": "Portainer Community Edition is a universal container management platform that\nsimplifies the deployment, configuration, and monitoring of containerized applications\nacross Docker, Kubernetes, Swarm, and Nomad environments. With its intuitive web-based interface,\nPortainer enables users to manage containers, images, networks, and volumes effortlessly,\nmaking it ideal for both beginners and experienced DevOps teams. It supports hybrid and\nmulti-cloud setups, edge, and Industrial IoT use cases, providing a centralized,\nsecure solution for container orchestration.\n",
     "createdAt": "2025-06-21T23:34:08+03:00",
-    "updatedAt": "2026-11-04T06:10:04+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "posthog",
     "name": "PostHog",
     "intro": "Open-source product analytics platform",
     "description": "PostHog is an all-in-one product analytics suite. Track events, understand user behavior\nwith session replays, run A/B tests, manage feature flags, and analyze funnels — all in\none platform. Self-host to keep full control of your data.\nRequires at least **8GB RAM**. Uses PostgreSQL, ClickHouse, Redis, and Kafka.\n",
-    "logo": "https://avatars.githubusercontent.com/u/60330232",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/posthog/logo.png",
     "tags": [
       "analytics",
       "product-analytics",
@@ -2713,13 +2713,13 @@
       }
     },
     "createdAt": "2026-03-28T17:08:26+02:00",
-    "updatedAt": "2026-03-28T17:43:12+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "pterodactyl",
     "name": "Pterodactyl",
     "intro": "Open-source game server management panel built for performance, security, and extensibility using Docker containers.",
-    "logo": "https://pterodactyl.io/logos/pterry.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/pterodactyl/logo.svg",
     "tags": [
       "devops",
       "game-hosting",
@@ -2768,13 +2768,13 @@
     "postLaunchNote": "Use username `${ADMIN_USERNAME}` and password `${ADMIN_PASSWORD}` to login.",
     "description": "Pterodactyl is a modern, secure, and scalable game server anagement platform. \nBuilt with PHP, React, and Go, it isolates each game server in its own Docker container\nto maximize security and stability. The web-based interface provides real-time\nWebSocket consoles, role-based user access, a robust API, and SFTP file management.\nDesigned for both hobbyists and enterprises, it supports Minecraft, CS:GO, Rust, ARK, and more.\n",
     "createdAt": "2025-06-17T02:42:07+03:00",
-    "updatedAt": "2026-11-04T06:10:43+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "pterodactyl-wings",
     "name": "Pterodactyl Wings",
     "intro": "The Wings daemon is the core backend of the Pterodactyl game server panel.",
-    "logo": "https://pterodactyl.io/logos/pterry.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/pterodactyl-wings/logo.svg",
     "tags": [
       "devops",
       "game-hosting",
@@ -2808,14 +2808,14 @@
     "postLaunchNote": "Wings has been deployed. Make sure your Panel connects to port `${PORT_PANEL}` and SFTP runs on `${PORT_SFTP}`.\nYou may configure node settings in the panel using the appropriate IP and port.\n",
     "description": "Pterodactyl Wings is Pterodactyl's server control plane, built for the rapidly changing\ngaming industry and designed to be highly performant and secure. Wings provides\nan HTTP API allowing you to interface directly with running server instances,\nfetch server logs, generate backups, and control all aspects of the server lifecycle.\n",
     "createdAt": "2025-06-21T03:19:38+03:00",
-    "updatedAt": "2026-11-14T17:17:34+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "rustfs",
     "name": "RustFS",
     "intro": "High-performance, S3-compatible distributed object storage written in Rust.",
     "description": "RustFS is a high-performance, S3-compatible distributed object storage system\nwritten in Rust. It is a fast, secure and cost-effective alternative to MinIO,\nbuilt for AI/ML, analytics and data-intensive workloads.\n🔹 S3 API Compatible – Works with existing S3 tools and SDKs\n🔹 Written in Rust – Memory-safe and fast, with a small footprint\n🔹 Web Console – Manage buckets, objects and access keys from the browser\n\nThis template runs single-node RustFS with data on a bind-mounted volume\n(captured by DollarDeploy backups). The S3 API is exposed at the app URL and\nthe web console is available on a separate local port behind the reverse proxy.\n",
-    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/rustfs.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/rustfs/logo.svg",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -2850,12 +2850,12 @@
     },
     "postLaunchNote": "RustFS is ready.\n\nS3 API endpoint: ${APP_URL}\nWeb console:     reachable on the host at 127.0.0.1:${PORT_CONSOLE}\n\nAccess key: `${RUSTFS_ACCESS_KEY}`\nSecret key: `${RUSTFS_SECRET_KEY}`\n\nGet started with the AWS CLI:\n\n```bash\nexport AWS_ACCESS_KEY_ID=${RUSTFS_ACCESS_KEY}\nexport AWS_SECRET_ACCESS_KEY=${RUSTFS_SECRET_KEY}\naws s3api --endpoint-url ${APP_URL} create-bucket --bucket test\necho \"Hello, world!\" | aws s3 --endpoint-url ${APP_URL} cp - s3://test/hello.txt\n```\n",
     "createdAt": "2026-06-26T08:25:24+03:00",
-    "updatedAt": "2026-11-10T21:13:46+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "solid-nextjs",
     "name": "Solid Next.js (Free)",
-    "logo": "https://avatars.githubusercontent.com/u/89612077",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/solid-nextjs/logo.png",
     "intro": "Solid free Next.js SaaS/Startup template (Next 16, React 19, Tailwind)",
     "tags": [
       "nextjs",
@@ -2870,13 +2870,13 @@
       "mainPort": 3000
     },
     "createdAt": "2026-02-17T22:11:33+02:00",
-    "updatedAt": "2026-06-12T17:29:56+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "solidtime",
     "name": "Solidtime",
     "intro": "Open source time tracker — the modern, self-hostable Toggl alternative.",
-    "logo": "https://avatars.githubusercontent.com/u/156823565",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/solidtime/logo.png",
     "tags": [
       "solidtime",
       "oss",
@@ -2956,13 +2956,13 @@
     },
     "postLaunchNote": "First boot takes a few minutes while the database migrates and the app, queue,\nscheduler, and Gotenberg containers come up.\n\nPublic registration is **enabled** so you can create that first account\n(Solidtime disables it by default). Once you're in, you can lock signups by\nsetting `APP_ENABLE_REGISTRATION` to `false` in this app's **Environment**\nsettings and redeploying.\n\n**API tokens** work out of the box — the personal access client is created\nautomatically on first deploy.\n\n**Connecting the Solidtime desktop app / browser extension** needs an\n*Instance Client ID*. One is created automatically for the desktop app; find it\nin this deploy's **logs** (look for \"Solidtime Instance Client ID\"). Then in the\ndesktop app's Instance Settings enter:\n- Instance URL: **$[APP_URL]**\n- Client ID: *(the value from the logs)*\n\nFor a browser extension, create a client with its redirect URIs:\n`docker compose exec scheduler php artisan passport:client --name=browser-extension --redirect_uri=\"<chrome+firefox redirect uris>\"`\n\n**Custom domain:** Solidtime only accepts requests for the host in `PUBLIC_URL`\n(and its subdomains); other hostnames get HTTP 400. If you add a custom domain,\nset `PUBLIC_URL` to it, or add the extra hostname to `TRUSTED_HOSTS`\n(comma-separated) in **Environment** settings, then redeploy.\n\nEmail uses the `log` driver by default (no mail is sent). To enable signup\nverification and invites, set the `MAIL_*` values in **Environment** settings\n(host, port, username, password, encryption) and switch `MAIL_MAILER` to `smtp`,\nthen redeploy.\n",
     "createdAt": "2026-06-05T19:57:23+03:00",
-    "updatedAt": "2026-11-10T21:23:48+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "stirling-pdf",
     "name": "Stirling PDF",
     "intro": "A locally-hosted web app to perform 50+ operations on PDFs — merge, split, convert, OCR, and more.",
-    "logo": "https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/main/docs/stirling.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/stirling-pdf/logo.png",
     "tags": [
       "pdf",
       "productivity",
@@ -2995,12 +2995,12 @@
       }
     },
     "createdAt": "2026-07-16T05:10:11+03:00",
-    "updatedAt": "2026-11-14T17:17:19+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "stripe-sync",
     "name": "Stripe Sync",
-    "logo": "https://avatars.githubusercontent.com/u/54469796",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/stripe-sync/logo.png",
     "intro": "Sync your Stripe account to you Postgres database.",
     "tags": [
       "stripe",
@@ -3037,12 +3037,12 @@
       }
     },
     "createdAt": "2025-06-12T22:21:09+03:00",
-    "updatedAt": "2026-11-10T21:18:13+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "tagmanager",
     "name": "Google Tag Manager Server",
-    "logo": "https://avatars.githubusercontent.com/u/4327788",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/tagmanager/logo.png",
     "intro": "Setup Google Tag Manager for a first-party cookie.",
     "tags": [
       "analytics",
@@ -3073,14 +3073,14 @@
     },
     "postLaunchNote": "Make sure to properly configure `CONTAINER_CONFIG` variable, see [docs](https://developers.google.com/tag-platform/tag-manager/server-side/manual-setup-guide#manually_provision_a_server-side_tagging_cluster)",
     "createdAt": "2025-08-04T13:29:12+03:00",
-    "updatedAt": "2026-07-04T10:24:43+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "tangled-appview",
     "name": "Tangled Appview",
     "experimental": true,
     "intro": "Self-hosted web frontend for Tangled — repos, issues and pull requests over AT Protocol.",
-    "logo": "https://tangled.org/static/logos/dolly.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/tangled-appview/logo.png",
     "tags": [
       "git",
       "vcs",
@@ -3120,14 +3120,14 @@
     },
     "postLaunchNote": "Your appview is at ${APP_URL}. Sign in with any atproto handle — accounts come\nfrom the network, not from this server.\n\nSet `DEFAULT_KNOT` to your knot's domain if you deployed the **Tangled Knot**\ntemplate, otherwise new repos land on the public default knot.\n",
     "createdAt": "2026-08-17T15:29:59+03:00",
-    "updatedAt": "2026-11-14T17:16:57+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "tangled-knot",
     "name": "Tangled Knot",
     "experimental": true,
     "intro": "Self-hosted git server for Tangled, the AT Protocol social coding platform.",
-    "logo": "https://tangled.org/static/logos/dolly.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/tangled-knot/logo.png",
     "tags": [
       "git",
       "vcs",
@@ -3166,14 +3166,14 @@
     },
     "postLaunchNote": "Your knot is up at ${APP_URL}. Finish setup:\n\n1. Tangled → Settings → Knots → add `${APP_HOSTNAME}` → **verify**.\n2. Make sure `KNOT_SERVER_OWNER` holds your DID (empty = no repo creation).\n3. If your cloud provider has its own firewall, allow port ${SSH_PORT} there —\n   the host firewall rule is added for you.\n",
     "createdAt": "2026-08-17T15:21:38+03:00",
-    "updatedAt": "2026-11-14T17:16:30+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "template-deno",
     "name": "Deno app boilerplate",
     "intro": "A boilerplate for building a Deno application. Fork this repo and start building your own app quickly.",
     "description": "A boilerplate for building a Deno application\nFork this repo and start building your own app quickly.\nThis template is a simple Deno application that can be used as a starting point for building your own app.\n",
-    "logo": "https://avatars.githubusercontent.com/u/42048915",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/template-deno/logo.png",
     "experimental": true,
     "requirements": {
       "memory": 1024,
@@ -3196,7 +3196,7 @@
       }
     },
     "createdAt": "2026-06-26T14:27:05+03:00",
-    "updatedAt": "2026-06-26T14:33:27+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "template-go",
@@ -3204,7 +3204,7 @@
     "intro": "A boilerplate for building a Go application. Fork this repo and start building your own app quikly.",
     "description": "A boilerplate for building a Go application\nFork this repo and start building your own app quikly.\nThis template is a simple Go application that can be used as a starting point for building your own app.\n",
     "demoUrl": "https://go.demo.dollardeploy.dev/",
-    "logo": "https://go.dev/images/go-logo-blue.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/template-go/logo.svg",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -3227,7 +3227,7 @@
       }
     },
     "createdAt": "2025-05-17T20:53:14+03:00",
-    "updatedAt": "2025-12-21T13:02:32+01:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "template-java",
@@ -3235,7 +3235,7 @@
     "intro": "A boilerplate for building a Java application. Fork this repo and start building your own app quikly.",
     "description": "A boilerplate for building a Java application\nFork this repo and start building your own app quikly.\nThis template is a simple Java application that can be used as a starting point for building your own app.\n",
     "demoUrl": "https://java.demo.dollardeploy.dev/",
-    "logo": "https://avatars.githubusercontent.com/u/317776",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/template-java/logo.png",
     "requirements": {
       "memory": 2048,
       "cpu": 1,
@@ -3257,7 +3257,7 @@
       }
     },
     "createdAt": "2025-07-08T20:01:33+03:00",
-    "updatedAt": "2025-12-21T13:02:32+01:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "template-php",
@@ -3265,7 +3265,7 @@
     "intro": "A boilerplate for building a PHP application. Fork this repo and start building your own app quickly.",
     "description": "A boilerplate for building a PHP application\nFork this repo and start building your own app quickly.\nThis template is a simple PHP application that can be used as a starting point for building your own app.\n",
     "demoUrl": "https://php.demo.dollardeploy.dev/",
-    "logo": "https://www.php.net/images/logos/new-php-logo.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/template-php/logo.svg",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -3288,7 +3288,7 @@
       }
     },
     "createdAt": "2026-06-18T17:21:04+03:00",
-    "updatedAt": "2026-06-18T17:21:04+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "template-python",
@@ -3296,7 +3296,7 @@
     "intro": "Modern python template with Python 3.13 and uv package manager. Get started quickly and deploy your Python apps or APIs in seconds",
     "description": "A lightweight Python web application template using FastHTML, Python 3.11, and UV package manager.\n",
     "demoUrl": "https://python.demo.dollardeploy.dev/",
-    "logo": "https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/template-python/logo.png",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -3319,7 +3319,7 @@
       }
     },
     "createdAt": "2025-12-16T15:34:06+02:00",
-    "updatedAt": "2025-12-21T18:40:50+01:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "template-rust",
@@ -3327,7 +3327,7 @@
     "intro": "A boilerplate for building a Rust application. Fork this repo and start building your own app quikly.",
     "description": "A boilerplate for building a Rust application\nFork this repo and start building your own app quikly.\nThis template is a simple Rust application that can be used as a starting point for building your own app.\n",
     "demoUrl": "https://rust.demo.dollardeploy.dev/",
-    "logo": "https://avatars.githubusercontent.com/u/5430905",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/template-rust/logo.png",
     "requirements": {
       "memory": 1024,
       "cpu": 1,
@@ -3347,13 +3347,13 @@
       "mainPort": 3000
     },
     "createdAt": "2026-06-05T14:14:43+03:00",
-    "updatedAt": "2026-06-05T14:14:43+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "twenty-crm",
     "name": "Twenty CRM",
     "intro": "The #1 Open-Source CRM ${TAG}",
-    "logo": "https://avatars.githubusercontent.com/u/119600397",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/twenty-crm/logo.png",
     "tags": [
       "crm",
       "sales",
@@ -3399,13 +3399,13 @@
       ]
     },
     "createdAt": "2024-12-02T18:08:35+02:00",
-    "updatedAt": "2026-11-14T17:17:07+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "umami",
     "name": "Umami",
     "intro": "Privacy-focused, GDPR-compliant web analytics — a simple, self-hosted Google Analytics alternative.",
-    "logo": "https://raw.githubusercontent.com/umami-software/umami/master/src/assets/logo.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/umami/logo.svg",
     "tags": [
       "analytics",
       "privacy",
@@ -3440,13 +3440,13 @@
       }
     },
     "createdAt": "2026-07-16T05:07:12+03:00",
-    "updatedAt": "2026-11-14T17:18:00+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "uptime-kuma",
     "name": "Uptime Kuma",
     "intro": "Uptime Kuma is a simple, easy-to-use uptime monitoring tool.",
-    "logo": "https://raw.githubusercontent.com/louislam/uptime-kuma/master/public/icon.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/uptime-kuma/logo.svg",
     "tags": [
       "monitoring",
       "uptime",
@@ -3473,13 +3473,13 @@
       "docker"
     ],
     "createdAt": "2025-04-23T14:59:14+03:00",
-    "updatedAt": "2025-05-17T20:53:14+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "vaultwarden",
     "name": "Vaultwarden",
     "intro": "Lightweight, self-hosted password manager compatible with Bitwarden clients.",
-    "logo": "https://raw.githubusercontent.com/dani-garcia/vaultwarden/main/resources/vaultwarden-icon.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/vaultwarden/logo.svg",
     "tags": [
       "password-manager",
       "security",
@@ -3513,7 +3513,7 @@
       }
     },
     "createdAt": "2026-07-16T05:06:31+03:00",
-    "updatedAt": "2026-11-14T17:17:01+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "vercel-commerce",
@@ -3521,7 +3521,7 @@
     "tags": [
       "template"
     ],
-    "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/vercel-commerce/logo.png",
     "intro": "The fastest way to build an online store with Next.js and Vercel.",
     "experimental": true,
     "deployTime": "~1 minute",
@@ -3548,13 +3548,13 @@
       }
     },
     "createdAt": "2026-08-17T08:27:41+03:00",
-    "updatedAt": "2026-08-17T08:27:41+03:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "victorialogs",
     "name": "VictoriaLogs",
     "intro": "Fast, cost-effective and scalable open source log database by VictoriaMetrics.",
-    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/victorialogs.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/victorialogs/logo.svg",
     "tags": [
       "logs",
       "observability",
@@ -3594,13 +3594,13 @@
     },
     "postLaunchNote": "VictoriaLogs is protected with Basic Auth via vmauth.\n\nWeb UI and querying (full access):\n  URL:      ${APP_URL}/select/vmui\n  Username: vlogs\n  Password: ${GENERATED_PWD}\n\nLog ingestion (restricted to /insert/* for log shippers):\n  Endpoint: ${APP_URL}/insert/\n  Username: ${GENERATED_HASH}\n  Password: ${GENERATED_SECRET}\n\nData ingestion docs: https://docs.victoriametrics.com/victorialogs/data-ingestion/\n",
     "createdAt": "2026-06-10T19:29:31+03:00",
-    "updatedAt": "2026-11-10T21:21:05+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "vllm",
     "name": "vLLM",
     "intro": "Run an OpenAI & Claude inference endpoint with vLLM",
-    "logo": "https://avatars.githubusercontent.com/u/136984999",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/vllm/logo.png",
     "tags": [
       "ai",
       "llm",
@@ -3658,13 +3658,13 @@
     "preLaunchNote": "Before deploying, enter HF_TOKEN in the app environment. Press **Deploy later** to create app\nand continue.\n",
     "postLaunchNote": "WARNING: You might need to add your HF_TOKEN to the environment variables to download the model. \nChange it in the app env variables and redeploy.\n",
     "createdAt": "2026-05-05T12:59:10+03:00",
-    "updatedAt": "2026-11-14T16:39:04+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "vllm-qwen3-coder",
     "name": "vLLM (Docker)",
     "intro": "Run an OpenAI-compatible inference endpoint with Qwen3-Coder",
-    "logo": "https://avatars.githubusercontent.com/u/136984999",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/vllm-docker/logo.png",
     "tags": [
       "ai",
       "llm",
@@ -3698,13 +3698,13 @@
       }
     },
     "createdAt": "2026-08-08T10:38:17+03:00",
-    "updatedAt": "2026-11-11T15:58:12+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "wikijs",
     "name": "Wiki.js",
     "intro": "Wiki.js is a modern, feature-rich, and easy-to-use wiki app built on Node.js.",
-    "logo": "https://js.wiki/img/wikijs-full-2021.b840e376.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/wikijs/logo.svg",
     "tags": [
       "wiki",
       "documentation",
@@ -3741,13 +3741,13 @@
       "postgres"
     ],
     "createdAt": "2025-05-06T15:16:20+03:00",
-    "updatedAt": "2026-11-04T06:09:58+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "wordpress",
     "name": "WordPress",
     "intro": "The World's Most Popular CMS",
-    "logo": "https://avatars.githubusercontent.com/u/276006",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/wordpress/logo.png",
     "deployTime": "~3 minutes",
     "tags": [
       "cms",
@@ -3787,13 +3787,13 @@
       ]
     },
     "createdAt": "2024-11-25T21:39:49+02:00",
-    "updatedAt": "2026-11-10T21:20:34+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   },
   {
     "id": "zulipchat",
     "name": "Zulip Chat",
     "intro": "Organized chat for distributed teams",
-    "logo": "https://avatars.githubusercontent.com/u/4921959",
+    "logo": "https://cdn.jsdelivr.net/gh/dollardeploy/templates@f0e301768b5b13b7e7b84afdf328d6a4b70b74c1/zulipchat/logo.png",
     "deployTime": "~10 minutes",
     "tags": [
       "chat",
@@ -3833,6 +3833,6 @@
       }
     },
     "createdAt": "2025-08-13T10:50:46+03:00",
-    "updatedAt": "2026-11-05T06:13:08+02:00"
+    "updatedAt": "2026-11-14T17:49:34+02:00"
   }
 ]
