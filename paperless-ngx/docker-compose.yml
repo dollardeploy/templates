@@ -16,19 +16,19 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   gotenberg:
-    image: docker.io/gotenberg/gotenberg:8.34
+    image: docker.io/gotenberg/gotenberg:${GOTENBERG_VERSION:-8.34}
     restart: unless-stopped
     command:
       - "gotenberg"
       - "--chromium-disable-javascript=true"
-      - "--chromium-allow-list=file:///tmp/.*"
+      - "--chromium-allow-list=^file:///tmp/.*"
 
   tika:
     image: docker.io/apache/tika:3.3.1.0
     restart: unless-stopped
 
   webserver:
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    image: ghcr.io/paperless-ngx/paperless-ngx:${PAPERLESS_VERSION:-latest}
     restart: unless-stopped
     depends_on:
       - db
