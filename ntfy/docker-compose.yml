@@ -1,6 +1,6 @@
 services:
   ntfy:
-    image: binwiederhier/ntfy:latest
+    image: binwiederhier/ntfy:${NTFY_VERSION:-latest}
     command: serve
     restart: unless-stopped
     ports:
