@@ -35,4 +35,4 @@ app:
     MAIL_PASSWORD: password
     MAIL_SECURE: false
     BULK_EMAIL_BATCH: 5
-    GHOST_TAG: 5-alpine
+    GHOST_TAG: "6.74.0-alpine"
