@@ -1,7 +1,7 @@
 id: pterodactyl
 name: Pterodactyl
 intro: Open-source game server management panel built for performance, security, and extensibility using Docker containers.
-logo: https://pterodactyl.io/logos/pterry.svg
+logo: logo.svg
 tags:
   - devops
   - game-hosting

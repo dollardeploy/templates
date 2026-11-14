@@ -5,7 +5,7 @@ tags:
   - collaboration
   - drive
 intro: Open source content collaboration platform
-logo: https://avatars.githubusercontent.com/u/19211038
+logo: logo.png
 deployTime: ~1 minute
 description: Access your Data You can store your files, contacts, calendars, conversations and more on a server of your choosing.
 requirements:

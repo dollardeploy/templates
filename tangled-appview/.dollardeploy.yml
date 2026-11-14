@@ -2,7 +2,7 @@ id: tangled-appview
 name: Tangled Appview
 experimental: true
 intro: Self-hosted web frontend for Tangled — repos, issues and pull requests over AT Protocol.
-logo: https://tangled.org/static/logos/dolly.svg
+logo: logo.png
 tags:
   - git
   - vcs

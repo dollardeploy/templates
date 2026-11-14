@@ -13,7 +13,7 @@ description: |
   This template runs single-node RustFS with data on a bind-mounted volume
   (captured by DollarDeploy backups). The S3 API is exposed at the app URL and
   the web console is available on a separate local port behind the reverse proxy.
-logo: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/rustfs.svg
+logo: logo.svg
 requirements:
   memory: 1024
   cpu: 1

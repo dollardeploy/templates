@@ -2,7 +2,7 @@
 id: solidtime
 name: Solidtime
 intro: Open source time tracker — the modern, self-hostable Toggl alternative.
-logo: https://avatars.githubusercontent.com/u/156823565
+logo: logo.png
 tags:
   - solidtime
   - oss

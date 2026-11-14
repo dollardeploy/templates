@@ -1,7 +1,7 @@
 id: openvpn
 name: OpenVPN
 intro: "OpenVPN is a secure VPN channel to protect traffic"
-logo: https://avatars.githubusercontent.com/u/1569141
+logo: logo.png
 tags:
   - networking
   - vpn

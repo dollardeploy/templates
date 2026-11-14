@@ -2,7 +2,7 @@
 id: victorialogs
 name: VictoriaLogs
 intro: Fast, cost-effective and scalable open source log database by VictoriaMetrics.
-logo: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/victorialogs.svg
+logo: logo.svg
 tags:
   - logs
   - observability

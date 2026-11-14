@@ -3,7 +3,7 @@ name: Local AI (CPU)
 intro: >-
   Local AI is an open-source, self-hostable online OpenAI API compatible service
   with WebUI to chat, generate images and more.
-logo: https://github.com/mudler/LocalAI/blob/master/docs/static/android-chrome-192x192.png?raw=true
+logo: logo.png
 tags:
   - ai
   - machine-learning

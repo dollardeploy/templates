@@ -4,7 +4,7 @@ intro: Modern python template with Python 3.13 and uv package manager. Get start
 description: |
   A lightweight Python web application template using FastHTML, Python 3.11, and UV package manager.
 demoUrl: "https://python.demo.dollardeploy.dev/"
-logo: https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png
+logo: logo.png
 requirements:
   memory: 1024
   cpu: 1

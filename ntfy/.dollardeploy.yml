@@ -1,7 +1,7 @@
 id: ntfy
 name: ntfy
 intro: Send push notifications to your phone or desktop from any script via a simple HTTP PUT/POST.
-logo: https://raw.githubusercontent.com/binwiederhier/ntfy/main/web/public/static/images/pwa-512x512.png
+logo: logo.png
 tags:
   - notifications
   - pub-sub

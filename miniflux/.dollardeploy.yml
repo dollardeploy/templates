@@ -1,7 +1,7 @@
 id: miniflux
 name: Miniflux
 intro: Minimalist feed reader
-logo: https://avatars.githubusercontent.com/u/10584991
+logo: logo.png
 deployTime: ~3 minutes
 tags:
   - rss

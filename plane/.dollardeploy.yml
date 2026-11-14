@@ -2,7 +2,7 @@ id: plane
 name: Plane
 intro: Open source project management and issue tracking
 description: Plane is an open-source project tracking tool for teams to plan, track, and manage software development
-logo: 'https://avatars.githubusercontent.com/u/115727700'
+logo: logo.png
 tags:
   - oss
   - management

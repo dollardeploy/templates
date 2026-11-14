@@ -6,7 +6,7 @@ description: |
   Fork this repo and start building your own app quickly.
   This template is a simple PHP application that can be used as a starting point for building your own app.
 demoUrl: "https://php.demo.dollardeploy.dev/"
-logo: https://www.php.net/images/logos/new-php-logo.svg
+logo: logo.svg
 requirements:
   memory: 1024
   cpu: 1

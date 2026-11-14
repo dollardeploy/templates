@@ -1,7 +1,7 @@
 id: langfuse
 name: Langfuse
 intro: "Open source LLM engineering platform: tracing, evals, prompt management and metrics."
-logo: https://avatars.githubusercontent.com/u/134601687
+logo: logo.png
 tags:
   - ai
   - llm

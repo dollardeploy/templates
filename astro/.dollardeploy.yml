@@ -5,7 +5,7 @@ tags:
   - astro
   - typescript
 intro: Boilerplate for Astro to get you started
-logo: "https://raw.githubusercontent.com/huksley/astro-boilerplate/main/src/assets/logo.png"
+logo: logo.png
 deployTime: ~1 minute
 description: |
   This example shows how you can deploy an Astro app to any host with zero

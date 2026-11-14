@@ -1,7 +1,7 @@
 id: homarr
 name: Homarr
 intro: A simple, yet powerful dashboard for your server.
-logo: https://homarr.dev/img/favicon.png
+logo: logo.png
 tags:
   - dashboard
   - server-management

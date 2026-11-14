@@ -1,7 +1,7 @@
 id: adminer
 name: Adminer
 intro: Adminer is a simple database management tool that allows you to manage your MySQL, MariaDB and PostgreSQL databases with a web interface.
-logo: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adminer.svg
+logo: logo.svg
 tags:
   - database
   - management

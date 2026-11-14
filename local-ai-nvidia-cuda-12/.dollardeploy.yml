@@ -3,7 +3,7 @@ name: Local AI (NVidia CUDA 12)
 intro: >-
   Local AI is an open-source, self-hostable online OpenAI API compatible service
   with WebUI to chat, generate images and more. Works best with DataCrunch provider and GPU instances.
-logo: https://github.com/mudler/LocalAI/blob/master/docs/static/android-chrome-192x192.png?raw=true
+logo: logo.png
 tags:
   - ai
   - machine-learning

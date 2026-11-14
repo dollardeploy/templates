@@ -1,7 +1,7 @@
 id: vllm
 name: vLLM
 intro: Run an OpenAI & Claude inference endpoint with vLLM
-logo: https://avatars.githubusercontent.com/u/136984999
+logo: logo.png
 tags:
   - ai
   - llm

@@ -1,7 +1,7 @@
 id: wordpress
 name: WordPress
 intro: The World's Most Popular CMS
-logo: https://avatars.githubusercontent.com/u/276006
+logo: logo.png
 deployTime: ~3 minutes
 tags:
   - cms

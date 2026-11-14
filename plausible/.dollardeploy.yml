@@ -1,6 +1,6 @@
 id: plausible
 name: Plausible CE
-logo: https://raw.githubusercontent.com/plausible/community-edition/refs/heads/v2.1.1/images/logo_light.svg
+logo: logo.svg
 intro: "Simple, lightweight web analytics. No cookies and GDPR compliant."
 tags:
   - analytics

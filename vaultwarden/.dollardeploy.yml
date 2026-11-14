@@ -1,7 +1,7 @@
 id: vaultwarden
 name: Vaultwarden
 intro: Lightweight, self-hosted password manager compatible with Bitwarden clients.
-logo: https://raw.githubusercontent.com/dani-garcia/vaultwarden/main/resources/vaultwarden-icon.svg
+logo: logo.svg
 tags:
   - password-manager
   - security

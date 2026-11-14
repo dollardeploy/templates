@@ -1,7 +1,7 @@
 id: gitea
 name: Gitea
 intro: Lightweight, self-hosted Git service — a fast alternative to GitHub/GitLab.
-logo: https://raw.githubusercontent.com/go-gitea/gitea/main/public/assets/img/logo.svg
+logo: logo.svg
 tags:
   - git
   - vcs

@@ -2,7 +2,7 @@ id: vercel-commerce
 name: Vercel Commerce
 tags:
   - template
-logo: "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png"
+logo: logo.png
 intro: The fastest way to build an online store with Next.js and Vercel.
 experimental: true
 deployTime: "~1 minute"

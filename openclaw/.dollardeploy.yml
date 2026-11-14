@@ -1,7 +1,7 @@
 id: openclaw
 name: OpenClaw
 intro: Self-hosted AI assistant that integrates with WhatsApp, Telegram, Slack, Discord and more.
-logo: https://avatars.githubusercontent.com/u/252820863
+logo: logo.jpg
 tags:
   - ai
   - assistant

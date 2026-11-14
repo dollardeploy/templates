@@ -1,7 +1,7 @@
 id: outline-ws
 name: Outline VPN with WebSockets
 intro: Run Outline Shadowsocks server with WebSockets support.
-logo: https://avatars.githubusercontent.com/u/19845815
+logo: logo.png
 tags:
   - vpn
   - shadowsocks

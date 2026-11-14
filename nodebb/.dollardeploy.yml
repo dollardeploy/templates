@@ -3,7 +3,7 @@ name: NodeBB
 intro: Next generation community forum software. It's powerful, mobile-ready and easy to use. 
 description: |
   NodeBB takes the spirit and energy of the great online forum communities of old, and empowers it with powerful, mobile-ready and easy to use software. 
-logo: https://avatars.githubusercontent.com/u/4449608
+logo: logo.png
 requirements:
   memory: 2048
   cpu: 2

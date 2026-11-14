@@ -1,7 +1,7 @@
 id: ghost-cms
 name: Ghost CMS
 intro: "Ghost is an independent platform for publishing online by web and email newsletter."
-logo: https://raw.githubusercontent.com/dollardeploy/templates/refs/heads/main/ghost-cms/157884383-1b75feb1-45d8-4430-b636-3f7e06577347.png
+logo: logo.png
 tags:
   - cms
   - blog

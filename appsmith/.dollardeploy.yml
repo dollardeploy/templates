@@ -2,7 +2,7 @@
 id: appsmith
 name: Appsmith
 intro: Open source low-code platform to build, ship and maintain internal tools.
-logo: https://avatars.githubusercontent.com/u/67620218
+logo: logo.png
 tags:
   - appsmith
   - oss

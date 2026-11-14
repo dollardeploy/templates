@@ -6,7 +6,7 @@ description: |
   🔹 S3 API Compatible – Seamless integration with existing S3 tools 
   🔹 Built for AI & Analytics – Optimized for large-scale data pipelines
   🔹 High Performance – Ideal for demanding storage workloads.
-logo: https://avatars.githubusercontent.com/u/695951
+logo: logo.png
 requirements:
   memory: 1024
   cpu: 1

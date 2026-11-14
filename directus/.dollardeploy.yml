@@ -1,7 +1,7 @@
 id: directus
 name: Directus
 intro: The Modern & Powerful CMS and BaaS
-logo: https://avatars.githubusercontent.com/u/15967950
+logo: logo.png
 tags:
   - headless
   - cms

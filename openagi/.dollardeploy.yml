@@ -1,7 +1,7 @@
 id: openagi
 name: OpenAGI
 intro: "Proactive, self-improving personal AI agent that learns your routines and reaches out first."
-logo: https://raw.githubusercontent.com/Spshulem/openAGI/main/assets/logo.png
+logo: logo.png
 tags:
   - ai
   - agent

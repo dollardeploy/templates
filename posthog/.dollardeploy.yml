@@ -6,7 +6,7 @@ description: |
   with session replays, run A/B tests, manage feature flags, and analyze funnels — all in
   one platform. Self-host to keep full control of your data.
   Requires at least **8GB RAM**. Uses PostgreSQL, ClickHouse, Redis, and Kafka.
-logo: https://avatars.githubusercontent.com/u/60330232
+logo: logo.png
 tags:
   - analytics
   - product-analytics

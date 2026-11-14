@@ -2,7 +2,7 @@
 id: graylog
 name: Graylog Open
 intro: Centralized log management — collect, search, and analyze your logs.
-logo: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/graylog.svg
+logo: logo.svg
 tags:
   - logs
   - observability

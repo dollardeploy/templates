@@ -7,7 +7,7 @@ description: |
 
   Includes PostgreSQL for storage, Valkey (Redis-compatible) for task queuing, and
   Gotenberg + Apache Tika for full-text OCR and Office document conversion.
-logo: https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/refs/heads/dev/docs/assets/logo_leaf.svg
+logo: logo.svg
 experimental: true
 tags:
   - oss

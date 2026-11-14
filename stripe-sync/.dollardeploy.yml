@@ -1,6 +1,6 @@
 id: stripe-sync
 name: Stripe Sync
-logo: https://avatars.githubusercontent.com/u/54469796
+logo: logo.png
 intro: "Sync your Stripe account to you Postgres database."
 tags:
   - stripe

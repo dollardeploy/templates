@@ -5,7 +5,7 @@ tags:
   - template
   - nextjs
   - typescript
-logo: "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png"
+logo: logo.png
 deployTime: "~1 minute"
 description: Free version of NextJS SaaS starter template. See more here https://nextjstemplates.com/templates/saas-starter-startup
 requirements:

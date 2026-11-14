@@ -2,7 +2,7 @@ id: tangled-knot
 name: Tangled Knot
 experimental: true
 intro: Self-hosted git server for Tangled, the AT Protocol social coding platform.
-logo: https://tangled.org/static/logos/dolly.svg
+logo: logo.png
 tags:
   - git
   - vcs

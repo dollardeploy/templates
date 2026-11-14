@@ -1,6 +1,6 @@
 id: tagmanager
 name: Google Tag Manager Server
-logo: https://avatars.githubusercontent.com/u/4327788
+logo: logo.png
 intro: "Setup Google Tag Manager for a first-party cookie."
 tags:
   - analytics
