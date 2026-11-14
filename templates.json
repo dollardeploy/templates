@@ -22,9 +22,9 @@
     "app": {
       "type": "php",
       "repositoryUrl": "https://github.com/vrana/adminer",
-      "sourceBranch": "main",
+      "sourceBranch": "v6.3.0",
       "installCmd": "git submodule update --init",
-      "buildCmd": "php compile.php && cp adminer.php index.php",
+      "buildCmd": "php compile.php && cp adminer*.php index.php",
       "preStartCmd": "sudo apt install -y php-fpm php-pgsql php-mysql",
       "env": {
         "PORT": 8080,
@@ -32,7 +32,7 @@
       }
     },
     "createdAt": "2025-11-29T09:15:45+02:00",
-    "updatedAt": "2026-08-14T13:17:56+03:00"
+    "updatedAt": "2026-11-14T17:17:24+02:00"
   },
   {
     "id": "appsmith",
@@ -278,7 +278,7 @@
       "meeting"
     ],
     "requirements": {
-      "memory": 4096,
+      "memory": 8192,
       "cpu": 2,
       "storage": 20
     },
@@ -295,10 +295,10 @@
         "NEXT_PUBLIC_LICENSE_CONSENT": "agree",
         "CALCOM_TELEMETRY_DISABLED": true,
         "PRISMA_SCHEMA_PATH": "packages/prisma/schema.prisma",
-        "NODE_OPTIONS": "--max-old-space-size=4096"
+        "NODE_OPTIONS": "--max-old-space-size=6144"
       },
-      "repositoryUrl": "https://github.com/calcom/cal.com.git",
-      "sourceBranch": "v4.8.19",
+      "repositoryUrl": "https://github.com/calcom/cal.diy",
+      "sourceBranch": "v6.2.0",
       "startScript": "start",
       "buildScript": "build",
       "buildIncludeFiles": "packages/prisma",
@@ -312,7 +312,7 @@
       "postgres"
     ],
     "createdAt": "2025-01-17T15:51:08+02:00",
-    "updatedAt": "2026-07-05T10:46:26+03:00"
+    "updatedAt": "2026-11-14T17:18:06+02:00"
   },
   {
     "id": "cal-com-docker",
@@ -746,6 +746,7 @@
       "sourcePath": "crafty-controller",
       "dockerComposeFile": "docker-compose.yml",
       "env": {
+        "CRAFTY_VERSION": "4.11.0",
         "PORT": "8443",
         "APP_HEALTHCHECK_ENABLE": "0",
         "DOCKER_COMPOSE_WAIT_TIMEOUT": "300"
@@ -759,7 +760,7 @@
     "postLaunchNote": "Open the panel at **${APP_URL}** (you may need to accept the self-signed cert).\n\nCrafty generates a **random admin password on first boot**. Retrieve it from the\nserver with either:\n\n```\ncat ./docker/config/default-creds.txt\n```\n\nor by checking the container logs (`docker logs crafty`). Log in as **admin**\nand change the password immediately.\n",
     "source": "https://github.com/dollardeploy/templates",
     "createdAt": "2026-06-07T21:02:21+03:00",
-    "updatedAt": "2026-06-07T21:02:21+03:00"
+    "updatedAt": "2026-11-14T17:17:40+02:00"
   },
   {
     "id": "directus",
@@ -1164,11 +1165,11 @@
         "MAIL_PASSWORD": "password",
         "MAIL_SECURE": false,
         "BULK_EMAIL_BATCH": 5,
-        "GHOST_TAG": "5-alpine"
+        "GHOST_TAG": "6.74.0-alpine"
       }
     },
     "createdAt": "2024-12-11T15:06:09+02:00",
-    "updatedAt": "2026-08-07T20:34:52+03:00"
+    "updatedAt": "2026-11-14T17:17:29+02:00"
   },
   {
     "id": "gitea",
@@ -1242,11 +1243,12 @@
       "mainPort": 8080,
       "env": {
         "DOCKER_COMPOSE_BUILD": 1,
-        "PORT": 8080
+        "PORT": 8080,
+        "OLLAMA_VERSION": "0.40.13"
       }
     },
     "createdAt": "2025-11-01T10:19:48+02:00",
-    "updatedAt": "2025-11-04T08:40:22+02:00"
+    "updatedAt": "2026-11-14T17:17:13+02:00"
   },
   {
     "id": "graylog",
@@ -1279,8 +1281,8 @@
       "preStartCmd": "bash setup.sh",
       "mainPort": 9000,
       "env": {
-        "GRAYLOG_IMAGE": "graylog/graylog:7.1",
-        "DATANODE_IMAGE": "graylog/graylog-datanode:7.1",
+        "GRAYLOG_IMAGE": "graylog/graylog:7.2.2",
+        "DATANODE_IMAGE": "graylog/graylog-datanode:7.2.2",
         "GRAYLOG_USERNAME": "admin",
         "GRAYLOG_PASSWORD": "${GENERATED_PWD}",
         "DOCKER_COMPOSE_WAIT": 0,
@@ -1289,7 +1291,7 @@
     },
     "postLaunchNote": "Graylog can take a few minutes to finish starting after deploy. To login, use username: admin, password: ${GENERATED_PWD}\n",
     "createdAt": "2026-06-12T11:46:30+03:00",
-    "updatedAt": "2026-10-09T23:36:51+03:00"
+    "updatedAt": "2026-11-14T17:16:41+02:00"
   },
   {
     "id": "hermes-agent",
@@ -1326,7 +1328,7 @@
       "env": {
         "PORT": 9119,
         "APP_HEALTHCHECK_PATH": "/api/health",
-        "HERMES_VERSION": "v0.22.2",
+        "HERMES_VERSION": "v0.23.0",
         "HERMES_DASHBOARD_PUBLIC_URL": "${APP_URL}",
         "HERMES_DASHBOARD_BASIC_AUTH_USERNAME": "admin",
         "HERMES_DASHBOARD_BASIC_AUTH_PASSWORD": "${GENERATED_HASH}",
@@ -1337,7 +1339,7 @@
     },
     "postLaunchNote": "Hermes Agent is running!\n\nDashboard: ${APP_URL}\n\n- **Username**: admin\n- **Password**: ${HERMES_DASHBOARD_BASIC_AUTH_PASSWORD}\n\nAdd a model provider key in the dashboard, then connect a chat platform\n(Telegram, Discord, Slack, ...) if you want to talk to it from your phone.\n\nThe username/password login is a single shared credential. For stronger\nprotection, register the dashboard with Nous Portal and set\n`HERMES_DASHBOARD_OAUTH_CLIENT_ID` in the app env.\n\nDocs: https://hermes-agent.nousresearch.com/docs/\n",
     "createdAt": "2026-10-17T19:47:40+03:00",
-    "updatedAt": "2026-10-17T19:47:40+03:00"
+    "updatedAt": "2026-11-14T17:16:46+02:00"
   },
   {
     "id": "homarr",
@@ -1845,7 +1847,7 @@
       "backupCmd": "docker compose exec postgres pg_dumpall -U metabase > metabase.sql",
       "env": {
         "PORT": "3000",
-        "METABASE_VERSION": "v0.61.x"
+        "METABASE_VERSION": "v0.65.3.6"
       }
     },
     "introVideoUrl": "https://www.youtube-nocookie.com/embed/dnT2Xj52mnk",
@@ -1855,7 +1857,7 @@
       "docker"
     ],
     "createdAt": "2025-01-26T11:33:21+02:00",
-    "updatedAt": "2026-10-09T23:38:41+03:00"
+    "updatedAt": "2026-11-14T17:16:36+02:00"
   },
   {
     "id": "miniflux",
@@ -2195,6 +2197,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 8080,
       "env": {
+        "NTFY_VERSION": "v2.37.2",
         "PORT": "8080",
         "AUTH_DEFAULT_ACCESS": "read-write",
         "APP_HEALTHCHECK_PATH": "/v1/health",
@@ -2202,7 +2205,7 @@
       }
     },
     "createdAt": "2026-07-16T05:09:22+03:00",
-    "updatedAt": "2026-08-17T15:42:35+03:00"
+    "updatedAt": "2026-11-14T17:17:54+02:00"
   },
   {
     "id": "openagi",
@@ -2462,6 +2465,8 @@
       "mainPort": 8000,
       "env": {
         "PORT": "8000",
+        "PAPERLESS_VERSION": "3.4.2",
+        "GOTENBERG_VERSION": "8.38",
         "POSTGRES_PASSWORD": "${GENERATED_PWD}",
         "PAPERLESS_SECRET_KEY": "${GENERATED_SECRET}",
         "PAPERLESS_ADMIN_USER": "admin",
@@ -2473,7 +2478,7 @@
     "postLaunchNote": "Login with username **${PAPERLESS_ADMIN_USER}** and password **${PAPERLESS_ADMIN_PASSWORD}**.\n",
     "source": "https://github.com/dollardeploy/templates",
     "createdAt": "2026-08-24T10:39:34+03:00",
-    "updatedAt": "2026-08-24T10:39:34+03:00"
+    "updatedAt": "2026-11-14T17:16:51+02:00"
   },
   {
     "id": "pelican",
@@ -2795,14 +2800,15 @@
         "TZ": "UTC",
         "WINGS_UID": "988",
         "WINGS_GID": "988",
-        "WINGS_USERNAME": "pterodactyl"
+        "WINGS_USERNAME": "pterodactyl",
+        "WINGS_VERSION": "v1.13.4"
       },
       "postStartCmd": "echo \"Wings daemon started. If you're using Pterodactyl Panel, make sure the node configuration points to port ${PORT_PANEL}.\"\n"
     },
     "postLaunchNote": "Wings has been deployed. Make sure your Panel connects to port `${PORT_PANEL}` and SFTP runs on `${PORT_SFTP}`.\nYou may configure node settings in the panel using the appropriate IP and port.\n",
     "description": "Pterodactyl Wings is Pterodactyl's server control plane, built for the rapidly changing\ngaming industry and designed to be highly performant and secure. Wings provides\nan HTTP API allowing you to interface directly with running server instances,\nfetch server logs, generate backups, and control all aspects of the server lifecycle.\n",
     "createdAt": "2025-06-21T03:19:38+03:00",
-    "updatedAt": "2026-07-05T10:46:26+03:00"
+    "updatedAt": "2026-11-14T17:17:34+02:00"
   },
   {
     "id": "rustfs",
@@ -2981,6 +2987,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 8080,
       "env": {
+        "STIRLING_PDF_VERSION": "3.2.2",
         "PORT": "8080",
         "APP_HEALTHCHECK_PATH": "/",
         "DOCKER_COMPOSE_PULL": "always",
@@ -2988,7 +2995,7 @@
       }
     },
     "createdAt": "2026-07-16T05:10:11+03:00",
-    "updatedAt": "2026-08-17T15:42:35+03:00"
+    "updatedAt": "2026-11-14T17:17:19+02:00"
   },
   {
     "id": "stripe-sync",
@@ -3103,7 +3110,7 @@
         "PORT": "3000",
         "APPVIEW_NAME": "Tangled",
         "COOKIE_SECRET": "${GENERATED_HASH}",
-        "TANGLED_VERSION": "v1.16.1-alpha",
+        "TANGLED_VERSION": "v1.20.0",
         "DEFAULT_KNOT": "",
         "PLC_URL": "https://plc.directory",
         "JETSTREAM_ENDPOINT": "wss://jetstream1.us-east.bsky.network/subscribe",
@@ -3113,7 +3120,7 @@
     },
     "postLaunchNote": "Your appview is at ${APP_URL}. Sign in with any atproto handle — accounts come\nfrom the network, not from this server.\n\nSet `DEFAULT_KNOT` to your knot's domain if you deployed the **Tangled Knot**\ntemplate, otherwise new repos land on the public default knot.\n",
     "createdAt": "2026-08-17T15:29:59+03:00",
-    "updatedAt": "2026-08-24T10:19:55+03:00"
+    "updatedAt": "2026-11-14T17:16:57+02:00"
   },
   {
     "id": "tangled-knot",
@@ -3159,7 +3166,7 @@
     },
     "postLaunchNote": "Your knot is up at ${APP_URL}. Finish setup:\n\n1. Tangled → Settings → Knots → add `${APP_HOSTNAME}` → **verify**.\n2. Make sure `KNOT_SERVER_OWNER` holds your DID (empty = no repo creation).\n3. If your cloud provider has its own firewall, allow port ${SSH_PORT} there —\n   the host firewall rule is added for you.\n",
     "createdAt": "2026-08-17T15:21:38+03:00",
-    "updatedAt": "2026-08-17T15:42:35+03:00"
+    "updatedAt": "2026-11-14T17:16:30+02:00"
   },
   {
     "id": "template-deno",
@@ -3374,7 +3381,7 @@
         "APP_SECRET": "${GENERATED_HASH}",
         "SERVER_URL": "${APP_URL}",
         "PGPASSWORD_SUPERUSER": "${GENERATED_PWD}",
-        "TAG": "v2.38.1",
+        "TAG": "v2.56.1",
         "STORAGE_TYPE": "local",
         "PORT": 3000,
         "PG_DATABASE_HOST": "db",
@@ -3392,7 +3399,7 @@
       ]
     },
     "createdAt": "2024-12-02T18:08:35+02:00",
-    "updatedAt": "2026-09-05T14:28:57+03:00"
+    "updatedAt": "2026-11-14T17:17:07+02:00"
   },
   {
     "id": "umami",
@@ -3423,6 +3430,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 3000,
       "env": {
+        "UMAMI_VERSION": "3.4.1",
         "PORT": "3000",
         "DB_PASSWORD": "umami${GENERATED_HASH}",
         "APP_SECRET": "${GENERATED_HASH}",
@@ -3432,7 +3440,7 @@
       }
     },
     "createdAt": "2026-07-16T05:07:12+03:00",
-    "updatedAt": "2026-08-17T15:42:35+03:00"
+    "updatedAt": "2026-11-14T17:18:00+02:00"
   },
   {
     "id": "uptime-kuma",
@@ -3496,6 +3504,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 8080,
       "env": {
+        "VAULTWARDEN_VERSION": "1.37.5",
         "PORT": "8080",
         "SIGNUPS_ALLOWED": "true",
         "ADMIN_TOKEN": "",
@@ -3504,7 +3513,7 @@
       }
     },
     "createdAt": "2026-07-16T05:06:31+03:00",
-    "updatedAt": "2026-08-17T15:42:35+03:00"
+    "updatedAt": "2026-11-14T17:17:01+02:00"
   },
   {
     "id": "vercel-commerce",
