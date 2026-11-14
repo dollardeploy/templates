@@ -1,6 +1,6 @@
 services:
   umami:
-    image: ghcr.io/umami-software/umami:postgresql-latest
+    image: ghcr.io/umami-software/umami:${UMAMI_VERSION:-postgresql-latest}
     restart: unless-stopped
     ports:
       - "127.0.0.1:${PORT}:3000"
