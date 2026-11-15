@@ -700,7 +700,7 @@
       "sourcePath": "courselit",
       "sourceBranch": "main",
       "env": {
-        "COURSELIT_VERSION": "v0.74.4",
+        "COURSELIT_VERSION": "v0.74.6",
         "NODE_ENV": "production",
         "SERVER_URL": "${APP_URL}",
         "AUTH_SECRET": "${GENERATED_HASH}",
@@ -719,7 +719,7 @@
     },
     "postLaunchNote": "Username is your e-mail. To login, setup SMTP server settings\nin the environment variables, redeploy and try to login.\n\n  \n",
     "createdAt": "2025-05-11T20:59:46+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-15T09:01:29+02:00"
   },
   {
     "id": "crafty-controller",
