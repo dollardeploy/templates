@@ -27,7 +27,7 @@ app:
   sourcePath: courselit
   sourceBranch: main
   env:
-    COURSELIT_VERSION: "v0.74.4"
+    COURSELIT_VERSION: "v0.74.6"
     NODE_ENV: production
     SERVER_URL: ${APP_URL}
     AUTH_SECRET: ${GENERATED_HASH}
