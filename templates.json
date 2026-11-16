@@ -1573,6 +1573,7 @@
       "preStartCmd": "bash ./fixdocker.sh",
       "env": {
         "PORT": "8025",
+        "APP_HEALTHCHECK_PATH": "/livez",
         "MAILPIT_VERSION": "v1.33.1",
         "MP_MAX_MESSAGES": 5000,
         "MP_DATABASE": "/data/mailpit.db",
@@ -1609,7 +1610,7 @@
       "docker"
     ],
     "createdAt": "2025-01-29T09:54:17+02:00",
-    "updatedAt": "2026-11-15T10:04:57+02:00"
+    "updatedAt": "2026-11-16T12:02:50+02:00"
   },
   {
     "id": "mattermost",
