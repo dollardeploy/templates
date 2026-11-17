@@ -2,7 +2,7 @@
 
 Self-hosted Inngest server with Postgres and Redis.
 
-The Inngest image version is controlled by the `TAG` env variable. New launches use `v1.49.0`. Apps launched earlier keep the `TAG` they were launched with when redeployed.
+The Inngest image version is controlled by the `TAG` env variable. New launches use `v1.51.0`. Apps launched earlier keep the `TAG` they were launched with when redeployed.
 
 ## Upgrading an existing app
 
@@ -11,7 +11,7 @@ Inngest v1.18.0 rolled up the self-hosted database migrations. The rollup only r
 If your app runs `TAG=v1.12.x` (or any version older than v1.17.x), upgrade in two steps:
 
 1. Set `TAG` to `v1.17.9` and redeploy. Wait until Inngest starts and the dashboard loads.
-2. Set `TAG` to `v1.49.0` and redeploy.
+2. Set `TAG` to `v1.51.0` and redeploy.
 
 Back up the `postgres_data` volume before upgrading.
 
