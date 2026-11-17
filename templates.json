@@ -977,12 +977,12 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "ADMIN_PASSWORD": "${GENERATED_PWD}",
-        "TAG": "v15.124.4",
+        "TAG": "v15.124.2",
         "PORT": 8080
       }
     },
     "createdAt": "2025-02-25T18:22:52+02:00",
-    "updatedAt": "2026-11-17T07:57:32+02:00"
+    "updatedAt": "2026-11-18T00:01:58+02:00"
   },
   {
     "id": "evo-ai-api",
