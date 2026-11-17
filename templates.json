@@ -934,7 +934,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "PORT": "8080",
-        "DOZZLE_VERSION": "v11.3.5",
+        "DOZZLE_VERSION": "v11.4.2",
         "DOZZLE_AUTH_PROVIDER": "simple",
         "DOZZLE_ENABLE_ACTIONS": true,
         "DOZZLE_ENABLE_SHELL": true,
@@ -944,7 +944,7 @@
     },
     "postLaunchNote": "Dozzle username: admin, password: ${GENERATED_PWD}\n",
     "createdAt": "2025-07-29T21:21:40+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-17T07:57:21+02:00"
   },
   {
     "id": "erpnext",
@@ -977,12 +977,12 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "ADMIN_PASSWORD": "${GENERATED_PWD}",
-        "TAG": "v15.124.2",
+        "TAG": "v15.124.4",
         "PORT": 8080
       }
     },
     "createdAt": "2025-02-25T18:22:52+02:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-17T07:57:32+02:00"
   },
   {
     "id": "evo-ai-api",
@@ -1406,11 +1406,11 @@
         "INNGEST_SIGNING_KEY": "${GENERATED_SECRET}",
         "INNGEST_ENV": "prod",
         "INNGEST_DEV": 0,
-        "TAG": "v1.49.0"
+        "TAG": "v1.51.0"
       }
     },
     "createdAt": "2025-07-29T16:40:11+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-17T07:57:26+02:00"
   },
   {
     "id": "langfuse",
@@ -2155,7 +2155,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "PORT": "4567",
-        "NODEBB_VERSION": "v4.16.4",
+        "NODEBB_VERSION": "v4.16.7",
         "NODEBB_URL": "${APP_URL}",
         "REDIS_PASSWORD": "redis",
         "NODEBB_ADMIN_PASSWORD": "${GENERATED_PWD}",
@@ -2167,7 +2167,7 @@
     },
     "postLaunchNote": "Username is **admin** and password is **${GENERATED_PWD}**. After deploy, give time to the app to build and get ready (5 mins).\n",
     "createdAt": "2025-08-27T00:32:05+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-17T07:57:15+02:00"
   },
   {
     "id": "ntfy",
