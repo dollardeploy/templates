@@ -661,7 +661,7 @@
         "PORT": 3000,
         "SERVER_URL": "${APP_URL}",
         "PASSWORD": "${GENERATED_PWD}",
-        "CODE_SERVER_VERSION": "4.144.0"
+        "CODE_SERVER_VERSION": "4.145.2"
       },
       "preStartCmd": "mkdir -p ../.local && mkdir -p ../.config"
     },
@@ -671,7 +671,7 @@
       "docker"
     ],
     "createdAt": "2024-12-15T14:42:55Z",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-18T08:19:35+02:00"
   },
   {
     "id": "courselit",
@@ -1244,11 +1244,11 @@
       "env": {
         "DOCKER_COMPOSE_BUILD": 1,
         "PORT": 8080,
-        "OLLAMA_VERSION": "0.40.13"
+        "OLLAMA_VERSION": "0.40.16"
       }
     },
     "createdAt": "2025-11-01T10:19:48+02:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-18T08:19:41+02:00"
   },
   {
     "id": "graylog",
@@ -1972,7 +1972,7 @@
         "PORT": 5678,
         "N8N_HOST": "${APP_HOSTNAME}",
         "N8N_PORT": "${PORT}",
-        "N8N_VERSION": "2.45.7",
+        "N8N_VERSION": "2.47.3",
         "N8N_PROTOCOL": "https",
         "WEBHOOK_URL": "${APP_URL}",
         "GENERIC_TIMEZONE": "UTC",
@@ -2001,7 +2001,7 @@
       ]
     },
     "createdAt": "2025-04-29T10:51:14+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-18T08:19:46+02:00"
   },
   {
     "id": "nextcloud",
@@ -2288,7 +2288,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "PORT": "8080",
-        "OPENCLAW_VERSION": "2026.10.9",
+        "OPENCLAW_VERSION": "2026.11.2",
         "OPENCLAW_BROWSER_VERSION": "0.3.0",
         "AUTH_USERNAME": "admin",
         "AUTH_PASSWORD": "${GENERATED_PWD}",
@@ -2302,7 +2302,7 @@
     },
     "postLaunchNote": "OpenClaw is running!\n\nLogin credentials:\n- **Username**: admin\n- **Password**: ${GENERATED_PWD}\n\nConfigure your AI provider API keys in the environment variables to start using OpenClaw.\n\nDocumentation: https://docs.openclaw.ai/\n",
     "createdAt": "2026-02-02T09:19:41+02:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-18T08:19:52+02:00"
   },
   {
     "id": "openvpn",
