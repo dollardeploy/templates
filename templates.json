@@ -746,7 +746,7 @@
       "sourcePath": "crafty-controller",
       "dockerComposeFile": "docker-compose.yml",
       "env": {
-        "CRAFTY_VERSION": "4.11.0",
+        "CRAFTY_VERSION": "4.11.1",
         "PORT": "8443",
         "APP_HEALTHCHECK_ENABLE": "0",
         "DOCKER_COMPOSE_WAIT_TIMEOUT": "300"
@@ -760,7 +760,7 @@
     "postLaunchNote": "Open the panel at **${APP_URL}** (you may need to accept the self-signed cert).\n\nCrafty generates a **random admin password on first boot**. Retrieve it from the\nserver with either:\n\n```\ncat ./docker/config/default-creds.txt\n```\n\nor by checking the container logs (`docker logs crafty`). Log in as **admin**\nand change the password immediately.\n",
     "source": "https://github.com/dollardeploy/templates",
     "createdAt": "2026-06-07T21:02:21+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-19T09:04:01+02:00"
   },
   {
     "id": "directus",
