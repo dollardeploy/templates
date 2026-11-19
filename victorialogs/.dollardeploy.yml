@@ -38,8 +38,8 @@ app:
   env:
     # Pinned image versions for new launches. Existing apps without these
     # variables fall back to the compose default (latest).
-    VICTORIALOGS_VERSION: "v1.53.0"
-    VMAUTH_VERSION: "v1.155.0"
+    VICTORIALOGS_VERSION: "v1.54.0"
+    VMAUTH_VERSION: "v1.156.0"
     # vmauth /health is public; everything else needs auth, so check /health.
     APP_HEALTHCHECK_PATH: /health
     # Admin user (full access): fixed username, generated password.
