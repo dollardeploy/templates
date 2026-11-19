@@ -22,7 +22,7 @@ app:
   dockerComposeFile: docker-compose.yml
   env:
     PORT: '3000'
-    APP_RELEASE: 'v1.4.3'
+    APP_RELEASE: 'v1.5.0'
     MINIO_IMAGE: 'pgsty/silo:RELEASE.2026-09-16T00-00-00Z'
     APP_DOMAIN: '${APP_HOSTNAME}'
     WEB_URL: '${APP_URL}'
@@ -59,5 +59,6 @@ app:
     LIVE_SERVER_SECRET_KEY: ${GENERATED_HASH}
     API_BASE_URL: 'http://api:8000'
     API_KEY_RATE_LIMIT: '60/minute'
+    NUM_PROXIES: '2'
     DOCKER_COMPOSE_WAIT_TIMEOUT: '300'
     PRE_START_TIMEOUT: '300'
