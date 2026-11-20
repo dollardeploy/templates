@@ -1201,7 +1201,7 @@
       "mainPort": 3000,
       "preStartCmd": "sudo ufw status >/dev/null 2>&1 && sudo ufw allow ${SSH_PORT}/tcp || true",
       "env": {
-        "GITEA_VERSION": "28.3.0",
+        "GITEA_VERSION": "28.4.0",
         "PORT": "3000",
         "SSH_PORT": "2222",
         "DB_PASSWORD": "gitea${GENERATED_HASH}",
@@ -1211,7 +1211,7 @@
       }
     },
     "createdAt": "2026-07-16T05:08:37+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-20T09:01:58+02:00"
   },
   {
     "id": "gpt-oss",
