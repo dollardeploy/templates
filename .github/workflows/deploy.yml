@@ -1,14 +1,15 @@
 name: Deploy Changed Templates
 
 on:
-  push:
+  # Run after Generate Templates has committed templates.json for the push,
+  # so the deploy uses the new catalog, not the old one.
+  workflow_run:
+    workflows:
+      - Generate Templates
+    types:
+      - completed
     branches:
       - main
-    paths-ignore:
-      - templates.json
-      - .github/**
-      - scripts/**
-      - README.md
   workflow_dispatch:
     inputs:
       template:
@@ -26,19 +27,27 @@ permissions:
 
 jobs:
   detect-and-deploy:
+    # Manual runs, or a successful Generate Templates run started by a push.
+    # Skip failed generations so the deploy never tests a stale catalog.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
 
     steps:
+      # Checks out main after Generate Templates, including the new templates.json
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2 # Need at least 2 commits to compare changes
+          fetch-depth: 0 # Need the history of the original push commit
 
       - name: Detect changed templates
         id: detect
         env:
           EVENT_NAME: ${{ github.event_name }}
           INPUT_TEMPLATE: ${{ inputs.template }}
+          PUSH_SHA: ${{ github.event.workflow_run.head_sha }}
         run: |
           template_id_of() {
             grep "^id:" "$1/.dollardeploy.yml" | head -1 | sed 's/^id: *//' | tr -d "\r\"'"
@@ -68,8 +77,9 @@ jobs:
               add_template "$input"
             fi
           else
-            echo "Changed files:"
-            git diff --name-only HEAD~1 HEAD | tee /tmp/changed-files.txt
+            # Compare the original push commit, not the later templates.json commit
+            echo "Changed files in $PUSH_SHA:"
+            git diff --name-only "$PUSH_SHA~1" "$PUSH_SHA" | tee /tmp/changed-files.txt
 
             while IFS= read -r file; do
               dir="${file%%/*}"
@@ -81,6 +91,35 @@ jobs:
 
           echo "Templates to deploy: ${templates[*]:-none}"
           echo "templates=${templates[*]:-}" >> "$GITHUB_OUTPUT"
+
+      - name: Show catalog version
+        if: steps.detect.outputs.templates != ''
+        env:
+          TEMPLATES: ${{ steps.detect.outputs.templates }}
+        run: |
+          echo "templates.json at $(git rev-parse HEAD) ($(git log -1 --format=%s -- templates.json))"
+          for template in $TEMPLATES; do
+            entry="$(jq -c --arg id "$template" '.[] | select(.id == $id) | {id, updatedAt, app}' templates.json)"
+            echo "Catalog entry for $template: ${entry:-not found in templates.json}"
+          done
+
+      # The platform reads templates.json from raw.githubusercontent.com with a
+      # 5 minute app cache on top of the CDN cache, and ddc does not expose the
+      # template version to poll for, so wait until the cache has expired.
+      - name: Wait for the platform catalog cache
+        if: steps.detect.outputs.templates != '' && github.event_name == 'workflow_run'
+        env:
+          GENERATED_AT: ${{ github.event.workflow_run.updated_at }}
+          CACHE_WAIT_SECONDS: 360
+        run: |
+          elapsed=$(( $(date +%s) - $(date -d "$GENERATED_AT" +%s) ))
+          remaining=$(( CACHE_WAIT_SECONDS - elapsed ))
+          if [ "$remaining" -le 0 ]; then
+            echo "Generate Templates finished ${elapsed}s ago, the catalog cache has expired."
+            exit 0
+          fi
+          echo "Waiting ${remaining}s: a fixed ${CACHE_WAIT_SECONDS}s after Generate Templates (finished at $GENERATED_AT) for the platform template cache to expire, because ddc does not expose the catalog version."
+          sleep "$remaining"
 
       - name: Setup Node.js
         if: steps.detect.outputs.templates != ''
@@ -102,11 +141,16 @@ jobs:
           DOLLARDEPLOY_BASE_URL: ${{ secrets.DOLLARDEPLOY_BASE_URL }}
           DOLLARDEPLOY_SCREENSHOT_URL: ${{ secrets.DOLLARDEPLOY_SCREENSHOT_URL }}
           DOLLARDEPLOY_TEST_HOST_ID: ${{ vars.DOLLARDEPLOY_TEST_HOST_ID }}
+          PUSH_SHA: ${{ github.event.workflow_run.head_sha }}
         run: |
           failed=0
           {
             echo "## Template test deploys"
             echo
+            if [ -n "$PUSH_SHA" ]; then
+              echo "Push: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$PUSH_SHA"
+              echo
+            fi
             echo "| Template | Result |"
             echo "| --- | --- |"
           } >> "$GITHUB_STEP_SUMMARY"
