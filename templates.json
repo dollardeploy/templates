@@ -1165,11 +1165,11 @@
         "MAIL_PASSWORD": "password",
         "MAIL_SECURE": false,
         "BULK_EMAIL_BATCH": 5,
-        "GHOST_TAG": "6.77.0-alpine"
+        "GHOST_TAG": "6.74.0-alpine"
       }
     },
     "createdAt": "2024-12-11T15:06:09+02:00",
-    "updatedAt": "2026-11-20T15:03:48+02:00"
+    "updatedAt": "2026-11-20T15:16:04+02:00"
   },
   {
     "id": "gitea",
