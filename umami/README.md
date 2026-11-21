@@ -21,7 +21,7 @@ Privacy-focused, GDPR-compliant web analytics — a simple, self-hosted Google A
 
 1. Deploy and open the app URL.
 2. Log in with the default credentials `admin` / `umami`.
-3. Change the password immediately under **Settings → Profile**.
+3. Umami asks you to set a new password on first login. Change it later under **Settings → Security**.
 4. Add your website and copy the tracking snippet.
 
 See the [Umami docs](https://umami.is/docs) for details.
