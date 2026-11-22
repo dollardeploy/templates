@@ -34,7 +34,7 @@ app:
   mainPort: 3000
   env:
     PORT: "3000"
-    LANGFUSE_IMAGE_TAG: "4.77.0"
+    LANGFUSE_IMAGE_TAG: "4.80.0"
     CLICKHOUSE_IMAGE_TAG: "26.3.62.3"
     POSTGRES_IMAGE_TAG: "17"
     REDIS_IMAGE_TAG: "7"
