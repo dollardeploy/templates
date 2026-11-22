@@ -1328,7 +1328,7 @@
       "env": {
         "PORT": 9119,
         "APP_HEALTHCHECK_PATH": "/api/health",
-        "HERMES_VERSION": "v0.23.0",
+        "HERMES_VERSION": "v0.23.2",
         "HERMES_DASHBOARD_PUBLIC_URL": "${APP_URL}",
         "HERMES_DASHBOARD_BASIC_AUTH_USERNAME": "admin",
         "HERMES_DASHBOARD_BASIC_AUTH_PASSWORD": "${GENERATED_HASH}",
@@ -1339,7 +1339,7 @@
     },
     "postLaunchNote": "Hermes Agent is running!\n\nDashboard: ${APP_URL}\n\n- **Username**: admin\n- **Password**: ${HERMES_DASHBOARD_BASIC_AUTH_PASSWORD}\n\nAdd a model provider key in the dashboard, then connect a chat platform\n(Telegram, Discord, Slack, ...) if you want to talk to it from your phone.\n\nThe username/password login is a single shared credential. For stronger\nprotection, register the dashboard with Nous Portal and set\n`HERMES_DASHBOARD_OAUTH_CLIENT_ID` in the app env.\n\nDocs: https://hermes-agent.nousresearch.com/docs/\n",
     "createdAt": "2026-10-17T19:47:40+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-22T09:05:24+02:00"
   },
   {
     "id": "homarr",
