@@ -1443,7 +1443,7 @@
       "mainPort": 3000,
       "env": {
         "PORT": "3000",
-        "LANGFUSE_IMAGE_TAG": "4.77.0",
+        "LANGFUSE_IMAGE_TAG": "4.80.0",
         "CLICKHOUSE_IMAGE_TAG": "26.3.62.3",
         "POSTGRES_IMAGE_TAG": "17",
         "REDIS_IMAGE_TAG": "7",
@@ -1471,7 +1471,7 @@
     },
     "postLaunchNote": "Log in with your e-mail, the password is in the `LANGFUSE_INIT_USER_PASSWORD`\nenvironment variable. Create API keys in **Project Settings -> API Keys** and\npoint the SDK `LANGFUSE_HOST` (or `LANGFUSE_BASE_URL`) to this app URL.\n\n> Public sign up is disabled. Set `AUTH_DISABLE_SIGNUP` to `false` and\n> redeploy to allow it. To upgrade, change `LANGFUSE_IMAGE_TAG` and redeploy.\n",
     "createdAt": "2026-11-10T21:01:13+02:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-22T09:34:55+02:00"
   },
   {
     "id": "local-ai-cpu",
