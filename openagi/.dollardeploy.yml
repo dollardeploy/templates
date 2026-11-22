@@ -39,7 +39,7 @@ preLaunchNote: |
 app:
   type: docker-compose
   repositoryUrl: https://github.com/Spshulem/openAGI
-  sourceBranch: v0.0.66
+  sourceBranch: v0.0.74
   dockerComposeFile: docker-compose.yml
   mainPort: 43210
   env:
