@@ -21,7 +21,7 @@ app:
   env:
     PORT: "9000"
     PORTAINER_AGENT_PORT: "8000"
-    PORTAINER_VERSION: "2.45.3"
+    PORTAINER_VERSION: "2.45.4"
 services:
   - docker
 deployTime: ~2 minutes
