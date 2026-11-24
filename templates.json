@@ -169,16 +169,16 @@
       "sourcePath": "beszel",
       "dockerComposeFile": "docker-compose.yml",
       "env": {
-        "BESZEL_VERSION": "0.21.1",
+        "BESZEL_VERSION": "0.21.2",
         "PORT": "8090",
         "HUB_URL": "${APP_URL}",
         "TOKEN": "${GENERATED_HASH}",
         "KEY": "${GENERATED_SECRET}"
       }
     },
-    "postLaunchNote": "After first run, manually add local agent to the hub, update KEY= and TOKEN= variables, and redeploy.\nSee https://beszel.dev/guide/getting-started#_4-start-the-agent\n",
+    "postLaunchNote": "After first run, manually add local agent to the hub, update KEY= and TOKEN= variables, and redeploy.\nSee https://beszel.dev/guide/getting-started#_4-start-the-agent\nSince 0.21.2 sign-in is limited to 10 attempts per minute per client address. Behind the DollarDeploy proxy,\nopen the PocketBase admin (APP_URL/_/), Settings > Application > User IP proxy headers, and add X-Forwarded-For,\notherwise all users share one limit.\n",
     "createdAt": "2025-07-29T20:02:15+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-24T09:37:08+02:00"
   },
   {
     "id": "boilerplate-bun",
