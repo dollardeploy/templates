@@ -2155,7 +2155,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "PORT": "4567",
-        "NODEBB_VERSION": "v4.16.7",
+        "NODEBB_VERSION": "v4.16.8",
         "NODEBB_URL": "${APP_URL}",
         "REDIS_PASSWORD": "redis",
         "NODEBB_ADMIN_PASSWORD": "${GENERATED_PWD}",
@@ -2167,7 +2167,7 @@
     },
     "postLaunchNote": "Username is **admin** and password is **${GENERATED_PWD}**. After deploy, give time to the app to build and get ready (5 mins).\n",
     "createdAt": "2025-08-27T00:32:05+03:00",
-    "updatedAt": "2026-11-17T07:57:15+02:00"
+    "updatedAt": "2026-11-24T09:08:57+02:00"
   },
   {
     "id": "ntfy",
