@@ -11,7 +11,7 @@ The fastest knowledge base for growing teams. Beautiful, realtime collaborative,
 
 ## Versions
 
-New launches use `IMAGE_TAG=1.12.0` and `POSTGRES_VERSION=17.10`. Apps launched earlier keep the `IMAGE_TAG` they were launched with, and Postgres stays on `latest` while `POSTGRES_VERSION` is unset.
+New launches use `IMAGE_TAG=1.13.0` and `POSTGRES_VERSION=17.10`. Apps launched earlier keep the `IMAGE_TAG` they were launched with, and Postgres stays on `latest` while `POSTGRES_VERSION` is unset.
 
 ## Upgrading an existing app
 
@@ -20,7 +20,7 @@ Outline 1.12.0 compacted all migrations before v1.3.0 into a baseline ([#13973](
 If you bump `IMAGE_TAG` manually from a 0.x version, step through an intermediate version first:
 
 1. Set `IMAGE_TAG=1.10.1` (any version between v1.3.0 and v1.10.1 works), redeploy and wait until Outline has started and finished its migrations.
-2. Set `IMAGE_TAG=1.12.0` and redeploy again.
+2. Set `IMAGE_TAG=1.13.0` and redeploy again.
 
 Back up the `database-data` volume before upgrading.
 
