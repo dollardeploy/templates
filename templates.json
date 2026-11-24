@@ -2384,7 +2384,7 @@
         "SECRET_KEY": "${GENERATED_SECRET}",
         "GOOGLE_CLIENT_ID": "",
         "GOOGLE_CLIENT_SECRET": "",
-        "IMAGE_TAG": "1.12.0",
+        "IMAGE_TAG": "1.13.0",
         "POSTGRES_VERSION": "17.10",
         "PGSSLMODE": "disable",
         "DOCKER_IMAGE": "docker.getoutline.com/outlinewiki/outline"
@@ -2392,7 +2392,7 @@
     },
     "postLaunchNote": "> Remember to configure the SMTP settings and \n> authentication settings in the environment variables and redeploy after that.\n> See the [Outline sample config](https://github.com/outline/outline/blob/main/.env.sample) for more info.\n",
     "createdAt": "2025-06-11T18:54:14+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-24T09:18:58+02:00"
   },
   {
     "id": "outline-ws",
