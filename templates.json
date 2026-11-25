@@ -934,7 +934,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "PORT": "8080",
-        "DOZZLE_VERSION": "v11.4.2",
+        "DOZZLE_VERSION": "v11.4.3",
         "DOZZLE_AUTH_PROVIDER": "simple",
         "DOZZLE_ENABLE_ACTIONS": true,
         "DOZZLE_ENABLE_SHELL": true,
@@ -944,7 +944,7 @@
     },
     "postLaunchNote": "Dozzle username: admin, password: ${GENERATED_PWD}\n",
     "createdAt": "2025-07-29T21:21:40+03:00",
-    "updatedAt": "2026-11-17T07:57:21+02:00"
+    "updatedAt": "2026-11-25T09:04:46+02:00"
   },
   {
     "id": "erpnext",
