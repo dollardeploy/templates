@@ -31,5 +31,6 @@ app:
   dockerComposeFile: docker-compose.yml
   env:
     ADMIN_PASSWORD: "${GENERATED_PWD}"
-    TAG: "v15.124.2"
+    TAG: "v15.125.0"
     PORT: 8080
+    DOCKER_COMPOSE_WAIT_TIMEOUT: "900"
