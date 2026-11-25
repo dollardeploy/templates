@@ -49,7 +49,7 @@ app:
     DOCKER_COMPOSE_WAIT_TIMEOUT: "600"
     POST_START_TIMEOUT: "180"
     # --- Application config (Laravel) ---
-    APP_NAME: solidtime
+    SOLIDTIME_APP_NAME: solidtime
     APP_ENV: production
     APP_DEBUG: "false"
     APP_FORCE_HTTPS: "true"

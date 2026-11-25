@@ -41,8 +41,8 @@ chmod 600 ./app_key.txt ./oauth-private.key
 # and SUPER_ADMINS are derived from reserved vars; the keys are the generated
 # secrets above.
 cat > laravel.env <<EOF
-APP_NAME="${APP_NAME:-solidtime}"
-VITE_APP_NAME="${APP_NAME:-solidtime}"
+APP_NAME="${SOLIDTIME_APP_NAME:-solidtime}"
+VITE_APP_NAME="${SOLIDTIME_APP_NAME:-solidtime}"
 APP_ENV="${APP_ENV:-production}"
 APP_DEBUG="${APP_DEBUG:-false}"
 APP_URL="${PUBLIC_URL}"
