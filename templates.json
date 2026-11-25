@@ -1406,11 +1406,11 @@
         "INNGEST_SIGNING_KEY": "${GENERATED_SECRET}",
         "INNGEST_ENV": "prod",
         "INNGEST_DEV": 0,
-        "TAG": "v1.51.0"
+        "TAG": "v1.53.0"
       }
     },
     "createdAt": "2025-07-29T16:40:11+03:00",
-    "updatedAt": "2026-11-17T07:57:26+02:00"
+    "updatedAt": "2026-11-25T09:12:39+02:00"
   },
   {
     "id": "langfuse",
