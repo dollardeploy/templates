@@ -3777,7 +3777,7 @@
         "MYSQL_ROOT_PASSWORD": "${GENERATED_PWD}",
         "PUBLIC_URL": "${APP_URL}",
         "PORT": "8080",
-        "WORDPRESS_VERSION": "7.1.4",
+        "WORDPRESS_VERSION": "7.1.5",
         "MARIADB_VERSION": "11.8.9-noble"
       },
       "preStartCmd": "bash ./fixdocker.sh",
@@ -3789,7 +3789,7 @@
       ]
     },
     "createdAt": "2024-11-25T21:39:49+02:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-26T09:05:49+02:00"
   },
   {
     "id": "zulipchat",
