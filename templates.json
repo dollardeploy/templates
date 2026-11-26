@@ -2028,7 +2028,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 8080,
       "env": {
-        "NEXTCLOUD_VERSION": "35.0.2-apache",
+        "NEXTCLOUD_VERSION": "35.0.3-apache",
         "COMPOSE_PROFILES": "withdb,withredis",
         "MYSQL_PASSWORD": "${GENERATED_PWD}",
         "MYSQL_DATABASE": "nextcloud",
@@ -2041,7 +2041,7 @@
       "docker"
     ],
     "createdAt": "2025-12-01T09:53:48+02:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-26T09:24:51+02:00"
   },
   {
     "id": "nextjs-boilerplate",
