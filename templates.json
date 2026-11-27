@@ -2551,7 +2551,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "env": {
         "PORT": "3000",
-        "APP_RELEASE": "v1.5.0",
+        "APP_RELEASE": "v1.5.1",
         "MINIO_IMAGE": "pgsty/silo:RELEASE.2026-09-16T00-00-00Z",
         "APP_DOMAIN": "${APP_HOSTNAME}",
         "WEB_URL": "${APP_URL}",
@@ -2594,7 +2594,7 @@
       }
     },
     "createdAt": "2026-06-04T12:25:11+03:00",
-    "updatedAt": "2026-11-19T12:06:51+02:00"
+    "updatedAt": "2026-11-27T09:04:22+02:00"
   },
   {
     "id": "plausible",
