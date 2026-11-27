@@ -1,0 +1,25 @@
+services:
+  msgboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MSGBOARD_REF: ${MSGBOARD_REF:-f4a33aeae6965e7826d6c4b1410d05f312dfb5b2}
+    restart: unless-stopped
+    # SQLite must stay on a local disk, so the board lives in a named volume.
+    volumes:
+      - msgboard-data:/data
+    ports:
+      # Loopback only: DollarDeploy's reverse proxy serves it over HTTPS.
+      - "127.0.0.1:${PORT:-7860}:7860"
+    environment:
+      MSGBOARD_SECRET: "${MSGBOARD_SECRET:?MSGBOARD_SECRET is required}"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:7860/v1/health', timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  msgboard-data:
