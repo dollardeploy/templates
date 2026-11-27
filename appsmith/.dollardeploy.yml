@@ -19,7 +19,7 @@ app:
   backupCmd: tar czf appsmith-backup.tar.gz ./stacks
   env:
     PORT: "3000"
-    APPSMITH_VERSION: "v2.6.0"
+    APPSMITH_VERSION: "v2.7.2"
     APP_HEALTHCHECK_PATH: "/api/v1/health"
     APP_READY_TIMEOUT: "600"
     DOCKER_COMPOSE_WAIT_TIMEOUT: "600"
