@@ -56,7 +56,7 @@
       "backupCmd": "tar czf appsmith-backup.tar.gz ./stacks",
       "env": {
         "PORT": "3000",
-        "APPSMITH_VERSION": "v2.6.0",
+        "APPSMITH_VERSION": "v2.7.2",
         "APP_HEALTHCHECK_PATH": "/api/v1/health",
         "APP_READY_TIMEOUT": "600",
         "DOCKER_COMPOSE_WAIT_TIMEOUT": "600"
@@ -75,7 +75,7 @@
       "docker"
     ],
     "createdAt": "2026-06-05T14:55:59+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-27T09:16:07+02:00"
   },
   {
     "id": "astro",
