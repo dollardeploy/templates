@@ -22,7 +22,7 @@ app:
   dockerComposeFile: docker-compose.yml
   env:
     PORT: '3000'
-    APP_RELEASE: 'v1.5.0'
+    APP_RELEASE: 'v1.5.1'
     MINIO_IMAGE: 'pgsty/silo:RELEASE.2026-09-16T00-00-00Z'
     APP_DOMAIN: '${APP_HOSTNAME}'
     WEB_URL: '${APP_URL}'
