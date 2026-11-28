@@ -3732,7 +3732,7 @@
       "dockerComposeFile": "docker-compose.yml",
       "mainPort": 8000,
       "env": {
-        "VLLM_VERSION": "v0.33.0",
+        "VLLM_VERSION": "v0.34.0",
         "HF_TOKEN": "",
         "APP_HEALTHCHECK_PATH": "/health",
         "DOCKER_COMPOSE_PULL": "always",
@@ -3741,7 +3741,7 @@
       }
     },
     "createdAt": "2026-08-08T10:38:17+03:00",
-    "updatedAt": "2026-11-14T17:49:34+02:00"
+    "updatedAt": "2026-11-28T09:11:07+02:00"
   },
   {
     "id": "wikijs",
